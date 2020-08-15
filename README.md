@@ -2,7 +2,7 @@
 
 En este repositorio se encuentran las anotaciones en archivos .md de los cursos que voy tomando.
 
-Actualmente en las anotaciones incompletas son:
+Actualmente las anotaciones incompletas son:
 
 - Anotaciones-Git del Curso de Git y GitHub
 

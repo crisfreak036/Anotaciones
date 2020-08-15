@@ -384,6 +384,35 @@ Se basa en copiar un repositorio ya existente en GitHub en el computador con tod
 
 Descarga los cambios del repositorio remoto sin hacer un merge lo cual puede llegar a ser destructivo dependiendo de la situación. El comando para realizar esto es `git fetch origin master`. En el caso de que existan diferencias, se debe hacer un merge aunque es más rápido hacer un `git pull`.
 
+## GitHub básico
+
+Se recomienda aprender markdown para trabajar de forma más amigable con los archivos .md, además existe markdown aplicado a github que igual se recomienda aprender.
+
+Para buscar un archivo del repositorio dentro de GitHub se puede utilizar la opción *go to file* el cual permite buscar archivos escribiendo algo relacionado a ellos.
+
+### Raw, Blame, History, Edit and Delete
+
+Al entrar a un archivo dentro del repositorio alojado en GitHub, sobre la visualización se encuentra una cierta cantidad de botones que tienen distintas funcionalidades las cuales se proceden a explicar ahora:
+
+- **Raw:** Muestra el archivo crudo, el código tal cual como está escrito, como si fuera salvado en un archivo txt. Cabe mencionar que si se trata de un repositorio público (al parecer da igual si es privado), el link de la visualización en Raw puede ser visualizado por cualquier persona en cualquier navegador.
+
+- **Blame:** Es para saber quién hizo que cambios en el archivo. Los usuarios que hicieron cambios aparecen en la misma línea del cambio que hicieron. Entre el usuario y el código que este modificó, se encuentra un botón el cual nos permite ver el archivo en el estado que se encontraba antes de que el el usuario lo modificará. No hay que asustarse se cuando se vuelve al código faltan archivos, sólo hay que presionar en donde sale el hash del commit y cambiar a master. 
+
+- **History:** Muestra en que commits fue modificado el archivo en cuestión. A la derecha se puede ver el hash corto del commit y un botón *< >* el cuál nos permite ver como se encontraba el repositorio en aquel commit. Al igual que en lo que pasaba con Blame, sólo hay que presionar en el hash y poner *master* para volver al estado actual del repositorio.
+
+- **Edit:** Sirve para modificar los archivos desde GitHub. Luego para guardar la modificación se debe escribir el commit (en la sección commit indicada por la página) y un mensaje (el cual es opcional), se puede hasta crear un rama desde ahí.
+
+- **Delete:** Sirve para borrar el archivo y al igual que *Edit*, pide dejar un commit y se pude crear hasta una rama con ese cambio.
+
+### Creando un archivo en GitHub en una rama aparte
+
+Desde GitHub se pueden crear archivos en una rama nueva (con su correspondiente commit y todo) los cuales para ser unidos (hacer un merge) a la rama maestra se debe hacer un *pull request* (básicamente esto sería **proponer un nuevo archivo**). Si no se añade commit personalizado, GitHub añadirá el que sale en gris en la zona donde se escribe el commit.
+
+Cuando ya se presiona el botón de *propose a new file*, se abre una nueva página que nos dice que abramos una solicitud de pull (*Open a pull request*) en donde se debe rellenar la información pedida antes de presionar el botón *Create a pull request*. Luego de presionado el botón, GitHub se encargará de comparar los cambios y ver si se puede hacer un merge transparente, de lo contrario notificará la existencia de un conflicto el cual hay que solucionar. Ahora sólo queda esperar a que alguien acepte la petición.
+
+Desde el punto de vista de otro usuario del proyecto, en la sección *Pull requests* se mostrarán las peticiones de pull, si uno entra a alguna se verá el mensaje que dejó el otro usuario y el commit, a este último igualmente se puede entrar y ver el o los cambios en el o los archivos, se pueden dejar comentarios (por línea de código o por multiples líneas, que además permiten la sintaxis de markdown), editar el archivo y hasta eliminarlo. Luego de revisar todo se puede elegir que tipo de merge realizar al momento de aceptar el nuevo archivo (o el cambio que se hizo). Post aceptación, GitHub nos da la posibilidad de eliminar la rama donde iba el cambio.
+
+Ya de forma local, se debe realizar el respectivo `git pull origin master` (o un fetch con sus respectivos pasos extras) para mantener el directorio actualizado.
 
 
 

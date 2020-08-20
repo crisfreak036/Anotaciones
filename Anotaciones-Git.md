@@ -414,6 +414,10 @@ Desde el punto de vista de otro usuario del proyecto, en la sección *Pull reque
 
 Ya de forma local, se debe realizar el respectivo `git pull origin master` (o un fetch con sus respectivos pasos extras) para mantener el directorio actualizado.
 
+### Creando un archivo en GitHub directamente en la rama maestra
+
+Suponiendo que nos encontramos completamente seguros de que podemos crear un archivo en la rama maestra sin generar algún conflicto con otros archivos, en GitHub se puede crear directamente un archivo en la rama maestra sin necesidad de realizar un pull request, para llevar a cabo lo anterior se debe ir al directorio que alojará el archivo que se creará, luego se debe crear y al momento de hacer el commit, se debe seleccionar la opción que dice *Commit directly to the master branch.* (Commit directamente en la rama maestra), con lo anterior al momento de hacer el commit, el archivo recién creado se creará directamente en el directorio seleccionado sin hacer un pull request o cosas por el estilo.
+
 
 
  

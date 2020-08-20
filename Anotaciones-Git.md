@@ -429,4 +429,15 @@ Desde GitHub, se pueden dejar comentarios en los commits (da lo mismo en que mom
 ## GitHub Avanzado
 
 Los proyectos están compuesto por diferentes integrantes los cuales tienen un ritmo distinto de trabajo el cual puede llegar a causar problemas al momento del desarrollo. Sabiendo lo anterior GitHub ofrece la posibilidad de la creación de flujos de trabajos los cuales permitirán que cada integrante pueda trabajar a su ritmo con el fin de que se genere la menos cantidad de conflictos.
- 
+
+### Fork, Clone y Colaboraciones
+
+**Colaboradores:** Son integrantes que se agregan al repositorio remoto con el fin de que puedan trabajar en el proyecto. Ellos mediante un `git clone` pueden clonar el repositorio en su computadora con el fin de realizar cambios, commits, push y pulls como si fueran el dueño del repositorio.
+
+Cabe mencionar que sin ser colaborador, no se pueden hacer push mediante Git a menos que se haga un Fork con el repositorio.
+
+**Fork:** Al no pertenecer como colaborador a un repositorio al cual se quiere colaborar, se puede realizar un fork el cual se encarga de clonar el repositorio original en la cuenta de GitHub personal **(esto es como si se hubiera creado una rama nueva en el repositorio original)**. Gracias a lo anterior se puede hacer todo como si fuéramos colaboradores pero en la versión clonada del repositorio. Sabiendo lo anterior, ¿Cómo se le hacen llegar los cambios al dueño del repositorio original?. La respuesta a la pregunta anterior son los *Pull request*.
+
+**Pull Request:** Es una petición que se le hace a los dueños de un repositorio para que revisen los cambios hechos por uno con el fin de que estos sean incluidos en el repositorio, aunque si los aceptan, lo más probable es que los dejen en una nueva rama antes de hacerlos parte de la rama maestra.
+
+Con todo lo expuesto anteriormente, ya se puede colaborar en repositorios en los cuales no somos colaboradores, aportando así un granito de arena a proyectos de nuestro interés.

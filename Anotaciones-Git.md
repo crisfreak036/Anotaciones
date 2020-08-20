@@ -425,3 +425,8 @@ Si en GitHub (en su repositorio local) otro compañero hizo cambios que están s
 ### Comentarios en los commits
 
 Desde GitHub, se pueden dejar comentarios en los commits (da lo mismo en que momento se realizó), uno puede dirigirse a algún commit en especifico y dentro de él ver que se modifico en el archivo y dejar comentarios en las línea de código del archivo que se modificó en el commit. Cabe mencionar que si vamos a la historia del archivo, en los commits donde se hicieron comentarios se podrá ver un símbolo de una burbuja de texto indicando la cantidad de comentarios que hay en ese commit. Recordar que los comentarios aceptan markdown.
+
+## GitHub Avanzado
+
+Los proyectos están compuesto por diferentes integrantes los cuales tienen un ritmo distinto de trabajo el cual puede llegar a causar problemas al momento del desarrollo. Sabiendo lo anterior GitHub ofrece la posibilidad de la creación de flujos de trabajos los cuales permitirán que cada integrante pueda trabajar a su ritmo con el fin de que se genere la menos cantidad de conflictos.
+ 

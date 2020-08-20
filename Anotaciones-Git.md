@@ -420,7 +420,11 @@ Suponiendo que nos encontramos completamente seguros de que podemos crear un arc
 
 ### Renombrar, borrar y sincronizar el repositorio local
 
-Si en GitHub (en su repositorio local) otro compañero hizo cambios que están sincronizados con el repositorio remoto pero no con el repositorio local en el cual trabajamos, **se recomienda realizar un `git fetch`** en vez de un `git pull`, debido a que de esta manera se **mediante un `git status`** se podrá saber por cuantos commits el repositorio local se encuentrá desactualizado con respecto al repositorio remoto y también sabrás que tipo de merge se puede realizar. 
+Si en GitHub (en su repositorio local) otro compañero hizo cambios que están sincronizados con el repositorio remoto pero no con el repositorio local en el cual trabajamos, **se recomienda realizar un `git fetch`** en vez de un `git pull`, debido a que de esta manera se **mediante un `git status`** se podrá saber por cuantos commits el repositorio local se encuentrá desactualizado con respecto al repositorio remoto y también sabrás que tipo de merge se puede realizar.
+
+### Comentarios en los commits
+
+Desde GitHub, se pueden dejar comentarios en los commits (da lo mismo en que momento se realizó), uno puede dirigirse a algún commit en especifico y dentro de él ver que se modifico en el archivo y dejar comentarios en las línea de código del archivo que se modificó en el commit. Cabe mencionar que si vamos a la historia del archivo, en los commits donde se hicieron comentarios se podrá ver un símbolo de una burbuja de texto indicando la cantidad de comentarios que hay en ese commit. Recordar que los comentarios aceptan markdown. 
 
 
 

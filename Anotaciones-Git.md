@@ -418,6 +418,11 @@ Ya de forma local, se debe realizar el respectivo `git pull origin master` (o un
 
 Suponiendo que nos encontramos completamente seguros de que podemos crear un archivo en la rama maestra sin generar algún conflicto con otros archivos, en GitHub se puede crear directamente un archivo en la rama maestra sin necesidad de realizar un pull request, para llevar a cabo lo anterior se debe ir al directorio que alojará el archivo que se creará, luego se debe crear y al momento de hacer el commit, se debe seleccionar la opción que dice *Commit directly to the master branch.* (Commit directamente en la rama maestra), con lo anterior al momento de hacer el commit, el archivo recién creado se creará directamente en el directorio seleccionado sin hacer un pull request o cosas por el estilo.
 
+### Renombrar, borrar y sincronizar el repositorio local
+
+Si en GitHub (en su repositorio local) otro compañero hizo cambios que están sincronizados con el repositorio remoto pero no con el repositorio local en el cual trabajamos, **se recomienda realizar un `git fetch`** en vez de un `git pull`, debido a que de esta manera se **mediante un `git status`** se podrá saber por cuantos commits el repositorio local se encuentrá desactualizado con respecto al repositorio remoto y también sabrás que tipo de merge se puede realizar. 
+
+
 
 
  

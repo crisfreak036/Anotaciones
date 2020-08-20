@@ -303,27 +303,27 @@ Para borras todas las entradas en el stash sin posibilidad de recuperarlas se de
 
 ### Rebase
 
-### Introducción a los Rebase
+#### Introducción a los Rebase
 
 - **Rebase (normal):** Sirve para actualizar las ramas. Por ejemplo, en el caso de que hayan dos ramas (Mater y "experimental"), amabas tienen un punto en común desde el cuál nace "experimental", en "experimental" se hacen cambios y todos pero resulta que en Mater igual se hicieron cambios los cuales hacen que desde donde nace "experimental" quede como un punto desactualizado que traerá problemas al momento de hacer un merge, para solucionar lo anterior existe el rebase el cual permite que el punto de inicio de la rama "experimental" se mueva hasta el último commit de la rama Master como si hubiéramos creado la rama en ese punto. Lo anterior se logra haciendo que los commits de la rama "experimental" pasen a un área temporal durante la transición entre el punto de inicio antiguo al nuevo. El comando para hacer lo anterior es `git rebase master`.
 
 - **Rebase interactivo:** `git rebase -i HEAD~n` permite mover n cantidad de commits (no necesariamente desde donde apunta el HEAD) desde donde se indica hacía atrás (o sea que los últimos n commits que se hicieron) a un área temporal los cuales luego serán regresados en el mismo orden que fueron ingresado al área temporal. Esto sirve para: Ordenar commits, corregir mensajes de los commits, unir commits y separar commits.
 
-### Rebase - Actualizando una rama
+#### Rebase - Actualizando una rama
 
 Se suele utilizar para evitar tener conflictos al momento de realizar un Merge, de esta forma, toda la información de la rama maestra que puede generar conflicto pasa a estar antes del punto donde se creó la otra rama. 
 
 Antes de realizar un `git rebase rama-en-donde-se-actualizará-el-punto-de-inicio-de-la-otra-rama` se debe asegurar que se está en la rama no principal (usualmente la no *Master*), para esto se utiliza el comando `git brach` y luego `git checkout rama-no-master`. Lo que hace el rebase es mover HEAD al último commit de la rama no master (como si la hubiéramos creado hace poco), cabe destacar que **las ramas aún se encuentran separadas (aunque no lo parezca en la consola)** por lo cual se debe hacer un `git checkout master` (hay que moverse a al rama que se le quiere unir los cambios de la rama no master) y luego un `git merge rama-no-master` (se debe hacer un merge entre la rama en la cual uno se encuentra y la que tiene los cambios). 
 
-### Rebase - Squash (fusionar commits)
+#### Rebase - Squash (fusionar commits)
 
 En el caso de tener dos commits similares que perfectamente podrían ser uno sólo, existe el comando `git rebase -i HEAD~n` donde HEAD hace alusión al commit que está siendo apuntado por HEAD y n es la cantidad de commits que se van a seleccionar. Luego de usarlo aparecerá un editor de texto donde se podrá ver los commits seleccionados desde el más viejo al más nuevo. Existen comandos (que se muestran en el editor) donde el importan es *squash* el cual se pone en el último commit al cual se le quiere fusionar los commits que se encuentran sobre él. Luego de lo anterior se deben guardar los cambios presionando *esc* para salir del modo editor (al cual se ingresaba presionando *a*) y luego se teclea *:wq*, lo anterior hace que aparezca otro editor en donde se puede poner el nuevo commit que para la fusión de commits.
 
-### Rebase - Reword (Actualizar mensaje del commit)
+#### Rebase - Reword (Actualizar mensaje del commit)
 
 Se utiliza un rebase interactivo en el cual en el n va 1 (haciendo referencia al commit en el cual uno se encuentra y quiere cambiar el nombre), dentro del editor de texto, **no hay que editar directamente el mensaje del commit**, hay que cambiar el *pick* por *reword*, salimos del modo edición, guardamos y salimos para ir al siguiente editor de texto en donde ya podremos editar el mensaje del commit. **En el caso de que salga [detached HEAD hash-del-commit]**, es necesario que hacer un `git checkout master` para asegurar que no se vaya a crear una rama en algún punto. 
 
-### Rebase - Edit (separar commits)
+#### Rebase - Edit (separar commits)
 
 En el caso de que se quiera separar un commit en varios commit (por ejemplo un commit mal hecho que haga referencia a más de un archivo y se quiera hacer un commit para cada archivo) se deben seguir los siguiente pasos: 
 
@@ -424,21 +424,4 @@ Si en GitHub (en su repositorio local) otro compañero hizo cambios que están s
 
 ### Comentarios en los commits
 
-Desde GitHub, se pueden dejar comentarios en los commits (da lo mismo en que momento se realizó), uno puede dirigirse a algún commit en especifico y dentro de él ver que se modifico en el archivo y dejar comentarios en las línea de código del archivo que se modificó en el commit. Cabe mencionar que si vamos a la historia del archivo, en los commits donde se hicieron comentarios se podrá ver un símbolo de una burbuja de texto indicando la cantidad de comentarios que hay en ese commit. Recordar que los comentarios aceptan markdown. 
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
+Desde GitHub, se pueden dejar comentarios en los commits (da lo mismo en que momento se realizó), uno puede dirigirse a algún commit en especifico y dentro de él ver que se modifico en el archivo y dejar comentarios en las línea de código del archivo que se modificó en el commit. Cabe mencionar que si vamos a la historia del archivo, en los commits donde se hicieron comentarios se podrá ver un símbolo de una burbuja de texto indicando la cantidad de comentarios que hay en ese commit. Recordar que los comentarios aceptan markdown.

@@ -441,3 +441,17 @@ Cabe mencionar que sin ser colaborador, no se pueden hacer push mediante Git a m
 **Pull Request:** Es una petición que se le hace a los dueños de un repositorio para que revisen los cambios hechos por uno con el fin de que estos sean incluidos en el repositorio, aunque si los aceptan, lo más probable es que los dejen en una nueva rama antes de hacerlos parte de la rama maestra.
 
 Con todo lo expuesto anteriormente, ya se puede colaborar en repositorios en los cuales no somos colaboradores, aportando así un granito de arena a proyectos de nuestro interés.
+
+### Cloning y Fork
+
+#### Fork
+
+Para realizar un ***Fork*** se debe hacer lo siguiente: 
+
+1. Se debe ir al repositorio de GitHub al cual se le quiere realizar un Fork.
+2. Estando el repositorio, se debe presionar el botón fork el cual creará una copia del repositorio de GitHub en nuestra cuenta personal (puede tomar algo de tiempo). En la página principal de GitHub (cuenta personal) se podrá ver los repositorios que tenemos y el repositorio clonado con *Fork* tendrá un icono distinto.
+3. Lo último que se debe hacer es clonar el repositorio creado mediante el uso de *Fork* a la computadora para poder trabajar en él. 
+
+#### Cloning
+
+Para clonar el repositorio hay que utilizar el comando `git clone link-de-clonación nombre-carpeta` (en el comando anterior el nombre-carpeta se reemplaza por el nombre de la carpeta que queremos que tenga el repositorio de forma local. En el caso de que no se quiera cambiar el nombre de la carpeta, quedará el nombre por default que tiene en el repositorio de GitHub).

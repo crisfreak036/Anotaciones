@@ -457,3 +457,37 @@ Para realizar un ***Fork*** se debe hacer lo siguiente:
 #### Cloning
 
 Para clonar el repositorio hay que utilizar el comando `git clone link-de-clonación nombre-carpeta` (en el comando anterior el nombre-carpeta se reemplaza por el nombre de la carpeta que queremos que tenga el repositorio de forma local. En el caso de que no se quiera cambiar el nombre de la carpeta, quedará el nombre por default que tiene en el repositorio de GitHub).
+
+#### Pull Request
+
+Para hacer un *Pull Request* en un repositorio que previamente se le hizo *Fork*, se debe hacer lo siguiente:
+
+1. Debemos estar posicionados en el directorio local en el cual se clonaron los archivos del repositorio que fue clonado mediante *Fork* en nuestra cuenta.
+
+2. Se debe asegurar que el remote está bien instalado. Para llevar a cabo lo anterior se utiliza el comando `git remote -v`, al utilizar ese comando saldrán los links de GitHub que deberían contener a nuestro usuario y no al usuario propietario del directorio original.
+
+3. Hay que tener en cuenta que los cambios realizados a los archivos deben estar ya en un commit y subidos el repositorio remoto de nuestro usuario (el cual es un clon que se hizo con el *Fork*).
+
+4. En GitHub, se debe refrescar para ver los cambios y si se está satisfecho con ellos se puede hacer un *Pull Request* presionando el botón que dice Pull Request.
+
+5. Luego de presionar el botón, se mostrarán los cambios que se realizaron para revisarlos, si se está conformes con ellos se debe presionar el botón *Create pull request*.
+
+6. Al presionar el botón antes mencionados se nos mostrará una especie de formulario en el cual hay que poner el título del *Pull Request* (un comentario corto y conciso) y se da la opción de escribir un mensaje con más información (recordar que ese mensaje acepta markdown).
+
+7. Con la especie de formulario lista sólo queda presionar el botón *Create pull request*, al presionarlo se nos dirigirá al repositorio original, posicionandonos en la sección de *Pull requests* de ese repositorio y mostrándonos nuestra *Pull Request*.
+
+8. Hay que estar constantemente revisando el *Pull Request* para saber si hay discusiones con respectos a cambios. Lo anterior se hace entrando al *Pull Request* y presionando el botón *View pull request* el cual nos llevará al repositorio original en donde se encuentra todos los comentarios y solicitudes que se le hicieron a nuestro *Pull Request*.
+
+9. En el caso de que se haya realizado algún cambio (en base a modificaciones solicitadas por el autor del repositorio por ejemplo), el *Pull Request* se actualizará automáticamente, mostrando las modificaciones hechas sin necesidad de hacer un nuevo *Pull Request*. (No olvidar que los cambios realizados deben quedar registrados con un commit y luego deben ser subidos al repositorio de nuestra cuenta con un *Push*).
+
+Por parte del encargado del repositorio original, en la pestaña de *Pull Request* verá todos los que hay, puede entrar a uno, aceptarlo total o parcialmente, al igual que puede rechazarlo por completo.
+
+Para aceptarlo parcialmente se hace lo siguiente:
+
+1. Se entra al *Pull Request*.
+
+2. Se revisan los cambios que se hicieron.
+
+3. Se entra al commit del cambio que no se aceptará para comentarlo, para luego solicitar los cambios con el fin de que los autores del cambio sean notificados de los comentarios y solicitudes de cambios que hicieron los encargados del repositorio.
+
+Con los cambios solicitados ya realizados por los autores de los mismos, solo queda aprobar el *Pull Request* y luego hacer un merge (se hace un squash merge en el caso de que se quieran eliminar commits, eso se hace por temas de limpieza).

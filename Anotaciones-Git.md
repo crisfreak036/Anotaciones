@@ -46,11 +46,13 @@ Existe una línea del tiempo creada al momento de utilizar el comando `git init`
 
 - Usando el comando `git log` se pueden ver todos los commits hechos desde el más nuevo (el primero que se muestra) hasta el más antiguo (el último que se muestra), además se muestra toda la información relacionada al *commit* o sea, nombre del usuario que lo realizó, mail del usuario, fecha y hora, etc.
 
-### ¿Qué hace Git por nosotros en estos momentos?
+### ¿Qué hace Git por nosotros en estos momentos? (checkout)
 
 Luego de los comandos utilizados anteriormente, queda responder a la pregunta propuesta en el título de esta sección.
 
 - Primero que todo, imaginemos que dentro del código en el cual se está trabajando sin querer se guardan cambios fatales los cuales no se pueden deshacer utilizando el confiable *Ctrl+z*, Git mediante el uso del comando `git checkout -- .` (el punto hace referencia a todo) permite recuperar todo el cambio recién realizado. Si al utilizar el comando no aparece ningún mensaje, entonces el cambio se realizó correctamente. El comando tiene un alcance absurdo por lo cual se puede borrar la carpeta del proyecto y aún así con `git checkout -- .` se puede recuperar todo. **Lo anterior es posible siempre y cuando no se haya realizado un commit**.
+
+**Si se quiere revertir los cambios de un archivo para dejarlo como estaba en cierto commit** se debe utilizar el comando `git checkout hash-del-commit nombre-del-archivo-con-extensión-incluida`, el cual hará que el archivo vuelva al estado que se encontraba en el commit que se indicó mediante su hash abreviado en el comando. Luego de haber hecho lo anterior sólo queda añadir el cambió al stage para luego hacer el commit pertinente que hable de lo que se hizo con el archivo.
 
 ### Diferentes formas de agregar archivos al escenario (stage)
 

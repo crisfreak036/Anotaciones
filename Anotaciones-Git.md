@@ -335,7 +335,7 @@ En el caso de que se quiera separar un commit en varios commit (por ejemplo un c
 
 3. Ahora en la consola se dará la opción de utilizar `git commit --amend` pero lo que se utilizará será `git reset HEAD^` con el fin de revertir los cambios que se realizaron (volver al punto anterior del commit sin que los cambios hechos en los archivos desaparezcan) para así poder hacer nuevos commits de cada archivo. **No asustarse si es que al momento de hacer un `git status` aparece que no nos encontramos en una rama**.
 
-4. Con los commits ya listos, sólo queda utilizar el comando `git commit --continue` para finalizar y dejar de tener el mensaje de que no nos encontramos en una rama.
+4. Con los commits ya listos, sólo queda utilizar el comando `git rebase --continue` para finalizar y dejar de tener el mensaje de que no nos encontramos en una rama.
 
 ## Inicios en GitHub
 
@@ -491,3 +491,15 @@ Para aceptarlo parcialmente se hace lo siguiente:
 3. Se entra al commit del cambio que no se aceptará para comentarlo, para luego solicitar los cambios con el fin de que los autores del cambio sean notificados de los comentarios y solicitudes de cambios que hicieron los encargados del repositorio.
 
 Con los cambios solicitados ya realizados por los autores de los mismos, solo queda aprobar el *Pull Request* y luego hacer un merge (se hace un squash merge en el caso de que se quieran eliminar commits, eso se hace por temas de limpieza).
+
+## Actualizando nuestro Fork
+
+Esto se utiliza cuando no se da acceso directo al repositorio central (original) en donde alguien realiza un *Fork* para trabajar de forma aislada. Lo anterior tiene un problema y es que si otro integrante del proyecto hace cambios en su *Fork* y luego los sube al repositorio principal, nuestro *Fork* queda desactualizado y eso puede provocar futuros conflictos por lo cual ¿Cómo actualizamos nuestro *Fork*?.
+
+1. Se debe agregar un nuevo remote a nuestro repositorio local. Para hacer esto hay que dirigirse al repositorio original (central) para copiar el link de GitHub (como si se tratara de que fuéramos a hacer un *clone*), luego en la terminal del repositorio local, se debe utilizar el comando `git remote add upstream link-del-repositorio` (upstream hace referencia al repositorio central al que le hicimos un *Fork* y al cual no podemos realizar push directos pero necesitamos saber los cambios que se realizan en él para mantener nuestro *Fork* actualizado y no generar conflictos a futuro).
+
+2. Con el nuevo remote (upstream) agregado a nuestro repositorio local, se debe realizar un `git pull upstream master` para hacer el merge a la rama maestra (de todas formas en el caso de que no se sepa que se hizo en el repositorio central, es mejor hacer un `git fetch upstream master` para evitar conflictos y luego realizar un `git pull upstream master` para que se haga el merge entre los cambios del repositorio central y nuestro repositorio local proveniente de un *Fork*). 
+
+3. Ya con el repositorio local actualizado queda realizar un `git push origin master` para actualizar el repositorio clonado con *Fork* que se encuentra en nuestra cuenta de GitHub.
+
+**Los pasos anteriores se deben realizar cada vez que un *Pull Request* haya sido aceptado en el repositorio central (upstream)**.

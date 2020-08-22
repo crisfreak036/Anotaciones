@@ -61,3 +61,46 @@ let edad = prompt('¿Cual es tu edad?'); /*Mediante un cuadro de dialogo pide la
 
 document.getElementById('app').innerHTML = `Bienvenido ${nombre} de ${edad} años`; /*Muestra el mensaje de Bienvenido {nombre} de {edad} años en el index.html debido a la sección asignada con las etiquetas scripts. Si no se llenan los cuadros de dialogo, el mensaje mostrará null en ambos "valores".*/
 ```
+### La consola de Chrome
+
+Cada navegador tiene su propia consola pero la de Chrome suele ser la mejor para trabajar con JS.
+
+La consola es excelente al momento de probar el código de JS y ver errores en él.
+
+La consola del navegador devuelve de un color los número y de otro color las cadenas de caracteres.
+
+Existe algo que se llama la **Ventana Global** `document` que devuelve todo lo que tiene que ver con el HTML.
+
+#### Enviar valores a la consola
+
+Para enviar valores a la consola desde un archivo *JS* se debe ocupar el siguiente comando `console.log();`. Utilizar `console.log();` es muy útil debido a que permite comprobar las cosas que uno hace en *JS*.
+
+```js
+console.log("Enviando a la consola");
+console.log('hasta aquí todo bien');
+console.log(2+2); 
+console.log(true); 
+console.log('ID:'+ 20); /*Con console.log() se puede enviar todo tipo de valores a la consola.*/
+```
+
+Desde la consola del navegador se puede utilizar `console.log()`. Cabe mencionar que puede llegar a salir *undefined* debido a que la función no retorna un valor.
+
+![Ejemplo Hola Mundo Consola Navegador](archivos/images/Hola-mundo-consola-navegador.png)
+
+Dentro de la misma consola se pueden definir variables, las cuales se pueden enviar para que sean mostradas (muy parecido a como cuando se trabajaba en el IDE de python). Cabe mencionar que cuando se manda una variable por consola, se pone sólo el nombre de la variable y no entre comillas como cuando se manda una cadena de caracteres y cosas por el estilo.
+
+![Ejemplo variable hola en Consola Navegador](archivos/images/variable-hola-por-consola-navegador.png)
+
+Como se dijo anteriormente se puede enviar de todo por `console.log()` como por ejemplo arreglos.
+
+La función anterior no es la única que existe para mostrar valores en la consola, también existe `console.table()` que muestra los valores en forma de una tabla. Ejemplo de lo anterior sería `console.table([1,2,3]);`
+
+![Ejemplo console.table()](archivos/images/console.table().png)
+
+Los anteriores son ejemplos de las funciones tipo console que tiene JS.
+
+### Tiempo de Ejecución
+
+Para ver el tiempo de ejecución de nuestro código en JS existe las funciones `console.time();` y `console.timeEND();` las cuales marcan el inicio y el fin (respectivamente) del código que queremos ejecutar. Ambos reciben variables que pueden ser desde cadenas de caracteres puestas directamente o variables previamente definidas.
+
+![Ejemplo console.time() y console.timeEND()](archivos/images/console.time()-y-console.timeEND().png)

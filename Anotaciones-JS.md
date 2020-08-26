@@ -48,6 +48,7 @@ Lo anterior es en el caso de que no exista un archivo con extensión *.js* (en e
 ```html
 <script src=app.js></script> <!--Es similar a como se ponen imágenes en HTML, se pone sólo app.js porque ambos archivos se encuentran en el mismo directorio y al mismo nivel de lo contrario se coloca el directorio primero. Ejemplo JavaScript/app.js-->
 ```
+- Se recomienda que la etiqueta *script* se encuentre antes del final de la etiqueta *body*. Esto se debe a que HTML carga desde arriba hacía abajo el código por lo cual poner código pesado de JS haría que se demorará más en cargar el página.
 
 ### Primer programa en JavaScript
 
@@ -99,8 +100,97 @@ La función anterior no es la única que existe para mostrar valores en la conso
 
 Los anteriores son ejemplos de las funciones tipo console que tiene JS.
 
-### Tiempo de Ejecución
+#### Tiempo de Ejecución
 
 Para ver el tiempo de ejecución de nuestro código en JS existe las funciones `console.time();` y `console.timeEND();` las cuales marcan el inicio y el fin (respectivamente) del código que queremos ejecutar. Ambos reciben variables que pueden ser desde cadenas de caracteres puestas directamente o variables previamente definidas.
 
 ![Ejemplo console.time() y console.timeEND()](archivos/images/console.time()-y-console.timeEND().png)
+
+### Consideraciones con el punto y coma
+
+En JavaScript el *;* no es obligatorio pero por buena práctica se debe utilizar como si este fuera obligatorio. El punto y coma sirve para indicar cuando finaliza una línea de código.
+
+### ESLint para solucionar errores de código
+
+Revisa el código que se escribe para corregir el estilo en el cual se escribe el código de JS. Se debe configurar manualmente. ESLint puede corregir errores en base a lo que se configuró previamente.
+
+### Variables en JavaScripts
+
+Existen formas de darle nombre a una variable creada que aparte de ser una buena práctica, también ayudan a entender mejor el código. Estas formas son: 
+
+- Camelcase: Es donde el segundo nombre de la variable lleva mayúscula. 
+
+```js
+var nombreVariable = 'Algo'; //Ejemplo de camelcase
+```
+
+- Underscore: Es donde los nombres de la variable se separan por un guión bajo.
+
+```js
+var nombre_variable = 'Algo'; //Ejemplo de underscore
+```
+
+- Pascalcase: Es donde todos los nombres de la variable llevan mayúscula.
+
+```js
+var NombreVariable = 'Algo'; //Ejemplo de pascalcase
+```
+
+Los siguientes tipos de variables son soportados por todos los navegadores.
+
+#### Var
+
+**Ya no se recomienda la variable de tipo VAR**
+
+Para crear una variable de tipo *VAR* se debe hacer lo siguiente: 
+
+```js
+var nombre = 'Juan'; //Puede ser con comillas simples o dobles.
+
+nombre = 'John'; //Sin necesidad de anteponer VAR se puede cambiar el contenido de la variable de tipo VAR, debido a que esta ya fue definida con anterioridad.
+
+var nombre = 'Pedro'; //En este caso se vuelve a declarar la variable nombre y ya que es VAR no hay problema en hacerlo.
+
+```
+
+Primero se pone el tipo de la variable (*VAR* en este caso), luego un nombre para la variable **(los nombres de variables deben ser con letras primero y después números. Tampoco deben tener caracteres especiales al inicio)** y después lo que contendrá la variable.
+
+De igual forma **se pueden inicializar variables sin valor**.
+
+```js
+var nombre; //La variable nombre de tipo VAR no tiene valor previamente definido
+```
+Además se pueden inicializar más de un mismo tipo de variable en una misma línea, sólo se tienen que separar por una coma.
+
+```js
+var variable = 0, variable2 = 1, variable3 = 2; //Se definieron tres variables en una sóla línea.
+```
+
+#### Let
+
+**Se recomienda el uso de *let* cuando el valor será sobrescrito y no se volverá a definir**
+
+A diferencia de *VAR*, no se pueden volver a declarar. Sólo se puede volver a dar valor.
+
+```js
+let variable1 = 'Libro'; //Se crea la variable1 de tipo let que contiene a Libro
+
+variable1 = 'Libro 1'; //Se cambia el valor de la variable1 a Libro 1
+
+let variable1 = 'Libro 2' //Tira error debido a que al ser de tipo let no se puede volver a declarar
+```
+
+#### Const
+
+**Se recomienda su uso cuando se sabe que el valor asignado se mantendrá constante siempre**.
+
+Las variables de tipo *const* deben inicializarse siempre, no pueden ir vacías desde su creación. Tampoco se le pueden reasignar un valor a este tipo de variable. 
+
+```js
+const producto = 'Libro'; //Se define una variable producto de tipo const
+
+console.log(producto); // Se muestra por consola del navegador la variable producto
+
+producto = 'Libro2' // La consola tira muestra el siguiente error: Uncaught TypeError: Assignment to constant variable.
+```
+

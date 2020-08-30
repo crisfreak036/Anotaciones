@@ -194,3 +194,266 @@ console.log(producto); // Se muestra por consola del navegador la variable produ
 producto = 'Libro2' // La consola tira muestra el siguiente error: Uncaught TypeError: Assignment to constant variable.
 ```
 
+### Strings o Cadenas de Texto y sus métodos
+
+#### Creación de un string
+
+Los *strings* representan un texto que se le puede asignar a una variable.
+
+Existen dos formas de crear una cadena de texto:
+
+1. Creación del *string* mediante el uso de comillas dobles en el valor de la variable.
+
+```js
+//Creación de la variable producto
+//Prima forma de crear un string
+const producto = "Monitor de 20 pulgadas"; //La variable ya es un string al momento de ponerle las comillas en su definición
+```
+En este caso se **debe usar comillas dobles** al momento de darle valor a la variable.
+
+2. Creación del *string* mediante el uso del objeto (quizás función, investigar más eso) `String()`.
+
+```js
+//Creación de la variable producto2
+//Segunda forma de crear un string
+const producto2 = String('Monitor 24 Pulgadas'); //El valor de la variable es dado en base al objeto String() que recibe la cadena de caracteres que nosotros enviemos entre comillas simples.
+```
+3. Creación de un nuevo objeto *string*.
+
+```js
+//Creación de la variable producto3
+//Tercera forma de crear un string (es poco común)
+const producto3 = new String('Monitor de 27 pulgadas'); // Aquí el String está siendo creado como si fuera un objeto nuevo
+```
+**Nota: En el caso de que se quiera poner comillas dobles o simples dentro de un string que comience y finalice con comillas dobles simples respectivamente, se debe ¿escapar? las comillas que no hagan referencia al final del string. Lo anterior se hace utilizando un backslash** 
+```js
+const producto = "Monitor de 20\" "
+```
+
+#### Métodos de un String
+
+Debido a que los *strings* son una clase, estos cuentan con métodos que sirven para realizar distintas tareas de forma fácil y sencilla.
+
+##### indexOf
+
+Entrega en que posición del *string* se encuentran una palabra buscada. Entrega la posición dentro de la cadena de caracteres (el inicio de la palabra buscada) y si no se encuentra entrega un *-1*.
+
+```js
+/*variable.indexOf('palabra')*/
+
+//Creación de la variable producto
+const producto = "Tablet 7\" 8 Gb y 1 Gb Ram";
+
+//Muestra por consola la variable producto
+console.log(producto);
+
+//Muestra la posición dentro del producto (que es un string) donde inicia la palabra Tablet
+console.log(producto.indexOf('Tablet'));
+
+//Cabe mencionar que el método diferencia entre minúsculas y mayúsculas
+console.log(producto.indexOf('tablet')); //Muestra un -1 por consola
+
+console.log(producto.indexOf('Monitor')); //Muestra -1 en la consola debido a que Monitor no se encuentra en la variable producto
+```
+
+##### Includes
+
+Sirve para saber si dentro de una string se encuentra una palabra especifica. Este método **recibe** la palabra a buscar entre comillas simples y distingue entre minúsculas y mayúsculas, y **entrega** un valor booleano (true o false).
+
+```js
+/*variable.includes('palabra')*/
+
+//Creación de la variable producto
+const producto = 'Monitor de 32 pulgadas';
+
+//Muestra por consola la variable producto
+console.log(producto);
+
+//Muestra true o false dependiendo de si la palabra Monitor se encuentra en el string producto
+console.log(producto.includes('Monitor')); //Entrega True por consola
+
+//Cabe mencionar que el método includes distingue entre minúsculas y mayúsculas
+console.log(producto.includes('monitor')); //Entrega False por consola
+
+console.log(producto.includes('Tablet')); //Entrega False por consola debido a que no se encuentra la palabra Tablet dentro del string producto
+```
+
+##### Length
+
+Sirve para conocer la cantidad de carácteres que componen a un string. 
+
+```js
+/*variable.length()*/
+
+//Creación de la variable producto2
+const producto2 = 'Monitor 20 pulgadas';
+
+//Creación de la variable cantidadCaracteres la cual contiene la cantidad de caracteres del string producto2
+const cantidadCaracteres = producto2.length;
+
+//Muestra por consola el valor de la variable producto2
+console.log(producto2);
+
+//Muestra por consola la cantidad de caracteres que componen a la variable producto
+console.log(cantidadCaracteres);
+
+/*No es necesario crear una nueva variable para la cantidad de caracteres del string*/
+```
+
+##### Concatenar un String (Unir Strings)
+
+Sirve para unir strings. Existe tres formas para concatenar strings (la mejor es la tercera).
+
+- **Forma 1:** Utilizando el método concat. El método concat une dos strings.
+
+```js
+//Se define la variable producto
+const producto = 'Monitor 20 Pulgadas';
+
+//Se define la variable precio
+const precio = '30 USD';
+
+//Se concatena la precio a la variable producto y se muestra por consola el resultado
+console.log(producto.concat(precio)); //En la consola se muestra Monitor 20 Pulgadas30 USD
+
+//Se concatena al producto la cadena de caracteres En Descuento
+console.log(producto.concat(' En Descuento'));
+```
+
+- **Forma 2:** Utilizando el signo +. Es una sintaxis muy sencilla pero puede llegar a traer problemas cuando el output es muy grande.
+
+```js
+console.log( producto + precio ); //El signo + sirve para concatenar uno o más strings
+
+console.log( producto + "Con un precio de: " + precio ); //Además se le pueden concatenar cadenas de caracteres que no necesariamente son variables previamente definidas 
+```
+- **Forma3:** Template Strings o Template Literal.
+
+##### Template Strings (concatenación ECMAScript)
+
+Con la llegada de ECMAScript 6, se introdujo un cambió a la concatenación de strings la cual se basa en la utilización del Backtick *`* en vez de comillas dobles o triples, además se elimina el uso del signo *+* y ahora para agregar una variable a lo que se quiere mostrar se utiliza la siguiente sintaxis ${variable}.
+
+```js
+console.log(`El producto ${producto} tiene un precio de ${precio}`); //Esta sintaxis es cómoda cuando se tiene un output muy grande.
+```
+
+##### Cortar espacios en blanco de un String
+
+Para eliminar los espacios en blanco que vengan en una variable, se pueden utilizar los métodos trim(), trimStart() y trimEnd(), los cuales permiten eliminar los espacios en blanco tanto al inicio como al final, sólo los del inicio y sólo los del final respectivamente. Cabe mencionar que el método trim() es el más antiguo de los tres, ya que tanto trimStart() como trimEnd() son mucho más nuevos.
+
+```js
+// Definición de la variable producto con un valor tipo string que tiene muchos espacios
+const producto = '     Monitor 20 Pulgadas     ';
+
+// Se muestra por consola la variable producto
+console.log(producto);
+
+// Se muestra por consola el largo de la variable producto
+console.log(producto.length); // El método length considera los espacios en blanco que contiene la variable
+
+// Eliminación los espacios en blanco tanto al inicio como al final
+console.log(producto.trim()); 
+
+// Eliminación de espacios en blanco del inicio
+console.log(producto.trimStart()); //trimStart se encarga de eliminar los espacios en blanco que se encuentran al inicio (no los del final) de la variable producto
+
+// Eliminación de espacios en blanco del final
+console.log(producto.trimEnd()); //trimEnd elimina los espacios en blanco que se encuentran al final de la variable producto (no los del inicio)
+
+/* En JavaScript se pueden utilizar los métodos de forma encadenada, lo cual se llama Chaining o sea que se puede utilizar un método seguido de otro método */
+
+console.log(producto.trimStart().trimEnd()); //La encadenación de trimStart().trimEnd() elimina los espacios en blanco tanto del inicio como del final de la variable producto
+```
+##### Replace
+
+Sirve para reemplazar un palabra dentro de un *string* por otra como también se puede reemplazar el valor de un string por el de otro.
+
+```js
+// Definición de la variable producto
+const producto = 'Monitor 20 Pulgadas';
+
+// Se muestra por consola la variable producto
+console.log(producto);
+
+// Se reemplaza Pulgadas por comillas dobles "
+console.log(producto.replace('Pulgadas', '"'));
+
+// Se reemplaza Monitor por Monitor Curvo
+console.log(producto.replace('Monitor','Monitor Curvo'));
+
+/* Lo anterior sumamente util cuando se requiere reemplazar palabras de muchas variables */
+```
+
+##### Slice
+
+Sirve para cortar un trozo del string indicando la posición del inicio del corte y el posición dle final del corte.
+
+```js
+console.log(producto.slice(0 , 10)); //Corta la variable producto desde la posición 0 hasta la posición 10 mostrando por consola Monitor 20
+
+console.log(producto.slice(8)); //Corta la variable producto desde la posición 8 hasta el final del string. Lo anterior se debe a que no se le paso una posición de termino
+
+console.log|(producto.slice(2 , 1)); //No muestra nada. Si el primer número es mayor que el segundo, JS no hará nada
+```
+
+##### Substring
+
+Al igual que *variable.slice()* sirve para cortar un trozo del string pero con la gran diferencia que el utilizar *variable.substring()* permite que cuando el indice de inicio sea mayor que el indice de termino (*slice* en este caso no hace nada), *substring* interpreta que el indice menor es el de inicio y el indice mayor es el de termino.
+
+```js
+console.log(producto.substring(0 , 10)); //Corta la variable producto desde la posición 0 hasta la posición 10 mostrando por consola Monitor 20
+
+console.log(producto.substring(10 , 0)); // Hace lo mismo que la línea de código anterior a pesar de que están mal ingresados los valores
+```
+
+##### Repeat
+
+Sirve para repetir n cantidad de veces un *string*. Da igual que valor se le entregue al método, siempre se aproximará al entero más cercano.
+
+```js
+// Se define la variable texto la cual es la repetición triple de la cadena ' en Promoción'
+const texto = ' en Promoción'.repeat(3);
+
+//Se muestra en la consola el contenido de la variable texto
+console.log(texto);
+```
+
+##### Split
+
+Sirve para dividir una cadena de texto en base a un carácter o palabra que uno le entregue al método.
+
+```js
+// Se crea la variable hobbies que contiene una cadena compuesta por diferentes actividades
+const hobbies = 'Leer, caminar, escuchar música, escribir, aprender a programar';
+
+// Se divide la cadena contenida en la variable hobbies por el carácter "," y muestra en modo de tabla en la consola una tabla con las actividades ya separadas una de otras
+console.table(hobbies.split(","));
+```
+
+##### Convertir en Mayúsculas
+
+El método *toUpperCase()* sirve para transformar en mayúscula todos los carácteres de una cadena de texto contenida en una variable.
+
+##### Convertir en minúsculas
+
+El método *toLowerCase()* sirve para transformar en minúscula todos los carácteres de una cadena de texto contenida en una variable.
+
+Lo anterior es muy util cuando existen datos que da igual si están en mayúsculas o minúsculas por lo cual se transforman todos a minúsculas y se trabajan de esa manera. Un ejemplo de lo anterior son los e-mails.
+
+##### Convertir un número en string
+
+El método *toString()* sirve para transformar un número en un string. Cabe mencionar que un número en string y un número normal tienen diferentes colores al ser mostrados en la consola del navegador y en JS no son lo mismo.
+
+```js
+// Se crea la variable precio que contiene un número
+const precio = 300;
+
+// Se muestra la variable precio por consola
+console.log(precio);
+
+// Se crea la variable precioString la cual contendrá una versión en string del precio (este paso no es necesario)
+const precioString = precio.toString();
+
+// Se muestra por consola la variable precioString (el uso de .toString() puede ser dentro de console.log())
+console.log(precioString);
+```

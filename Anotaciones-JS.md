@@ -481,3 +481,72 @@ const numero4 = .102030;
 // Se crea la variable numero5 que es un flotante
 const numero5 = -20;
 ```
+
+#### Operaciones en JavaScript
+
+Existiendo números, existen operaciones matemáticas que se pueden realizar con ellos.
+
+##### Suma 
+
+Para la suma, se utiliza el operador *+*. Ya que las variables son números, no hay conflicto con respecto a la concatenación de *strings*.
+
+```js
+// Se crea la variable numero1 que es un número entero
+const numero1 = 30;
+
+// Se crea la variable numero2 que es un número entero
+const numero2 = 20;
+
+// Se crea la variable resultadoSuma que guardará el resultado de la Suma (este paso no es necesario)
+let resultadoSuma;
+
+// Suma 
+resultadoSuma = numero1 + numero2;
+```
+
+##### Resta 
+
+Para la resta se utiliza el operador *-*.
+
+```js
+// Se crea la variable resultadoResta que guardará el resultado de la Resta
+let resultadoResta;
+
+// Resta 
+resultadoResta = numero1 - numero2;
+```
+
+##### Multiplicación
+
+Para la multiplicación se utiliza el operador *\**.
+
+```js
+// Se crea la variable resultadoMulti que guardará el resultado de la Multiplicación
+let resultadoMulti;
+
+// Multiplicación
+resultadoMulti = numero1 * numero2;
+```
+
+##### División 
+
+Para la división se utiliza el operador */*.
+
+```js
+// Se crea la variable resultadoDivision que guardará el resultado de la División
+let resultadoDivision;
+
+// División
+resultadoDivision = numero1 / numero2;
+```
+##### Modulo
+
+El modulo de una división es el residuo que queda de la división entera ente el dividendo y el divisor. En el caso del modulo, el operador a utilizar es el *%*.
+
+```js
+// Se crea la variable resultadoModulo que guardará el resultado del Modulo
+let resultadoModulo;
+
+// Modulo
+resultadoModulo = numero1 % numero2; 
+```

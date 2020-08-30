@@ -457,3 +457,27 @@ const precioString = precio.toString();
 // Se muestra por consola la variable precioString (el uso de .toString() puede ser dentro de console.log())
 console.log(precioString);
 ```
+### Números en JavaScript
+
+#### Creación de números en JavaScript
+
+A diferencia de los otros lenguajes, en JavaScript todo los números se crean de la misma forma (ya sea un entero, un flotante o un double). Sumado a lo anterior hay que aclarar que un número de tipo *string* es distinto a un número como tal.
+
+```js
+/* Tipos de números que se pueden crear en JS*/
+
+// Se crea la variable numero1 que es un número entero
+const numero1 = 30;
+
+// Se crea la variable numero2 que es un número entero
+const numero2 = 20;
+
+// Se crea la variable numero3 que es un flotante
+const numero3 = 20.20;
+
+// Se crea la variable numero4 que es un flotante
+const numero4 = .102030;
+
+// Se crea la variable numero5 que es un flotante
+const numero5 = -20;
+```

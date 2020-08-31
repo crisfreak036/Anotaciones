@@ -550,3 +550,56 @@ let resultadoModulo;
 // Modulo
 resultadoModulo = numero1 % numero2; 
 ```
+
+#### El Objeto Math
+
+En la consola del navegador se puede ingresar el código `Math` y presionar *enter* (existe en la ventana global de JS), de esta forma se pueden ver todos los métodos y funciones que contiene el objeto Math.
+
+![Algunos métodos del objeto Math](archivos/images/objeto-math-algunas-funciones.png)
+
+Se podría decir que es objeto hace lo que hacía la librería math en c o c++.
+
+```js
+/*Ejemplos de uso del objeto Math*/
+
+// Creación de variable numeroPI que contiene el valor del número PI
+const numeroPi = Math.PI;
+
+// Muestra por consola el valor de la variable numeroPi
+console.log(numeroPi);
+
+// Redondea el valor de número Pi 
+console.log(Math.round(numeroPi));
+
+// Redondea 3.5 a 4
+console.log(Math.round(3.5));
+
+// Redondear al extremo superior siempre
+console.log(Math.ceil(0.1));
+
+// Redondear al extremo inferior siempre
+console.log(Math.floor(0.9));
+
+// Raíz cuadrada
+console.log(Math.sqrt(4));
+
+// Valor absoluto
+console.log(Math.abs(-100));
+
+// Potencia
+console.log(Math.pow(2,2));
+
+// Saber cual es el mínimo de una serie de números
+console.log(Math.min(10,56,23,2,1));
+
+// Saber cual es el máximo de una serie de números
+console.log(Math.max(10,56,23,2,1));
+
+// Aleatorio: Entrega un número aleatorio que pocas veces es entero
+console.log(Math.random());
+
+// Ejemplo número aleatorio del 0 al 30
+const aleatorio = Math.floor(Math.random() * 30);
+console.log(aleatorio);
+```
+

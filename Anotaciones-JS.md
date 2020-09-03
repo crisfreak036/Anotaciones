@@ -603,3 +603,9 @@ const aleatorio = Math.floor(Math.random() * 30);
 console.log(aleatorio);
 ```
 
+#### El Orden de las Operaciones en JS
+
+En JS existe un orden en el que se ejecutan las operaciones que al igual que en las matemáticas convencionales se rigen por PAPOMUDA (Paréntesis, potencias, multiplicación, división, adición y sustracción de izquierda a derecha)
+
+
+

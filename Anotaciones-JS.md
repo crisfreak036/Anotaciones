@@ -622,3 +622,56 @@ Al igual que el incremento, existe el decremento el cual se comporta como el inc
 Los ejemplos anterior son para incrementar o disminuir en una unidad el valor de la variable pero, ¿Qué se hace si quiero aumentar o disminuir la variable en más de una unidad?. En la siguiente Ilustración se podrá observar que se hace para responder la pregunta antes planteada.
 
 ![Incremento y Decremento más de una unidad](archivos/images/Incremento-Decremento-sobre-una-unidad.png)
+
+#### Convertir Strings a Números
+
+Existen métodos que sirven para transformar  valores *strings* que representan un número. Para esto se ocupa el objeto *Number* y sus métodos.
+
+```js
+const numero1= "20"; // Tiene la representación de número pero es un string
+
+// Muestra por consola la versión numérica entera del valor string de la variable numero1
+console.log(Number.parseInt(numero1));
+```
+
+El ejemplo anterior transforma a entero la representación en *string* de la variable numero1.
+
+Al igual que las representaciones enteras, existen las representaciones de tipo flotante que si se transforman con `Number.parseInt()`, se transformaran a entero perdiendo sus decimales. Para evitar lo anterior existe `Number.parseFloat()` el cual transforma las representaciones flotantes a números flotantes.
+
+```js
+const numero2= "20.2"; // Tiene la representación de un flotante pero es un string
+
+// Muestra por consola la versión numérica entera del valor string de la variable numero2
+console.log(Number.parseInt(numero2));
+
+// Muestra por consola la versión numérica flotante del valor string de la variable numero2
+console.log(Number.parseFloat(numero2));
+```
+
+Cabe mencionar que existe un método el cual permite saber si el valor de una variable es por ejemplo, un entero. Ese método es `Number.isInteger()`.
+
+```js
+const numero4= 20; // Es un número
+
+let numero5; // Se crea la variable numero 5 vacía
+
+// Muestra por consola un true debido a que numero4 es efectivamente un entero
+console.log(Number.isInteger(numero4));
+
+// Muestra por consola un false debido a que numero1 es un string
+console.log(Number.isInteger(numero1));
+
+// numero5 toma el valor numérico flotante de numero2
+numero5 = Number.parseFloat(numero2);
+
+// Muestra por consola una false debido a que numero5 es flotante y no un entero
+console.log(Number.isInteger(numero5));
+```
+
+Por último, cabe mencionar que JS nos permite saber el tipo del valor de una variable con la función `typeof()`.
+
+```js
+console.log(typeof(numero1)); // Muestra el tipo de dato que tiene la variable numero1
+
+console.log(typeof(numero2)); // Muestra el tipo de dato que tiene la variable numero2
+```

@@ -607,5 +607,18 @@ console.log(aleatorio);
 
 En JS existe un orden en el que se ejecutan las operaciones que al igual que en las matemáticas convencionales se rigen por PAPOMUDA (Paréntesis, potencias, multiplicación, división, adición y sustracción de izquierda a derecha)
 
+#### Incrementos y Decrementos
 
+Es importante saber como subir o bajar un valor en n unidades.
 
+![Incremento por consola](archivos/images/Incremento-consola.png)
+
+En la Ilustración anterior se puede observar el incremento de la variable puntaje dentro de la consola del navegador.
+
+Al igual que el incremento, existe el decremento el cual se comporta como el incremento.
+
+![Decremento por consola](archivos/images/Decremento-consola.png)
+
+Los ejemplos anterior son para incrementar o disminuir en una unidad el valor de la variable pero, ¿Qué se hace si quiero aumentar o disminuir la variable en más de una unidad?. En la siguiente Ilustración se podrá observar que se hace para responder la pregunta antes planteada.
+
+![Incremento y Decremento más de una unidad](archivos/images/Incremento-Decremento-sobre-una-unidad.png)

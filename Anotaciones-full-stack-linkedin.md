@@ -91,8 +91,69 @@ En la barra lateral izquierda hay un icono que hace alusión a Git. Dentro de el
 
 Para personalizar los atajos, hay que ir a archivos, luego preferencias y después a *Métodos abreviados de teclado*, se abrirá una pestaña con todos los comandos que hay, se pueden editar todos.
 
+## JavaScript Esencial
 
+La primera capa **(Marcado HTML: capa de contenido)** de una página web es HTML el cual sólo da estructura.
+La segunda capa **(Reglas CSS: Capa de presentación)** de una página web es CSS y se enfoca en como se verá el contenido.
+La tercera capa **(Javascript: Capa de presentación)** de una página web es Javascript, el cual es un lenguaje interpretado que se ejecuta en el navegador e interactúa con las capas de HTML y CSS, manipulando e interactuando con el contenido.
 
+### Strict Mode (Modo estricto)
 
+Sirve para asegurar que el código de JS que se está escribiendo, está siendo correcto y no se están cometiendo errores como la utilización de palabras reservadas o la no declaración de una variable, etc.
 
+Para activarlo hay que dirigirse al archivo JS y poner lo siguiente:
 
+```js
+"use strict" // Activa el modo de estricto, debe estar al inicio del código
+```
+
+### Trabajando con variables en JS
+
+Es una manera con la cual se almacenarán datos dentro de la aplicación.
+
+```js
+// Ejemplo 1
+var nombre = 'Algo'; // Variable de tipo Global
+console.log(nombre); //Muestra el contenido de la variable nombre
+var nombre = 'Algo2'; // Cambia el contenido de la variable nombre declarada de manera global
+console.log(nombre); // Muestra el nuevo contenido de la variable nombre 
+```
+
+Se recomienda el uso del contenedor VAR en variables globales
+
+```js
+// Ejemplo 2
+var nombre = 'Algo'; // Variable nombre declarada de forma global
+console.log(nombre); // Muestra el contenido de nombre por consola
+function saludo() {
+    var nombre = 'Algo 2'; // Variable nombre declarada de forma local
+    console.log(nombre); // Muestra el contenido de nombre por consola
+}
+saludo(); // Llama a la función saludo()
+console.log(nombre); // Muestra el contenido final que tiene la variable nombre. En este caso no se ve afectada la variable nombre global por la función saludo().
+```
+
+### Contenedores Let
+
+Se recomienda su uso dentro de funciones para variable locales.
+
+```js
+var nombre = 'Pedro';
+function saludo() {
+    let nombre = 'Algo 2'; // Variable nombre declarada de forma local
+    console.log(nombre); // Muestra el contenido de nombre por consola
+}
+saludo(); // Llama a la función saludo()
+console.log(nombre);
+```
+
+### Contenedores Const
+
+Este contenedor es para las variables que se mantendrán constantes y nunca cambiarán,por lo cual cualquier variable que sea declarada con este tipo de contenedor, su valor no podrá ser modificado de ninguna forma mientras la aplicación se esté ejecutando.
+
+```js
+const constante1 = 34;
+console.log(constante1);
+const constante1 = 35; // Lanzará un error porque no se puede cambiar el valor de la variable constante1
+console.log(constante1); 
+```

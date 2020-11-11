@@ -157,3 +157,146 @@ console.log(constante1);
 const constante1 = 35; // Lanzará un error porque no se puede cambiar el valor de la variable constante1
 console.log(constante1); 
 ```
+
+### Trabajar con números en JavaScript
+
+No se escriben con comillas a diferencia de los strings. Pueden ser flotantes (decimales) y con negativos al igual que con positivos.
+En el caso de que se tenga un número escrito como cadena de caracteres, existe una función que convierte los números de tipo string a número matemáticamente trabajable, la función es ***Number()***.
+
+```js
+let valor1 = 34; // La variable valor1 contiene un entero
+console.log(valor1);
+let valor2 = '100' // La variable valor2 contiene un número que está como cadena de caracteres
+console.log(valor2);
+let nuevoValor2 = Number(valor2); // nuevoValor2 contiene la versión numérica de valor2
+console.log(nuevoValor2);
+```
+
+A su vez existen dos funciones que sirven para transformar un número escrito en cadena de carácteres en número trabajable, ya sea, entero (*parseInt()*)o flotante (*parseFloat()*).
+
+```js
+let valor1 = '100';
+let valor2 = '12.5';
+let nuevoValor1 = parseInt(valor1); //Transforma a entero el contenido de valor1
+let nuevoValor2 = parseFloat(valor2); //Transforma en flotante el contenido de valor2
+```
+
+### Trabajar con cadenas de texto o String 
+
+Para definir una cadena de texto, se el contenido se puede poner entre comillas simples o comillas simples pero **no las dos combinadas alternandose entre simples al inicio y dobles al final o viceversa**.
+
+```js
+let variable1 = "texto1";
+let variable2 = 'texto2';
+let variable3 = 'Pedro tenía un "pequeño" problema'; //Se pueden utilizar dentro del contenido las comillas contrarias de las cuales se utilizan para declarar
+```
+
+Al igual que los números de tipo String se pueden transformar a valor numérico, existe una función que transforma los valores numéricos a strings y es *String()*.
+
+```js
+let numero1 = 45;
+let texto1 = String(numero1); //Transforma el valor numérico de numero1 en un string
+```
+
+### Uso de los datos booleanos
+
+Los datos Booleanos aceptan sólo dos valores *true* o *false*.
+
+```js
+let verdadero = true;
+let falso = false;
+```
+
+Para obtener el booleano de algo se puede utilizar la función *Boolean()* la cual arrojará el true o false correspondiente a lo que se le entregue.
+
+```js
+let estado = Boolean(14 > 9);
+console.log(estado);
+```
+
+### Trabajar con fechas en JavaScript
+
+En JS se puede trabajar con fechas, lo anterior es posible gracias al objeto *Date()*. El objeto en cuestión se crea de la siguiente forma: 
+
+```js
+let fecha = new Date(); //Al declararla de esta forma, fecha guardará los valores de la fecha de creación de la variable 
+console.log(fecha);
+```
+
+La manera anterior lo que hace es crear un objeto del tipo *Date()* que guarda los parámetros de la fecha al momento de ser creado.
+
+Los objetos del tipo *Date()* cuentan con una serie de métodos los cuales son:
+
+```js
+let fecha = new Date()
+
+fecha.getDay() //Entrega el día de la semana en la que se encuentra la fecha actualmente
+fecha.getDate() //Entrega el día del mes en el cual uno se encuentra actualmente
+```
+
+Lo anterior son ejemplos de los tipos de método *get* que tiene la clase *Date()*.
+
+Para poder establecer valores a la variable fecha se debe setear la información con los métodos *set()*. Ejemplo de lo anterior son los siguientes:
+
+```js
+fecha.setDate() //Hace que la fecha apunte a un día en especifico 
+fecha.setMonth() //Hace que el mes apunte a un día en especifico
+```
+
+Lo anterior son ejemplos de los tipos *set* que tiene la clase *Date()*.
+
+### Uso de símbolos en JavaScript 
+
+Son un tipo de dato que sus valores son únicos e inmutables por lo cual no cambiarán a lo largo del programa. Estos valores puede ser utilizados ya sea con identificadores clave, como si fuera una propiedad del objeto, es decir, cuando creemos un símbolo podemos asignarle un nombre o podemos asignarlo a una variable. Así, entonces, cada uno de estos tendrá un valor de tipo *symbol* o símbolo, por lo cual este dato va a ser único completamente a lo largo de todo el programa.
+
+```js
+let simbolo1 = Symbol(); //No es un constructor de objeto
+// new Symbol() tira error
+```
+
+Cada vez que se crea un símbolo se crea una nueva variable única y diferente a otra, da igual que 2 variables de tipo *symbol* sean declaradas de la misma forma ya que serán distintas.
+
+```js
+let simbolo = Symbol();
+let simbolo1 = Symbol();
+console.log(Boolean(simbolo1 == simbolo2)); //Arroja un false
+```
+
+### Estructurando datos con JSON
+
+En JS se puede trabajar con objetos que permiten estructurar de mejor manera los datos con los cuales se estarán trabajando a lo largo de una aplicación. JSON en sus iniciales significa *JavaScript Object Notation*, el cual es un formato de intercambio de datos bastante ligero y es bastante descriptivo, esto se debe a que utiliza la estructura de un objeto. Con un JSON establecido, aunque directamente no se reciba un JSON, el dato se puede convertir a uno.
+
+```js
+//Declaración de una estructura JSON con datos
+let persona = {nombre: 'Juan', twitter: '@juan'};
+console.log(persona.nombre); //Muestra el nombre de la variable persona
+console.log(persona.twitter); //Muestra el twitter de la variable persona
+
+//Declaración de un arreglo de estructuras JSON con datos
+let personas = [
+    {nombre: 'Juan', twitter: '@juan'},
+    {nombre: 'Pedro', twitter: '@pedro'},
+    {nombre: 'Simón', twitter: '@simon'}
+];
+
+console.log(personas[0]); //Muestra la información del lugar 0 del arreglo personas
+console.log(personas[2].nombre); //Muestra el contenido del nombre de lo que se aloja en el lugar 2 del arreglo
+```
+
+Para utilizar los datos y enviarlos a un servidor o almacenarlos localmente, se debe convertir los datos  utilizando métodos del objeto *JSON*.
+
+```js
+//Convertir un objeto JSON a cadena de caracteres 
+let persona = {nombre: 'Juan', twitter: '@juan'};
+let personaJSON = JSON.stringify(persona) //Transforma el JSON persona a una cadena de texto (ya no es un objeto con metodo GET)
+```
+
+Al igual que se puede transformar un JSON en cadena de texto, las cadenas de texto se (con estructura de JSON) se pueden transformar en un objeto JSON.
+
+```js
+//Convertir una cadena de texto a objeto JSON
+let personaJSON = '{"nombre":"Juan","twitter":"@juan"}';
+let nuevaPersona = JSON.parse(personaJSON); //Convierte la cadena texto en un objeto JSON
+```
+
+JSON es la manera ideal para que podamos intercambiar datos, ya sea en nuestra aplicación o con servicios externos.

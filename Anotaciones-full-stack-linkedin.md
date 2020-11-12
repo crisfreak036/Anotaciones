@@ -306,3 +306,249 @@ let nuevaPersona = JSON.parse(personaJSON); //Convierte la cadena texto en un ob
 ```
 
 JSON es la manera ideal para que podamos intercambiar datos, ya sea en nuestra aplicación o con servicios externos.
+
+### **Operadores**
+
+Los operadores son aquellos recursos de JS que permitiran la realización de distintas operaciones
+
+#### **Operadores aritméticos**
+
+Existen de Suma *(+)*, Resta *(-)*, Multiplicación *(\*)*, División *(/)*, Modulo o Residuo *(%)*, Incremento *(++)* y Decremento *(--)*.
+
+```js
+"use strict"
+
+//*** Operadores aritméticos
+
+var datoA = 10;
+var datoB = 20;
+
+// SUMA +
+var suma = datoA + datoB;
+console.log('La suma de '+ datoA +' + '+ datoB +' es igual a: ', suma); //Cuando + se ocupa fuera de una operación matemática, el + sirve para concatenar
+
+// RESTA -
+var resta = datoA - datoB;
+console.log('La resta de '+ datoA +' - '+ datoB +' es igual a: ', resta);
+
+// MULTIPLICACIÓN *
+var multiplicacion = datoA * datoB;
+console.log('La multiplicación de '+ datoA +' * '+ datoB +' es igual a: ', multiplicacion);
+
+// DIVISIÓN /
+var division = datoA / datoB;
+console.log('La división de '+ datoA +' / '+ datoB +' es igual a: ', division);
+
+// MODULO O RESIDUO % (Lo que sobra de realizar la división)
+var modulo = datoA % datoB;
+console.log('El módulo o residuo de '+ datoA +' % '+ datoB +' es igual a: ', modulo);
+
+// INCREMENTO ++
+var incremento = datoA; //incremento = incremento+1
+console.log('El incremento ++ de '+ datoA +' es igual a: ', incremento);
+
+
+// DECREMENTO --
+var decremento = datoA;
+decremento--; //decremento = decremento -1
+console.log('El decremento -- de '+ datoA +' es igual a: ', decremento);
+```
+
+#### **Operadores Ralacionales**
+
+Permiten la validación o la definición de relaciones entre dos entidades. El uso de estos operadores implica que lo que retornen sea un *true* o un *false*.
+
+```js
+"use strict"
+var datoA = 10;
+var datoB = 20;
+
+// MAYOR QUE >
+var mayorQue = datoA > datoB;
+console.log("Es "+ datoA + " mayor que " + datoB + ": " + mayorQue);
+
+// MENOR QUE <
+var menorQue =  datoA < datoB;
+console.log("Es "+ datoA + " menor que " + datoB + ": " + menorQue);
+
+// MAYOR O IGUAL QUE >=
+var mayorOIgualQue =  datoA >= datoB;
+console.log("Es "+ datoA + " mayor o igual que " + datoB + ": " + mayorOIgualQue);
+
+// MENOR O IGUAL QUE <=
+var menorOIgualQue =  datoA <= datoB;
+console.log("Es "+ datoA + " menor o igual que " + datoB + ": " + menorOIgualQue);
+
+// IGUAL QUE ==
+var igualQue =  datoA == datoB;
+console.log("Es "+ datoA + " igual que " + datoB + ": " + igualQue);
+
+// NO ES IGUAL QUE O ES DIFERENTE QUE !=
+var noEsIgualQue =  datoA != datoB;
+console.log("Es "+ datoA + " no es igual o es diferente que " + datoB + ": " + noEsIgualQue);
+```
+
+#### **Operadores Lógicos**
+
+Sirven para combinar la evaluación de dos o más condiciones y ,de hecho, también se utilizarán aquí los operadores relacionales. Este tipo de operadores lógicos, una vez que son evaluados, regresan un valor *booleano*, es decir, *true* o un *false*. Los operadores que existen son: AND *(&&)* el cual implica que se cumplan todas las condiciones anidadas para que arroje un *true*, OR *(||)* implica que se cumpla al menos una condición para que sea *true* y NOT *(!)* el que implica que se niega lo que lo acompaña.
+
+```js
+var datoA = 10;
+var datoB = 20;
+
+// OPERADOR Y o AND - && 
+var and = (datoA > 10 && datoB > 10) //Arroja true sólo si se cumplen ambas condiciones
+console.log('El resultado de la evaluación AND es: ' + and);
+
+// OPERADOR O u OR - ||
+var or = (datoA > 10 || datoB > 10); //Arroja true si una de las dos condiciones se cumple
+console.log('El resultado de la evaluación OR es: ' + or);
+
+// OPERADOR DE NEGACIÓN o NOT - !
+var not = !(datoA > 10) //Arroja lo contrario a lo que retorna la operación racional entre paréntesis
+console.log('El resultado de la evaluación NOT es: ' + not);
+```
+
+#### **Operadores de Asignación**
+
+Son aquellos operadores que permiten guardar resultados de una evaluación, de una operación o, incluso, solamente un valor dentro de una variable. Existen 5 tipos de asignación los cuales son: 
+
+- **Asignación Simple:** Donde se utiliza sólo el igual *"="*.
+```js
+let variable = 10;
+``` 
+- **Sumar y Asignar:** Se utiliza un *"+="*.
+```js
+let variable = 5;
+let masIgual = 10;
+masIgual += variable; //A masigual se le suma el valor de la variable y luego se le asigna ese nuevo valor
+
+/*Lo anterior es equivalente a hacer 
+masIgual = masIgual + variable 
+pero de manera más acotada*/
+```
+
+- **Restar y Asignar:** Se utiliza el *"-="*.
+
+```js
+let variable = 5;
+let menosIgual = 10;
+menosIgual -= variable; //A menosIgual se le resta el valor de la variable y luego el resultado se asigna a menosIgual
+```
+
+- **Multiplicar y asignar:** Se utiliza el *"\*="*.
+
+```js
+let variable = 5;
+let porIgual = 10;
+porIgual *= variable; //El valor de porIgual se multiplica por el valor de la variable y luego el resultado se asigna a porIgual
+```
+
+- **Dividir y Asignar:** Se utiliza el *"/="*.
+
+```js
+let variable = 5;
+let entreIgual = 10;
+entreIgual /= variable; //El valor de entreIgual se divide por el valor de la variable y luego el resultado se asigna a entreIgual
+```
+
+De esta manera, se pueden hacer operaciones aritméticas de una manera simplificada y, a la vez, estar asignando los valores en las variables que corresponden.
+
+#### **Operador negativo**
+
+Este operador lo que hace es volver negativo el valor positivo de una variable, o sea, pasar de los reales positivos a los reales negativos.
+
+```js
+let valor1 = 10;
+console.log(valor1);
+let valor2 = -valor1; //El valor positivo de valor1 lo vuelve negativo y lo guarda en valor 2
+console.log(valor2);
+```
+
+#### **Operador de Concatenación**
+
+El operador de concatenación nos va a servir para poder unir dos textos o unir dos valores. No va a realizar ninguna operación aritmética, a menos que los datos que nosotros estemos uniendo sean números.
+
+- **Concatenación Numérica**
+```js
+//Concatenación de números (suma)
+let datoA = 10;
+let datoB = 20;
+let concatNumeros = datoA + datoB;
+console.log(concatNumeros); //lo que resulta de lo anterior sigue siendo un valor numérico
+```
+
+- **Concatenación de Cadenas de texto**
+```js
+let nombre = 'Sergio';
+let apellido = 'Brito';
+let concatTexto = nombre + apellido; //Los concatena sin ningún espacio entre medio
+console.log(concatTexto);
+let concatTexto2 = nombre + ' ' + apellido; //Se agrega un espacio entre ambas cadenas de texto
+console.log(concatTexto2); 
+```
+
+- **Concatenación de números como texto**
+```js
+let datoC = '10';
+let datoD = '20';
+let concatNumComoTxt = datoC + datoD;
+console.log(concatNumComoTxt); //lo que resulta de lo anterior es la concatenación de los textos en formato numérico, o sea, 1020. En resumen, no es una operación aritmética. 
+```
+
+- **Concatenación de texto y número**
+```js
+//Si se concatena un número y un texto, el resultado se vuelve un texto.
+
+let datoA = 10; //valor numérico
+let datoC = '10'; //cadena de texto
+let concatTxtNum = datoA + datoC; //Concatenación
+console.log(concatTxtNum);
+```
+
+#### **Operador Ternario o Condicional**
+
+El operador ternario o condicional es un operador compuesto que me va a permitir hacer dos operaciones en una sola. Una de ellas es hacer una evaluación de los datos y, dependiendo de este resultado, hacer la asignación de un valor.
+
+La sintaxis de un operador ternario conociste en una condición *" algo >, = ó < algo2 "*, seguido del símbolo de interrogación *" ? "* . Si esta condición se llega a cumplir, entonces el resultado de si la condición se cumple, iría justo justo después de el signo de interrogación, el cual separaremos del resultado contrario o del resultado utilizando el símbolo de dos puntos *" : "* .
+
+```js
+//Ejemplo de un operador ternario
+
+let datoA = 10;
+let datoB = 20; 
+
+// let variable = Condición ? TRUE : FALSE 
+let resultado = datoA > datoB ? 'Si es mayor' : 'No es mayor';
+console.log(resultado);
+```
+Hay que tener cuidado con el uso de los operadores ternarios, esto es porque si se requiere tomar muchas decisiones, este no será muy útil.
+
+#### **Operador de tipo de dato**
+
+Bajo ciertas circunstancias necesitarás evaluar el tipo de dato con el cual estás trabajando, porque a veces necesitamos que el dato que estemos almacenando sea un número o una cadena de texto o un valor "booleano". Para esto, nosotros tenemos un operador de tipo de datos. Este operador de tipo de datos se llama `typeof`.
+
+```js
+var datoA = 10; // Número
+
+var nombre = "Playa"; // Cadena de texto
+
+var activo = true // Boleano
+
+var persona = {
+	edad: 34, // Número
+	deporte: 'Correr' // Cadena de texto
+} // Objeto
+
+console.log(typeof datoA); //Arroja que es number
+console.log(typeof nombre); //Arroja que es string
+console.log(typeof activo); //Arroja que es bool
+
+// Muestra el tipo de dato de la variable persona 
+console.log(typeof persona); //Arroja que es object
+
+// Muestra los tipos de datos de las propiedades del objeto persona 
+
+console.log(typeof persona.edad); //Arroja que es number 
+console.log(typeof persona.deporte); //Arroja que es string
+```

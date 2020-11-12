@@ -1,16 +1,16 @@
 
-# Anotaciones del curso Conviértete en desarrollador web full-stack de LinkedIn
+# **Anotaciones del curso Conviértete en desarrollador web full-stack de LinkedIn**
 
-## Aprende Visual Studio Code
+## **Aprende Visual Studio Code**
 
-### Diferencias entre un editor de texto y un IDE
+### **Diferencias entre un editor de texto y un IDE**
 
 - Los editores de textos contienen herramientas como un bloc de notas con estaminas.
 - Los IDE son entornos integrados de desarrollo.
 
 La diferencia más grande entre ambos radica enla cantidad de herramientas con las cuales se va a desarrollar. Los IDE vienen con todas las herramientas precargadas en cambio los editores de texto no vienen con todas las herramientas, hay que ir instalándolas según se vayan necesitando.
 
-### Componente comunes adicionales de Visual Studio Code 
+### **Componente comunes adicionales de Visual Studio Code** 
 
 Los siguientes son programas a instalar necesarios para un mejor trabajo con VSC. Se recomienda ie a los sitios específicos de cada software para su correcta instalación.
 
@@ -19,7 +19,7 @@ Los siguientes son programas a instalar necesarios para un mejor trabajo con VSC
 - Typescript
 - Typings
 
-### Extensiones en VSC
+### **Extensiones en VSC**
 
 Las siguientes son extensiones recomendadas para VSC.
 
@@ -28,7 +28,7 @@ Las siguientes son extensiones recomendadas para VSC.
 - HTML Snippets
 - Beautify
 
-### Autoguardado en VSC
+### **Autoguardado en VSC**
 
 Se debe ir a archivo y presionar en *Autoguardado*.
 También se puede ir a preferencias, configuración, buscar *files.autosave* y configurar el delay con el que se quiere que se autoguarde el archivo.
@@ -41,11 +41,11 @@ En las opciones de autoguardado desde preferencias existen los siguiente tipos:
 
 Cabe mencionar que para que beautify permite una opción que formatea el código cada vez que guardemos el mismo.
 
-### Zoom en VSC (Atajos en VSC)
+### **Zoom en VSC (Atajos en VSC)**
 
 Se recomienda ir a Archivo, Preferencias, *Métodos abreviados de teclado* con el fin de saber los atajos de teclado configurados ene l dispositivo, esto se recomienda debido a que no en todos los dispositivos tienen los mismos comandos.
 
-### Búsqueda y reemplazo de código en VSC
+### **Búsqueda y reemplazo de código en VSC**
 
 Para iniciar la búsqueda de código se puede utilizar el comando *CTRL + F* en windows (*CMD + F* en MAC) o bien ir a Editar y presionar en *Buscar*.
 Ya hecho lo anterior, en la barra de búsqueda existe la opción de que el buscador considere las mayúsculas o no lo haga. Sumado a lo anterior existe la búsqueda a través de **expresiones regulares**, ejemplo: buscar *view[]* que sirve para ver todos los view con números que hayan en el código. En la misma barra de búsqueda en el lado izquierdo existe una punta de flecha que al presionarla da la opción de reemplazar por algo los resultados de la búsqueda que se hizo previamente, ya sea uno por uno o todos a la vez.
@@ -54,24 +54,24 @@ También se pueden hacer búsquedas en una selección de texto, seleccionamos el
 
 Al igual que se pueden realizar búsquedas por archivos, también se pueden hacer en una carpeta, para hacer esto hay que presionar click derecho en la carpeta y presionar la opción *Buscar en carpeta*, luego aparecerán opciones como las que nos da la barra de búsqueda.
 
-### Pistas y atajos rápidos en VSC
+### **Pistas y atajos rápidos en VSC**
 
 Permite buscar código y editarlo sin necesidad de desplazarse al bloque de código en cuestión.
 
 Se de poner el cursos sobre lo deseado y presionar la combinación de teclas *Shift + F12 o ALT + F12* lo que mostrará una ventana que muestra todas las referencias que se hacen a lo deseado (por ejemplo una función). Lo que se abre es como un espacio virtual que permite la edición de lo que aparecé dentro de ella. Para cerrar la ventana hay que presionar la x.
 
-### Paleta de comandos
+### **Paleta de comandos**
 
 *CTRL + P* abre la barra de comandos, poniendo un *?* mostrará las opciones que se pueden utilizar.
 Poniendo un *@* aparecerán todas las funciones que existan en el código.
 Poniendo *#* y algo más, mostrará lo que se puede buscar.
 
-### Errores y warnings en VSC
+### **Errores y warnings en VSC**
 
 AL presionar el juego de teclas *CTRL + SHIFT + M* mostrará una ventana con los errores que existan en el archivo.
 Otra manera que hay para trabajar con los errores es presionar la tecla *F8* y mostrará una ayuda visual que dice cual es el error que hay en la línea que presenta el error. *F8* recorrerá el archivos buscando error por error y mostrando la ayuda visual error por error.
 
-### Refactoring de código con VSC
+### **Refactoring de código con VSC**
 
 - **Mover una línea:** Para mover una línea, se debe poner el cursor en la línea deseada, luego presionar la tecla *ALT* y con lasa flechas mover la línea hacía arriba o hacía abajo.
 
@@ -79,27 +79,27 @@ Otra manera que hay para trabajar con los errores es presionar la tecla *F8* y m
 
 - **Seleccionar un trozo de texto en todos los lugares del código:** Por ejemplo, se selecciona una variable y luego se presiona *CTRL + D*, se seleccionará la variable en todos los lugares del código donde aparece, luego de esto se puede cambiar donde se seleccionó y el cambio se hará en todo el código. Cabe mencionar que los cambios se pueden hacer en cualquier lugar de lo seleccionado gracias a un multicursos que se posiciona en todas las selecciones.
 
-### Debbuging: ELiminar errores en VSC
+### **Debbuging: ELiminar errores en VSC**
 
 Lo primero que se debe hacer es ir al menú de deugging, luego levantar la configuración (tipo de tuerca con punto rojo en la parte superior) con el entorno que se desea, lo anterior creará un archivo y una carpeta en el directorio donde se encuentre el código. Luego de hay que volver a la ventana de depuración y presionar el ícono de play. Se abre (o hay que abrir) una consola que mostrará si hay algún error o cosas por el estilo. Se pueden agregar breakpoints que permite ejecutar ciertas secciones de código.
 
-### Uso de Git en el editor de código de VSC
+### **Uso de Git en el editor de código de VSC**
 
 En la barra lateral izquierda hay un icono que hace alusión a Git. Dentro de ella hay una paleta de comandos que se utilizan con Git. También, si se presiona sobre algún archivo se puede ver los cambios que se han hecho. Instalando la extensión *Git History*, al presionar botón derecho en el archivo se pueden ver los commit que se han hecho y el estado del archivo en aquel commit con el objetivo de comparar la versión actual con la versión del archivo en aquel commit.
 
-### Personalizar el teclado y el editor de VSC
+### **Personalizar el teclado y el editor de VSC**
 
 Para personalizar los atajos, hay que ir a archivos, luego preferencias y después a *Métodos abreviados de teclado*, se abrirá una pestaña con todos los comandos que hay, se pueden editar todos.
 
-## JavaScript Esencial
+## **JavaScript Esencial**
 
 La primera capa **(Marcado HTML: capa de contenido)** de una página web es HTML el cual sólo da estructura.
 La segunda capa **(Reglas CSS: Capa de presentación)** de una página web es CSS y se enfoca en como se verá el contenido.
 La tercera capa **(Javascript: Capa de presentación)** de una página web es Javascript, el cual es un lenguaje interpretado que se ejecuta en el navegador e interactúa con las capas de HTML y CSS, manipulando e interactuando con el contenido.
 
-### Conociedo JavaScript
+### **Conociedo JavaScript**
 
-#### Strict Mode (Modo estricto)
+#### **Strict Mode (Modo estricto)**
 
 Sirve para asegurar que el código de JS que se está escribiendo, está siendo correcto y no se están cometiendo errores como la utilización de palabras reservadas o la no declaración de una variable, etc.
 
@@ -109,9 +109,9 @@ Para activarlo hay que dirigirse al archivo JS y poner lo siguiente:
 "use strict" // Activa el modo de estricto, debe estar al inicio del código
 ```
 
-### Variables
+### **Variables**
 
-#### Trabajando con variables en JS
+#### **Trabajando con variables en JS**
 
 Es una manera con la cual se almacenarán datos dentro de la aplicación.
 
@@ -137,7 +137,7 @@ saludo(); // Llama a la función saludo()
 console.log(nombre); // Muestra el contenido final que tiene la variable nombre. En este caso no se ve afectada la variable nombre global por la función saludo().
 ```
 
-#### Contenedores Let
+#### **Contenedores Let**
 
 Se recomienda su uso dentro de funciones para variable locales.
 
@@ -151,7 +151,7 @@ saludo(); // Llama a la función saludo()
 console.log(nombre);
 ```
 
-#### Contenedores Const
+#### **Contenedores Const**
 
 Este contenedor es para las variables que se mantendrán constantes y nunca cambiarán,por lo cual cualquier variable que sea declarada con este tipo de contenedor, su valor no podrá ser modificado de ninguna forma mientras la aplicación se esté ejecutando.
 
@@ -162,9 +162,9 @@ const constante1 = 35; // Lanzará un error porque no se puede cambiar el valor 
 console.log(constante1); 
 ```
 
-### Tipos de Datos 
+### **Tipos de Datos** 
 
-#### Trabajar con números en JavaScript
+#### **Trabajar con números en JavaScript**
 
 No se escriben con comillas a diferencia de los strings. Pueden ser flotantes (decimales) y con negativos al igual que con positivos.
 En el caso de que se tenga un número escrito como cadena de caracteres, existe una función que convierte los números de tipo string a número matemáticamente trabajable, la función es ***Number()***.
@@ -187,7 +187,7 @@ let nuevoValor1 = parseInt(valor1); //Transforma a entero el contenido de valor1
 let nuevoValor2 = parseFloat(valor2); //Transforma en flotante el contenido de valor2
 ```
 
-#### Trabajar con cadenas de texto o String 
+#### **Trabajar con cadenas de texto o String** 
 
 Para definir una cadena de texto, se el contenido se puede poner entre comillas simples o comillas simples pero **no las dos combinadas alternandose entre simples al inicio y dobles al final o viceversa**.
 
@@ -204,7 +204,7 @@ let numero1 = 45;
 let texto1 = String(numero1); //Transforma el valor numérico de numero1 en un string
 ```
 
-#### Uso de los datos booleanos
+#### **Uso de los datos booleanos**
 
 Los datos Booleanos aceptan sólo dos valores *true* o *false*.
 
@@ -220,7 +220,7 @@ let estado = Boolean(14 > 9);
 console.log(estado);
 ```
 
-#### Trabajar con fechas en JavaScript
+#### **Trabajar con fechas en JavaScript**
 
 En JS se puede trabajar con fechas, lo anterior es posible gracias al objeto *Date()*. El objeto en cuestión se crea de la siguiente forma: 
 
@@ -251,7 +251,7 @@ fecha.setMonth() //Hace que el mes apunte a un día en especifico
 
 Lo anterior son ejemplos de los tipos *set* que tiene la clase *Date()*.
 
-#### Uso de símbolos en JavaScript 
+#### **Uso de símbolos en JavaScript** 
 
 Son un tipo de dato que sus valores son únicos e inmutables por lo cual no cambiarán a lo largo del programa. Estos valores puede ser utilizados ya sea con identificadores clave, como si fuera una propiedad del objeto, es decir, cuando creemos un símbolo podemos asignarle un nombre o podemos asignarlo a una variable. Así, entonces, cada uno de estos tendrá un valor de tipo *symbol* o símbolo, por lo cual este dato va a ser único completamente a lo largo de todo el programa.
 
@@ -268,7 +268,7 @@ let simbolo1 = Symbol();
 console.log(Boolean(simbolo1 == simbolo2)); //Arroja un false
 ```
 
-#### Estructurando datos con JSON
+#### **Estructurando datos con JSON**
 
 En JS se puede trabajar con objetos que permiten estructurar de mejor manera los datos con los cuales se estarán trabajando a lo largo de una aplicación. JSON en sus iniciales significa *JavaScript Object Notation*, el cual es un formato de intercambio de datos bastante ligero y es bastante descriptivo, esto se debe a que utiliza la estructura de un objeto. Con un JSON establecido, aunque directamente no se reciba un JSON, el dato se puede convertir a uno.
 

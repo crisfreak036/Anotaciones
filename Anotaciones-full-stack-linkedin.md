@@ -97,7 +97,9 @@ La primera capa **(Marcado HTML: capa de contenido)** de una página web es HTML
 La segunda capa **(Reglas CSS: Capa de presentación)** de una página web es CSS y se enfoca en como se verá el contenido.
 La tercera capa **(Javascript: Capa de presentación)** de una página web es Javascript, el cual es un lenguaje interpretado que se ejecuta en el navegador e interactúa con las capas de HTML y CSS, manipulando e interactuando con el contenido.
 
-### Strict Mode (Modo estricto)
+### Conociedo JavaScript
+
+#### Strict Mode (Modo estricto)
 
 Sirve para asegurar que el código de JS que se está escribiendo, está siendo correcto y no se están cometiendo errores como la utilización de palabras reservadas o la no declaración de una variable, etc.
 
@@ -107,7 +109,9 @@ Para activarlo hay que dirigirse al archivo JS y poner lo siguiente:
 "use strict" // Activa el modo de estricto, debe estar al inicio del código
 ```
 
-### Trabajando con variables en JS
+### Variables
+
+#### Trabajando con variables en JS
 
 Es una manera con la cual se almacenarán datos dentro de la aplicación.
 
@@ -133,7 +137,7 @@ saludo(); // Llama a la función saludo()
 console.log(nombre); // Muestra el contenido final que tiene la variable nombre. En este caso no se ve afectada la variable nombre global por la función saludo().
 ```
 
-### Contenedores Let
+#### Contenedores Let
 
 Se recomienda su uso dentro de funciones para variable locales.
 
@@ -147,7 +151,7 @@ saludo(); // Llama a la función saludo()
 console.log(nombre);
 ```
 
-### Contenedores Const
+#### Contenedores Const
 
 Este contenedor es para las variables que se mantendrán constantes y nunca cambiarán,por lo cual cualquier variable que sea declarada con este tipo de contenedor, su valor no podrá ser modificado de ninguna forma mientras la aplicación se esté ejecutando.
 
@@ -158,7 +162,9 @@ const constante1 = 35; // Lanzará un error porque no se puede cambiar el valor 
 console.log(constante1); 
 ```
 
-### Trabajar con números en JavaScript
+### Tipos de Datos 
+
+#### Trabajar con números en JavaScript
 
 No se escriben con comillas a diferencia de los strings. Pueden ser flotantes (decimales) y con negativos al igual que con positivos.
 En el caso de que se tenga un número escrito como cadena de caracteres, existe una función que convierte los números de tipo string a número matemáticamente trabajable, la función es ***Number()***.
@@ -181,7 +187,7 @@ let nuevoValor1 = parseInt(valor1); //Transforma a entero el contenido de valor1
 let nuevoValor2 = parseFloat(valor2); //Transforma en flotante el contenido de valor2
 ```
 
-### Trabajar con cadenas de texto o String 
+#### Trabajar con cadenas de texto o String 
 
 Para definir una cadena de texto, se el contenido se puede poner entre comillas simples o comillas simples pero **no las dos combinadas alternandose entre simples al inicio y dobles al final o viceversa**.
 
@@ -198,7 +204,7 @@ let numero1 = 45;
 let texto1 = String(numero1); //Transforma el valor numérico de numero1 en un string
 ```
 
-### Uso de los datos booleanos
+#### Uso de los datos booleanos
 
 Los datos Booleanos aceptan sólo dos valores *true* o *false*.
 
@@ -214,7 +220,7 @@ let estado = Boolean(14 > 9);
 console.log(estado);
 ```
 
-### Trabajar con fechas en JavaScript
+#### Trabajar con fechas en JavaScript
 
 En JS se puede trabajar con fechas, lo anterior es posible gracias al objeto *Date()*. El objeto en cuestión se crea de la siguiente forma: 
 
@@ -245,7 +251,7 @@ fecha.setMonth() //Hace que el mes apunte a un día en especifico
 
 Lo anterior son ejemplos de los tipos *set* que tiene la clase *Date()*.
 
-### Uso de símbolos en JavaScript 
+#### Uso de símbolos en JavaScript 
 
 Son un tipo de dato que sus valores son únicos e inmutables por lo cual no cambiarán a lo largo del programa. Estos valores puede ser utilizados ya sea con identificadores clave, como si fuera una propiedad del objeto, es decir, cuando creemos un símbolo podemos asignarle un nombre o podemos asignarlo a una variable. Así, entonces, cada uno de estos tendrá un valor de tipo *symbol* o símbolo, por lo cual este dato va a ser único completamente a lo largo de todo el programa.
 
@@ -262,7 +268,7 @@ let simbolo1 = Symbol();
 console.log(Boolean(simbolo1 == simbolo2)); //Arroja un false
 ```
 
-### Estructurando datos con JSON
+#### Estructurando datos con JSON
 
 En JS se puede trabajar con objetos que permiten estructurar de mejor manera los datos con los cuales se estarán trabajando a lo largo de una aplicación. JSON en sus iniciales significa *JavaScript Object Notation*, el cual es un formato de intercambio de datos bastante ligero y es bastante descriptivo, esto se debe a que utiliza la estructura de un objeto. Con un JSON establecido, aunque directamente no se reciba un JSON, el dato se puede convertir a uno.
 

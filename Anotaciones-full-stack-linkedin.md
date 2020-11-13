@@ -549,3 +549,149 @@ console.log(typeof persona); //Arroja que es object
 console.log(typeof persona.edad); //Arroja que es number 
 console.log(typeof persona.deporte); //Arroja que es string
 ```
+
+### Uso de condicionales o decisiones
+
+Las condiciones o decisiones son mecanismos que ofrece JavaScript para poder tomar –valga la redundancia– una decisión sobre qué flujo se lleva en el programa. Por ejemplo, si tenemos un dato que es válido, entonces podemos hacer determinada cantidad de acciones o determinadas acciones. Al contrario, si este no es válido, entonces se ejecutará o no otro cierto paquete de acciones. Este tipo de estructuras de control te ayudan a organizar el flujo de datos a través de tu aplicación, y esto te va a facilitar mucho más el proceso de desarrollo de una aplicación.
+
+#### Condición if
+
+Para esta estructura se debe escribir la palabra reservada `if` seguida de la condición (que involucrá operadores racionales) entre paréntesis `if(datoA > datoB)`, po último todas las acciones que se quieren ejecutar cuando se cumpla la condición van delimitadas por llaves, pueden ser más de una. Todo lo anterior junto quedará de la siguiente manera:
+
+```js
+/*Ejemplo uso del if*/
+var datoA = 110;
+var datoB = 20;
+var resultado = "Sin datos";
+
+if( datoA > datoB ){
+    resultado = "La condición se cumplió"; //Si se cumple la condición, resultado se actualizará
+} //En el caso que la condición no se cumpla, resultado no se actualizará
+
+console.log("El resultado de la evaluación if es: ", resultado);
+```
+
+#### Condición if-else
+
+Es la combinación de la estructura `ìf` sumándole la palabra reservada `else` que establecería que se debe ejecutar en caso de que no se cumpla la condición. Hay que tener claro que `else` no lleva una condición o algo por el estilo ya que en si `else` ya hace referencia a que la condición del `ìf` no se cumplió, o sea, esa es la condición implícita del `else`.
+
+```js
+/*Ejemplo uso de if-else*/
+var datoA = 10;
+var datoB = 20;
+var resultado = "Sin datos";
+
+if (datoA > datoB){
+	resultado = "La condición se cumplió";
+} else {
+    resultado = "La condición no se cumplió";
+} //A diferencia de el Ejemplo uso del if, este ejemplo establece código a ejecutar en caso de que una condición no se cumpla 
+
+console.log("El resultado de la evaluación if-else es: ", resultado);
+```
+
+#### Condición if-else-if
+
+Cuando en un else se quiere poner una condición, se debe poner un `if` seguido del `else` correspondiente al primer `if`. Lo anterior queda de la siguiente manera: 
+
+```js
+/*Ejemplo uso de if-else-if*/
+let datoA = 30;
+let datoB = 20;
+let resultado = 'Sin datos';
+
+if (datoA > datoB){
+  resultado = 'La primera condición se cumplió';
+} else if (datoB == datoA){
+  resultado = 'Se cumplió la segunda condición';
+} else{
+  resultado = 'No se cumplió ninguna condición';
+}
+
+console.log('El resultado de la evaluación if-else-if es que:', resultado);
+```
+
+Una ventaja de la estructura anterior es que se pueden agregar tantas condiciones como se necesiten pero hay que tener cuidado debido a que la estructura se puede volver muy compleja y extensa por lo cual se recomienda tener bien establecido el flujo de la aplicación.
+
+#### Condiciones anidadas
+
+JS permite estructuras de controla anidadas (al igual que la mayoría de los lenguajes), por lo cual hay que tener bien establecido el flujo de la aplicación para evitar la creación de anidaciones innecesarias.
+
+```js
+/*Ejemplo uso de condiciones anidadas*/
+var datoA = 110;
+var datoB = 20;
+var datoC = 5;
+var resultado = "Sin datos";
+
+if (datoA > datoB){
+  resultado = 'La condición se cumplió';
+  /*El if-else que se encuentra aquí está anidado al if inicial*/
+  if (datoC < datoB){
+    resultado = 'Evaluación anidada se cumplió';
+  } else {
+    resultado = 'Evaluación anidada no se cumplió';
+  }
+} else {
+  resultado = 'No se cumplió la evaluación';
+} //Este es el else del if inicial
+
+console.log("El resultado de la evaluación anidada es: ", resultado);
+```
+
+#### JavaScript y la estructura Switch
+
+Cuando las estructuras anteriores se vuelven muy complejas y comienza a existir la necesidad de crear enormes anidaciones, JS entrega la estructura de control `switch (variable a evaluar)` el cual se compone de distintas condiciones los cuales se establecen como casos (`case 10` ó `case 'palabra'`), además esos casos terminan con un `break` que rompé la ejecución del `switch` cuando se cumple una condición y un caso base o default (`default`) el cual contiene la situación de que no se haya cumplido ninguno de los casos establecidos anteriormente. Recordar que toda esta estructura va encerrada entre llaves. Todo lo anterior en estructura de código queda de la siguiente manera:
+
+- **Ejemplo de Evaluación con números**
+
+```js
+/*Ejemplo de Evaluación con números*/
+// Evaluación con números
+var edad = 40;
+var resultado = ""; //Es una cadena texto vacía
+
+switch (edad) {
+    case 10:
+        resultado = "La edad es 10 años";
+        /*Dentro de los bloques de código de los casos se pueden agregar más estructuras de control*/
+	break;
+	case 20:
+		resultado = "La edad es 20 años";
+	break;
+    case 30:
+		resultado = "La edad es 30 años";
+    break;
+    case 40:
+		resultado = "La edad es 40 años";
+	break;
+    default:
+    	resultado = "Ningún caso coincide";
+    break;
+}
+
+console.log("El resultado de la evaluación con números es: "+ resultado);
+```
+
+- **Ejemplo de Evaluación con cadena de texto**
+
+```js
+var producto = "Radio"; //Si por algún motivo se pone la palabra radio, el swtich arrojará el caso default debido a que se distingue entre mayúsculas y minúsculas
+
+switch (producto) {
+    case "TV":
+		resultado = "Se eligió la TV";
+	break;
+	case "Radio":
+		resultado = "Se eligió el Radio ";
+	break;
+    case "Teléfono":
+		resultado = "Se eligió el teléfono ";
+	break;
+    default:
+    	resultado = "No se eligió ningún producto";
+    break;
+}
+
+console.log("El resultado de la evaluación con texto es: "+ resultado)
+```

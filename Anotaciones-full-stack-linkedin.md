@@ -695,3 +695,107 @@ switch (producto) {
 
 console.log("El resultado de la evaluación con texto es: "+ resultado)
 ```
+
+### Ciclos o loops en JS
+
+Los ciclos son estructuras de control bastante sofisticadas, de hecho, nos sirven para estar repitiendo acciones. Nosotros podemos tener distintos tipos de ciclos, pero también a lo largo de todos los lenguajes de programación los podrás encontrar con distintos nombres como ciclos, "loops" o iteradores. De hecho, los ciclos son la manera ideal de estar repitiendo un conjunto de acciones. En este contexto, cada vez que tú tienes una repetición lo podemos conocer como una iteración. Así, nosotros podemos tener identificados dos tipos de ciclos: los ciclos definidos y los ciclos indefinidos. Donde con los ciclos definidos sabemos cuántas veces se va a ejecutar, al contrario, con los ciclos indefinidos no sabemos cuántas veces se va a ejecutar.
+
+Cosas a considerar con respecto a los ciclo: 
+
+- 2 tipos: Definidos e indefinidos
+- Definidos: Ciclo FOR
+- Indefinidos: Ciclo WHILE y Ciclo DO...WHILE
+
+#### Ciclo for
+
+Es un ciclo definido, para utilizarlo se utiliza la palabra reservada `for` seguida de un par de paréntesis que contendrán un contador (se puede definir y asignar un valor inicial ahí mismo), la condición o evaluación para que se repita y el paso que sería un incrementador o un decrementador, todo lo anterior se separa por punto y coma quedando de la siguiente manera: `for (contador; condición; incremento o decremento)`.
+
+```js
+/*Ejemplo ciclo for*/
+var productos = 5;
+
+/*Es ciclo for hace las repeticiones mientras que contador sea menor a productos partiendo desde el contador igual 0*/
+for (let contador = 0; contador < productos; contador++) {
+    console.log("Producto #"+ contador);
+    debugger;
+}
+```
+
+#### Ciclo while 
+
+La estructura de control `while` es un ciclo que me permitirá ejecutar un "set" de instrucciones siempre y cuando una condición en específico se logre cumplir. Este ciclo evalúa antes de ejecutar el bloque de código asignado. La estructura del `while` es la siguiente:
+
+```js
+//Ciclo WHILE | Ciclo Indefinido
+// Iteración indeterminada o desconocida
+
+var productos = 5; 
+
+while(productos > 0) { 
+   	console.log( 'Producto vendido');
+   	productos--;
+   debugger;
+}
+```
+
+#### Ciclo do while
+
+El ciclo `do while` no es más que una variante del ciclo `while`, solamente hay una diferencia: dónde nosotros vamos a evaluar la condición. En el caso de `while`, lo primero que hacíamos era preguntar si podíamos ejecutar el conjunto de acciones. Si la decisión era válida, entonces ejecutábamos. En este caso, con `do while` lo primero que hacemos es ejecutar las acciones y después preguntar si podemos continuar ejecutando las acciones. Así que debes tener mucho cuidado con cuál de los dos ciclos vas a ocupar dependiendo del objetivo que busques lograr en el flujo de tu aplicación. La estructura del `do while` es la siguiente:
+
+```js
+//Ciclo DO..WHILE | Ciclo Indefinido
+//Iteración indeterminada o desconocida
+
+var productos = 5; 
+
+do { 
+   	console.log( 'Producto vendido');
+   	productos--;
+   debugger;
+}  while(productos>=1)
+```
+
+#### Controlar ciclos en JS (break y continuo)
+
+Los ciclos son tan sofisticados que también nos permiten controlar el flujo que van a tener. Es decir, si yo decido continuar e ignorar cierta cantidad de instrucciones lo puedo hacer. O si simplemente yo decido romper el ciclo y continuar, también lo puedo hacer. En este caso, para realizar este par de operaciones, utilizaremos las instrucciones `continue` y las instrucciones `break`.
+
+- **Ejemplo del uso de continue**
+
+Lo que hace `conitnue` es que cuando se lee uno en el código, lo que le sigue no se lee, se ignora, es como tomar un atajo al siguiente paso. Mantiene el flujo y no rompe la estructura de control.
+
+```js
+/*Ejemplo del uso de continue en una iteración que cuenta los números impares entre el 0 y el 20*/
+let contador = 0;
+let cuenta = 0;
+
+for (contador = 0; contador <= 20; contador++){
+  if (contador % 2 == 0){
+    continue;
+  }
+  cuenta ++;
+  console.log(contador);
+}
+console.log('Existen', cuenta, 'números impares');
+```
+
+- **Ejemplo uso del break**
+
+A diferencia de `continue`, `break` rompe el flujo, o sea, rompe la estructura de control y evita que se siga ejecutando.
+
+```js
+var contador = 0 
+var cuenta = 0;
+
+for(contador = 0;contador<= 20;contador++) { 
+    if(contador == 5){
+        break; //Cuando contador sea 5, la iteración se detendrá y se detendrá su ejecución.
+    }
+   if (contador % 2 == 0) { 
+      continue; //Si se cumple la condición anterior, se ignora todo lo que sigue después del continue.
+   } 
+   cuenta++;
+   debugger;
+} 
+
+console.log("Hay",cuenta, "números impares antes de llegar a", contador);
+```

@@ -799,3 +799,256 @@ for(contador = 0;contador<= 20;contador++) {
 
 console.log("Hay",cuenta, "números impares antes de llegar a", contador);
 ```
+
+### Funciones o métodos
+
+Una función es un conjunto de instrucciones que podremos invocar a través de un nombre clave. Por ejemplo, en un ser humano, la actividad de caminar es un conjunto de instrucciones que combina distintas partes del cuerpo. Así, cuando nosotros escuchamos la palabra caminar o pensamos en el término caminar, todo nuestro cuerpo comienza a moverse. Es decir, hay muchas instrucciones en nuestro cuerpo que están ligadas a la palabra caminar. En el desarrollo de una aplicación web o una aplicación móvil trabajada con JavaScript, nosotros podremos agrupar un conjunto de instrucciones y después invocarlas a través de una palabra clave, esto es una función. También es posible que a una función puedas escucharla con el nombre de método, cualquiera de los dos nombres son adecuados.
+
+#### Estructura básica de una función
+
+La estructura de una función, consiste en la palabra reservada `function`, seguida de el nombre de la función con un par de paréntesis al final (los cuales contendrá los parámetros que la función puede recibir) y de un conjunto de llaves en donde dentro de ellas se indicarán las instrucciones que se quieren ejecutar cuando se llame la función.
+Para invocar a la función, se debe poner su nombre junto con unos paréntesis que contendrán los valores que se le entregarán a la función. Todo lo anterior quedaría de la siguiente manera: 
+
+```js
+function saludar() {
+    var saludo = "Hola Mundo";
+    //console.log(saludo);
+    return saludo;
+}
+
+saludar();
+```
+#### Parámetros de una función
+
+Una función, además de procesar información y ejecutar instrucciones, también puede recibir elementos con los cuales pueda trabajar. Puedes verlo como si fuera una fábrica. Una fábrica para poder producir sus productos necesita de ingredientes o implementos para poder trabajar. Estos vienen de fuera y se procesan dentro de la fábrica. Así, una vez que termina todo este proceso, al final tienes un producto ya formado. De la misma manera, las funciones pueden recibir este tipo de implementos, que para este tipo de instrucciones le llamaremos parámetros. Lo anterior se mostrará con el siguiente ejemplo:
+
+```js
+/*Ejemplo 1*/
+function saludar(nombre, edad) {
+	console.log('Hola: ', nombre);
+	console.log('Edad: ', edad);
+	var resultado = nombre + " tiene " + edad + " años";
+	return resultado;
+}
+
+var mensaje = saludar("yacaFx", 34);
+
+console.log(mensaje)
+```
+
+```js
+/*Ejemplo 2*/
+function saludar(nombre,edad) {
+    var nombreLocal = nombre; //Se puede trabajar directamente con los parámetros que recibe la función sin tener que guardarla de forma local
+    var edadLocal = edad; //Se puede trabajar directamente con los parámetros que recibe la función sin tener que guardarla de forma local
+    var saludo = 'Hola' + ' ' + nombre + ' ' + 'tu edad es' + ' ' + edad;
+    return saludo;
+}
+
+var mensaje = saludar('Juan', 23);
+
+console.log(mensaje);
+```
+
+#### Inicialización de parámetros
+
+Muchas veces nos encontraremos en la situación en que al momento de utilizar una función no necesitemos enviar valores de un parámetro aunque la función tenga declarado que va a recibir un parámetro. Es decir, existirán ciertas circunstancias donde el mismo algoritmo que nosotros hayamos armado pueda o no recibir un valor. Existe lo que es preinicializar un parámetro, se hace dentro de los paréntesis de la función, se pone un igual como si estuviéramos definiendo cualquier variable, lo anterior hará que si no recibe valor, se utilizará el valor preinicializado, pero si recibe valor, se utilizará ese valor
+
+```js
+/*La función contar debería recibir un parámetro pero en el caso de que no se reciba, cantidad está preinicializado como 20*/
+function contar(cantidad = 20) {
+	console.log('Total: ', cantidad);
+}
+
+contar(100);
+```
+#### Parámetros de tipo REST
+
+Muchas veces, los algoritmos que estamos haciendo nos presentan bastantes retos a resolver. Por fortuna, la gran mayoría de los lenguajes de programación son muy versátiles y flexibles y nos ofrecen los medios necesarios para poder dar solución a los casos que se nos lleguen a presentar. En este caso vamos a presentar una situación. La siguiente función recibe dos ingredientes que muestra por consola.
+
+```js
+function cocinar(ingrediente1, ingrediente2){
+  console.log('El ingrediente 1 es:', ingrediente1);
+  console.log('El ingrediente 2 es:', ingrediente2);
+}
+
+cocinar('Pollo','Tomate');
+```
+
+Pero, **¿Qué sucede si no se sabe cuántos parámetros más voy a enviar, es decir, cuántos ingredientes más pueda yo llegar a necesitar: uno, dos, tres, cinco?**.  Lo que tendremos que hacer es utilizar un parámetro de tipo *rest*, esto viene de la expresión: *el resto de...* Entonces, nosotros aquí utilizaremos un operador muy importante, escribiremos tres puntos y le daremos nombre al parámetro. Este nombre que nosotros pondremos será *masIngredientes*, así si yo escribo `console.log(masIngredientes)` e invoco a los demás ingredientes en forma de un *arreglo de tipo objeto* por lo cual se puede trabajar como tal.
+
+```js
+/*Ejemplo de uso de parámetros de tipo REST*/
+/*masIngredientes es el parámetro de tipo REST que se puede trabajar como un arreglo de objetos*/
+function cocinar(ingrediente1, ingrediente2, ...masIngredientes){
+  console.log('El ingrediente 1 es:', ingrediente1); //Muestra el primer ingrediente
+  console.log('El ingrediente 2 es:', ingrediente2); //Muestra el segundo ingrediente
+  console.log('Los demás ingredientes son:', masIngredientes); //Muestra el arreglo compuesto por el resto de los valores entregados a la función
+  /*El siguiente bloque de código se encarga de mostrar el resto de los ingredientes que contiene masIngredientes como se mostrarón los ingredientes 1 y 2*/
+  if (masIngredientes.length != 0){
+    var contador = 0;
+    while(contador < masIngredientes.length){
+      var ingrediIndice = contador + 3
+      console.log('El ingrediente', ingrediIndice, 'es:', masIngredientes[contador]); 
+      contador++;
+    }
+  }
+}
+cocinar('Pollo','Tomate','Arroz','Frijoles', 'Pescado', 'Papa');
+```
+```js
+/*El mismo ejemplo anterior pero con un for*/
+function cocinar(ingrediente1, ingrediente2, ...masIngredientes){
+  console.log('El ingrediente 1 es:', ingrediente1);
+  console.log('El ingrediente 2 es:', ingrediente2);
+  console.log('Los demás ingredientes son:', masIngredientes); //Muestra el arreglo compuesto por el resto de los valores entregados a la función
+  if (masIngredientes.length != 0){
+    for(let contador = 0; contador < masIngredientes.length; contador++){
+      var ingrediIndice = contador + 3
+      console.log('El ingrediente', ingrediIndice, 'es:', masIngredientes[contador]); 
+    }
+  }
+}
+
+cocinar('Pollo','Tomate','Arroz','Frijoles','Pescado', 'Papa');
+```
+
+De esta forma las funciones puede recibir N cantidad de parámetros sin tener conocimiento de la cantidad real que recibirán.
+
+#### Parámetros de tipo SPREAD
+
+Si ya contamos con una opción para poder recibir N cantidad de parámetros *(REST)*, también deberíamos contar con una opción para poder enviar N cantidad de parámetros y que no estén declarados todos estos parámetros directamente. Veamos los siguientes parámetros llamados *SPREAD*, es decir, parámetros que se pueden esparcir. A diferencia de los parámetros *REST*, los parámetros *SPREAD* no es necesario que sean declarados en la estuctura original de la fumción, **sino en la invocación** (`función(...parámetroSpread, parámetroNormal,...);`). Lo que pasará es que el parámetro *spread* se esparcirá entre los parámetros que recibe la función, o sea, que si en la función se declara que recibirá 3 parámetro, el parámetro *spread* se esparcirá (distribuirá) entre ese 3 parámetros que recibe (son un arreglo que cada casilla se guarda en uno de los parámetros que recibe la función).
+
+```js
+/*Ejemplo del uso de SPREAD*/
+function cocinar(ingrediente1, ingrediente2, ingrediente3){
+  console.log('El Ingrediente 1 es:', ingrediente1);
+  console.log('El Ingrediente 2 es:', ingrediente2);
+  console.log('El Ingrediente 3 es:', ingrediente3);
+}
+
+let ingredientes = ['Tomate','Papa','Arroz','Sal'];
+cocinar('Pollo','Lechuga', ...ingredientes); //En este caso solo Tomate queda guardado como ingrediente3 en la función (...ingredientes es el parámetro SPREAD)
+```
+
+```js
+/*Ejemplo del uso de parámetros REST y SPREAD*/
+function cocinar (ingrediente1, ingrediente2, ingrediente3, ...otrosIngredientes){
+  console.log('El Ingrediente 1 es:', ingrediente1);
+  console.log('El Ingrediente 2 es:', ingrediente2);
+  console.log('El Ingrediente 3 es:', ingrediente3);
+  console.log('Los otros ingredientes son:', otrosIngredientes);
+}
+
+let ingredientes = ['Tomate','Papa','Arroz','Sal'];
+
+/*En este llamado, al estar el parámetro SPREAD al final, el resto de los valores que guardaquedan en el parámetro REST de la función*/
+//cocinar('Pollo','Lechuga', ...ingredientes);
+
+/*En este llamado, al estar el parámetro SPREAD al principio, los lugares de los parámetros de la función son ocupados por los valores del parámetro SPREAD y el resto de parámetros quedan en el parámetro REST de la fumción*/
+//cocinar(...ingredientes, "Arroz", "Pescado", "Chile");
+```
+
+#### Funciones anónimas en JS
+
+Las funciones anónimas son un recurso ampliamente utilizado por los programadores de JavaScript. Esto nos permite no asignarle a un nombre a un conjunto de instrucciones que deseemos ejecutarlo sin necesidad de asociarlo. Esto lo podemos utilizar comúnmente cuando tenemos un *callback* o cuando queremos nosotros aislar una función de algún otro elemento. Por ejemplo, si nosotros quisiéramos ahorita ejecutar una función o un conjunto de instrucciones al inicio de nuestra aplicación, en lugar de tener que crear una función nueva y ponerle un nombre e invocar la función, podemos hacerlo de manera aislada. ¿Esto cómo es? Vamos a escribir la sintaxis de dos paréntesis seguidos, esto nos permite aislar nuestra función, y en este caso estamos poniendo aquí adentro las instrucciones que nosotros queremos generar, pero para escribir estas instrucciones simplemente vamos a ocupar la siguiente sintaxis: `function`, paréntesis y llaves. Si te das cuenta, esto cambia de una función normal, puesto que la función normal antes del paréntesis y después de la palabra clave `function` lleva un nombre; en este caso no lo lleva.
+
+```js
+/*Ejemplo 1: Forma aislada de escribir una función anónima*/
+(
+  function(){
+    var mensaje = 'Hola de nuevo';
+    console.log(mensaje);
+  }
+)()
+```
+**La siguiente forma es la más común para escribir funciones anónimas**, puedes recibir parámatros y se llaman con el nombre de la variable a la que se le asignó la función.
+
+```js
+/*Ejemplo 2: Forma más común de escribir fumciones anónimas*/
+
+let saludar = function(nombre){
+    var mensaje = 'Hola de nuevo' + ' '+ nombre;
+    console.log(mensaje);
+}
+
+saludar('Juan');
+```
+
+#### Entendiendo los callbacks
+
+Hemos aprendido que una función puede recibir parámetros de distintos tipos: objetos, arreglos, cadenas de texto, números, valores "booleanos". Pero ¿qué crees? También puede recibir funciones como parámetros. Espera, todavía no enloquezcas. De hecho, recibir funciones como parámetros es algo muy común y de pronto lo vas a estar utilizando y ni cuenta te vas a dar, puesto que los "callbacks" hacen mucho juego con las funciones anónimas.
+
+```js
+/*Ejemplo de callbacks(CB)*/
+
+/*Tanto sumarCB como restarCB con callbacks*/
+function calcular(datoA, datoB, sumarCB, restarCB){
+  let suma = datoA + datoB;
+  let resta = datoA - datoB;
+  /*Deben llamarse dentro de la función para que las estructura que reciben, reciban los respectivos parámetros que se les quiere entregar*/
+  sumarCB(suma);
+  restarCB(resta);
+}
+
+/*Cuando se llamar la función calcular, se le entrega los valores 2 y 3 para las operaciones suma y resta de la función y además se le entrega tantas funciones anónimas como callbacks se hayan definido*/
+calcular(2,3, function(resultadoSuma){
+  console.log('Suma igual a', resultadoSuma);
+}, function(resultadoResta){
+  console.log('Resta igual a', resultadoResta);
+});
+```
+Un punto muy importante: los *callbacks* generalmente me ayudan a controlar procesos asíncronos, es decir, en una función yo puedo hacer la invocación de muchos procesos y en otra función puedo hacer otra invocación, ya sea de otros tantos u otros pocos procesos. Así, entonces, se ejecuta una función y la otra función también se puede ejecutar y no importa cuál vaya terminando porque de cualquier forma podemos estar recuperando la información. La estructura al final es la siguiente:  `nombreFunción(valor1, valor2, ..., valorN, func, func, ..., funcN)`
+
+#### Funciones arrow
+
+Otra manera que tenemos de escribir funciones anónimas es a través de las llamadas funciones de tipo *arrow* o función *flecha*, que también son conocidas con el nombre de *Fat arrow* o *lambda functions* o funciones *lambda*. Puedes llamarla con cualquiera de estos nombres. La idea es simplificar un poco el uso de la sintaxis para esta función, veamos cómo escribir una función con este tipo de sintaxis. Para esto, vamos a crear una variable nueva llamada `saludar` donde almacenaremos el resultado de nuestra función. En este caso vamos a escribir primero `let saludar = nombre`, después el símbolo de igual seguido del símbolo mayor que, pero lo dejamos pegado (`let saludar = nombre =>`). Después de esto, entre comillas vamos a escribir la palabra (`let saludar = nombre => 'Hola'`), dejamos un espacio y concatenamos con la palabra (`let saludar = nombre => 'Hola' + nombre`). El llamado de este tipo de funciones es el mismo de una función común y corriente. Lo anterior junto queda de la siguiente forma:
+
+```js
+let saludar = nombre => 'Hola' + ' ' + nombre; //nombre es el parámetro que recibe la función y lo que sigue d ela flecha es lo que retorna 
+console.log(saludad('Susana'));
+```
+
+Esto quiere decir que con esto tenemos un tipo de función más sencillo y claro, es muchísimo más fácil que escribir una función anónima con la sintaxis de'function'. Pero este tipo de funciones también tiene ciertas variantes. 
+
+- **Ejemplo Aritemetico**
+
+```js
+/*sumarDiez se encarga de sumarle 10 a lo que reciba al ser llamada*/
+let sumarDiez = a => a+10;
+console.log('El resultado al sumar 10 es:', sumarDiez(10));
+```
+
+- **Enviar más de un parámetro**
+
+```js
+/*Sumar se encarga de sumar los dos parámetros que recibe al momento de ser invocada*/
+let sumar = (a,b) => a+b;
+console.log('El resultado de la suma es:', sumar(1,2));
+```
+
+- **Más de una instrucción**
+
+```js
+/*sumaTriple se encarga de sumarle 5 a la suma de los parámetros que se pasen al momento de llamar a la función*/
+let sumaTriple = (a,b) => {
+  let c = 5;
+  return a + b + c;
+}
+console.log('El resultado de sumarle 5 a los parámetros es:', sumaTriple(1,2)); //Muestra por consola la suma de a, b y la variable local de sumaTriple, c.
+```
+- **No enviar ningún parámetro**
+
+```js
+/*Validar no recibe ningún parámetro por lo cual al ser llamada sólo muestra el mensaje que retorna*/
+let validar = () => {
+  return 'Validación correcta';
+}
+console.log(validar());
+```
+
+Este tipo de funciones se vuelven bastante importantes y muy usables cuando quiero integrarlas en "callbacks" o incluso cuando yo quiero utilizarlas dentro de otras funciones como, por ejemplo, funciones de búsqueda en un arreglo o funciones que me permiten estar iterando en colecciones de datos.
+
+#### Uso del operador this
+
+Es un objeto de referencia u operador. Cuando se usa en una función anónima normal, por ejemplo puede traer cierta cosa de el HTML (`this.innerHTML`) o una clase entera (`this`) pero si se usa en una función anónima de tipo *arrow*, trae absolutamente todo (`this`), aunque eso se puede eaprovechar para hacer que al momento de interectatuar con el elemnto que en su código tiene un `this.section`, este redireccione a otra cosa.

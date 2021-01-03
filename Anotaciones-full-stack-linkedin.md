@@ -8,7 +8,7 @@
 - Los editores de textos contienen herramientas como un bloc de notas con estaminas.
 - Los IDE son entornos integrados de desarrollo.
 
-La diferencia más grande entre ambos radica enla cantidad de herramientas con las cuales se va a desarrollar. Los IDE vienen con todas las herramientas precargadas en cambio los editores de texto no vienen con todas las herramientas, hay que ir instalándolas según se vayan necesitando.
+La diferencia más grande entre ambos radica en la cantidad de herramientas con las cuales se va a desarrollar. Los IDE vienen con todas las herramientas precargadas en cambio los editores de texto no vienen con todas las herramientas, hay que ir instalándolas según se vayan necesitando.
 
 ### Componente comunes adicionales de Visual Studio Code 
 
@@ -77,7 +77,7 @@ Otra manera que hay para trabajar con los errores es presionar la tecla *F8* y m
 
 - **Encontrar una función:** Una función se puede encontrar desde su llamado dejando el cursor en su llamado y luego la tecla *F12*. También se puede presionar la tecla *CTRL* mientras se pasa el cursos sobre el llamado de la función lo que hará que se vuelva como un hipervínculo que direcciona a la función en cuestión, al momento de pasar el cursor sobre el llamado de la función se mostrará su estructura.
 
-- **Seleccionar un trozo de texto en todos los lugares del código:** Por ejemplo, se selecciona una variable y luego se presiona *CTRL + D*, se seleccionará la variable en todos los lugares del código donde aparece, luego de esto se puede cambiar donde se seleccionó y el cambio se hará en todo el código. Cabe mencionar que los cambios se pueden hacer en cualquier lugar de lo seleccionado gracias a un multicursos que se posiciona en todas las selecciones.
+- **Seleccionar un trozo de texto en todos los lugares del código:** Por ejemplo, se selecciona una variable y luego se presiona *CTRL + D*, se seleccionará la variable en todos los lugares del código donde aparece, luego de esto se puede cambiar donde se seleccionó y el cambio se hará en todo el código. Cabe mencionar que los cambios se pueden hacer en cualquier lugar de lo seleccionado gracias a un multicursor que se posiciona en todas las selecciones.
 
 ### Debbuging: ELiminar errores en VSC
 
@@ -97,7 +97,7 @@ La primera capa **(Marcado HTML: capa de contenido)** de una página web es HTML
 La segunda capa **(Reglas CSS: Capa de presentación)** de una página web es CSS y se enfoca en como se verá el contenido.
 La tercera capa **(Javascript: Capa de presentación)** de una página web es Javascript, el cual es un lenguaje interpretado que se ejecuta en el navegador e interactúa con las capas de HTML y CSS, manipulando e interactuando con el contenido.
 
-### Conociedo JavaScript
+### Conociendo JavaScript
 
 #### Strict Mode (Modo estricto)
 
@@ -1052,3 +1052,218 @@ Este tipo de funciones se vuelven bastante importantes y muy usables cuando quie
 #### Uso del operador this
 
 Es un objeto de referencia u operador. Cuando se usa en una función anónima normal, por ejemplo puede traer cierta cosa de el HTML (`this.innerHTML`) o una clase entera (`this`) pero si se usa en una función anónima de tipo *arrow*, trae absolutamente todo (`this`), aunque eso se puede eaprovechar para hacer que al momento de interectatuar con el elemnto que en su código tiene un `this.section`, este redireccione a otra cosa.
+
+### Eventos en JavaScript
+
+JS permite la lecutra de distintos tipos eventos los cuales son:
+
+#### Eventos del mouse
+
+En JavaScript, es posible interactuar con casi todos los elementos que van a componer una página web o nuestra aplicación, desde HTML, CSS o el mismo JavaScript. Para esto necesitamos agregar elementos de escucha, es decir, agregar un elemento que me permita a mí estar escuchando cuando algo sucede. Uno puede agregar este tipo de elementos ya sea directamente en las etiquetas de HTML o trabajándolas directamente en JavaScript. Mi recomendación es: tráete todo este tipo de interacciones hacia JavaScript. Para esto, lo primero que tenemos que hacer es hacer una asociación entre HTML y JavaScript. Lo anterior se logra de la siguiente manera:
+
+```html
+<!--HTML de un botón-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Etiqueta dedicada al css del botón-->
+    <style> 
+        div {
+            width: 200px;
+            height: 50px;
+            background-color: chocolate;
+            text-align: center;
+            padding: 2%;
+            margin: 0 auto;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px gray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Esta clase es referenciada en el archivo app.js-->
+    <div class="boton">
+        Da click en este botón
+    </div>
+    <!--Se llama al código del archivo app.js ubicado en la carpeta js-->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+```
+```js
+/*app.js*/
+
+/*Para realizar la aosición entre las acciones del mouse en el botón, se utiliza lo que tiene como contenido la constante botón*/
+const boton = document.querySelector('.boton');
+
+/*El método addEvenListener sirve para poner una escucha de eventos*/
+boton.addEventListener('click', function () {
+    console.log("El boton se ha pulsado");
+})//Evento Click sobre el botón
+
+boton.addEventListener('mouseover', function () {
+    console.log("El mouse esta sobre el botón");
+})//Evento de poner el cursor sobre el botón (detecta si el mouse está sobre el botón)
+
+boton.addEventListener('mouseout', function () {
+    console.log("El mouse esta fuera del botón");
+})//Evento de sacar el cursor del botón
+
+/*Existen más evenetos que s epueden utilizar, se pueden encontrar en w3schools o en Mozilla Developer Network*/
+```
+
+#### Eventos del teclado
+
+Así como podemos escuchar eventos del mouse, también podemos escuchar eventos del teclado. Y para esto tenemos tres tipos de eventos: los eventos que podemos escuchar del teclado son **keydown**, **keypress** y**keyup** y podemos escucharlos directamente cuando se están aplicando a determinada etiqueta o elemento de HTML de nuestra página o aplicación o cuando lo estamos aplicando a cualquier parte de nuestra página. Cuando queremos aplicarlo a cualquier parte de nuestra página, solamente debemos dirigir nuestro `addEventListener` al objeto `window` y con esto podemos escuchar.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Se llama al código alojado en app.js-->
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+    
+    </body>
+</html>
+```
+```js
+/*app.js*/
+
+window.addEventListener("keydown", function (event) {
+  console.log('Pulsando tecla');
+  /*Con el código que se encuentra dentro del console.log(), se puede saber cual es la tecla que se está presionando y transforma el código arrojado por event.keyCode en la letra que se pulsó*/
+	console.log(String.fromCharCode(event.keyCode))
+})//keydown es para cuando el evneto es el pulsar una tecla
+
+
+window.addEventListener("keypress", function (event) {
+	console.log('Tecla pulsada')
+})//keypress es para cuando el evento es mantener una tecla pulsada
+
+
+window.addEventListener("keyup", function (event) {
+	console.log('Tecla liberada')
+})//keyup es para cuando una tecla se deja de presionar
+```
+
+#### Evento de carga de documento
+
+Como hemos venido realizando, podemos escuchar eventos que sucedan en cualquier parte de nuestra aplicación web. Ahora nos toca escuchar un evento principal y es el evento de cuando el documento ha terminado de cargarse. ¿Para qué? Para poder contar con estos elementos ya listos en pantalla y poder comenzar a interactuar con algo. Se te puede presentar una situación similar cuando tú tengas un espacio donde necesites cargar datos remotos o datos que se encuentren en otro lado y no precisamente en tu misma página. Para este tipo de situaciones, lo que nosotros hacemos primero es escuchar cuando la carga del documento o de la ventana ha terminado y, una vez que ha terminado esta carga, entonces nosotros ya podemos trabajar.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Se llama al código de JS desde app.js-->
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+    
+    </body>
+</html>
+```
+```js
+/*app.js*/
+
+/*El evento load permite permite estar a la escucha de que todo los elementos HTML, JS, CSS, imágenes, etc se hayan "parseado", o sea, se hayan cargado*/
+window.addEventListener('load', function() {
+  console.log('El contenido de la ventana se ha cargado');  
+});
+```
+
+Un ejemplo de uso de lo anterior es que al temrinar de cargar todo, entonces ahora si puedo ir y conectarme a un dato remoto. En el ejmplo de código anterior, luego de saber que todo se cargó, se puede hacer todas las invocaciones de otras funciones o de datos que se necesiten. De esta forma, ya puedes interactuar y comenzar a trabajar con el evento `load` cada que tu documento ha sido cargado satisfactoriamente dentro de una ventana web.
+
+#### Eventos multimedia en JS
+
+También se puede escuchar las acciones que se realizan sobre un vídeo con los eventos `play`, `seeking` y `ended` los cuales hacen referencia al momento en el que se inició el vídeo, se está buscando en el vídeo (barrido de tiempo, tiene métodos para obtener cosas como el tiempo en el cual se detuvo la busqueda) y al momento en el que el vídeo terminó.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <!--Se inserta un vídeo-->
+    <video class="bostonVideo" width="500" controls>
+        <source src="boston.mp4" type="video/mp4">
+    </video>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+/*Eventos Multimedia en vídeos*/
+const video = document.querySelector('.bostonVideo');
+
+/*Cuando se inicia el vídeo se muetra por consola el mensaje 'El video ha iniciado'*/
+video.addEventListener("play", function () {
+    console.log('El video ha iniciado');
+});
+
+/*Cuando hace un barrido en la línea de tiempo del vídeo se muetra por consola el mensaje 'Se esta buscando en el video' 
+y además se devuelve el tiempo del barrido/busqueda */
+video.addEventListener("seeking", function () {
+    console.log('Se esta buscando en el video', this.currentTime);
+});
+
+/*Cuando el vídeo termina su reproduccion se muestra por consola el mensaje 'El video ha terminado'*/
+video.addEventListener("ended", function () {
+    console.log('El video ha terminado');
+});
+```
+
+#### Uso de temporizadores o timers
+
+Bajo ciertas circunstancias, el uso de temporizadores dentro de una aplicación va a ser muy importante ya que estos sirven para poder ejecutar determinadas acciones dependiendo de un cierto lapso de tiempo. Existen dos tipos de temporizadores llamados `setInterval` (ejecución infinita de un elemento cada determinado tiempo) y `setTimeout` (ejecuta una acción después del tiempo que se indica, se hace sólo una vez).
+
+```js
+/*setColor es la función que se ejecutará con los temporizadores*/
+function setColor() {
+    var pagina = document.body;
+    pagina.style.backgroundColor = pagina.style.backgroundColor == "blue" ? "green" : "blue";
+}
+```
+
+```js
+/*Ejecución infinita de setColor cada 2000 milisegundos (2 segundos)*/
+var temporizador = setInterval(function () {
+      setColor();
+  }, 2000);
+
+/*Lo anterior se ejecuta de manera infinita por lo cual se crea la función stopChangeColor la cual se encarga de limpiar el temporizador y detener las ejecuciones de setInterval*/
+function stopChangeColor() {
+    clearInterval(temporizador) //Metodo que limpia el intervalo de tiempo de temporizador
+}
+```
+
+```js
+/*Luego de 3000 milisegundos (3 segundos) se ejecuta una vezla función setColor*/
+ setTimeout(function () {
+     setColor();
+ }, 3000);
+```
+

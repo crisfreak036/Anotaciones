@@ -1267,3 +1267,63 @@ function stopChangeColor() {
  }, 3000);
 ```
 
+### Ventanas Emergentes o Cuadros de diálogo en JS
+JavaScript cuenta con mecanismos suficientes para poder alertar o notificar al usuario de que algo ha sucedido en el sistema.
+
+#### Ventanas de Alerta en JS
+
+Para generar una ventana de alerta de utiliza la palabra reservada `alert` la cual cumple la función de mostrar una alerta por pantalla que notifica de algo al usuario. Este tipo de alertas no escucha alguna acción realizada sobre ella misma como por ejemplo que el usuario presionó en el botón de Aceptar que esta misma contiene. Lo anterior se debe a que este tipo de alertas tiene el unico objetivo de avisar algo sin esperar respuesta a ello.
+
+**CUIDADO CON EL USO DE ESTE TIPO DE ALERTAS YA QUE ESTE TIPO DE ALERTAS TIENEN EL OBJETIVO DE AVISAR AL USUARIO DE EVENTOS IMPORTANTES DE ALTA ESCALA**
+
+```js
+/*Se hace uso del mismo vídeo de la sección Eventos multimedia*/
+const video = document.querySelector('.bostonVideo');
+
+/*Al terminar el vídeo se genera una alerta por pantalla que hace alusión a eso*/
+video.addEventListener("ended", function () {
+  //alert("El vídeo ha terminado"); //Alerta sin salto de línea
+  alert("MENSAJE \n\n El video ha terminado"); //Alerta con salto de línea (\n)
+});
+```
+
+#### Generar en JS una ventana de confirmación
+
+Existirán ocasiones en las cuales se hará necesario ejecutar una acción de acuerdo a la respuesta que proporcione el usuario a una ventana emergente. En estos casos existe el método `confirm` el cual notificará algo directamente por pantalla dandonos la opción de elegir que acción queremos ejecutar dependiendo de la respuesta del usuario a esta notificación. Esta ventana emergente tiene los botonoes aceptar (retorna un True) y cancelar (retorna un False).
+
+```js
+/*Se utiliza el mismo vídeo de Eventos Multimedia*/
+const video = document.querySelector('.bostonVideo');
+
+/*Cuando el vídeo termina se genera una ventana de notificación que pregunta al usuario si quiere repetir el vídeo*/
+video.addEventListener("ended", function () {
+    let resultado = confirm("¿Deseas ver el video nuevamente?");
+    console.log(resultado); //Muestra por consola lo que contiene la variable resultado 
+    if (resultado) {
+        video.play();
+    }else {
+        window.location = "http://www.google.com";
+    }
+/*En este caso, no es necesario colocar en la condición resultado == true ya que al ser un valor booleano la estructura de control por si sola entenderá que cuando resultado es true se ejecuta cierto codigo, de lo contrario (cuando es false) se ejecuta otra cosa*/
+});
+```
+
+#### Ventana de ingreso de datos
+
+JS permite la creación de ventanas emergentes en las cuales el usuario puede colocar cierta información la cual se puede almacenar en una variable, base de datos o el medio de almacenamiento que se estime conveniente. Para lo anterior existe `prompt()`.
+
+```js
+/*Se ocupa el vídeo de la sección eventos multimedia*/
+const video = document.querySelector('.bostonVideo');
+
+video.addEventListener("ended", function () {
+  /*email guarda el email que ingresa el usuario en la ventana emergente, por default tiene data@info.com*/
+   let email = prompt("Escribe tu correo para ver mas videos",  "data@info.com");
+   /*Estructura de control que permite ejecutar codigo en caso de que el usuario presione en cancelar y en el caso de que deje el email vacio*/  
+   if (email == null || email == "") {
+        console.log("Sin datos");
+    } else {
+        console.log(email);
+    }
+});
+```

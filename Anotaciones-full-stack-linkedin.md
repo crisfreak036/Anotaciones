@@ -1332,7 +1332,7 @@ video.addEventListener("ended", function () {
 
 Al igual que muchos lenguajes de programación, Javascript dispone de muchas propiedades métodos y mecanismos para facilitar nuestras tareas como programador.
 
-### Propiedades numéricas
+#### Propiedades numéricas
 
 Para utilizar las propiedades numéricas es se debe invocar a `Number`. Entre las propiedades se encuentran las siguientes:
 
@@ -1366,7 +1366,7 @@ console.log("POSITIVE_INFINITY: ", Number.POSITIVE_INFINITY);
 console.log("NaN: ", Number.NaN);
 ```
 
-### Métodos numéricos
+#### Métodos numéricos
 
 En JS existen métodos para trabajr con números los cuales principalmente ayudaran a convertir numeros por ejemplo de string con formato numero a numero entero o float.
 
@@ -1389,7 +1389,7 @@ console.log('isNaN: ', isNaN(numero));
 console.log('isInteger: ', Number.isInteger(numero));
 ```
 
-### Métodos numéricos en instancias
+#### Métodos numéricos en instancias
 
 En JavaScript, cuando tenemos una variable que está almacenando un número directamente, automáticamente estamos contando con ciertos métodos que podemos utilizar. 
 

@@ -1327,3 +1327,84 @@ video.addEventListener("ended", function () {
     }
 });
 ```
+
+### Trabajando con números en JS
+
+Al igual que muchos lenguajes de programación, Javascript dispone de muchas propiedades métodos y mecanismos para facilitar nuestras tareas como programador.
+
+### Propiedades numéricas
+
+Para utilizar las propiedades numéricas es se debe invocar a `Number`. Entre las propiedades se encuentran las siguientes:
+
+- **MAX_VALUE:** Entrega el número más grande con el que puede trabajar JS.
+
+```js
+console.log("MAX_VALUE: ", Number.MAX_VALUE);
+```
+
+- **MIN_VALUE:** Entrega el valor minimo con el que trabaja JS.
+
+```js
+console.log("MIN_VALUE: ", Number.MIN_VALUE);
+```
+
+- **NEGATIVE_INFINITY:** Es el objeto Infinity (si se ocupa en un for, el for será infinito) negativo.
+
+```js
+console.log("NEGATIVE_INFINITY: ", Number.NEGATIVE_INFINITY);
+```
+
+- **POSITIVE_INFINITY:** Es el objeto Inifinity positivo.
+
+```js
+console.log("POSITIVE_INFINITY: ", Number.POSITIVE_INFINITY);
+```
+
+- **NaN:** "Not a Number", hace referencia a si el valor es o no un número.   
+
+```js
+console.log("NaN: ", Number.NaN);
+```
+
+### Métodos numéricos
+
+En JS existen métodos para trabajr con números los cuales principalmente ayudaran a convertir numeros por ejemplo de string con formato numero a numero entero o float.
+
+```js
+var numero = "10.5";
+
+/*typeof entrega el tipo de la variable*/
+console.log('Number: ', typeof numero, typeof Number(numero)); //numero es un string, al utilizar Number() numero se vuelve un objeto del tipo Number
+
+/*Tranforma el contenido del string numero a entero matematicamente utilizable*/
+console.log('parseInt: ',  parseInt(numero));
+
+/*Tranforma el contenido del string numero a flotante matematicamente utilizable*/
+console.log('parseFloat: ', Number.parseFloat(numero));
+
+/*Entrega un true o false dependiendo de si el valor de la variable tiene formato de numero o no (una letra arroja true)*/
+console.log('isNaN: ', isNaN(numero));
+
+/*Entrega true o false dependiendo de si el valor de la variable es un entero o no*/
+console.log('isInteger: ', Number.isInteger(numero));
+```
+
+### Métodos numéricos en instancias
+
+En JavaScript, cuando tenemos una variable que está almacenando un número directamente, automáticamente estamos contando con ciertos métodos que podemos utilizar. 
+
+```js
+var numero = 2.5;
+
+/*Transfroma el numero a notación cientifica, recibiendo la cantdias de decimales que tendrá la parte entera. Se aplica directamente al numero que se encuentra almacenado en la variable*/
+console.log("toExponential: ", numero.toExponential(4));
+
+/*Ajusta el numero para manejar los x decimales que se indican. Si se utiliza el valor 0, se hace un redondeo. El valor resultante es un String*/
+console.log("toFixed: ", numero.toFixed(2));
+
+/*Da una precisión del digito hasta los x decimales que se indican. El valor resultante es de tipo String*/
+console.log("toPrecision: ", numero.toPrecision(6));
+
+/*Transforma a string (cadena de texto) el valor del numero*/
+console.log("toString: ", typeof numero.toString());
+```

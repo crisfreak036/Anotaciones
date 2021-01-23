@@ -1408,3 +1408,277 @@ console.log("toPrecision: ", numero.toPrecision(6));
 /*Transforma a string (cadena de texto) el valor del numero*/
 console.log("toString: ", typeof numero.toString());
 ```
+### Trabajando con cadenas de texto
+
+En JS existen las cadenas de texto las cuales tienen métodos los cuales hacen más el trabajo con ellas.
+
+#### Creación de cadenas de texto
+
+Se pueden crear dejando entre comillas el valor texto de la variable (más común) o mediante el uso del objeto `String` el que dejara el texto como una cadena de las letras quer lo componen.
+
+```js
+/*Creación mediante la utilización de comillas (Pueden ser dobles o simples pero no combinadas)*/
+var pais = 'México';
+
+/*Creación mediante el uso del objeto String*/
+var comida = new String("Ceviche");
+```
+
+#### Medir una cadena de texto 
+
+Para medir el largo de la cadena de texto se utiliza el metodo `.lenght` el cual retorna el largo de la cadena de texto que se encuentra guardada en la variable. Cabe mencionar que las tabulaciones (se pueden encontrar antes, entre o después del texto) son contadas como si fueran letras por lo cual si solo se ingresan tabulaciones, el metodo entregará un largo de todas formas.
+
+```js
+var mensaje = "Estoy aprendiendo JavaScript";
+
+console.log("La cadena de texto tiene: " + mensaje.length + " letras");
+/* El resultado de lo anterior es: La cadena de texto tiene: 28 letras*/
+```
+
+#### Búsqueda de texto por ínidces y por expresiones regulares
+
+```js
+/*Primero se define una variable con la que se utilizaran los métodos, que contenga la cadena de texto*/
+var mensaje = 'Estoy aprendiendo JavaScript y estoy aprendiendo mucho';
+
+/*Luego se define una variable que guardara el resultado de la búsqueda*/
+var resultado;
+```
+
+- **indexOf:** Busca la primera aparición de lo que se le entrega y regresa la posición de esta.
+
+```js
+resultado = mensaje.indexOf("aprendiendo");
+console.log(resultado); // 6
+```
+
+- **lastIndexOf:** Busca la ultima aparición de lo que se le entrega y regresa la posición de esta.
+
+```js
+resultado = mensaje.lastIndexOf("aprendiendo");
+console.log(resultado); // 37
+```
+
+- **search:** Es similar a indexOf, en si retorna lo mismo, o sea, la posición de la primera concidencia dentro de la cadena de caracteres.
+
+```js
+resultado = mensaje.search("aprendiendo");
+console.log(resultado); // 6
+```
+
+- **search | expresión regular:** En este caso al search se le entrega la expresión regular que estamos buscando ( se pone entre slashs `variable.search(/ja/)`), en el caso de que ae quiera buscar sin considerar mayusculas y minusculas (in case sensitive) luego del segundo slash se debe agregar una *i* quedando todo de la siguiente manera `variable.search(/ja/i)`.
+
+```js
+resultado = mensaje.search(/ja/i); /*Entre slashs va la expresión que se quiere buscar, el i es para que no distinga entre mayusuclas y minisculas*/
+console.log(resultado); // 18
+```
+
+Cabe menscionar que si cualquiera de los metodos entrega como valor *-1* significa que se buscaba en la cadena de caracteres no se encontró.
+
+#### Búsqueda de caractares en cadenas
+
+```js
+/*Primero se define una variable con la que se utilizaran los métodos, que contenga la cadena de texto*/
+var mensaje = 'Estoy aprendiendo JavaScript y estoy aprendiendo mucho';
+
+/*Luego se define una variable que guardara el resultado de la búsqueda*/
+var resultado;
+```
+
+- **match:** Trabaja con expresiones regulares (lo que se busca debe ir entre slash `/buscado/`). si se utiliza `variable.match(/buscado/)`, retorna un arreglo con lo que se buscaba (la primira concidencia que encuentra), su posición (donde inicia lo buscado), la entreda en la cual buscó lo solicitado. En cambio si se utiliza `variable.match(/buscado/gi)` **(g es de global e i es de in case sensitive)**, retornara un arreglo con todas las coincidencias pero sin la otra información.
+
+```js
+//resultado = mensaje.match(/aprendiendo/); // ["aprendiendo", index: 6, input: "Estoy aprendiendo JavaScript y estoy Aprendiendo mucho", groups: undefined]
+//resultado = mensaje.match(/aprendiendo/gi); // ["aprendiendo", "Aprendiendo"]
+console.log(resultado); 
+```
+
+- **substr:** Este metodo recibe de parametro la primera posición de donde comenzar a buscar y la cantidad de caracteres a considerar desde la posición inicial. Ingresando lo anterior, se retorna todo lo que se encuentre entre las posiciones indicadas. (`variable.substr(inicio,cant-caracteres)`).
+
+```js
+resultado = mensaje.substr(6,11); // Desde el caracter en la posición 6 considera 11 caracteres
+console.log(resultado); // aprendiendo
+```
+
+- **substring:** Es una opción a `substr` que a diferencia de esta, considera las posiciones de inicio y fin del arreglo de caracteres, o sea, que su segundo parametro debe ser la posición en la que se quiere finalizar la "busqueda" dentro de la cadena de caracteres original. (`variable.substring(inicio,fin)`)
+
+```js
+resultado = mensaje.substring(6,17); // Desde el caracter en la posición 6 retornara todo lo que encuentre hasta la posición 17
+console.log(resultado); // aprendiendo
+```
+
+- **charAt:** Este metodo recibe la posición del caracter que se está buscando.
+
+```js
+resultado = mensaje.charAt(0); // Busca el caracter que se encuentra en la posición 0 de la cadena
+console.log(resultado); // E
+```
+
+#### Búsqueda de cadenas de texto especificas
+
+```js
+/*Primero se define una variable con la que se utilizaran los métodos, que contenga la cadena de texto*/
+var mensaje = 'Estoy aprendiendo JavaScript y estoy aprendiendo mucho';
+
+/*Luego se define una variable que guardara el resultado de la búsqueda*/
+var resultado;
+```
+
+Los siguientes son los nuevos metodos de busqueda (2017 vibes). Cabe mencionar que todos estos metodos **son sensibles a mayusculas y minusculas**.
+
+- **startsWith:** Sirve para saber si alguna cadena de texto comienza con cierta palabra o caracter.
+
+```js
+resultado = mensaje.startsWith("es");
+console.log(resultado); // false debido a que mensaje comienza con Es y no con es.
+```
+
+Existe una variante que combina un metodo visto anteriormente. En esta variante, no solo se recibe lo que se quiere buscar sino que también se recibe una posición en la cual buscar si esta inicia con la palabra o caracter deseado. Lo anterior se puede gracias a la utilización del metodo `indexOf`.
+
+```js
+var textoEn =  mensaje.indexOf("JavaScript"): // Obtiene la posición de inicio de la palabra JavaScript dentro de la cadena
+resultado = mensaje.startsWith("Ja", textoEn); // Desde la posición que guarda textoEn busca si comienza con Ja lo cual resulta en un true
+```
+
+- **endsWith:** Sirve para saber si alguna cadena de texto termina con cierta palabra o caracter.
+
+```js
+resultado = mensaje.endsWith("JavaScript");
+console.log(resultado); // true
+```
+
+- **includes:** Sirve para saber si alguna cadena de texto incluye cierta palabra o caracter.
+
+```js
+resultado = mensaje.includes("JavaScript";
+console.log(resultado); // true
+```
+
+Tambien se le puede entregar una posición desde la cual comenzar a buscar el termino de la cadena.
+
+```js
+resultado = mensaje.includes("Estoy", 6); // comienza la busqueda desde la posición 6 de la cadena
+console.log(resultado); // false
+```
+
+#### Métodos de generación, reemplazo y separación
+
+Las situaciones que se nos pueden presentar cuando estamos trabajando con cadenas de texto pueden ser muy variadas, es por eso que también tenemos algunos métodos para generar texto, para reemplazar o para separar.
+
+```js
+/*Primero se define una variable con la que se utilizaran los métodos, que contenga la cadena de texto*/
+var mensaje = 'Estoy aprendiendo JavaScript';
+
+/*Luego se define una variable que guardara el resultado de la búsqueda*/
+var resultado;
+```
+
+- **repeat:** Al tulizar *repeat* se repetira n cantidad de veces (la que nosotros establezcamos) el contenido de la variable en la misma línea y cada repetición se encontrara unida al final de la cadena anterior.
+
+```js
+resultado = mensaje.repeat(2)
+console.log(resultado); // Estoy aprendiendo JavaScriptEstoy aprendiendo JavaScript
+```
+
+- **replace:** Se encarga de buscar un caracter, palabra o frase dentro de la cadena de texto con el fin de reemplazarla por otro caracter, palabra o frase **sin afectar la cadena de texto original**. Lo anterior lo hace con la primera coincidencia que encuentra por lo cual en el caso de haber otra más adelante, no será reemplazada.
+
+```js
+resultado = mensaje.replace("JavaScript","a programar")
+console.log(resultado); // Estoy aprendiendo a programar
+```
+
+- **slice:** Se encarga de mover el cursor de inicio de la cadena a la posición que uno indique y desede ahí se puede elegir hasta donde se quiere considerar la cadena texto, o sea, permite obtener un pedazo de la cadena de texto sin afectar a la cadena de texto original.
+
+```js
+/*Se le entrega solo el inicio*/
+resultado = mensaje.slice(6)
+console.log(resultado); // aprendiendo JavaScript
+
+/*Se leentrega inicio y fin*/
+var resultado2;
+resultado2 = mensaje.slice(6, 17)
+console.log(resultado2); // aprendiendo
+//resultado2 = mensaje.slice(6,mensaje.length-6);
+//console.log(resultado2); //aprendiendo Java
+```
+
+- **split:** Separa toda la cadena de texto en base a una caracter o palabra que se le entrega retornando un arreglo.
+
+```js
+resultado = mensaje.split(" "); // Se separan las palabras por espacios (se puede poner otro tipo de separador)
+console.log(resultado); // ["Estoy","aprendiendo","JavaScript"]
+```
+
+- **trim:** Quita los espacios en blanco tanto del inicio como del final de la cadena de texto.
+
+```js
+var mensaje2 = "     Estoy aprendiendo JavaScript     ";
+resultado = mensaje2.trim();
+console.log(resultado); // Estoy aprendiendo JavaScript
+```
+
+#### Métodos de transformación de texto en JS
+
+Existen metodos que permiten la tranformación de caracteres en cadenas te texto, de algo a cadena de texto o cubren la necesidad de combinar cadenas de texto.
+```js
+/*Se definen ciertas variables que ayudaran al entendimiento de los metodos de la sección*/
+var mensaje = "Estoy aprendiendo JavaScript";
+var mensaje2 = " y programación";
+var total = 123456;
+var resultado;
+```
+
+- **toString:** Sirve para tanformar, pñor ejemplo, un numero a cadena de texto.
+
+```js
+console.log(total); // 123456 
+resultado = total.toString(); // Tranforma el numero 123456 a cadena de texto
+console.log(resultado); // "123456"
+```
+
+- **toLowerCase:** Tranforma todos los caracteres de la cadena de texto a minusculas.
+
+```js
+console.log(mensaje); // Estoy aprendiendo JavaScript
+resultado = mensaje.toLowerCase(); // Transforma los caracteres del contenido de mensaje en minusculas 
+console.log(resultado); // estoy aprendiendo javascript
+```
+
+- **toUpperCase:** Tranforma todos los caracteres de la cadena de texto a mayusculas.
+
+```js
+console.log(mensaje2); // y programación
+resultado = mensaje2.toUpperCase(); // Transforma los caracteres del contenido de mensaje2 en MAYUSCULAS 
+console.log(resultado); // Y PROGRAMACIÓN
+```
+
+- **concat:** Permite unir dos o más cadenas de texto.
+
+```js
+var mensaje3 = ", cada vez aprendo más.";
+resultado = mensaje.concat(mensaje2, mensaje3," Espero seguir aprendiendo mucho más.");
+console.log(resultado); // Estoy aprendiendo JavaScript y programación, cada vez aprendo más. Espero seguir aprendiendo mucho más.
+```
+
+#### Funcionamiento de las plantillas y literales en JS
+
+Una de las cosas verdaderamente funcionales cuando trabajamos con cadenas de texto que posee JavaScript es el uso de plantillas y literales. Para poder escribir plantillas se utilizan backtiicks o comillas especiales las cuales ayudaran a definir la plantillas y dentro de estas se deja el uso del simbolo *+* para concatenar cadenas de texto y se cambiar por el uso de literales los cuales son definidos por un signo de peso *$* seguidos de llaves que contendrán a la variable que se quiere agregar a la plantilla.
+
+```js
+var lenguaje = 'JavaScript';
+var lenguaje2 = 'HTML';
+var mensaje, mensaje2;
+
+/*Mensaje Simple*/
+mensaje = `Me gusta aprender ${lenguaje} y su integración con ${lenguaje2}`;
+console.log(mensaje);
+
+/*Mensaje multilinea*/
+mensaje2 = `
+    Hola Mundo,
+    estoy aprendiendo
+    ${lenguaje} y me gusta
+    como se integra con ${lenguaje2} y CSS`;
+
+console.log(mensaje2);
+```

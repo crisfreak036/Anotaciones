@@ -205,7 +205,7 @@ Para evitar crear la rama y luego moverse a ella, existe el comando `git checkou
 
 2. Luego de saber que cambios se hicieron, se debe volver a la rama a la cual se le quiere fusionar algo, para esto se debe utilizar el comando `git checkout ramasalaqueselequierefusionaralgo`. Cabe mencionar que si uno ve el archivo que se cambió en la otra rama, en la rama en la cual uno está ubicado actualmente, el mismo archivo se encuentra sin cambios.
 
-Al utilizar un `git log --online` se pueden ver los commits realizados en las ramas y a su vez se puede observar que no existe desfase entre ramas debido a que los cambios hechos en la rama "experimental" no existen grandes cambios entre ramas (excepto el archivo en cuestión que sólo se modificó en la rama "experimental").
+Al utilizar un `git log --oneline` se pueden ver los commits realizados en las ramas y a su vez se puede observar que no existe desfase entre ramas debido a que los cambios hechos en la rama "experimental" no existen grandes cambios entre ramas (excepto el archivo en cuestión que sólo se modificó en la rama "experimental").
 
 3. Para unir las ramas se debe utilizar el comando `git merge ramaquesequiereunir`, el cual fusiona los cambios hechos en la rama "experimental" con la rama en la que se encuentra la cabecera. Al hacer esto, los commits de la rama "experimental" fueron agregados a la rama principal y la cabecera queda apuntando a las dos ramas.
 
@@ -219,7 +219,7 @@ Al utilizar un `git log --online` se pueden ver los commits realizados en las ra
 
 2. Luego de saber que cambios se hicieron, se debe volver a la rama a la cual se le quiere fusionar algo, para esto se debe utilizar el comando `git checkout ramasalaqueselequierefusionaralgo`. Cabe mencionar que si uno ve el archivo que se cambió en la otra rama, en la rama en la cual uno está ubicado actualmente, el mismo archivo se encuentra sin cambios.
 
-Al utilizar un `git log --online` se pueden ver los commits realizados en las ramas y a su vez se puede observar, como si de un desfase en el tiempo se tratase, que la rama "experimental" se encuentra desfasada debido a que en la rama actual hay cambios que no se encuentran en la rama "experimental", o sea que existen cambios que se realizaron después de la creación de la rama "experimental" en la rama actual.
+Al utilizar un `git log --oneline` se pueden ver los commits realizados en las ramas y a su vez se puede observar, como si de un desfase en el tiempo se tratase, que la rama "experimental" se encuentra desfasada debido a que en la rama actual hay cambios que no se encuentran en la rama "experimental", o sea que existen cambios que se realizaron después de la creación de la rama "experimental" en la rama actual.
 
 3. Para unir las ramas se debe utilizar el comando `git merge ramaquesequiereunir`, el cual fusiona los cambios hechos en la rama "experimental" con la rama en la que se encuentra la cabecera. Al hacer esto, los commits de la rama "experimental" fueron agregados a la rama principal y la cabecera queda apuntando a las dos ramas.
 
@@ -277,7 +277,7 @@ Stash suele utilizarse cuando se están realizando cambios que todavía no está
 
 #### Comandos Stash
 
-`git stash`: **Crea el stash que guarda el estado del proyecto**. En la consola al hacer un `git log --online` se puede observar el momento en el que se hizo el Stash. Luego de realizar un stash, todos los cambios realizados no se observan en los archivos (es como que no se hubieran hecho). En la consola se muestra *WIP on ramaactual: hashcommit Mensaje-del-commit* (WIP es Work In Progress). Se pude tener más de un stash. **Cada vez que desde un stash se restauren los cambios, se debe borrar el stash (es como lo de borrar las ramas ya utilizadas)**
+`git stash`: **Crea el stash que guarda el estado del proyecto**. En la consola al hacer un `git log --oneline` se puede observar el momento en el que se hizo el Stash. Luego de realizar un stash, todos los cambios realizados no se observan en los archivos (es como que no se hubieran hecho). En la consola se muestra *WIP on ramaactual: hashcommit Mensaje-del-commit* (WIP es Work In Progress). Se pude tener más de un stash. **Cada vez que desde un stash se restauren los cambios, se debe borrar el stash (es como lo de borrar las ramas ya utilizadas)**
 
 Utilizar `git stash` es equivalente a utilizar `git stash save`. De todas formas, el este comando entrega otros usos como los que se mencionarán ahora:
 

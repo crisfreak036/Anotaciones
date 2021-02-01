@@ -675,3 +675,81 @@ console.log(typeof(numero1)); // Muestra el tipo de dato que tiene la variable n
 
 console.log(typeof(numero2)); // Muestra el tipo de dato que tiene la variable numero2
 ```
+### Operadores en JavaScript
+
+En JS existen operadores que permiten la comparación de valores. Eso operadores son:
+
+#### Operador Mayor que o Menor que
+
+Permite comparar si un numero es mayor que otro. Retorna un true o un false al hacer la comparación.
+
+```js
+const numero1 = 20;
+const numero2 = "20";
+const numero3 = 30;
+
+// Operador mayor a...
+console.log(numero1 > numero3); // false
+console.log(numero3 > numero1); // true
+
+// Operador menor a...
+console.log(numero1 < numero3); // true
+```
+
+#### Comparar 2 valores
+
+Para comparar si un valor es igual a otro se recomienda el uso del *triple igual* `===`, ya que, el usar el *doble igual* (como en otros lenguajes) **no es una comparación estricta** debido a que en JS el doble igual lleva al mismo tipo de dato los valores, en cambio el *triple igual* no hace lo anterior.
+
+```js
+const numero1 = 20;
+const numero2 = "20";
+const numero3 = 30;
+
+// Doble igual
+console.log(numero1 == numero3); // false
+console.log(numero1 > numero2); // true
+/*Lo anterior se debe a que numero2 es un string que tiene formato de numero por lo cual cuando el doble igual lleva al mismo tipo de dato ambos números, estos serán iguales*/
+
+// Triple igual o Comparador estricto
+console.log(numero1 === numero2); // false
+/*El comparador estricto se fija tanto en el valor como en el tipo de dato*/
+```
+Al igual que existe un comparador para saber si dos valores son iguales, existe un comparador con el cual se puede saber si dos valores son distintos, este comparador es `!=`.
+
+```js
+const numero1 = 20;
+const numero2 = "20";
+const numero3 = 30;
+
+console.log(numero1 != numero3); // true
+console.log(numero1 != numero2); // false
+/*Lo anterior sucede debido a que este comparador solo compara los valores y no los tipos de datos*/
+
+// Comparador distinto a... (estricto)
+console.log(numero1 !== numero2); // true
+/*numero1 y numero2 tienen el mismo valor pero son de distinto tipo de dato por lo cual para no tener problemas se recomienda transformar todo al mismo tipo de dato antes de comparar*/
+```
+#### Comparar Null y undefined en JavaScript
+
+*Undefined* aparece cuando el valor de una variable no se encuentra definido a diferencia de *null* que debe ser asignado. Tanto *undefined* como *null*, JavaScript los interpreta como que tienen el mismo valor pero no tienen el mismo tipo de dato, ya que, el tipo de dato de *undefined* es undefined y el tipo de dato de *null* es object, debido a lo anterior se recomienda el uso del comparador estricto `===` cuando se comparen variables que contengan *undefined* o *null*.
+
+```js
+// Undefined
+let numero;
+console.log(numero); // undefined
+/*Lo anterior se debe a que la variable esta definida pero su valor no*/
+console.log(typeof numero); // undefined
+
+// Null
+let numero2 = null;
+console.log(numero2); // null
+console.log(typeof numero2); // object
+
+// Comparación
+console.log(numero == numero2); // true
+/*JavaScript que el valor undefined y el valor null son iguales*/
+
+// Comparación estricta
+console.log(numero === numero2); // false
+/*Se recomienda el uso de la comparación estricta en estos casos ya que a pesar de que JS interpreta que tanto null como undefined son el mismo valor, no tienen el mismo tipo de dato*/
+```

@@ -1682,3 +1682,270 @@ mensaje2 = `
 
 console.log(mensaje2);
 ```
+
+### Trabajar con arreglos en JS
+
+Los arreglos son estructuras de datos que nos permitirán almacenar más de un tipo de dato dentro de una misma variable. ¿Qué significa esto? Que si yo tengo información de distinta índole y quiero almacenarla en un solo lugar, lo voy a poder hacer con estos arreglos.
+
+#### Creación de arreglos
+
+Los arreglos tienen una sintaxis en específico, es decir, una manera exclusiva de escribirlos. Para que nosotros podamos identificar un arreglo necesitaremos utilizar los caracteres de los corchetes. Al usar estos caracteres podrás identificar un arreglo, así cuando estés trabajando en cualquier lugar y veas que hay corchetes de por medio significa que todo lo que está dentro de ese lugar son elementos de un arreglo. Los arreglos se componen de casillas que parten en 0, las cuales equivalen a las posiciones que tendrán los elementos dentro del arreglo.
+
+```js
+var platillos = ['ceviche','tacos','pasta']; // Creación mediante corchetes
+var bebidas = new Array('Jamaica', 'Chicha Morada', 'Pozol'); // Creación mendiante objeto Array
+
+/*Para comprabar que una variable es un arreglo se debe utilizar el metodo isArray()*/
+var esArreglo = Array.isArray(platillos);
+console.log(esArreglo); // true porque es un arreglo
+```
+
+#### Medir y acceder en JS a un arreglo
+
+Cuando trabajamos con arreglos, va a haber dos cosas que vamos a necesitar saber indudablemente ante cualquier operación. La primera de ellas es cuánto mide nuestro arreglo, y la segunda de ellas es cuál es la información (acceder a la información) que se encuentra en determinada posición de nuestro arreglo.
+
+```js
+/*Se define un arreeglo de platillos*/
+var platillos = ['ceviche','tacos','pasta'];
+```
+
+- **Tamaño de un arreglo:** Para medir el tamaño de un arreglo se debe utilizar el metodo `lenght`.
+
+```js
+var largoArreglo = platillos.length; //Se guarda el largo del arreglo en la variable largoArreglo
+console.log(`Hay ${largoArreglo} platillos en el menú`);
+```
+
+- **Acceder al contenido de un arreglo:** Como se dijo con anterioridad, existen posiciones dentro de los arreglos las cuales comienzan en el 0, estas posiciones son llamadas **indices** y estos nos permitaran acceder al contenido que se encuentra en el indice determinado.
+
+```js
+var platillo1 = platillos[0]; //Contiene el valor que se encuentra en la posición 0, o sea, ceviche.
+var platillo2 = platillos[1]; //Contiene el valor que se encuentra en la posición 1, o sea, tacos.
+var platillo3 = platillos[2]; //Contiene el valor que se encuentra en la posición 2, o sea, pasta.
+
+var menu = `El menú de hoy esta compuesto por:
+- ${platillo1}
+- ${platillo2}
+- ${platillo3}`;
+
+console.log(menu)
+```
+
+#### Arreglos Multidimensionales
+
+En un arreglo podemos almacenar distintos tipos de datos: datos numéricos, cadenas de texto, "booleanos", incluso otros arreglos. Cuando trabajamos con arreglos dentro de otros arreglos, es decir, cuando almacenamos un arreglo dentro de otro arreglo, estos se conocen como **arreglos multidimensionales**.
+
+```js
+/*Un arreglo multidimensional (matriz) se define como un arreglo que contiene arreglos*/
+
+// Ejemplo
+var matriz = [[1,2],[3,4]]; // Arreglo Multidimensional de 2 x 2
+
+/*Para ingresar al contenido del arreglo es necesario indicar dos parametros (en los arreglos es una sola posición el parametro) la posición del arreglo dentro del arreglo más grande y la posición del contenido dentro del arreglo al cual se accede con la primera posición indicada*/
+
+console.log(matriz[0][0]); // 1
+console.log(matriz[0][1]); // 2
+console.log(matriz[1][0]); // 3
+console.log(matriz[1][1]); // 4
+```
+
+Lo siguiente es un ejemplo de como iterar un arreglo multidimensional.
+
+```js
+/*En este ejmplo se muestran por consola el contenido de los arreglos*/
+
+var platillos = ["ceviche", "tacos", "pasta"];
+var paises = ["Perú", "México", "Italia"];
+//Se puede agregar al arreglo de arreglos menu
+//var mascotas = ["Perro", "Gato", "Hamster"];
+
+var menu = [ platillos, paises];
+
+// Algoritmo para recorrer una matriz con dimensiones desonocidas
+for(var i=0;i<menu.length;i++){
+  // Primer for para recorrer las filas
+  for(var j=0;j<menu[i].length;j++){
+    // Segundo for para recorrer las columnas
+    console.log(menu[i][j]);
+  }
+  console.log('\n'); // Salto de línea para separa el contenido de los arreglos
+};
+
+console.table(menu); // Se despliega como tabla en la consola
+```
+
+#### Operaciones básicas de un arreglo
+
+En un arreglo puedo tener ciertas operaciones básicas que me ayudarán a procesar mejor los datos cuando estoy integrándolos o trabajándolos dentro o fuera de un arreglo. Estas operaciones básicas o métodos son los siguientes:
+
+- **push():** Permite agregar al final del arreglo uno o más elementos sin la necesidad de uno tener que agregar de forma manual un elemento al arreglo ya defenido.
+
+```js
+var lenguajesProgramacion = ["Python"]; // Se crea un arreglo que contiene un elemento
+
+lenguajesProgramacion.push("C"); // Al final del arreglo se agrega el elemento "C"
+lenguajesProgramacion.push("C++"); // Al final del arreglo se agrega el elemento "C++"
+
+// Lo anterior se podría haber hecho en una sola línea entregando los dos elementos separados por una coma
+//lenguajesProgramacion.push("C", "C++");
+
+console.log(lenguajesProgramacion); // ["Python","C","C++"]
+```
+
+- **pop():** Este metodo extrae el úlitmo elemnto del arreglo, no recibe ningún parametro. Al utilizar este metodo, el arreglo se modifica por lo cual el último elemento ya no se encontrará en el arreglo (se recomienda guardarlo en una variable o algo por el estilo en el caso de necesitarlo a futuro)
+
+```js
+/*En el este ejemplo se utilizaq el arreglo final del ejemplo de uso de push()*/
+
+//var lenguajesProgramacion = ["Python","C","C++"];
+
+var ultimoElemento = lenguajesProgramacion.pop(); // Se define una variable que contendrá lo que se obtiene de usar pop() sobre un arreglo
+
+console.log(ultimoElemento); // C++
+console.log(lenguajesProgramacion); // ["Python","C"]
+```
+
+- **join():** Se encarga de transformar todos los elementos del arreglo en una sola cadena de texto.
+
+```js
+/*En el este ejemplo se utilizaq el arreglo final del ejemplo de uso de pop()*/
+
+//var lenguajesProgramacion = ["Python","C"];
+var arregloTexto = lenguajesProgramacion.join();
+console.log(arregloTexto); // Python,C
+```
+
+#### Generación de arreglos con split(), from() y of()
+
+La generación de arreglos no está ligada exclusivamente a tener una variable seguida de los corchetes y están ingresando los datos en ese momento. De hecho, tenemos algunos métodos que nos pueden servir para poder crear un arreglo desde 0.
+
+- **split():** Permite tranformar en arreglo una cadena de texto que tenga elementos separados por algun delimitador, por ejemplo, comas.
+
+```js
+var mensaje = "ceviche, tacos, pasta";
+var platillos = mensaje.split(', '); // Se separan los elementos que están separados por una comay un espacio
+console.log(platillos); // ["ceviche","tacos","pasta"]
+```
+
+- **Array.from():** 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!--En el cuerpo se encuentra una divisón que contiene a la clase platillos, la cual contiene 3 parrafos que tienen un nombre de platillo cada uno-->
+    <div class="platillos">
+        <p>Ceviche</p>
+        <p>Tacos</p>
+        <p>Pasta</p>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+/*Creación de un arreglo desde la información que se encuentra en el HTML*/
+
+var platillosHTML = Array.from(document.querySelectorAll('.platillos p')) /*Trae la información desde el HTML. Al querySlectorAll se le entrega el nombre de la clase y etiqueta p. Al hacer esto, se genera un arreglo formal que tiene toda la información de la etiqueta por lo cual hay información que no es necesaria pero al ser un arreglo como tal, tiene métodos que ayudarán a aislar solamente el contenido de la propiedad textContent, la cual contiene el texto del parrafo, o sea, los platillos*/
+
+/*El arreglo que se busca generar necesita solamente lo que se encuentra en la propiedad textContent por lo cual se utilizara el método .map() el cual permitará realizar el mapeo de los elementos que se necesiten para trabajar (mediante una iteración continua que no requiere algún iterador para usarse), o sea, los platillos contenidos en cada parrafo*/
+
+var platillos = platillosHTML.map( platillo => platillo.textContent) // El método recibe un parametro (no importa el nombre), una flecha => y la propiedad que se necesita.
+
+console.log(platillos); // ["Ceviche","Taco","Pasta"]
+```
+
+- **Array.of():** Todo lo que se le entregue como parametro, se convertirá en un arreglo.
+
+```js
+var platillos = Array.of("ceviche", "tacos", "pasta");
+
+console.log(platillos) // ["ceviche","tacos","pasta"]
+```
+
+#### Ordenando un arreglo
+
+En los arreglos, generalmente, vamos a guardar colecciones grandes de datos. Estos datos, muchas veces, los vamos a presentar en una tabla o en pantalla de manera ordenada o de manera desordenada, lo cual es una actividad que debe ir por usabilidad en casi todas las páginas web o aplicaciones que estén presentando datos. Para los arreglos existen unos métodos que ayudaran a darle algún tipo de orden a estos, estos métodos son:
+
+```js
+/*Se definiran dos arreglos que se utilizaran como ejemplo para los métodos*/
+var platillos = ["Ceviche", "Tacos", "Pasta"]; // Arrglo que contiene strings
+console.log('Antes: ', platillos); // Se muestra el contenido antes de aplicar los metodos
+
+var numeros = [4,5,1,3,9,8,7,3]; // Arreglo que contiene numeros
+console.log(`Arreglo antes del orden: ${numeros}`); // Se muestra el arreglo antes de aplicar los metodos
+```
+
+- **.sort():** Ordena el arreglo de una forma logica, por ejemplo, alfabeticamente, de mayor a menor, etc, si fuera un arreglo con numeros y letras, se separan los numeros de las letras, etc.
+
+```js
+
+// Ordenamiento del arreglo de Strings
+platillos.sort(); 
+console.log('Ordenado: ', platillos); 
+
+// Ordenamiento del arreglo de numeros
+numeros.sort();
+console.log(`Arreglo después de ordenar (uso de .sort()): ${numeros}`);
+```
+
+- **.reverse():** Cambia el orden del arreglo desde atrás hacia delando, lo que significa que ahora el último se encuentra en la posición inicial y el elemento de la posición inicial se encuentra en el final del arreglo.
+
+```js
+// El arreglo de strings ordenado, se le revierte el orden
+platillos.reverse(); 
+console.log('Al reves: ', platillos);
+
+// El arreeglo de numeros ordenado, se le revierte el orden
+numeros.reverse();
+console.log(`Arreglo después de revertir el orden (uso de .reverse()): ${numeros}`);
+```
+
+Hay que siempre recordar que los metodos anteriores trabajan sobre el mismo arreglo, por lo cual se recomienda hacer un backup del estado inicial del arreglo.
+
+#### Desestructuración de arreglos
+
+Con los arreglos en JavaScript, también podemos trabajar con algo llamado desestructura o desestructuración de arreglos. ¿Esto qué es? Es como una asignación a la inversa. El fin de esto es guardar en variables por separado cada uno de los elementos del arreglo.
+
+```js
+// Se define un arreglo de Strings que se utilizará como ejemplo
+var platillos = ["ceviche", "tacos", "pasta", "tostadas"];
+
+// Recordar descomentar los bloques de código para probarlos y comentar los que ya se probaron
+
+// Se pueden dejar cada uno de los elementos de la siguiente manera
+/*
+var platillo1 = platillo[0];
+var platillo2 = platillo[1];
+var platillo3 = platillo[2];
+var platillo4 = platillo[3];
+console.log(platillo1, platillo2, platillo3, platillo4);
+*/
+
+// Se puede desestructurar definiendo variables con valor nulo y asiendo una asginación multiple
+/*
+var platillo1 = null;
+var platillo2 = null;
+var platillo3 = null;
+var platillo4 = null;
+
+[platillo1, platillo2, platillo3, platillo4] = platillos; // Cada elemento del arreglo queda guardado en una de las variables definidas
+
+console.log(platillo1, platillo2, platillo3, platillo4);
+*/
+
+// Se puede hacer lo anterior pero saltandose el paso de tener que definir la variables con null
+
+var [platillo1, platillo2, platillo3, platillo4] = platillos; // En la misma línea se definen las variables que contendran por separado los elementos del arreglo
+
+console.log(platillo1, platillo2, platillo3, platillo4);
+```

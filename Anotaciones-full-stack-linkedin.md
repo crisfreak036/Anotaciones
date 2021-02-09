@@ -1949,3 +1949,182 @@ var [platillo1, platillo2, platillo3, platillo4] = platillos; // En la misma lí
 
 console.log(platillo1, platillo2, platillo3, platillo4);
 ```
+
+### Búsquedas en Arreglos
+
+#### Iterando arreglos con for... in
+
+Además de tener el ciclo *for* o alguna estructura de control como el *while* o el *do while*, también contamos con una variante del ciclo *for* para poder iterar dentro de un arreglo. En este caso, este "loop" que vamos a utilizar se llama *for in*. A diferencia del *for* ya conocido, el *for...in* solo requiere de la definición del iterador y que se le indique el arreglo en el cual iterará. Sabiendo lo anterior. lo que hará *for...in* será iterar tantas veces como el largo del arreglo, o sea, sería como un cilo for normal que inicia en 0 y va iterando uno en uno las pocisiones hasta el final del arreglo. Cabe mencionar que al igual que en el ciclo for normal, el iterador va dando la posición del elemento y no el elemento en si.
+
+```js
+var platillos = ["ceviche", "tacos", "pasta"];
+
+// i es el iterador el cual iterará in el arreglo platillos
+for ( let i in platillos) {
+    console.log(platillos[i])
+}
+
+/*Siempre hay qu erecordar que el contexto es necesario para luego entender de mejor manera el código por lo cual se recomienda que el iterador sea lo más explicito y acorde al contexto de lo que se está obteniendo del arreglo. En el ejemplo en vez de llamar i al iterador, se le puede poner platillo denido a que el arreglo está lleno de platillos*/
+```
+
+#### Iteración de arreglos con forEach()
+
+Otra manera que tenemos de iterar directamente sobre un arreglo es utilizando el método *forEach()*, que está ligado directamente a los arreglos. Este tipo de métodos lo que va a recibir es una función y podemos utilizar una función anónima o un *arrow function*, **se recomienda más el uso de arrow function**. La función que recibe este metodo está compuesta por el parametro que fungirá de iterador, la flecha que indica que es lo que se hará con el elemento que se guarda en el parametro/iterador (este metodo extrae directamente el elemento, a diferencia del for normal o el for... in que trabajan con la posiciones de los elementos en el arreglo) y por último lo que se hará con el elemento, en el caso de que esto último sea más de una acción sólo se debe poner llaves que delimiten el bloque de código que se ejecutará y un return que devolverá el dato que se quiere reotrnar.
+
+```js
+// Ejemeplo en donde se mostrará por consola todos los elementos del arreglo
+var platillos = ["ceviche", "tacos", "pasta"];
+platillos.forEach( platillo => console.log(platillo) ) // Cada elemento del arreglo se mostrará por consola
+```
+
+Cabe mencionar que de todas formas se puede obtener el indice del elemento dentro del arreglo, lo anterior se logra de la siguiente manera:
+
+```js
+var platillos = ["ceviche", "tacos", "pasta"];
+platillos.forEach( (platillo, index) => console.log(index, platillo) ) // Cada elemento junto con su posición se mostrarán por consola
+```
+
+#### Buscar en arreglo con JS
+
+Una de las operaciones más buscadas por todo programador es la operación de la búsqueda. Sí, cuando trabajamos con un arreglo, a veces necesitamos buscar determinado dato dentro del arreglo. Y muy probablemente tu arreglo sea muy grande o contenga muchísima información, para lo cual va a ser muy importante que podamos tener un método óptimo para esto. Con la evolución de JavaScript, se han presentado nuevos métodos y uno de estos métodos es el método llamado *find*, que me va a permitir a mí iterar sobre un arreglo sin necesidad de utilizar un ciclo y, a partir de esto, recuperar la información que yo quiero. Para utilizar este metodo será necesaria una *arrow function* y una variable que guarde el elemento encontrado. El metodos deja de buscar en la primera coincidencia que encuentra y en el caso de no enconrar ninguna, la variable contendrá el valor *undefined*.
+
+```js
+// Ejemplo arreglo simple
+var platillos = ["ceviche", "tacos", "pasta"];
+
+var pElegido = platillos.find( platillo => platillo === "tacos");
+/*En pElegido se guarda la coincidencia*/
+
+console.log(pElegido)
+```
+
+```js
+// Ejemeplo arreglo de objetos
+
+var menu = [
+	{nombre: 'Ceviche', precio: 20, pais: 'Perú'},
+	{nombre: 'Tacos', precio: 10 , pais: 'México'},
+	{nombre: 'Pasta', precio: 50, pais: 'Italia'},
+  {nombre: 'Tacos', precio: 60, pais: 'USA'}
+];
+
+var pElegido = menu.find( platillo => platillo.nombre === 'Tacos');
+/*En este caso en la variable pElegido quedará guardada toda la información perteneciente a la coincidencia encontrada, no sólo el nombre de la coincidencia*/
+
+console.log(pElegido)
+```
+
+#### Búsqueda de índice de elementos
+
+En algunas circunstancias no vamos a necesitar acceder al objeto que hayamos encontrado en el arreglo. Al contrario, necesitamos encontrar el índice donde se encuentra nuestro dato, lo anterior se lográ gracias al metodo *.findIndex()*. Este metodo al igual que el metodo *.find()*, recibe una *arrow function* que se encargará de indicar la coincidencia que se quiere encontrar y el indice de la coincidencia quedará almacenado en la variable en la cual se guarda todo el codigo anterior. Cabe mencionar que si no se encuentre ninguna coincidencia, se almacena el valor *-1* y que tanto este metodo como el metodo *.find()* son sensibles a las mayusucalas y minusculas.
+
+```js
+// Ejemplo con arreglo de Strings
+
+var platillos = ["ceviche", "tacos", "pasta"];
+
+var numPlatillo = platillos.findIndex( platillo => platillo == 'tacos' ); // El indice de la coincidencia se guarda en la variable numPlatillo
+
+console.log("Platillo número: ", numPlatillo); // Se muestra por consola el indice de la coincidencia
+```
+
+```js
+// Ejemplo con arreglo de Onjetos
+
+var menu = [{
+        nombre: 'Ceviche',
+        precio: 20,
+        pais: 'Perú'
+    },
+    {
+        nombre: 'Tacos',
+        precio: 10,
+        pais: 'México'
+    },
+    {
+        nombre: 'Pasta',
+        precio: 50,
+        pais: 'Italia'
+    }
+]
+
+var numPlatillo = menu.findIndex( platillo => platillo.nombre == 'Pasta' );
+
+console.log("Platillo número: ", numPlatillo);
+```
+
+#### Filtrar arreglos usando JS
+
+Este metodo se recibe los mismos parametros que el metodo *.find()* pero a diferencia de este que detiene la busqueda en el momento que encuentra la primera coincidencia, *.filter()* retorna un arreglo con todas las coincidencias que encuentra.
+
+```js
+var menu = [{
+        nombre: 'Ceviche',
+        precio: 20,
+        pais: 'Perú'
+    },
+    {
+        nombre: 'Tacos',
+        precio: 10,
+        pais: 'México'
+    },
+    {
+        nombre: 'Pasta',
+        precio: 50,
+        pais: 'Italia'
+    },
+    {
+        nombre: 'Quesadillas',
+        precio: 15,
+        pais: 'México'
+    }
+];
+
+var resultado = null;
+
+
+//resultado =  menu.find(platillo => platillo.pais === 'México'); // Solo entrega la primera coincidencia
+
+
+resultado =  menu.filter(platillo => platillo.pais === 'México'); // Entrega un arreglo con todas las coincidencias donde el pais del platillo sea México
+
+console.log(resultado);
+```
+
+#### Validación de elementos de un Arreglo
+
+Existen metodos que sirven para validar si existen o no elementos dentro del areglo que cumplan con condiciones que establecidad. Estos metodos son *.some()* y *.every()* los cuales entregan un booleano, en el caso de *.some()* retorna un *true* siemrpe y cuando al menos uno de los elementos cumplan con la condición establecida, en cambio, *.every()* entrega un *true* solamente si todos los elementos del arreglo cumplen con la condición preestablecida.
+
+```js
+var resultado = null;
+var resultado2 = null;
+
+var menu = [{
+        nombre: 'Ceviche',
+        precio: 20,
+        pais: 'Perú'
+    },
+    {
+        nombre: 'Tacos',
+        precio: 10,
+        pais: 'México'
+    },
+    {
+        nombre: 'Pasta',
+        precio: 50,
+        pais: 'Italia'
+    },
+    {
+        nombre: 'Quesadillas',
+        precio: 15,
+        pais: 'México'
+    }
+]
+
+
+resultado = menu.some( platillo => platillo.precio <= 10);
+console.log('¿Hay platillos abajo de 20? ', resultado); // true
+
+resultado2 = menu.every( platillo => platillo.precio <= 60); 
+console.log('¿Todos los platillos cuestan menos de 10? ', resultado2); // true
+```

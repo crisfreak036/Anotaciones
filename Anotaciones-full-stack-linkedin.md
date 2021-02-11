@@ -2128,3 +2128,226 @@ console.log('¿Hay platillos abajo de 20? ', resultado); // true
 resultado2 = menu.every( platillo => platillo.precio <= 60); 
 console.log('¿Todos los platillos cuestan menos de 10? ', resultado2); // true
 ```
+
+### Conociendo el DOM y el BOM
+
+#### Entender el DOM y el BOM
+
+Para entender el DOM y el BOM se usará el siguiente ejemplo en HTML, en el cual tendremos un etiqueta script para el código de JavaScript que se relaciona tanto con el DOM como con el BOM.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1 class="title">Lorem ipsum</h1>
+    <button id="boton">¡Púlsame!</button>
+    <div id="container">
+        <p class="principal">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien nulla, tincidunt nec ante ut, porta tempus dui. Integer
+            consequat rhoncus tempus. Etiam nulla nisl, mattis a nisl pulvinar, tempor elementum lectus. Morbi sed tortor
+            luctus, faucibus dolor eu, ullamcorper arcu. Aenean condimentum quis nisi et malesuada. Morbi nec mi et turpis
+            condimentum suscipit quis vel arcu. Vestibulum at mi vitae urna gravida consectetur. Nam suscipit ac purus a
+            bibendum.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien nulla, tincidunt nec ante ut, porta tempus dui. Integer
+            consequat rhoncus tempus. Etiam nulla nisl, mattis a nisl pulvinar, tempor elementum lectus. Morbi sed tortor
+            luctus, faucibus dolor eu, ullamcorper arcu. Aenean condimentum quis nisi et malesuada. Morbi nec mi et turpis
+            condimentum suscipit quis vel arcu. Vestibulum at mi vitae urna gravida consectetur. Nam suscipit ac purus a
+            bibendum.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien nulla, tincidunt nec ante ut, porta tempus dui. Integer
+            consequat rhoncus tempus. Etiam nulla nisl, mattis a nisl pulvinar, tempor elementum lectus. Morbi sed tortor
+            luctus, faucibus dolor eu, ullamcorper arcu. Aenean condimentum quis nisi et malesuada. Morbi nec mi et turpis
+            condimentum suscipit quis vel arcu. Vestibulum at mi vitae urna gravida consectetur. Nam suscipit ac purus a
+            bibendum.
+        </p>
+    </div>
+
+    <script>
+        //********************************
+        //*** Entendiendo el DOM y el BOM
+
+        var boton = document.getElementById("boton"); // Ejemplo 1 DOM
+
+        boton.addEventListener('click', function () {
+           console.log(window.location.href);
+
+            window.location.href = 'http://github.com/yacafx'; // Ejemplo 2 BOM
+        })
+
+    </script>
+
+</body>
+
+</html>
+```
+
+##### DOM (Document Object Model
+
+Para que JavaScript pueda liberar todo su poder es necesario de un mecanismo que me permita interactuar con HTML e incluso con CSS. Este mecanismo se llama **Document Object Model** (Modelo Objeto del Documento en español) o lo podemos conocer también como DOM. La principal característica del DOM es que nos permite usar los elementos o etiquetas que componen una página web como objetos y así poder manipularlos con JavaScript. De una manera resumida, el DOM es el puente entre HTML y JavaScript, pues al poder usar o referirnos a los elementos que componen nuestro sitio o aplicación, podremos manipular a nuestro gusto y necesidad todo lo que hayamos creado.
+
+```js
+/*Ejemplo 1 DOM, extraido del Ejemplo de HTML anterior*/
+
+var boton = doucment.getElemntById("boton"); // En el código HTML existe un id boton el cual sirve para que .getElementById obtenga todo lo relacionado al id y lo guarde en la variable boton
+
+/*Al elemento botón se le agrega un addEventListener, o sea, un escucha que se encargue de hacer algo cuando se lleve a cabo cierta acción sobre el boton que se encuentra en el código HTML*/
+boton.addEventListener('click', function(){
+  console.log("Presionaste el botón"); // Esto es un ejemplo de una acción que se puede realizar al presionar el botón
+})
+```
+Hay que recordar que si se tiene el código de JS en un archivo aparte, hay que importarlo a HTML con la siguiente línea de código:
+
+```html
+<!--Recordar que la siguiente etiqueta va dentro del body-->
+  <script src="ubicacion/archivo.js"></script>
+```
+##### BOM (Browser Object Model)
+
+El BOM significa **Browser Object Model**, y también, al igual que el DOM, están definidos por la W3C, que es la organización que se encarga de dictar los estándares web a nivel mundial. Para evitar confusiones, existen algunos objetos independientes que hacen referencia tanto al BOM como al DOM. Y si lo vemos en perspectiva, el BOM es el contenedor o padre principal, y dentro vive el DOM. Para el DOM ya tenemos el objeto *document* que habíamos visto, pero para el caso del BOM tenemos otro objeto. Este objeto se llama *window* y también tiene sus propios métodos y sus propiedades, así que pueden actuar de manera independiente pero podemos coordinar su operación.
+
+```js
+
+// Se utilizó de base el Ejemplo 1
+var boton = doucment.getElemntById("boton"); // En el código HTML existe un id boton el cual sirve para que .getElementById obtenga todo lo relacionado al id y lo guarde en la variable boton
+
+/*Al elemento botón se le agrega un addEventListener, o sea, un escucha que se encargue de hacer algo cuando se lleve a cabo cierta acción sobre el boton que se encuentra en el código HTML*/
+boton.addEventListener('click', function(){
+  console.log(window.location.href); // window.location.href muestra la dirección donde se encunetra alojado el código
+  window.location.href = 'http://github.com/yacafx'; // al presionar el botón se redireccionara al link
+  /*Ambas línea de código anteriores utilizan el elemento window del BOM*/
+})
+```
+
+#### Propiedades y métodos del DOM
+
+- **.getElementsById():** Este metodos hace referencia a el elemento por su id. Recibe como parametro el id del elemento que se quieren obtener.
+
+```js
+var boton = document.getElementById("id");
+```
+
+- **.getElementsByTagName():** Este metodos hace referencia a todos los elementos que tengan la misma etiqueta. Recibe como parametro la etiqueta de los elementos que se quieren obtener.
+
+```js
+var todosLosParrafos = document.getElementsByTagName('etiqueta');
+```
+
+- **.getElementsByClassName():** Este metodos hace referencia a todos los elementos que tengan la misma clase. Recibe como parametro la clase de los elementos que se quieren obtener. Este método captura todo los elementos que tengan la clase y los guarda en un arreglo por lo cual para acceder a uno en especifico se debe manejar como un areglo.
+
+```js
+var parrafoPorClase = document.getElementsByClassName('nombreClase')[0].textContent;
+```
+
+**Para obtener solamente el texto del id, clase o etiqueta, se debe anexar un *.textContent* luego de los parenesis que reciben el parametro**
+
+En JS también se puede manejar las propiedades de los objetos del HTML, como por ejemplo, el color, forma o tamaño de un botón.
+
+- **.createElement():** Este método permite crear etiquetas para HTML de forma dinamica. Para insetar el elemento en el `<body></body>` se debe utilizar `document.body.appendChild(elementoAInsertar);` en el código de JS.
+
+```js
+var foto = document.createElement('img'); // Secreará una etiqueta imagen
+foto.src = "foto1.jpg"; // ubicación de la foto
+foto.name = "foto1"; // Nombre de la foto
+foto.width = 400; // Tamaño de a foto
+document.body.appendChild(foto); // Donde se insertará la foto
+```
+
+A este nuevo elemento se le puede agregar un *.addEventListener()* con el cual poder ejecutar algún tipo de instrucción cuando se interactué con él. Un ejemplo de lo anterior es el siguiente código que hace que cambie la imagen cada vez que se hace click sobre ella (hay que establecer la direción de las imagenes antes de correr el código).
+
+```js
+foto.addEventListener('click', function () {
+  if (this.name === 'foto1') {
+    this.src = 'foto2.jpg'; // Cambiar ubicación por la de donde se encuentren las imagenes que uno quiere poner
+    this.name = 'foto2';
+    } else {
+      this.src = 'foto1.jpg'; // Cambiar ubicación por la de donde se encuentren las imagenes que uno quiere poner
+      this.name = 'foto1';
+      }
+})
+```
+
+#### Propiedades y métodos del BOM
+
+Ya trabajamos con el DOM, es decir, con el objeto del documento. Ahora vamos a trabajar con el navegador, y para esto ahora utilizaremos el objeto *window*. En este caso, el objeto *window* tiene muchas propiedades entre las que podemos encontrar:
+
+- **window.innerHeight y window.innerWidth:** Permiten obtener el alto y ancho del área de contenido de la ventana. Cabe mencionar que no es necesario escribir window. antes de los métodos, se pueden escribir directamente, pero de otdas formas se recomienda utilizar el objeto window con el fin de que el método o propiedad funcione correctamente.
+
+```js
+console.log('innerHeight: ', window.innerHeight);
+console.log('innerWidth: ', window.innerWidth);
+```
+
+- **localStorage:** Este objeto es *window.localStorage* (pertenece al objeto *window*) el cual permite hacer cosas con respecto al almacenamiento local del navegador, lo almacenado se encuentra en la sección *Application* que se encuentra al inspeccionar elementos de la página web. Entre las cosas que se pueden hacer con este objeto se encuentra lo siguiente:
+
+  - **localStorage.setItem:** El utilizar este tipo de método sirve para guardar algunos datos como, por ejemplo, algun "token", algún nombre usuario, algún texto que no necesitemos que vaya al servidor, etc. Este método recibe un par de datos los cuales son *el campo del contenido* y *el contenido*. Para recuperar el contenido se debe utilizar el método *.getItem(campoDelContenido)*.
+
+  ```js
+  localStorage.setItem('contenido','Código y café es una gran combinación'); // En el localStorage se guarda los parametros
+  var contenido = localStorage.getItem('contenido'); // Se obtine y guarda en una variable el texto que se guardó en localStorage bajo el campo "contenido"
+  console.log(contenido); // Se muestra por consola "Código y café es una gran combinación"
+  ```
+
+Ahora que tenemos nociones tanto del DOM como del BOM, se mostrará un ejemplo que combina métodos de ambos para cambiar un parafo al parecionar un botón que s eencunetra en la página.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1 class="title">Lorem ipsum</h1>
+    <button id="boton">¡Púlsame!</button>
+    <div id="container">
+        <p class="principal">
+            Parrafo 1 <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien nulla, tincidunt nec ante
+            ut, porta tempus dui. Integer consequat rhoncus tempus. Etiam nulla nisl, mattis a nisl pulvinar, tempor elementum
+            lectus. Morbi sed tortor luctus, faucibus dolor eu, ullamcorper arcu. Aenean condimentum quis nisi et malesuada.
+            Morbi nec mi et turpis condimentum suscipit quis vel arcu. Vestibulum at mi vitae urna gravida consectetur. Nam
+            suscipit ac purus a bibendum.
+        </p>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
+```
+```js
+/*Esto sería el código que iría en el archivo app.js al que se hace referencia en el código HTML anterior*/
+var boton = document.getElementById('boton');
+var principal = document.getElementsByClassName('principal')[0];
+
+console.log('innerHeight: ', window.innerHeight);
+console.log('innerWidth: ', window.innerWidth);
+
+localStorage.setItem('contenido', 'Código y café es una gran combinación') // Se gurda en localStorage del navegador una frase
+
+
+boton.addEventListener('click', function () {
+  var contenido = localStorage.getItem('contenido'); // Desde localStorage se obtiene la frase asociada a el campo "contenido" y se almacena en la variable contenido
+  principal.innerHTML = contenido; // principal.innerHTML lo que hará es reemplazar todo el contenido almacenado orginalmente por lo que almacena contenido
+  /*Los siguientes son métodos utiles para manipular la navegación de la página*/
+  window.history.forward(); // Avanzar en el historico 
+  window.history.back(); // Retorceder en el historico del navegador
+  window.history.go(3); // mover a través del historico del navegador
+})
+```
+
+**Para saber más métodos tanto del DOM como del BOM se peude acudir a la documentación que existe tanto por parte de Mozilla como del sitio w3schools**

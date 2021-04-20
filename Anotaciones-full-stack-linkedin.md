@@ -2351,3 +2351,364 @@ boton.addEventListener('click', function () {
 ```
 
 **Para saber más métodos tanto del DOM como del BOM se peude acudir a la documentación que existe tanto por parte de Mozilla como del sitio w3schools**
+
+### Trabajar con datos remotos o externos
+
+#### Obtener datos con fetch
+
+Con JavaScript podemos conectarnos a datos remotos o a archivos con datos que tengamos almacenados localmente. De hecho, esta es una característica muy recurrente en casi todos los sistemas, aplicaciones o páginas web que vayas a desarrollar. Probablemente hayas escuchado que hay muchos servicios en Internet que te ofrecen algo llamado API, esto es un mecanismo para que puedas consumir sus datos. Por ejemplo, servicios como Spotify, YouTube, Flickr, etc., tienen disponible ese tipo de API y, de hecho, muchos sistemas también que no son tan públicos tendrán disponible este tipo de sistemas, para lo cual será necesario que tengas un mecanismo para conectarte.
+
+Lo siguiente es un ejemplo compuesto por un HTML que tiene una sección llamada contenerdo y un botón, y código de JS con el cual se interactuara con los elementos del HTML.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            border-top: 2px solid #ccc;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-shadow: 5px 5px 5px #ccc;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            font-weight: bold;
+            background-color: steelblue;
+        }
+    </style>
+</head>
+<!--El cuerpo contiene el botón al que se le aplica el estilo anterior-->
+<body>
+    <button id="boton">Traer datos</button>
+    <div id="contenedor">
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+var boton = document.getElementById('boton');
+var contenedor = document.getElementById('contenedor');
+var posts = null;
+/*Al presionar sobre el botón, */
+boton.addEventListener('click', function () {
+
+    /*fetch es un método que recibe la URL o link donde se encuentren los datos que se quieren consumir. Este método trabaja en base a promesas, pero ¿qué es una promesa? Todos hemos hecho una promesa alguna vez donde a quien le hacemos la promesa se queda esperando hasta que nosotros la hagamos porque confía que en algún momento nosotros la cumplamos. Lo mismo va a suceder con los datos, los datos van a trabajar con promesas, dado que van a solicitar la información a algún servicio remoto y van a quedar a la espera de esos datos.*/
+
+    fetch('http://jsonplaceholder.typicode.com/posts') // Desde la URL se extrae un JSON que contiene los parametros a utilizar (userId, id, title y body)
+
+    /*Lo que sigue es un preformateo de los datos, lo cual es algo que siempre hay que hacer cuando se trabaja con el método fetch*/
+    
+    .then(data => data.json()) /*.then es un método que hace referencia a "Luego de que...", en este caso luego de que se obtengan los datos, se ejecuta cierta acción. La arrow function anterior lo que hace es transformar la data recibida en un archivo .json. Cada nuevo .then es una nueva promesa.*/
+
+    .then(data => {
+        posts = data;  // Se asigna el contenido de data a la variable posts
+        mostrarDatos(posts)  // Se pasa el contenido de post a la función mostrarDatos
+    })
+
+});
+
+/*Función que genera de forma dinámica los elementos que irán en el cuerpo del HTML*/
+function mostrarDatos(posts) {
+    posts.map((post, i) => {
+        /*Se almacena la creación de una título h1 y un parrafo p en variables titulo y contenido*/
+        let titulo = document.createElement('h1');
+        let contenido = document.createElement('p');
+
+        /*Se crea un titulo de forma dinamica conteniendo el indice (i + 1), un guión y el título (post.title) que trae el objeto correspondiente al indice de la iteración*/        
+        titulo.innerHTML = (i + 1) + " - " + post.title;
+
+        /*Se crea un parrafo con el atributo body proveniente del JSON*/
+        contenido.innerHTML = post.body;
+
+        /*Se agrega tanto el título como el contenido a la sección <div id="contenedor"> </div> del HTML*/
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(contenido);
+    })
+}
+```
+
+#### Trabajar con promesas en JavaScript
+
+Los siguiente bloques de código son el código HTML y CSS necesario para que en el navegador un botón al ser presionado, traiga todos el texto y las imagenes de banderas desde dos url distintos, todo esto gracias a la implementación de JS en el botón.
+
+```html
+<!--Código HTML para practicar promesas-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            border-top: 2px solid #ccc;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-shadow: 5px 5px 5px #ccc;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            font-weight: bold;
+            background-color: steelblue;
+        }
+
+        img {
+            border: 1px solid gray;
+            margin: 5px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="boton">Traer datos</button>
+    <h1>Banderas</h1>
+    <div id="banderas">
+
+    </div>
+    <hr>
+    <h1>POSTS</h1>
+    <div id="contenedor">
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+/*Código JS para practicar el uso de promesas*/
+var boton = document.getElementById('boton');
+var contenedor = document.getElementById('contenedor');
+var contBanderas = document.getElementById('banderas');
+
+// Al clickear el botón del códgio HTML se ejcuta el código
+boton.addEventListener('click', function () {
+    
+    getPosts() // Trae todos los post y gracias a que getPosts() retorna una promesa da la posibilidad de utilizar una promesa
+        .then(data => data.json()) // Se formatea la información para que quede en formato JSON
+         // Luego del formateo, se reciben los datos
+        .then(posts => {
+            mostrarDatos(posts);
+            //Una promesa puede retornar un promesa y así sucesivamente
+            return getCountries(); // Esto genera una nueva promesa
+        })
+        .then(data => data.json()) // Se formatea la información para que tenga formato JSON
+        .then(countries => {
+            mostrarBanderas(countries); // Muestra la información de las countries
+        });
+
+});
+
+// Función que obtiene datos desde la url indicada, retorna una promesa
+function getPosts() {
+    return fetch('http://jsonplaceholder.typicode.com/posts');
+}
+
+// Se importan los datos de los paises desde la URL indicada, retorna una promesa 
+function getCountries() {
+    return fetch('https://restcountries.eu/rest/v2/all');
+}
+
+// Muestra todo lo relacionado a Countries en modo de imagen en el HTML. Lee donbde se encuentra una bandera y genera una imagen
+function mostrarBanderas(countries) {
+    contBanderas.innerHTML = '';
+    countries.map((country, i) => {
+        let bandera = document.createElement('img');
+        bandera.src = country.flag;
+        bandera.width = '20';
+        bandera.height = '20';
+        contBanderas.appendChild(bandera);
+    })
+}
+
+// Muestra todo el contenido de los POST
+function mostrarDatos(posts) {
+    contBanderas.innerHTML = '';
+    posts.map((post, i) => {
+        let titulo = document.createElement('h1');
+        let contenido = document.createElement('p');
+
+        titulo.innerHTML = (i + 1) + " - " + post.title;
+        contenido.innerHTML = post.body;
+
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(contenido);
+    })
+}
+```
+#### Manejo de los errores en Javascript
+
+Muchas veces nos vamos a enfrentar a errores y errores que no van a depender de nosotros. Por ejemplo, ¿qué sucede si los servicios que estamos consumiendo no están disponibles o los datos en algún momento se malformaron y no llegó bien la información? ¿O simplemente no tenemos acceso a Internet y, por tanto, no podemos consumir datos? Bueno, también es muy importante que podamos manejar los errores y reaccionar ante ellos.
+
+Para capturar errores al momento de utilizar fetch y promesas se utiliza el método `.catch()`, el cual recibe una *arrow function*
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            border-top: 2px solid #ccc;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-shadow: 5px 5px 5px #ccc;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            font-weight: bold;
+            background-color: steelblue;
+        }
+
+        img {
+            border: 1px solid gray;
+            margin: 5px;
+            background-color: #ccc;
+        }
+        
+        /*Regla para la etiqueta que tiene como id="mensaje"*/
+        #mensajes {
+            width: 90%;
+            height: 50px;
+            margin: 0 auto;
+            background-color: lightcoral;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+        }
+        /*La clase hide hace que cualquier elemento HTML con esta clase, se oculte cuando carga la página */
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="boton">Traer datos</button>
+    <!--En el caso de exista un error, la información del error se irá a la división div-->
+    <div id="mensajes" class="hide"></div>
+    <h1>Banderas</h1>
+    <div id="banderas">
+
+    </div>
+    <hr>
+    <h1>POSTS</h1>
+    <div id="contenedor">
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+var boton = document.getElementById('boton');
+var mensajes = document.getElementById('mensajes');
+var contenedor = document.getElementById('contenedor');
+var contBanderas = document.getElementById('banderas');
+
+boton.addEventListener('click', function () {
+    getPosts()
+        .then(data => data.json())
+        .then(posts => {
+            mostrarDatos(posts);
+            return getCountries();
+        })
+        .then(data => data.json())
+        .then(countries => {
+            mostrarBanderas(countries);
+        })
+        // El método catch captura todos los errores que suscedan
+        .catch(error => {
+             mensajes.classList.toggle('hide'); // .toggle remueve o agrega algo según se requiera. En este caso remueve la clase hide
+             mensajes.innerHTML = error; // En el div antes definido en el HTML se mostrará el error que haya ocurrido
+             setTimeout(() => mensajes.classList.toggle('hide'), 6000); /*Luego de 6 segundos, el mensaje desaparece porque se agrega la clase hide otra vez con .toggle()*/
+        })
+});
+
+function getPosts() {
+    return fetch('http://jsonplaceholder.typicode.com/posts');
+}
+
+function getCountries() {
+    return fetch('https://restcountries.eu/rest/v2/allm'); //Se le agrego una m al final para provocar un error que mostrar
+}
+
+function mostrarBanderas(countries) {
+    contBanderas.innerHTML = '';
+    countries.map((country, i) => {
+        let bandera = document.createElement('img');
+        bandera.src = country.flag;
+        bandera.width = '20';
+        bandera.height = '20';
+        contBanderas.appendChild(bandera);
+    })
+}
+
+function mostrarDatos(posts) {
+    contBanderas.innerHTML = '';
+    posts.map((post, i) => {
+        let titulo = document.createElement('h1');
+        let contenido = document.createElement('p');
+
+        titulo.innerHTML = (i + 1) + " - " + post.title;
+        contenido.innerHTML = post.body;
+
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(contenido);
+    })
+```

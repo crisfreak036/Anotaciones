@@ -2712,3 +2712,162 @@ function mostrarDatos(posts) {
         contenedor.appendChild(contenido);
     })
 ```
+
+### Programación orientada a objetos
+
+La programación orientada a objetos es un tema fascinante, porque nos facilitará mucho del trabajo que tenemos que hacer cuando estemos programando.
+
+#### Trabajar con clases en laprogramación orientada a objetos
+
+Los siguiente es la sintaxis más común con la que se trabajan las clases.
+
+```js
+
+/*Esta es la sintaxis con la que se define una clase*/
+class Pantalla {
+    constructor() {
+
+    }
+}
+
+/*Tanto tvSala como tvHabitacion son objetos del tipo Pantalla
+Para generar una nuevo objeto del tipo Pantalla, se debe utilizar 
+la palabra new seguida de la clase a la que pertenecerá el objeto*/
+const tvSala = new Pantalla(); // Declaración objeto
+const tvHabitacion = new Pantalla();
+```
+
+#### Objetos: sus métodos y sus propiedades
+
+En la programación orientada a objetos, las clases son el elemento base que se necesita para poder comenzar con este paradigma. Ahora, también se requieren de otros elementos, como son las propiedades y como son los métodos. Las propiedades van a describir al objeto que estamos creando y los métodos le van a dar vida. Es como si fuera una persona. Las propiedades son su color de piel, su color de cabello, su estatura, su peso. Y los métodos son las cosas que puede hacer, por ejemplo, puede caminar, puede brincar, puede correr, puede sentarse, etc. Entonces, lo que estamos haciendo con la programación orientada a objetos es hacer una analogía o una metáfora de la vida real pero en un código, es decir, en la computadora.
+
+```js
+
+class Pantalla {
+    /*En el constructor se colocan las propiedades necesarias para que el objeto se inicialice*/
+    constructor(marca, modelo, pulgadas) {
+        /*El dato entregado en la declaración de un obejto se asignan al objeto utiilizando el obejeto this. (hace referencia a la instancia que se está trabajando)*/
+        this.marca = marca; // Propiedad
+        this.modelo = modelo; // Propiedad
+        this.pulgadas = pulgadas; // Propiedad
+    }
+    /*Método*/
+    encendido() {
+        console.log(`La pantalla ${this.marca} se ha encendido`);
+    }
+
+    /*Los métodos de un obejto no necesitan la palabra reservada function para declararlos. Para utilizar los métodos, se debe escribir lo siguiente:
+    objeto.metodo()*/
+    /*Método*/
+    volumen() {
+        console.log(`El volumen se ha modificado`); // Acciones que realizará el método del objeto
+    }
+    /*Método*/
+    info() {
+        console.log(`La pantalla ${this.marca} de modelo ${this.modelo} es de ${this.pulgadas} pulgadas`);
+    }
+    /*En el caso que se quiera asignar nuevas propiedades al objeto sin estos estar declarados en el constructor, se debe hacer un método set propiedad(valor){} y si se quiere poder acceder a ese dato, se debe crear un método get propiedad(){return this.propiedad}
+    
+    Para poder setear la nueva propiedad, se debe escribir lo siguiente: objeto.nuevaPropiedad = valor;
+    Para obtener el valor de la nueva propiedad, se debe escribir lo siguiente: objeto.nuevaPropiedad;
+     */
+
+    set peso(value) {
+        this.kgs = value.trim();
+    }
+
+    get peso() {
+        return this.kgs;
+    }
+}
+
+const tvSala = new Pantalla('Master', 'Oasis', 55); // Declaración del obejto pantalla con sus propiedades 
+const tvHabitacion = new Pantalla('Origin', 'Artemis', 80);
+```
+
+#### Herencia de métodos y propiedades
+
+Cuando trabajamos con programación orientada a objetos, muchas veces creamos plantillas o clases muy genéricas. Y este tipo de clases nos van a servir porque a partir de estas se van a derivar otras clases, es decir, vamos a tener clases padre y vamos a tener clases hijo.
+
+Teniendo dos clases, estás pueden ser independiente una de la otra pero, si se quiere que la segunda clase **extienda** de la primera, o sea, que herede tanto sus métodos como sus propiedades, se debe utilizar la palabra reservada `exteds` seguida de la clase desde la cual se heredan los métodos y propiedades. Ejemplo de lo anterior sería:
+
+```js
+class claseHija extends clasePadre{
+    constructor(propiedadConstructoraPadre,propiedadUno, propiedadN){
+        super(propiedadConstructuraPadre)
+        this.propiedadUno = propiedadUno;
+        this.propiedadN = propiedadN;
+    }
+
+    metodoUno(){
+        // código
+    }
+
+    metodoDos(){
+        // código
+    }
+
+    get propiedadUno(){
+        return this.propiedadUno
+    }
+}
+```
+
+Cabe destacar que existe una palabra reservada llamada `static` la cual permite que un método (investigar que más) sea accesible sin la necesidad de crear una instancia de la clase, lo cual permite que se pueda llamar sólo con el nombre dado a la plantilla de la clase. 
+
+```js
+/*Clase padre llamada Producto*/
+class Producto {
+    constructor(numSerie) {
+        this.numSerie = numSerie;
+        this.tiempoGarantia = 100;
+    }
+
+    /*La palabra reservada static hace que el metodo infoTienda() este disponible aunque no se genere una nueva clase*/
+    static get infoTienda() {
+        console.log(`Productos de la tienda Patito Inc`);
+    }
+
+    set garantia(value) {
+        this.tiempoGarantia -= value;
+    }
+
+    get garantia() {
+        return this.tiempoGarantia;
+    }
+}
+
+/*Clase hija proveniente de la clase padre Producto*/
+class Pantalla extends Producto  {
+    constructor(numSerie, marca, modelo, pulgadas) {
+        super(numSerie) // Super constructor que hace referencia al constructor de la clase padre, lo que implica que es necesario que la clase hijo, reciba las propiedades necesarias establecidas por el constructor del padre.
+        this.marca = marca;
+        this.modelo = modelo;
+        this.pulgadas = pulgadas;
+    }
+
+    encendido() {
+        this.garantia = 1;
+        console.log(`La pantalla ${this.marca} se ha encendido`);
+    }
+
+    volumen() {
+        console.log(`El volumen se ha modificado`);
+    }
+
+    info() {
+        console.log(`La pantalla ${this.marca} de modelo ${this.modelo} es de ${this.pulgadas} pulgadas`);
+    }
+
+    set peso(value) {
+        this.kgs = value.trim();
+    }
+
+    get peso() {
+        return this.kgs;
+    }
+}
+
+const tvSala = new Pantalla('13579','Master', 'Oasis', 55);
+const tvHabitacion = new Pantalla('24680','Origin', 'Artemis', 80);
+```

@@ -3005,3 +3005,29 @@ function mostrarDatos(posts) {
     })
 }
 ```
+
+### Despedida del curso JS esencial
+
+El alcance que tiene JavaScript en la actualidad es bastante grande, y todo lo que has aprendido a lo largo de este curso te servirá para que puedas comenzar y puedas trabajar con este lenguaje. Pero es muy importante que conozcas algunas de las herramientas más importantes y conocidas que te pueden servir o con las cuales te encontrarás en el camino.
+
+#### Consideraciones generales con JS
+
+- **Node.js:** Node es un entorno para poder trabajar en servidor pero con JavaScript, así entonces podemos ejecutar código de JavaScript como si ejecutaras código de Java o código de PHP o código de algún otro tipo de lenguaje.
+
+- **Webpack:** Actualmente tenemos muchos archivos con los cuales vamos a trabajar y Webpack nos permite empaquetar todo en muy pocos archivos o incluso, en ciertas circunstancias, en un solo archivo. Entonces, las recomendación es: aprende y conoce sobre este empaquetador para que puedas agilizar tu trabajo. 
+
+- **ESLint:** Si estás escribiendo mal una sintaxis o tienes algún error que desees solucionar, esta herramienta te dará las claves para que puedas agilizar ese proceso.
+
+- **TypeScript:** TypeScript es un transpilador. ¿Qué es eso? Hay muchas características que existen y que se van agregando a JavaScript pero que no todos los navegadores soportan. La labor de TypeScript es hacer un transpilado, es decir, convertir este código, con todas las cosas nuevas que casi todos los navegadores no soportan, a un código que realmente pueda soportarlo. Esto es posible gracias a TypeScript. 
+
+- **Frameworks:** AngularJS, React o Vue, que te van a permitir a ti trabajar de una manera más ágil con el lenguaje. Estos no son más que "frameworks" que te van a facilitar tu labor como programador.
+
+- **Desarrollo de aplicaciones nativas:** Si te animas a trabajar con algunas aplicaciones nativas tendrás algunas herramientas como NativeScript o como Ionic. 
+
+El alcance de JavaScript es tan grande que también podemos **trabajar con bases de datos**, es decir, podemos integrar muchas cosas de JavaScript a bases de datos, como es el caso de **MongoDB cuando trabajamos en ella con archivos de tipo JSON**. Pero, bueno, como te das cuenta, el universo que maneja JavaScript es bastante amplio y hay muchas líneas de especialización. Mi recomendación es: trata de conocerlas todas y de utilizar siempre muy buenas prácticas para que puedas adaptar cualquiera de ellas sin ningún problema.
+
+#### Conclusiones y despedida del curso JS esencial
+
+Este curso llegó a su fin, pero no te preocupes, hay mucho JavaScript por delante. A lo largo de este curso, pudiste aprender muchas cosas. Por ejemplo, desde trabajar con estructuras de control y variables como, por ejemplo, en el ciclo'for' donde pudiste aprender cómo iterar sobre una colección de datos. También aprendiste sobre la manera tradicional de crear una función y también cómo crear funciones anónimas o las llamadas "arrow functions", que será un recurso muy necesario en todos tus desarrollos. Incluso llegamos a utilizar algunos métodos más simples, pero a la vez sofisticados, para buscar contenido dentro de un arreglo, como cuando trabajábamos con el método'find'. Y creo que uno de los ejercicios que más disfrutamos fue cuando nos conectamos a datos remotos. Sí, cuando pulsábamos un botón y nos traíamos una colección de "posts" y una colección de banderas de servicios que estaban en otro servidor. Creo que todos estos ejercicios y ejemplos que estuvimos viendo alrededor del curso te serán muy útiles en tu labor como programador. No olvides siempre consultar este contenido para que puedas tener a la mano toda la información que necesites cuando estás trabajando y, aun así, siempre aprender más sobre JavaScript y documentarte en Internet. Hay muchísima información ahí afuera que puede servir y muchas herramientas que se generan y actualizan día a día. JavaScript es un gran lenguaje, y si estás aquí tienes un gran futuro como programador. Muchas gracias.
+
+**TODO LO QUE HAY EN ESTA SECCIÓN PROVIENE DE APUNTES PROPIOS DE CRISTOPHER SOTO Y LAS TRANSCRIPCIONES DEL CURSO JAVASCRIPT ESENCIAL IMPARTIDO POR SERGIO BRITO EN LINKEDIN LEARNING**

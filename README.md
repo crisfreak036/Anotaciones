@@ -10,4 +10,5 @@ Actualmente las anotaciones incompletas son:
 
 Anotaciones completas: 
 
-- Ninguna hasta ahora
+- Curso **Aprende Visual Studio Code** del curso *Conviértete en desarrollador web full-stack LinkedIn*
+- Curso de **JavaScript esencial** del curso *Conviértete en desarrollador web full-stack LinkedIn* 

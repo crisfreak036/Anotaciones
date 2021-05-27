@@ -2871,3 +2871,137 @@ class Pantalla extends Producto  {
 const tvSala = new Pantalla('13579','Master', 'Oasis', 55);
 const tvHabitacion = new Pantalla('24680','Origin', 'Artemis', 80);
 ```
+
+### Solución y manejo de errores en JS
+
+#### Manejo de errores en JS
+
+Para manejar los errores en JS, existe una estructura llamada *try and catch* (se escribe como un if/else anidado) la cual se compone por un bloque *try* en el cual se escribirá todo el código que quiera ser probado, y un bloque *catch*, en el cual se pondrá el código que ayudará a mostrar e identificar el error que exista en el código del bloque *try*
+
+```js
+/*Ejemplo sencillo de la estructura try and catch*/
+try {
+    var array = new Array(10000000000); // Error de largo del arreglo
+} catch (error) {
+    console.log(error) // Muestra el error en consola
+}
+```
+
+```js
+/*Ejemplo sencillo dos de la estructura try and catch*/
+try {
+    var x=y; // Variable y no se encuentra definida
+} catch (error) {
+    console.log(error) // Muestra el error en consola
+}
+```
+
+Los errores (el `error` del bloque *catch*) se componen por un `error.message` y `error.name` los cuales también pueden ser utilizados por separados.
+
+```js
+try {
+    decodeURIComponent("http://%ominio.com");
+} catch (error) {
+    console.log(error.message) // Muestra por consola el mensaje del error
+    console.log(error.name) // Muestra por consola el nombre del error
+}
+```
+
+#### Generación de errores personalizados con JS
+
+Cuando nos enfrentamos a una nueva aplicación o un nuevo proyecto, lo que tenemos que hacer primero generalmente es planear cuáles van a ser todos los flujos de datos que se van a seguir en nuestra aplicación. Pero algo que olvidamos generalmente hacer es planear también los errores. ¿Por qué planear los errores? Porque también es muy importante que le puedas decir tú al usuario en que está mal y así el usuario tenga la facilidad de resolver o corregir sus datos de entrada ante el sistema que tú hayas hecho. Para esto, nosotros podemos trabajar con errores personalizados. Así, una vez que tú tengas identificados todos los posibles errores que lleguen a suceder puedas lanzar mensajes adecuados ante cada situación. 
+
+Para generar un error personalizado se utiliza la palabra reservada `throw` (la cual hace referencia a la detonación de algo) y el objeto *Error* que se define como `new Error("Aquí va el mensaje de error")`. En el siguiente bloque de código se muestra como quedría en JS la implementación de lo que se explicó anteriormente.
+
+```js
+throw new Error("Aquí ve el mensaje del error personalizado")
+```
+
+La creación de errores personalizados permite que los bloques de código *catch* puedan obtener el error relacionados al código que se está probando.
+
+```js
+var valor1 = 10;
+var valor2 = 20;
+
+try {
+    /*Si la condición se cumple entrega un mensaje. Cualquier otro resultados falso se considera un error*/
+    if (valor1 > valor2) {
+        console.log(`Mensaje de validación: ${valor1} si es mayor que ${valor2}`); 
+    } else {
+        throw new Error(`${valor1} no es mayor que ${valor2} :(`)
+    }
+
+} catch (error) {
+    console.log(error);
+}
+```
+
+De esta manera, se pueden detonar cuantos errores se necesiten, no hay un delimitante, aunque se recomienda que se planeen adecuadamente para no saturar de mensajes innecesarios al usuario.
+
+#### Depurar código en JS
+
+La base de toda aplicación o de todo desarrollo en el cual estaremos trabajando siempre es la correcta planeación. Es decir, nosotros debemos planear, previamente a escribir el código, cuál va a ser el algoritmo que vamos a estar utilizando. Para esto, puedes utilizar una hoja de papel e ir escribiendo todos los pasos que se van a ir detonando en tu aplicación. Una vez que nosotros tenemos estos pasos bien definidos, entonces ya pasamos a la parte de escribir código. La parte más difícil de la programación no es escribir el código o aprender un nuevo lenguaje. De hecho, es la generación de ese algoritmo que te va a permitir solucionar un problema. Cuando tú ya estás trabajando en el código y terminaste tu algoritmo correctamente, entonces viene la etapa de pruebas y comienzas a tratar de ejecutar tu aplicación. Muchas veces, puedes encontrarte con problemas. Tal vez lo hayas planeado correctamente en el papel, pero algo en la escritura salió mal, entonces es cuando nosotros necesitamos depurar nuestra aplicación o "debuggear" nuestra aplicación, es decir, encontrar errores que muy probablemente hayamos dejado pasar por alto. Para lo anterior, existe el navegador, en el caso de google chrome (navegadores basados en chromium), existe una pestalla llamada *Sources*, en donde se puede ejecutar y probar todo el código de la aplicación. 
+
+Para saber si algo sucede dentro del código, el navegador entrega lo que se denomina *breakpoint*, los cuales son puntos en tu programa que te van a permitir detener la ejecución en ese momento para que tú puedas hacer pruebas. Para generar un breakpoint, se debe presionar sobre el numero de la línea de código en la cual se quiere establecer el breakpoint. Con la tecla *Esc* se puede abrir la consola, con la cual se trabajará para hacer cosas con el programa. Cuando se ejecuta el programa, en el debugger se observará la pausa en el breakpoint y en los costados se podrá ver información relacionada a la línea de código en la cual se estableció el breakpoint.
+
+**Seguir desarrollando**
+
+#### Uso del debugger
+
+A veces, nuestro código va a ser muy grande, es decir, vamos a tener demasiadas líneas de código que hacen que si utilizamos esta opción que tenemos en pantalla para utilizar el "debugger" hagan el proceso demasiado complicado. Por lo cual, nosotros tenemos una palabra reservada llamada'debugger' que podemos utilizar con Google Chrome, y esto es que nosotros, en el momento que deseemos, en nuestro programa podemos utilizarla para que se detenga en la ejecución, esto sin necesidad de tener escrito un "breakpoint", el cual, nosotros, como habíamos visto, podemos agregar en cualquier momento y si lo queremos quitar, bueno, damos también un clic sobre este "breakpoint" y se elimina.
+
+```js
+var boton = document.getElementById('boton');
+var contenedor = document.getElementById('contenedor');
+var contBanderas = document.getElementById('banderas');
+
+boton.addEventListener('click', function () {
+    getPosts()
+        .then(data => data.json())
+        .then(posts => {
+            mostrarDatos(posts);
+            return getCountries();
+        })
+        .then(data => data.json())
+        .then(countries => {
+            mostrarBanderas(countries);
+        });
+});
+
+function getPosts() {
+    return fetch('http://jsonplaceholder.typicode.com/posts');
+}
+
+function getCountries() {
+    return fetch('https://restcountries.eu/rest/v2/all');
+}
+
+function mostrarBanderas(countries) {
+    contBanderas.innerHTML = '';
+    countries.map((country, i) => {
+        let bandera = document.createElement('img');
+        bandera.src = country.flag;
+        bandera.width = '20';
+        bandera.height = '20';
+        contBanderas.appendChild(bandera);
+    })
+}
+
+function mostrarDatos(posts) {
+    contBanderas.innerHTML = '';
+    posts.map((post, i) => {
+        
+        debugger; // El debugger del navegador se detiene para saber que sucede con los posts
+        
+        let titulo = document.createElement('h1'); // Cada stepover que se haga en el navegador, mnostrará lo que sucede al ejecutarse la siguiente línea de código.
+        let contenido = document.createElement('p');
+
+        titulo.innerHTML = (i + 1) + " - " + post.title;
+        contenido.innerHTML = post.body;
+
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(contenido);
+        /*En el caso de que se quiera continuar la ejecución de todo el código, hay que presionar de forma prolongada el botón play "Resume script execution" para presionar en en el otro botón play que permite continuar la ejecución sin pausas*/
+    })
+}
+```

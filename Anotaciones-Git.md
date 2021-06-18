@@ -492,7 +492,7 @@ Para aceptarlo parcialmente se hace lo siguiente:
 
 Con los cambios solicitados ya realizados por los autores de los mismos, solo queda aprobar el *Pull Request* y luego hacer un merge (se hace un squash merge en el caso de que se quieran eliminar commits, eso se hace por temas de limpieza).
 
-## Actualizando nuestro Fork
+### Actualizando nuestro Fork
 
 Esto se utiliza cuando no se da acceso directo al repositorio central (original) en donde alguien realiza un *Fork* para trabajar de forma aislada. Lo anterior tiene un problema y es que si otro integrante del proyecto hace cambios en su *Fork* y luego los sube al repositorio principal, nuestro *Fork* queda desactualizado y eso puede provocar futuros conflictos por lo cual ¿Cómo actualizamos nuestro *Fork*?.
 
@@ -503,3 +503,25 @@ Esto se utiliza cuando no se da acceso directo al repositorio central (original)
 3. Ya con el repositorio local actualizado queda realizar un `git push origin master` para actualizar el repositorio clonado con *Fork* que se encuentra en nuestra cuenta de GitHub.
 
 **Los pasos anteriores se deben realizar cada vez que un *Pull Request* haya sido aceptado en el repositorio central (upstream)**.
+
+### Flujo de Trabajo
+
+En una empresa, es común que exista un solo repositorio en el cual se trabaje, por lo cual, hacer commits directamente a la rama master por todos los integrantes del equipo de desarrollo, provocará la exitencia de muchos conflictos, es por esto que existe algo llamado **_Feature branch_**, la cual es la rama en la cual se incroporan las nuevas caracteristicas que posiblemente irán en el programa, o sea, se incluirán a la rama principal.
+
+Para revisar el trabajo realizado por otros compañeros hay que utilizar los siguientes comandos:
+
+```
+git fetch
+git branch -a
+git checkout rama-compañero-trabajo
+```
+
+De esta forma, cualquier compañero de trabajo puede realizar el push de los cambios que se hayan hecho en la rama de trabajo en la cual otro compañero está trabajando. Para realizar lo anterior hay que utilizar los siguiente comandos:
+
+```
+git checkout master
+git merge rama-compañero-trabajo
+git push
+``
+
+Existe otra forma que ayuda realizar lo anterior utilizando los _Pull Request_, de esta forma todo el equipo de trabajo se entera de los cmabios y entre todos se discuten. El _Pull Request_ se hace con el comando `git push origin rama-no-master`

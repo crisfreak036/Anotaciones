@@ -522,6 +522,20 @@ De esta forma, cualquier compañero de trabajo puede realizar el push de los cam
 git checkout master
 git merge rama-compañero-trabajo
 git push
-``
+```
 
 Existe otra forma que ayuda realizar lo anterior utilizando los _Pull Request_, de esta forma todo el equipo de trabajo se entera de los cmabios y entre todos se discuten. El _Pull Request_ se hace con el comando `git push origin rama-no-master`
+
+#### Feature Branch - Flujo de trabajo mediante pull request
+
+1. Los cambios solicitados se hacen y se suben a una rama relacionada a esos cambios. Para eso hay que crear una nueva rama en donde irán los cambios, lo anterior se puede hacer con el siguiente comando `git checkout -b <nombre-rama-cambios>`.
+
+2. Con los cambios ya subidos a la rama creada con anterioridad, hay que subir a GitHub la rama con el siguiente comando `git push origin <nombre-rama-cambios>`
+
+3. En GitHub, existirá una notificación que de aviso de la creación de la rama creada con anterioridad que subió al repositorio y aparcerá la opción de Comparar y hacer un Pull Request.
+
+4. Hay que ver los cambios que se realizaron en la rama de cambios en compración a la rama maestra, para esto hay que dirigirse a Pull Request en GitHub, luego hay que crear un _New pull request_ y en el selector derecho, seleccionar la rama de los cambios.
+
+5. Ya revisado los cambios que se quieren incorporar a la rama maestra, hay que crear el nuevo _Pull Request_ con los comentarios que uno quiera.
+
+6. Finalmente hay que espera a que acepten los cambios. Si unmo es quien acepta los cambios, se recomienda borrar la rama desde donde venían los cambios en GitHub cuando se acepta el _Pull Request_, también quien hizo los cambios debe borrar la rama local con el comando `git branch -d <nombre-rama-cambios>`.

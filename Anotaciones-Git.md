@@ -539,3 +539,35 @@ Existe otra forma que ayuda realizar lo anterior utilizando los _Pull Request_, 
 5. Ya revisado los cambios que se quieren incorporar a la rama maestra, hay que crear el nuevo _Pull Request_ con los comentarios que uno quiera.
 
 6. Finalmente hay que espera a que acepten los cambios. Si unmo es quien acepta los cambios, se recomienda borrar la rama desde donde venían los cambios en GitHub cuando se acepta el _Pull Request_, también quien hizo los cambios debe borrar la rama local con el comando `git branch -d <nombre-rama-cambios>`.
+
+#### Feature Branch - Revisando el trabajo de otros compañeros
+
+**Nota: Se peuden crear nuevas ramas en GitHub desde el buscador de ramas**
+
+1. Como siempre, hay que hacer un `git pull` antes de trabajar, lo anterior se hacer sabiendo o no que uno de nuestros compañeros añadió una nueva rama con cambios al repositorio central. En el caso de que no se haya realizado el _Pull_ de ninguna rama, se puede utilizar el comando `git pull --all` que traerá todo lo nuevo que exista en el repositorio central, si lo anterior no trae ninguna rama es porque no existen nuevas ramas con cambios en el repositorio central.
+
+2. Ahora, para revisar las ramas que se trajeron con el _Pull_ anterior, hay que utilizar el comando `git branch -a`.
+
+3. Sabiendo la rama que se quiere revisar, hay que moverse a ella para que se añada un remote que mantendrá seguimiento a los cambios que se hagan en esa rama, lo anterior se realiza utilizando el comando `git checkout <nombre-rama-cambios>`. Para asegurarnos que nos encontramos en esa rama, se puede utilizar el comando `git status` que nos mostrará en que rama nos encontramos.
+
+4. Si es necesario, nosotros dentro de la rama podemos hacer cambios a los archivos de la rama de nuestro compañero y de igual forma, podemos hacer un push de esos cambios a la rama de él.
+
+5. Desde GitHub se actualizará el _Pull Request_ con los cambios realizados por nosotros y ahora sólo queda esperar a que los revisen y los acepten. Ya aceptados, no olvidar cambiar a la rama master y actualizarla con los cambios provenientes del _Pull Request_.
+
+6. En el caso de desearlo, se pueden eliminar las ramas que se crearon para los cambios utilizando el comando `git branch -d <nombre-rama-cambios>`, en el caso de no servir se puede cambiar la `-d` por `-D`.
+
+En el caso de que se quieran eliminar los remotos de ramas en las que hemos trabajado de manera local de debe utilizar el comando `git push origin :<nombre-rama-cambios>`. En el caso de el comando de error porque el remoto no existe debido a que se borró desde GitHub, hay que utilizar el siguiente comando `git remote prune origin`.
+
+#### Creando Tags y subirlos a GitHub
+
+Antes que nada hay que responder a la siguiente pregunta ¿Cuándo es buen momento para hacer un tag?. La respuesta es **cada vez que se haga suba un cambio a la rama de producción**. Debido a lo anterior es importante saber como hacer un tag y subirlo a GitHub.
+
+1. Para crear un _tag_ se debe utilizar el siguiente comando `git tag -a <versión-del-programa> -m "<comentario>"`. Se recomienda que las versiones tengan la letra _v_ al inicio, y tres números separados por puntos que harán referencia a la _verisón con grandes cambios_,_versión de pequeños cambios o solución de errores_ y _verisón con pocos cambios o aplicación de corrección de software_, a lo anterior se le puede sumar una letra al final que haga referencia a la establidad de la versión, en resumen sería v._cambio mayor_._cambio menor_._parche_, ejemplo de lo anterior sería **v1.0.0**. Para más información se puede ingresar a [Versionado Semántico](https://semver.org/lang/es/).
+
+Si se quiere hacer un _tag_ en una versión anterior del programa, se puede utilizar el siguiente comando `git tag -a <versión-del-programa> <hash-commit-seleccionado> -m "<comentario>"`
+
+Si se quiere crear un _tag_ con un comentario mucho más extenso, hay que quitar del comando el `-m "<comentario>` y preisonar _Enter_ directamente, lo que permitirá que se pueda escribir un mensaje más extenso en el _tag_. En el editor de texto **la primera línea es el título del tag**, la segunda línea es la descripción.
+
+2. Para revisar si los _tags_ fueron creados exitosamente, se puede utilizar el comando `git tag`.
+
+3. Para subir los _tags_ a GitHub, hay que utilizar el comando `git push --tags`

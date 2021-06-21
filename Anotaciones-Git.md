@@ -571,3 +571,5 @@ Si se quiere crear un _tag_ con un comentario mucho más extenso, hay que quitar
 2. Para revisar si los _tags_ fueron creados exitosamente, se puede utilizar el comando `git tag`.
 
 3. Para subir los _tags_ a GitHub, hay que utilizar el comando `git push --tags`
+
+**Si existe una _tag_ desde una rama que no sea master que se haya subido a GitHub, aunque se elimine su rama tanto de forma local como remota, el _tag_ queda en GitHub en el estado que en aquel momento se hizo.**

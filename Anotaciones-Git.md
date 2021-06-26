@@ -573,3 +573,13 @@ Si se quiere crear un _tag_ con un comentario mucho más extenso, hay que quitar
 3. Para subir los _tags_ a GitHub, hay que utilizar el comando `git push --tags`
 
 **Si existe una _tag_ desde una rama que no sea master que se haya subido a GitHub, aunque se elimine su rama tanto de forma local como remota, el _tag_ queda en GitHub en el estado que en aquel momento se hizo.**
+
+#### Releases - Versiones de producción completa
+
+Existen dos ventajas principales para los releases en comparación a los _tags_:
+
+1. Permite compartir archivos binarios sin la necesidad de que GitHub los revise.
+
+2. Se puede proveer una información adicional sobre el uso del _releases_ en particular, o sea, una descripción más extensa _release_.
+
+Para transformar un _tag_ en un _release_ hay que elegir el _tag_ y presionar en _Edit tag_, de esa forma se puede agegar el título del _release_ y la descripción, además de adjuntar archivos o binarios. Cabe mencionar que se puede tranformar en un _pre-release_, o sea, que en algún punto dejará de ser considerada de producción, de todas formas puede ser cambiado por un _release_ como tal editandolo tal cual como si fueramos a transformar un _tag_.

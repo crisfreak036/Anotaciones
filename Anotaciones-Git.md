@@ -583,3 +583,19 @@ Existen dos ventajas principales para los releases en comparación a los _tags_:
 2. Se puede proveer una información adicional sobre el uso del _releases_ en particular, o sea, una descripción más extensa _release_.
 
 Para transformar un _tag_ en un _release_ hay que elegir el _tag_ y presionar en _Edit tag_, de esa forma se puede agegar el título del _release_ y la descripción, además de adjuntar archivos o binarios. Cabe mencionar que se puede tranformar en un _pre-release_, o sea, que en algún punto dejará de ser considerada de producción, de todas formas puede ser cambiado por un _release_ como tal editandolo tal cual como si fueramos a transformar un _tag_.
+
+### GitHub Issues, MileStones y Colaboradores
+
+#### Issues
+
+En el caso de no estar activida, se puede activar desde las configuraciones (_Settings_), también se puede desactivar desde el mismo lugar.
+
+Los _Issues_ no sirven unicamente para resolver problemas, tienen otros usos importantes también. Para iniciar un _Issue_ hay que dirigirse a la sección de _Issues_ de GitHub y presionar en _New Issue_. Cuando se crea un nuevo _Issue_ se recomienda que el título del mismo sea lo más claro posible para que las personas que lo vean entiendan a que se refiere. La creación de _Issues_ se notifica al correo y se puede iniciar un hilo de comentarios al respecto del _Issue_ en GitHub siempre y cuando sea un repositorio publico.
+
+#### Labels
+
+#### Milstones
+
+#### Agregando colaboradores a un repositorio
+
+#### Asociando commits a Issues

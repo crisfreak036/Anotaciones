@@ -3059,3 +3059,31 @@ Uno de los errores más comunes de muchos desarrolladores y diseñadores web de 
 #### Especificación y documentación de JS
 
 Siempre una buena práctica va a ser poder consultar la especificación, documentación o referencias del lenguaje en el que estemos trabajando. Y tal es el caso con JavaScript. Es muy recomendable que puedas entrar directamente al [documento de especificación (ECMAScript 2022)](https://tc39.es/ecma262/) y consultar todas las características que tiene. Muy probablemente aquí puedes resolver muchos problemas que se te presentan día a día. Aunque haya libros bastante especializados sobre algún tema en específico o sobre temas en general de JavaScript, nada se compara a la especificación original del lenguaje. O, por ejemplo, consultar alguna referencia que existe en la web, donde podrás encontrar cuestiones desde cómo se aplican determinadas características de la herramienta, hasta detalles de la librería y estos cómo te van a poder ayudar. La documentación es pieza clave en todo desarrollo web. Por tanto, no le tengas miedo y comienza a ocuparlo, para que puedas conseguir el mayor provecho de todo desarrollo que vayas a trabajar.
+
+### Variables, estructuras y objetos en JS
+
+#### Uso de variables en JS
+
+#### Variables globales en JS
+
+#### Palabras reservadas en JS
+
+#### Cálculos innecesarios con JS
+
+#### Objetos y funciones anónimas en JS
+
+#### For in en JS
+
+#### Validad objetos en JS
+
+#### Expresiones booleanas en JS
+
+#### Operador ternario en JS
+
+#### Igualdad con JS
+
+#### Constructores de obejtos en JS
+
+#### Try and catch en JS
+
+#### Literales en JS

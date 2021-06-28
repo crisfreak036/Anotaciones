@@ -583,3 +583,65 @@ Existen dos ventajas principales para los releases en comparación a los _tags_:
 2. Se puede proveer una información adicional sobre el uso del _releases_ en particular, o sea, una descripción más extensa _release_.
 
 Para transformar un _tag_ en un _release_ hay que elegir el _tag_ y presionar en _Edit tag_, de esa forma se puede agegar el título del _release_ y la descripción, además de adjuntar archivos o binarios. Cabe mencionar que se puede tranformar en un _pre-release_, o sea, que en algún punto dejará de ser considerada de producción, de todas formas puede ser cambiado por un _release_ como tal editandolo tal cual como si fueramos a transformar un _tag_.
+
+### GitHub Issues, MileStones y Colaboradores
+
+#### Issues
+
+##### Abrir un _Issue_
+
+En el caso de no estar activida, se puede activar desde las configuraciones (_Settings_), también se puede desactivar desde el mismo lugar.
+
+Los _Issues_ no sirven unicamente para resolver problemas, tienen otros usos importantes también. 
+
+Para iniciar un _Issue_ hay que dirigirse a la sección de _Issues_ de GitHub y presionar en _New Issue_. Cuando se crea un nuevo _Issue_ se recomienda que el título del mismo sea lo más claro posible para que las personas que lo vean entiendan a que se refiere. 
+
+La creación de _Issues_ se notifica al correo y se puede iniciar un hilo de comentarios publicos al respecto del _Issue_ en GitHub siempre y cuando sea un repositorio publico, de lo contrario sólo los colaboradores del repositorio podrán comentar sobre el _Issue_.
+
+Si un _Issue_ es muy popular, puede provocar que llegue una gran cantidad de notificaciones al correo, es por esto que existe la opción de desuscribirse (_Unsubcribe_) del mismo.
+
+##### Cerrar un _Issue_
+
+Hay varias formas de cerrar un _Issue_:
+
+1. Desde GitHub, entrando al _Issue_ y presionando en _Close Issue_. De esta forma, el _Issue_ queda cerrado pero sigue estando disponible para que colaboradores o personas externas (si es un repositorio publico), puedan seguir comentando al respecto.
+
+Para evitar que personas externas a los colaboradores sigan comentando respecto al _Issue_, es necesario presionar en _Lock conversation_, luego aparecerá una ventana que dirá las cosas que pasarán al bloquear la conversación del _Issue_, finalmente sólo queda presionar en _Lock conversation on this issue_.
+
+2. Una forma automatica de cerrar un _Issue_ sería haciendo el cambio al cual el _Issue_ hace referencia, para esto es necesario hacer el cambio de forma normal pero con la diferencia que al momento de hacer el commit hay que agregar al final del mensaje la palabra _fixes_, _closes_ o _resolves_, además de un _numeral_ propio del _Issue_. Un ejemplo de lo anterior sería: **"...fixes #<número del issue>"**. Cabe mencionar que no sólo los _Issues_ tienen numerales, los _Pull Request_ igual, son únicos y no se repiten, por lo cual, sirven para relacionar un _Issue_ o un _Pull Request_ a un commit.
+
+**Nota: Si un _Issue_ se resuelve y por alguna razón hay otro _Issue_ que hace referencia a lo mismo, se puede comentar en el hilo de comentarios el hash del commit relacionado a la resolución del _Issue_, el cual podrá ser accedido por las personas que vean ese comentario**
+
+##### Asociando commits a Issues
+
+Para asociar un commit ya realizado a un _Issue_, desde GitHub se puede ir al commit deseado y comentar algo añadiendo el numeral del _Issue_ al que se quiere hacer referencia, de esta forma al entrar al _Issue_, existirá una referendia al commit antes comentado para que cualquiera pueda verla. Cabe mencionar que lo anterior también se puede hacer en otros _Issues_.
+
+#### Labels
+
+Sirven para administrar de mejor manera los _Issues_. Para verlos hay que dirigirse a la sección de _Issues_, dentro de ella presionar en _Labels_. Dentro de esa sección, se puede crear, presionalizar o eliminar _Labels_.
+
+Para utilizarlos, hay que agregarlos al momento de crear un nuevo _Isuue_ (de todas formas se pueden agregar a _Issues_ ya creados de la misma forma que se agregan a los nuevos), presionando sobre _Labels_ en el lado derecho de la pantalla del _Issue_ que estamos creando.
+
+Teniendo _Labels_ asociadoss _Issues_, se pueden utilizar para filtrar y saber de que trata el _Issue_ de manera más rápida.
+
+#### Milstones
+
+Son grupos de _Issues_, características o una fecha dentro de un periodo de tiempo que es importante o memorable. La gieuinte imagen muestra ejemplos de como los _Milestones_ pueden ser utilizados.
+
+![Ejemplos-Uso-Milestones](archivos\images\milestones-ejemplos.png)
+
+Para saber más al respecto de los _Milestones_ se recomienda ir a la siguiente página [Matering Issues](https://guides.github.com/features/issues/).
+
+Los _Milestones_ pueden crearse desde la sección que tienen dentro de los _Issues_. Al presionar ahí, en la barra tipo búsqueda se puede ingresar el nombre del _Milestone_ y si no está creado, se puede crear con la opción que nos da GitHub.
+
+Un _Milestone_ puede tener varios _Issues_ anexados, los cuales al irse cerrando, irán llenando una barra de progreso, la cual puede servir como infromación útil para saber el estado de alguna función o caracteristica importante del proyecto.
+
+Por último, cabe mencionar que al igual que los _Isuues_ los _Milestone_ se pueden cerrar.
+
+#### Agregando colaboradores a un repositorio
+
+Antes que nada, hay que mencionar que los colaboradores que se agreguen al repositorio, tendrán control sobre el mismo.
+
+Para agregar un colaborador, hay que ir a _Settings_, luego a _Manage access_ y presionar en _Invite a collaborator_, se abrirá una ventana en la cual hay que buscar al colaborador que se quiere añadir al repositorio para enviarle la invatación a colaborar.
+
+En el caso de que se quiera eliminar a un colaborador, hay que ir a la misma ruta mencionada anteriormente y presionar sobre el ícono de basurero que tiene el colaborador, luego hay que confirmar que se quiera eliminar presionando en _Remove <colaborator's user> from this repository_.

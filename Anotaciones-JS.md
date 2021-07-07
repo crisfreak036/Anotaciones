@@ -753,3 +753,63 @@ console.log(numero == numero2); // true
 console.log(numero === numero2); // false
 /*Se recomienda el uso de la comparación estricta en estos casos ya que a pesar de que JS interpreta que tanto null como undefined son el mismo valor, no tienen el mismo tipo de dato*/
 ```
+
+### Booleans en JavaScript
+
+#### Crear y Comparar Booleans
+```js
+const boolean1 = true; //Valor primitivo true
+const boolean2 = false; //Valor primitivo false
+const boolean3 = "true"; //String true, no booleano
+
+//console.log(boolean1);
+//console.log(boolean2);
+//console.log(boolean1==boolean3); //Muestra un false
+
+//const boolean4 = new Boolean(true); //Objeto no valor primitivo
+//console.log(typeof(boolean4));
+```
+
+#### Más sobre Comparar Booleans
+```js
+const boolean1 = true; //Valor primitivo true
+const boolean2 = false; //Valor primitivo false
+
+console.log(boolean1 == boolean2); //false
+console.log(boolean1 === boolean2); //false
+console.log(boolean1 === true); //true
+console.log(boolean1 === "true"); //false
+```
+
+#### Buenas practicas a la hora de evaluar un Boolean
+
+Ahora se muestraq un código en donde dependiendo del varlo de _autenticado_, se muestra algo por conosola.
+
+```js
+const autenticado = true;
+
+if(autenticado === true) {
+    console.log('Si puedes ver Netflix')
+} else {
+    console.log('No, no puedes verlo')
+}
+```
+
+El problema con el código el anterior es que la variable _autenticado_ de por si ya viene con el valor `true` por lo cual es innecesario realizar la comparación inicial, por lo cual se recomienda no hacerla, quedando de la siguiente manera el código:
+
+```js
+const autenticado = true;
+
+if(autenticado) {
+    console.log('Si puedes ver Netflix')
+} else {
+    console.log('No, no puedes verlo')
+}
+```
+
+Otra forma en la que se puede escribir el código anterior es utilizando el **Operador Ternario**, en donde en una sola línea se puede escribir el código anterior.
+
+```js
+const autenticado = true;
+console.log( autenticado ? 'Si está autenticado' : 'No está autenticado');
+```

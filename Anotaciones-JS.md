@@ -938,4 +938,30 @@ console.log(precio);
 console.log(disponible);
 ```
 
+### Objetos dentro de objetos
 
+Los objetos pueden contener propiedades que son objetos, y estas propiedades objeto pueden tener propiedades objetos y así sucesivamente. Para acceder a las propiedades de estas propiedades objetos, se sigue utilizando la _sintaxis de punto_. Lo anterior se puede observar en el siguiente código:
+
+```js
+// Objetos dentro de Objetos
+
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponibilidad: true,
+    /*informacion es un objeto que contiene objetos*/
+    informacion: {
+        medidas: {
+            peso: '1kg',
+            medida: '1m'
+        },
+        fabricacion: {
+            pais: 'China'
+        }
+    }
+}
+
+console.log(producto);
+console.log(producto.informacion.medidas.peso); // Muestra en consola el peso del producto
+console.log(producto.informacion.fabricacion.pais); // Muestra en consola el país donde fue fabricado
+```

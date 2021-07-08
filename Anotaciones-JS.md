@@ -887,3 +887,55 @@ Si se quiere **eliminar** una propiedad de un objeto sin modificar directamente 
 ```js
 delete producto.disponible // Elimina la propiedad disponible del objeto producto
 ```
+
+### Destructuring de Objetos
+
+_Destructuring_ hace referencia a la asginación de los valores de de las propiedades de un objeto a variables comunes y corrientes en un sólo paso. Antes de ES6, se debeía crear una variable y asignarle el valor de la propiedad mediante la _sintaxis de punto_, esto se muestra en el siguiente código:
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+const nombre = producto.nombre; // Forma antigua de asignación
+console.log(nombre);
+```
+
+Ahora mediante el _Object Destructuring_ se puede crear y asignar el valor a la variable en una sólo línea de la siguiente forma:
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+// Object Destructuring
+
+const { nombre } = producto;
+console.log(nombre);
+```
+
+Lo anterior se puede repetir cuantas propiedades se quieran extraer pero si todas las porpiedades pertenecen al mismo objeto, se puede extraer todas de una sola vez de la siguiente manera: 
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+// Object Destructuring
+
+const { nombre, precio, disponible } = producto;
+console.log(nombre);
+console.log(precio);
+console.log(disponible);
+```
+
+

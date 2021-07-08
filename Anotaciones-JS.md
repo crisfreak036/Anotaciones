@@ -965,3 +965,42 @@ console.log(producto);
 console.log(producto.informacion.medidas.peso); // Muestra en consola el peso del producto
 console.log(producto.informacion.fabricacion.pais); // Muestra en consola el país donde fue fabricado
 ```
+
+### Destructuring de Objetos Anidados
+
+Al igual que con las propiedades normales, se puede realizar _Destructuring_ de propiedades objetos. Para esto, hay que añadir `:` al nombre de la propiedad objeto, seguido de un par de llaves en las que se indicará las propiedades que se quieren extraer.
+
+```js
+// Objetos dentro de Objetos
+
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponibilidad: true,
+    informacion: {
+        medidas: {
+            peso: '1kg',
+            medida: '1m'
+        },
+        fabricacion: {
+            pais: 'China'
+        }
+    }
+}
+
+/*En este ejemplo, se crean las variables peso y medida, pero no las variables informacion y medidas*/
+const { informacion: { medidas: { peso, medida } } } = producto;
+console.log(peso);
+console.log(medida);
+```
+
+Cabe mencionar que en la extracción anterior no se crean las variables `informacion` y `medidas`, para crearlas habría que agregarlas separadas por coma.
+
+```js
+/*En este ejemplo se crean variables tanto para informacion como para medidas*/
+const { informacion, informacion: { medidas }, informacion: { medidas: { peso, medida } } } = producto;
+console.log(informacion);
+console.log(medidas);
+console.log(peso);
+console.log(medida);
+```

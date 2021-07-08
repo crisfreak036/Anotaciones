@@ -1004,3 +1004,54 @@ console.log(medidas);
 console.log(peso);
 console.log(medida);
 ```
+
+### Congelar un Objeto para no poder modificarlo
+
+Aunque un objeto sea definido como una constante que no se puede modificar, sus propiedades si pueden modificarse.
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+producto.disponible = false; // Cambia el valor de la propiedad disponible a false
+
+delete producto.precio; // Elimina la propiedad precio del objeto producto
+
+producto.imagen = "imagen.jpg"; // Crea la propiedad imagen con un valor asignado
+
+console.log(producto);
+```
+
+Si es que se quiere evitar que lo anterior suceda, hay que activiar el _modo estricto_, el cual se podría decir que ayuda a evitar malas practicas al momento de escribir código en JS. Para activarlo sólo hay que poner en la primera línea del archivo el lo siguiente `"use strict";`.
+
+Con el modo estricto activo, se puede acceder a una serie de _Object Methods_ que permitirán evitar la modificación de los objetos, por ejemplo el método `Object.freeze()` "congela" el objeto, evitando que se le puedan aplicar modificaciones.
+
+```js
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponibilidad: true,
+    informacion: {
+        medidas: {
+            peso: '1kg',
+            medida: '1m'
+        },
+        fabricacion: {
+            pais: 'China'
+        }
+    }
+}
+
+Object.freeze( producto ); // No permite que el producto sea modificado
+```
+
+Cabe mencionar que si no se sabe el estado de "congelamiento" de un objeto, existe el método `Object.isFrozen()` el cual evalua si un objeto se encuentra "congelado".
+
+```js
+/*Muestra en consola un true o false dependinedo de si el objeto está congelado o no*/
+console.log(Object.isFrozen(producto));
+```

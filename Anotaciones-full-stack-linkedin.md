@@ -73,7 +73,7 @@ Otra manera que hay para trabajar con los errores es presionar la tecla *F8* y m
 
 ### Refactoring de código con VSC
 
-- **Mover una línea:** Para mover una línea, se debe poner el cursor en la línea deseada, luego presionar la tecla *ALT* y con lasa flechas mover la línea hacía arriba o hacía abajo.
+- **Mover una línea:** Para mover una línea, se debe poner el cursor en la línea deseada, luego presionar la tecla *ALT* y con las flechas mover la línea hacía arriba o hacía abajo.
 
 - **Encontrar una función:** Una función se puede encontrar desde su llamado dejando el cursor en su llamado y luego la tecla *F12*. También se puede presionar la tecla *CTRL* mientras se pasa el cursos sobre el llamado de la función lo que hará que se vuelva como un hipervínculo que direcciona a la función en cuestión, al momento de pasar el cursor sobre el llamado de la función se mostrará su estructura.
 
@@ -189,7 +189,7 @@ let nuevoValor2 = parseFloat(valor2); //Transforma en flotante el contenido de v
 
 #### Trabajar con cadenas de texto o String 
 
-Para definir una cadena de texto, se el contenido se puede poner entre comillas simples o comillas simples pero **no las dos combinadas alternandose entre simples al inicio y dobles al final o viceversa**.
+Para definir una cadena de texto, se el contenido se puede poner entre comillas simples o comillas simples pero **no las dos combinadas alternándose entre simples al inicio y dobles al final o viceversa**.
 
 ```js
 let variable1 = "texto1";
@@ -294,7 +294,7 @@ Para utilizar los datos y enviarlos a un servidor o almacenarlos localmente, se 
 ```js
 //Convertir un objeto JSON a cadena de caracteres 
 let persona = {nombre: 'Juan', twitter: '@juan'};
-let personaJSON = JSON.stringify(persona) //Transforma el JSON persona a una cadena de texto (ya no es un objeto con metodo GET)
+let personaJSON = JSON.stringify(persona) //Transforma el JSON persona a una cadena de texto (ya no es un objeto con método GET)
 ```
 
 Al igual que se puede transformar un JSON en cadena de texto, las cadenas de texto se (con estructura de JSON) se pueden transformar en un objeto JSON.
@@ -351,7 +351,7 @@ decremento--; //decremento = decremento -1
 console.log('El decremento -- de '+ datoA +' es igual a: ', decremento);
 ```
 
-#### Operadores Ralacionales
+#### Operadores Relacionales
 
 Permiten la validación o la definición de relaciones entre dos entidades. El uso de estos operadores implica que lo que retornen sea un *true* o un *false*.
 
@@ -530,7 +530,7 @@ var datoA = 10; // Número
 
 var nombre = "Playa"; // Cadena de texto
 
-var activo = true // Boleano
+var activo = true // Booleano
 
 var persona = {
 	edad: 34, // Número

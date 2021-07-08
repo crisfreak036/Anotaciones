@@ -1055,3 +1055,27 @@ Cabe mencionar que si no se sabe el estado de "congelamiento" de un objeto, exis
 /*Muestra en consola un true o false dependinedo de si el objeto está congelado o no*/
 console.log(Object.isFrozen(producto));
 ```
+
+### Sellar un Objeto
+
+El sellado de un obejto, a diferencia del congelamiento de un objeto, evita que se añadan o eliminen propiedades pero si **permite que se modifiquen las existentes**. Para sellar un objeto se utiliza el método `Object.seal()` y para saber si un objeto se encuentra sellado, se utiliza el método `Object.isSealed()`.
+
+```js
+"use strict";
+
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+Object.seal( producto ); // No permite que el producto sea modificado
+
+producto.disponible = false;
+console.log(producto);
+//delete producto.disponible; // Muestra error en la consola
+
+/*Muestra en consola un true o false dependinedo de si el objeto está sellado o no*/
+console.log(Object.isSealed(producto));
+```

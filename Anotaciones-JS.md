@@ -813,3 +813,77 @@ Otra forma en la que se puede escribir el código anterior es utilizando el **Op
 const autenticado = true;
 console.log( autenticado ? 'Si está autenticado' : 'No está autenticado');
 ```
+
+## Objetos en JavaScript
+
+### Crear Objetos en JavaScript
+
+Los objetos permiten la agrupación de propiedades en una sola entidad, como se puede observar en el siguiente ejemplo donde se agruparon las variables _nombre_, _precio_ y _disponible_ en un sólo objeto llamado _producto_.
+
+```js
+const nombre = "Monitor 20 Pulgadas";
+const precio = 300;
+const disponible = true;
+
+// Un objeto agrupa todo en una sola variable..
+
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+console.log(producto);
+```
+
+### Como acceder a los valores de un objeto
+
+Los obejtos tienen algo llamado la _sintaxis de punto_, en la cual al escribir el nombre del objeto y un punto, se puede acceder a sus propiedades. Lo anterior se pude probar con el siguiente código.
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+// Acceder a las propiedades de un objeto mediante el uso de la sintaxis de punto
+
+console.log(producto.nombre); // Muestra el contenido de la propiedad nombre
+console.log(producto.precio); // Muestra el contenido de la propiedad precio
+console.log(producto.disponible); // Muestra el contenido de la propiedad disponible
+
+```
+
+Existe una forma poco común con la cual se puede acceder a las propiedades de un objeto que se muestra en el siguiente código:
+
+```js
+// Object Literal o Objeto Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+// Otra forma poco común de acceder a las propiedades de un objeto
+
+console.log(producto['nombre']); // Muestra el contenido de la propiedad nombre
+```
+
+### Agregar o eliminar Propiedades de un objeto
+
+Una forma de agregar nuevas propiedades a un objeto es directamente en el código fuente del objeto.
+
+Si se quiere **agregar** las propiedades luego de haber escrito el código y sin modificar el códgio fuente del objeto, hay que utilizar la _sintaxis de punto_ con un nombre de propiedad que no exista en el objeto (si la propiedad existe, esto la reescribirá), como si estuvieramos creando una nueva variable con su respectivo valor.
+
+```js
+producto.imagen = 'imagen.jpg'; // Agrega la propiedad imagen al objeto producto
+```
+
+Si se quiere **eliminar** una propiedad de un objeto sin modificar directamente el código fuente, hay que utilizar la palabra `delete` antes de la propiedad que se quiere eliminar la cual se debe escribir con su _sintaxis de punto_ correspondiente.
+
+```js
+delete producto.disponible // Elimina la propiedad disponible del objeto producto
+```

@@ -307,7 +307,7 @@ Para borras todas las entradas en el stash sin posibilidad de recuperarlas se de
 
 #### Introducción a los Rebase
 
-- **Rebase (normal):** Sirve para actualizar las ramas. Por ejemplo, en el caso de que hayan dos ramas (Mater y "experimental"), amabas tienen un punto en común desde el cuál nace "experimental", en "experimental" se hacen cambios y todos pero resulta que en Mater igual se hicieron cambios los cuales hacen que desde donde nace "experimental" quede como un punto desactualizado que traerá problemas al momento de hacer un merge, para solucionar lo anterior existe el rebase el cual permite que el punto de inicio de la rama "experimental" se mueva hasta el último commit de la rama Master como si hubiéramos creado la rama en ese punto. Lo anterior se logra haciendo que los commits de la rama "experimental" pasen a un área temporal durante la transición entre el punto de inicio antiguo al nuevo. El comando para hacer lo anterior es `git rebase master`.
+- **Rebase (normal):** Sirve para actualizar las ramas. Por ejemplo, en el caso de que hayan dos ramas (Master y "experimental"), amabas tienen un punto en común desde el cuál nace "experimental", en "experimental" se hacen cambios y todos pero resulta que en Master igual se hicieron cambios los cuales hacen que desde donde nace "experimental" quede como un punto desactualizado que traerá problemas al momento de hacer un merge, para solucionar lo anterior existe el rebase el cual permite que el punto de inicio de la rama "experimental" se mueva hasta el último commit de la rama Master como si hubiéramos creado la rama en ese punto. Lo anterior se logra haciendo que los commits de la rama "experimental" pasen a un área temporal durante la transición entre el punto de inicio antiguo al nuevo. El comando para hacer lo anterior es `git rebase master`.
 
 - **Rebase interactivo:** `git rebase -i HEAD~n` permite mover n cantidad de commits (no necesariamente desde donde apunta el HEAD) desde donde se indica hacía atrás (o sea que los últimos n commits que se hicieron) a un área temporal los cuales luego serán regresados en el mismo orden que fueron ingresado al área temporal. Esto sirve para: Ordenar commits, corregir mensajes de los commits, unir commits y separar commits.
 
@@ -538,7 +538,7 @@ Existe otra forma que ayuda realizar lo anterior utilizando los _Pull Request_, 
 
 5. Ya revisado los cambios que se quieren incorporar a la rama maestra, hay que crear el nuevo _Pull Request_ con los comentarios que uno quiera.
 
-6. Finalmente hay que espera a que acepten los cambios. Si unmo es quien acepta los cambios, se recomienda borrar la rama desde donde venían los cambios en GitHub cuando se acepta el _Pull Request_, también quien hizo los cambios debe borrar la rama local con el comando `git branch -d <nombre-rama-cambios>`.
+6. Finalmente hay que espera a que acepten los cambios. Si uno es quien acepta los cambios, se recomienda borrar la rama desde donde venían los cambios en GitHub cuando se acepta el _Pull Request_, también quien hizo los cambios debe borrar la rama local con el comando `git branch -d <nombre-rama-cambios>`.
 
 #### Feature Branch - Revisando el trabajo de otros compañeros
 

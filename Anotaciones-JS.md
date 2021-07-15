@@ -1079,3 +1079,58 @@ console.log(producto);
 /*Muestra en consola un true o false dependinedo de si el objeto está sellado o no*/
 console.log(Object.isSealed(producto));
 ```
+
+### Copiar 2 Objetos
+
+Aquí se verá como unir dos objetos.
+Existen dos formas de hacerlo.
+_
+1. **Método Assign:** El método assign copiar las propiedades del los objetos de derecha a izquierda, o sea, asigna las propiedades del _objeto2_ a _objeto1_ modificando el _objeto1_. Para utilizarlo hay que escirbir lo siguiente: `Objeto.assign(objeto1, objeto2)`
+
+```js
+/*Ejemplo uso del método assign*/
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+const medidas = {
+    peso:'1kg',
+    medida: '1m'
+}
+
+console.log(producto);
+console.log(medidas);
+
+/*Assign, asigna las propiedades del segundo objeto al primer objeto
+provocando que el primer objeto sea modificado*/
+const resultado = Object.assign(producto, medidas);
+console.log(resultado);
+//console.log(producto); // Para utilizar este console.log, hay que comentar el que sale más arriba
+```
+
+2. **Spread Operator o Rest Operator:** Lo que hace esto es copiar las propiedades de los obejtos que se quieran unir a la variable objeto en la cual se utilice el operador. En el siguiente código se muestra el uso de este operador.
+
+```js
+/*Ejemplo Spread Operator o Rest Operator*/
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true
+}
+
+const medidas = {
+    peso:'1kg',
+    medida: '1m'
+}
+
+console.log(producto);
+console.log(medidas);
+
+/*A diferencia del método Assign, el Spread Operator no modifica el valor
+del primer objeto*/
+const resultado2 = { ...producto, ...medidas};
+console.log(resultado2);
+//console.log(producto); // Para utilizar este console.log, hay que comentar el que sale más arriba
+```

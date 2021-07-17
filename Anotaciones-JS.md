@@ -1134,3 +1134,20 @@ const resultado2 = { ...producto, ...medidas};
 console.log(resultado2);
 //console.log(producto); // Para utilizar este console.log, hay que comentar el que sale más arriba
 ```
+
+### Funciones en Objetos y acceder a sus valores
+
+Utilización de la palraba reservada `this.`, el cual sirve para referencias a las propiedades del objeto, en espñol _this_ significa _esta_, es por eso que al utilizarlo con una propiedad es como decir _"esta.propiedad"_.
+
+```js
+const producto = {
+    nombre: "Monitor 20 Pulgadas", // Propiedad o Llave del objeto
+    precio: 300,
+    disponible: true,
+    mostrarInfo: function() {
+        console.log(`El producto: ${this.nombre}, tiene un precio de: ${this.precio}`)
+    }
+}
+
+producto.mostrarInfo(); // Forma de llamar a la función mostrarInfo perteneciente al objeto producto
+```

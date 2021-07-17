@@ -1183,3 +1183,45 @@ console.log(producto2);
 ```
 
 Esta forma de construir objetos era la que antiguamente soportaba JavaScript, ya que antes no aceptaba clases.
+
+### Object .keys .values y .entries
+
+#### Método .keys
+
+`Object.keys(<nombre-objeto>)` retorna un arreglo con las _keys_ o _propiedades_ del objeto.
+
+```js
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+
+console.log(Object.keys(producto));
+```
+
+#### Método .values
+`Object.velues(<nombre-objeto>)` retorna un arreglo con las _values_ o _valores_ de las propiedades dle objeto.
+
+```js
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+
+console.log(Object.keys(producto));
+```
+
+#### Método .entries
+`Object.entries(<nombre-objeto>)` retorna arreglos compuestos por el par _[key, value]_ que tenga el objeto.
+
+```js
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+
+console.log(Object.entries(producto));
+```

@@ -1151,3 +1151,35 @@ const producto = {
 
 producto.mostrarInfo(); // Forma de llamar a la función mostrarInfo perteneciente al objeto producto
 ```
+
+### Object Constructor
+
+Es una forma de automatizar la creación de objetos cuando estos son muchos. Es una menra distinta de definición de objetos en comparación a la hasta ahora utilizada _Object Literal_. Este es más dinámico que _Object Literal_.
+
+Esta forma conssite en la creación de una función que recibe los valores de las propiedades que se definen en la función. 
+
+En el siguiente bloque de código se puede observar la sintaxis para la utilización del _Object Constructor_. 
+
+```js
+// Object Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+console.log(producto);
+
+// Object Constructor
+function Producto(nombre,precio) {
+    /*El uso de this permite el almacenamiento de 
+    los valores entregados dentro del objeto*/
+    this.nombre = nombre;
+    this.precio = precio;
+    this.disponible = true;
+}
+
+const producto2 = new Producto("Monitor 24 Pulgadas",500);
+console.log(producto2);
+```
+
+Esta forma de construir objetos era la que antiguamente soportaba JavaScript, ya que antes no aceptaba clases.

@@ -556,7 +556,7 @@ Existe otra forma que ayuda realizar lo anterior utilizando los _Pull Request_, 
 
 6. En el caso de desearlo, se pueden eliminar las ramas que se crearon para los cambios utilizando el comando `git branch -d <nombre-rama-cambios>`, en el caso de no servir se puede cambiar la `-d` por `-D`.
 
-En el caso de que se quieran eliminar los remotos de ramas en las que hemos trabajado de manera local de debe utilizar el comando `git push origin :<nombre-rama-cambios>`. En el caso de el comando de error porque el remoto no existe debido a que se borró desde GitHub, hay que utilizar el siguiente comando `git remote prune origin`.
+En el caso de que se quieran eliminar los remotos de ramas en las que hemos trabajado de manera local se debe utilizar el comando `git push origin :<nombre-rama-cambios>`. En el caso de el comando de error porque el remoto no existe debido a que se borró desde GitHub, hay que utilizar el siguiente comando `git remote prune origin`.
 
 #### Creando Tags y subirlos a GitHub
 

@@ -1225,3 +1225,28 @@ const producto = {
 
 console.log(Object.entries(producto));
 ```
+
+## Arrays o Arreglos en JS
+Permiten agrupar elementos del mismo tipo.
+
+### Crear Arrays en JS
+Los arreglos se crean con corchetes `[]`, siemrpe que se vea algo en JS encapsulado en corchetes, es porque es un _arreglo_. Estos contienen solo valores a diferencia de los objetos que contienen llave y valor. Lo que se podría considerar un simil a la llave en los objetos, en los arreglos sería el _indice_ o _posición_ la cual parte desde el 0 en JS.
+
+```js
+// Creación más común
+const numeros = [10,20,30];
+console.log(numeros);
+
+// Creación con constructor Array (menos común)
+const meses = new Array('Enero','Febrero','Marzo');
+console.log(meses);
+```
+
+Se pueden crear arreglos que contengan distintos tipos de elementos y también se pueden tener arreglos dentro de arreglos.
+
+```js
+// Un que contiene datos de todo tipo
+
+const deTodo = ["Hola", 10, true, "si", null, { nombre: 'Nombre', algo: 'Algo'}, [1,2,3]];
+console.log(deTodo);
+```

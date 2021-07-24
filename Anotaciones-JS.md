@@ -1250,3 +1250,26 @@ Se pueden crear arreglos que contengan distintos tipos de elementos y también s
 const deTodo = ["Hola", 10, true, "si", null, { nombre: 'Nombre', algo: 'Algo'}, [1,2,3]];
 console.log(deTodo);
 ```
+
+### Acceder a los valores de un Array
+
+Para acceder a los valores, hay que utilizar el indice como se muestra en el siguiente ejemplo.
+
+```js
+const numeros = [10,20,30,40,50];
+console.log(numeros);
+console.table(numeros); // Permite mostrar en consola en formato de tabla el indice y el valor del contenido del arreglo
+
+// Acceder al arreglo
+console.log(numeros[0]);
+```
+En el caso de que se quiera acceder a un valor que de un arreglo que se encuentra dentro de un arreglo, hay que agregar otra dimensión de corchetes como muestra el siguiente ejemplo
+
+```js
+const numeros = [10,20,30,40,50,[1,2,3]];
+console.log(numeros);
+console.table(numeros); // Permite mostrar en consola en formato de tabla el indice y el valor del contenido del arreglo
+
+// Acceder al arreglo
+console.log(numeros[5][0]); // Se muestra el primer valor del arreglo contenido por el primer arreglo
+``` 

@@ -1290,3 +1290,28 @@ for(let i = 0;i<meses.length;i++){
     console.log(meses[i]);
 }
 ```
+
+### Agregar nuevos valores a un arreglo
+
+Los arreglos, sin importar que sean declarados como un _const_ pueden seguir siendo modificados.
+
+```js
+const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
+console.table(meses);
+meses[0] = 'Nuevo mes'; // Cambia el primer valor del arreglo por otro valor
+console.table(meses);
+```
+
+La primera forma en la cual se puede agregar un nuevo elemento a un arreglo es asignando un valor a un indice que no tiene valor asignado.
+
+```js
+const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
+console.table(meses); // Tiene ocupados los indices del 0 al 6
+
+// Primer forma de añadir elementos a un arreglo
+
+meses[7] = 'Último mes'; // Al no existir valor en ese indice, se asigna el nuevo valor a ese indice
+console.table(meses);
+```
+
+**Nota: En el caso de que el indice elegido no sea consecutivo, como por ejemplo el indice 31 del ejemplo anterior, JS asigna valor al indice indicado sin asignarle valor a los indices anteriores a este**

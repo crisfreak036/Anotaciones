@@ -1359,3 +1359,47 @@ const producto3 = {
 carrito.unshift(producto3);
 console.table(carrito);
 ```
+
+### Crear nuevo arreglo con el spread operator
+
+En las nuevas versiones de JS existen diferenes funciones que hacen lo mismo. Se pueden clasificar entre _Declarativa_ e _Imperativa_.
+
+- **Imperativa:** Se trata de la forma en la cual se modifica una variable inicial, se trabaja sobre ella. Los métodos _Imperativos_ son muy claros, o sea, sólo con leerlos se entiende que es lo que hacen.
+
+- **Declarativa:** Es una paradijma que expresa la logica, sin describir tanto el flujo de control. No modifica una variable inicial, crea una nueva.
+
+En este caso, el modo de agregar elementos utilizando el _Spread Operator_ es de forma **declarativa**.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+
+// Definir producto
+const producto = {
+    nombre: "Monitor 32 pulgadas",
+    precio: 400
+}
+
+
+const producto2 = {
+    nombre: "Celular",
+    precio: 800
+}
+
+
+// Agregar un elemento al principio del arreglo con .unshift()
+const producto3 = {
+    nombre:"Teclado",
+    precio: 50
+}
+
+let resultado;
+
+resultado = [...carrito,producto]; // Toma una copia del contenido de carrito y le añade el contenido de producto
+resultado = [...resultado, producto2]; // Toma una copia de resultado y le añade producto2
+
+/*El orden en el que se añaden los elementos depende de como se declare*/
+resultado = [producto3, ...resultado]; // Añade producto3 antes que la copia de resultado
+
+console.table(resultado);
+console.log(carrito); // El contenido de carrito sigue siendo el mismo que al inicio
+```

@@ -1273,3 +1273,20 @@ console.table(numeros); // Permite mostrar en consola en formato de tabla el ind
 // Acceder al arreglo
 console.log(numeros[5][0]); // Se muestra el primer valor del arreglo contenido por el primer arreglo
 ``` 
+
+### Recorrer un Array
+
+Para recorrer un arreglo se puede utilizar el iterador _for()_, el cual permitirá recorrer el arreglo desde un punto que nosotros indiquemos hasta un punto final que nosotros indiquemos. Para recorrer un arreglo desde su indice 0 hasta su último indice, hay que inicializar el iterador en 0 y determinar que el ciclo se repita mientras i sea menor al largo del arreglo, o sea, `i<arreglo.lenght`. En el siguiente código se puede observar lo antes mencionado.
+
+```js
+const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+console.table(meses);
+
+// Obtener el tamaño de un arreglo
+console.log(meses.length);
+
+/*Recorre el arreglo mientras que el iterador sea menor al largo del arreglo*/
+for(let i = 0;i<meses.length;i++){
+    console.log(meses[i]);
+}
+```

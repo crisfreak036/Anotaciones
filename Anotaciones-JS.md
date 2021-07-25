@@ -1315,3 +1315,47 @@ console.table(meses);
 ```
 
 **Nota: En el caso de que el indice elegido no sea consecutivo, como por ejemplo el indice 31 del ejemplo anterior, JS asigna valor al indice indicado sin asignarle valor a los indices anteriores a este**
+
+### Añadir nuevos elementos al fin o inicio de un arreglo
+
+La forma más común para añadir elementos a un arreglo no es la que se mencionó anteriormente, sino que es es utilizando el método _push()_, el cual agrega un elemento al final del arreglo, asignandole el último indice consecutivo sin utilizar.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+console.log(carrito);
+
+// Definir producto
+const producto = {
+    nombre: "Monitor 32 pulgadas",
+    precio: 400
+}
+
+// Se agrega un producto al final del arreglo carrito
+carrito.push(producto);
+console.table(carrito);
+```
+
+Tal como se puede agregar al final, un elemento se puede agregar al principio del arreglo utilizando el método _unshift()_.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+console.log(carrito);
+
+// Definir producto y agregarlo al principio con .push()
+const producto2 = {
+    nombre: "Celular",
+    precio: 800
+}
+
+carrito.push(producto2);
+console.table(carrito);
+
+// Agregar un elemento al principio del arreglo con .unshift()
+const producto3 = {
+    nombre:"Teclado",
+    precio: 50
+}
+
+carrito.unshift(producto3);
+console.table(carrito);
+```

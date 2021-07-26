@@ -814,9 +814,9 @@ const autenticado = true;
 console.log( autenticado ? 'Si está autenticado' : 'No está autenticado');
 ```
 
-## Objetos en JavaScript
+### Objetos en JavaScript
 
-### Crear Objetos en JavaScript
+#### Crear Objetos en JavaScript
 
 Los objetos permiten la agrupación de propiedades en una sola entidad, como se puede observar en el siguiente ejemplo donde se agruparon las variables _nombre_, _precio_ y _disponible_ en un sólo objeto llamado _producto_.
 
@@ -837,7 +837,7 @@ const producto = {
 console.log(producto);
 ```
 
-### Como acceder a los valores de un objeto
+#### Como acceder a los valores de un objeto
 
 Los obejtos tienen algo llamado la _sintaxis de punto_, en la cual al escribir el nombre del objeto y un punto, se puede acceder a sus propiedades. Lo anterior se pude probar con el siguiente código.
 
@@ -872,7 +872,7 @@ const producto = {
 console.log(producto['nombre']); // Muestra el contenido de la propiedad nombre
 ```
 
-### Agregar o eliminar Propiedades de un objeto
+#### Agregar o eliminar Propiedades de un objeto
 
 Una forma de agregar nuevas propiedades a un objeto es directamente en el código fuente del objeto.
 
@@ -888,7 +888,7 @@ Si se quiere **eliminar** una propiedad de un objeto sin modificar directamente 
 delete producto.disponible // Elimina la propiedad disponible del objeto producto
 ```
 
-### Destructuring de Objetos
+#### Destructuring de Objetos
 
 _Destructuring_ hace referencia a la asginación de los valores de de las propiedades de un objeto a variables comunes y corrientes en un sólo paso. Antes de ES6, se debeía crear una variable y asignarle el valor de la propiedad mediante la _sintaxis de punto_, esto se muestra en el siguiente código:
 
@@ -938,7 +938,7 @@ console.log(precio);
 console.log(disponible);
 ```
 
-### Objetos dentro de objetos
+#### Objetos dentro de objetos
 
 Los objetos pueden contener propiedades que son objetos, y estas propiedades objeto pueden tener propiedades objetos y así sucesivamente. Para acceder a las propiedades de estas propiedades objetos, se sigue utilizando la _sintaxis de punto_. Lo anterior se puede observar en el siguiente código:
 
@@ -966,7 +966,7 @@ console.log(producto.informacion.medidas.peso); // Muestra en consola el peso de
 console.log(producto.informacion.fabricacion.pais); // Muestra en consola el país donde fue fabricado
 ```
 
-### Destructuring de Objetos Anidados
+#### Destructuring de Objetos Anidados
 
 Al igual que con las propiedades normales, se puede realizar _Destructuring_ de propiedades objetos. Para esto, hay que añadir `:` al nombre de la propiedad objeto, seguido de un par de llaves en las que se indicará las propiedades que se quieren extraer.
 
@@ -1005,7 +1005,7 @@ console.log(peso);
 console.log(medida);
 ```
 
-### Congelar un Objeto para no poder modificarlo
+#### Congelar un Objeto para no poder modificarlo
 
 Aunque un objeto sea definido como una constante que no se puede modificar, sus propiedades si pueden modificarse.
 
@@ -1056,7 +1056,7 @@ Cabe mencionar que si no se sabe el estado de "congelamiento" de un objeto, exis
 console.log(Object.isFrozen(producto));
 ```
 
-### Sellar un Objeto
+#### Sellar un Objeto
 
 El sellado de un obejto, a diferencia del congelamiento de un objeto, evita que se añadan o eliminen propiedades pero si **permite que se modifiquen las existentes**. Para sellar un objeto se utiliza el método `Object.seal()` y para saber si un objeto se encuentra sellado, se utiliza el método `Object.isSealed()`.
 
@@ -1080,7 +1080,7 @@ console.log(producto);
 console.log(Object.isSealed(producto));
 ```
 
-### Copiar 2 Objetos
+#### Copiar 2 Objetos
 
 Aquí se verá como unir dos objetos.
 Existen dos formas de hacerlo.
@@ -1135,7 +1135,7 @@ console.log(resultado2);
 //console.log(producto); // Para utilizar este console.log, hay que comentar el que sale más arriba
 ```
 
-### Funciones en Objetos y acceder a sus valores
+#### Funciones en Objetos y acceder a sus valores
 
 Utilización de la palraba reservada `this.`, el cual sirve para referencias a las propiedades del objeto, en espñol _this_ significa _esta_, es por eso que al utilizarlo con una propiedad es como decir _"esta.propiedad"_.
 
@@ -1152,7 +1152,7 @@ const producto = {
 producto.mostrarInfo(); // Forma de llamar a la función mostrarInfo perteneciente al objeto producto
 ```
 
-### Object Constructor
+#### Object Constructor
 
 Es una forma de automatizar la creación de objetos cuando estos son muchos. Es una menra distinta de definición de objetos en comparación a la hasta ahora utilizada _Object Literal_. Este es más dinámico que _Object Literal_.
 
@@ -1184,9 +1184,9 @@ console.log(producto2);
 
 Esta forma de construir objetos era la que antiguamente soportaba JavaScript, ya que antes no aceptaba clases.
 
-### Object .keys .values y .entries
+#### Object .keys .values y .entries
 
-#### Método .keys
+##### Método .keys
 
 `Object.keys(<nombre-objeto>)` retorna un arreglo con las _keys_ o _propiedades_ del objeto.
 
@@ -1200,7 +1200,7 @@ const producto = {
 console.log(Object.keys(producto));
 ```
 
-#### Método .values
+##### Método .values
 `Object.velues(<nombre-objeto>)` retorna un arreglo con las _values_ o _valores_ de las propiedades dle objeto.
 
 ```js
@@ -1213,7 +1213,7 @@ const producto = {
 console.log(Object.keys(producto));
 ```
 
-#### Método .entries
+##### Método .entries
 `Object.entries(<nombre-objeto>)` retorna arreglos compuestos por el par _[key, value]_ que tenga el objeto.
 
 ```js
@@ -1226,10 +1226,10 @@ const producto = {
 console.log(Object.entries(producto));
 ```
 
-## Arrays o Arreglos en JS
+### Arrays o Arreglos en JS
 Permiten agrupar elementos del mismo tipo.
 
-### Crear Arrays en JS
+#### Crear Arrays en JS
 Los arreglos se crean con corchetes `[]`, siemrpe que se vea algo en JS encapsulado en corchetes, es porque es un _arreglo_. Estos contienen solo valores a diferencia de los objetos que contienen llave y valor. Lo que se podría considerar un simil a la llave en los objetos, en los arreglos sería el _indice_ o _posición_ la cual parte desde el 0 en JS.
 
 ```js
@@ -1251,7 +1251,7 @@ const deTodo = ["Hola", 10, true, "si", null, { nombre: 'Nombre', algo: 'Algo'},
 console.log(deTodo);
 ```
 
-### Acceder a los valores de un Array
+#### Acceder a los valores de un Array
 
 Para acceder a los valores, hay que utilizar el indice como se muestra en el siguiente ejemplo.
 
@@ -1274,7 +1274,7 @@ console.table(numeros); // Permite mostrar en consola en formato de tabla el ind
 console.log(numeros[5][0]); // Se muestra el primer valor del arreglo contenido por el primer arreglo
 ``` 
 
-### Recorrer un Array
+#### Recorrer un Array
 
 Para recorrer un arreglo se puede utilizar el iterador _for()_, el cual permitirá recorrer el arreglo desde un punto que nosotros indiquemos hasta un punto final que nosotros indiquemos. Para recorrer un arreglo desde su indice 0 hasta su último indice, hay que inicializar el iterador en 0 y determinar que el ciclo se repita mientras i sea menor al largo del arreglo, o sea, `i<arreglo.lenght`. En el siguiente código se puede observar lo antes mencionado.
 
@@ -1291,7 +1291,7 @@ for(let i = 0;i<meses.length;i++){
 }
 ```
 
-### Agregar nuevos valores a un arreglo
+#### Agregar nuevos valores a un arreglo
 
 Los arreglos, sin importar que sean declarados como un _const_ pueden seguir siendo modificados.
 
@@ -1316,7 +1316,7 @@ console.table(meses);
 
 **Nota: En el caso de que el indice elegido no sea consecutivo, como por ejemplo el indice 31 del ejemplo anterior, JS asigna valor al indice indicado sin asignarle valor a los indices anteriores a este**
 
-### Añadir nuevos elementos al fin o inicio de un arreglo
+#### Añadir nuevos elementos al fin o inicio de un arreglo
 
 La forma más común para añadir elementos a un arreglo no es la que se mencionó anteriormente, sino que es es utilizando el método _push()_, el cual agrega un elemento al final del arreglo, asignandole el último indice consecutivo sin utilizar.
 
@@ -1360,7 +1360,7 @@ carrito.unshift(producto3);
 console.table(carrito);
 ```
 
-### Crear nuevo arreglo con el spread operator
+#### Crear nuevo arreglo con el spread operator
 
 En las nuevas versiones de JS existen diferenes funciones que hacen lo mismo. Se pueden clasificar entre _Declarativa_ e _Imperativa_.
 

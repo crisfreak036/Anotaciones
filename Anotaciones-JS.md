@@ -1617,3 +1617,32 @@ carrito.forEach( function(producto){
     console.log(`${producto.nombre} - Precio: ${producto.precio}`);
 } )
 ```
+
+#### .map para iterar un Arreglo y sus diferencias con .forEach
+
+Hace lo mismo que _.forEach()_ pero **crea un arreglo nuevo**, o sea, que si se utilizará _.forEach()_ dentro de una variable, la variable no guardaría nada.
+
+Un ejemplo de uso donde viene bien la creación de un nuevo arreglo, sería si se necesitará traer todos los productos en base a un precio, ahí la creación de un nuevo arreglo con los elementos que cumplan con el requisito vendría de maravilla.
+
+```js
+const carrito = [
+    { nombre: 'Monitor 27 pulgadas', precio: 500},
+    { nombre: 'Televisión', precio: 100},
+    { nombre: 'Tablet', precio: 200},
+    { nombre: 'Audifonos', precio: 300},
+    { nombre: 'Teclado', precio: 400},
+    { nombre: 'Celular', precio: 700},
+]
+
+const nuevoArreglo = carrito.map(function(producto){
+    return `${producto.nombre} - Precio: ${producto.precio}`;
+})
+
+console.log(nuevoArreglo); // Muestra un nuevo arreglo con todos los elementos
+
+const nuevoArreglo2 = carrito.forEach(function(producto){
+    return `${producto.nombre} - Precio: ${producto.precio}`;
+})
+
+console.log(nuevoArreglo2); // Muestra un undefined
+```

@@ -1597,3 +1597,23 @@ console.log(primero);
 console.log(segundo);
 console.table(tercero);
 ```
+
+#### .forEach para iterar un Arreglo
+
+Es una forma de iterar accediendo directamente sobre los valores del arreglo, sin la necesidad de tener que trabajar con los indices y el nombre del arreglo.
+
+```js
+const carrito = [
+    { nombre: 'Monitor 27 pulgadas', precio: 500},
+    { nombre: 'Televisión', precio: 100},
+    { nombre: 'Tablet', precio: 200},
+    { nombre: 'Audifonos', precio: 300},
+    { nombre: 'Teclado', precio: 400},
+    { nombre: 'Celular', precio: 700},
+]
+
+/*.forEach() itera sobre cada valor del arreglo, en este caso, cada valor del arreglo es un producto*/
+carrito.forEach( function(producto){
+    console.log(`${producto.nombre} - Precio: ${producto.precio}`);
+} )
+```

@@ -1837,3 +1837,19 @@ reproductor.borrar(20);
 reproductor.crearPlaylist('Random');
 reproductor.reproducirPlaylist('Random');
 ```
+
+#### Arrow Functions
+
+Es una sintaxis mucho más corta para crear funciones. En esta se utiliza _Function Expresion_, en comparación a la declaración normal de funciones, se cambia la palabra _function_ por una flecha `=>` al lado derecho de los parentesis y si la función tiene una sóla línea, no es necesario utilizar las _llaves_ de la función y el `return` es implicito, por lo cual no hay que escribirlo. En el siguiente ejemplo se muestra una función declarada de forma normal y su versión en _arrow function_.
+
+```js
+// Function Expression normal
+const aprendiendo = function(){
+    return 'Aprendiendo JavaScript'
+}
+console.log(aprendiendo());
+
+// Arrow Function
+const aprendiendo2 = () => 'Aprendiendo JavaScript';
+console.log(aprendiendo2());
+```

@@ -1838,6 +1838,47 @@ reproductor.crearPlaylist('Random');
 reproductor.reproducirPlaylist('Random');
 ```
 
+Para finalizar, hay que mencionar la creación de funciones set y get, las cuales permiten establecer un valor y obtener un valor de un obejto respectivamente. En el siguiente código se encuentra el objeto reproductor con sus funciones set y get para una canción, además de sus respectivas llamadas en el código.
+
+```js
+const reproductor = {
+    reproducir: function(id = 'Desconocido'){
+        console.log(`Reproduciendo canción con el id ${id}`);
+    },
+    pausar: function(){
+        console.log('Reproducción pausada');
+    },
+    borrar: function(id = 'Desconocido'){
+        console.log(`Borrando canción con el id ${id}`);
+    },
+    crearPlaylist: function(nombrePlaylist){
+        console.log(`Playlist ${nombrePlaylist} creada`);
+    },
+    reproducirPlaylist: function(nombrePlaylist){
+        console.log(`Reproduciendo Playlist ${nombrePlaylist}`);
+    },
+
+        /*Tanto set como get luego se utilizan como si se estuvieran manejando propiedades del objeto*/
+    set nuevaCancion(cancion){
+        this.cancion = cancion;
+        console.log(`Añadiendo ${cancion}`);
+    },
+
+    get obtenerCancion(){
+        console.log(`${this.cancion}`);
+    }
+}
+
+reproductor.reproducir(20);
+reproductor.pausar();
+reproductor.borrar(20);
+reproductor.crearPlaylist('Random');
+reproductor.reproducirPlaylist('Random');
+
+reproductor.nuevaCancion = 'Low'; // Utilización del set
+reproductor.obtenerCancion; // Llamado del get
+```
+
 #### Arrow Functions
 
 Es una sintaxis mucho más corta para crear funciones. En esta se utiliza _Function Expresion_, en comparación a la declaración normal de funciones, se cambia la palabra _function_ por una flecha `=>` al lado derecho de los parentesis y si la función tiene una sóla línea, no es necesario utilizar las _llaves_ de la función y el `return` es implicito, por lo cual no hay que escribirlo. En el siguiente ejemplo se muestra una función declarada de forma normal y su versión en _arrow function_.
@@ -1908,7 +1949,7 @@ carrito.forEach(function(producto){
 ```
 
 ```js
-/*Eemplo con Arrow Function*/
+/*Ejemplo con Arrow Function*/
 const carrito = [
     { nombre: 'Monitor 27 pulgadas', precio: 500},
     { nombre: 'Televisión', precio: 100},
@@ -1922,4 +1963,52 @@ const nuevoArreglo = carrito.map((producto) => `${producto.nombre} - Precio: ${p
 console.log(nuevoArreglo); // Muestra un nuevo arreglo con todos los elementos
 
 carrito.forEach((producto) => console.log(`${producto.nombre} - Precio: ${producto.precio}`));
+```
+
+#### Arrow Functions en métodos de propiedad
+
+Las _Arrow Functions_ también son una buena opción cuando se escriben _métodos de propiedad_, ya que, permiten la reducción de línea de código en comparación a la declaración normal de funciones.
+
+```js
+/*Ejemplo sin Arrow Function*/
+const reproductor = {
+    reproducir: function(id = 'Desconocido'){
+        console.log(`Reproduciendo canción con el id ${id}`);
+    },
+    pausar: function(){
+        console.log('Reproducción pausada');
+    },
+    borrar: function(id = 'Desconocido'){
+        console.log(`Borrando canción con el id ${id}`);
+    },
+    crearPlaylist: function(nombrePlaylist){
+        console.log(`Playlist ${nombrePlaylist} creada`);
+    },
+    reproducirPlaylist: function(nombrePlaylist){
+        console.log(`Reproduciendo Playlist ${nombrePlaylist}`);
+    }
+}
+
+reproductor.reproducir(20);
+reproductor.pausar();
+reproductor.borrar(20);
+reproductor.crearPlaylist('Random');
+reproductor.reproducirPlaylist('Random');
+```
+
+```js
+/*Ejemplo con Arrow Function*/
+const reproductor = {
+    reproducir: (id = 'Desconocido') => console.log(`Reproduciendo canción con el id ${id}`),
+    pausar: () => console.log('Reproducción pausada'),
+    borrar: (id = 'Desconocido') => console.log(`Borrando canción con el id ${id}`),
+    crearPlaylist: (nombrePlaylist) => console.log(`Playlist ${nombrePlaylist} creada`),
+    reproducirPlaylist: (nombrePlaylist) => console.log(`Reproduciendo Playlist ${nombrePlaylist}`)
+}
+
+reproductor.reproducir(20);
+reproductor.pausar();
+reproductor.borrar(20);
+reproductor.crearPlaylist('Random');
+reproductor.reproducirPlaylist('Random');
 ```

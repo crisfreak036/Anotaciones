@@ -1691,3 +1691,7 @@ const sumar2 = function(){
 
 sumar2(); // Llamado función
 ```
+
+#### Diferencias entre function expression y declaration
+
+Las funciones creadas de forma _Declarativa_ **pueden llamarse antes de crear la función**, o sea, no importa el orden donde se escriba lo que hace la función, puede invocarse antes. Lo anterior es algo que las _Expresiones de Funciones_ no pueden, esto ha de deberse a que tal como las variables, estas no pueden utilizarse antes de declararse.

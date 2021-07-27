@@ -1765,3 +1765,43 @@ function usuarioAutenticado(usuario){
     console.log(`Usuario autenticado exitosamente: ${usuario}`);
 }
 ```
+
+#### Funciones que retornan valores
+
+Hasta ahora se han visto funciones que sólo muestran por consola cosas, sin embargo, no siempre será así, existen funciones que permiten retornar valores los cuales serán asignados a una variables. Para esto, luego de ejecutar el código de la función, dentro del cuerpo de la función, hay que utilizar la palabra `return` seguida de lo que se quiere retornar. Luego se define una variable la cual su valor será igual al llamado de la función que retorna algo, lo que permite que ahora se pueda trabajar con esa variable y su valor que proviene del uso de la función.
+
+```js
+/*Ejemplo sencillo*/
+
+function sumar(a,b){
+    return a+b; // Retorna la suma de a y b
+}
+
+const resultado = sumar(2,3); // Se guarda lo que retorna la función en la variable resultado
+console.log(resultado); // Se muestra por consola el contenido de la variable resultado
+```
+
+```js
+// Ejemplo más avanzado
+
+let total = 0;
+
+// Agrega cierta cantidad a la variable total
+function agregarCarrito(precio) {
+    return total += precio;
+}
+
+// En base a la variable total se le suma un impuesto del 15%
+function calcularImpuesto(total){
+    return total * 1.15;
+}
+
+total = agregarCarrito(100); // Agrega 100 a la variable total
+total = agregarCarrito(300); // Agrega 300 a la variable total
+total = agregarCarrito(500); // Agrega 500 a la variable total
+total = agregarCarrito(200); // Agrega 200 a la variable total
+
+totalPagar = calcularImpuesto(total); // Agrega el 15% al total
+console.log(`Total a pagar es de ${totalPagar}`); // Muestra en consola el total a pagar
+console.log(total); // Muestra en consola el total sin impuesto
+```

@@ -1845,11 +1845,39 @@ Es una sintaxis mucho más corta para crear funciones. En esta se utiliza _Funct
 ```js
 // Function Expression normal
 const aprendiendo = function(){
-    return 'Aprendiendo JavaScript'
+    return 'Aprendiendo JavaScript';
 }
 console.log(aprendiendo());
 
 // Arrow Function
 const aprendiendo2 = () => 'Aprendiendo JavaScript';
 console.log(aprendiendo2());
+```
+
+#### Ventajas de Arrow Function
+
+Al igual que en las funciones delcaradas de forma normal, en los parentesis es donde se declaran los parametros de la función pero en _Arrow Functions_ si se utilizará un sólo parametro, los parentesis pasan a ser opcionales.
+
+```js
+// Ejemplo de un parámetro
+const aprendiendo = function(tecnologia = 'Algo'){
+    return `Aprendiendo ${tecnologia}`;
+}
+console.log(aprendiendo('JavaScript'));
+
+const aprendiendo2 = tecnologia => `Aprendiendo ${tecnologia}`; // Sin los paréntesis no se puede utilizar un parámetro por default
+console.log(aprendiendo2('Javascript'));
+```
+
+Hay que recalcar que lo anterior es sólo en el caso de utilizar un sólo parámatro, cuando exista más de uno o se quiera utilizar los _parámetros por default_, hay que utilizar parentesis.
+
+```js
+// Ejemplo con dos parámetros
+const aprendiendo3 = function(tecnologia, tecnologia2){
+    return `Aprendiendo ${tecnologia} y ${tecnologia2}`;
+}
+console.log(aprendiendo3('JavaScript','Node.js'));
+
+const aprendiendo4 = (tecnologia, tecnologia2) => `Aprendiendo ${tecnologia} y ${tecnologia2}`;
+console.log(aprendiendo4('Javascript','Node.js'));
 ```

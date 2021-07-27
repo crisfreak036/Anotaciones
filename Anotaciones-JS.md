@@ -1805,3 +1805,35 @@ totalPagar = calcularImpuesto(total); // Agrega el 15% al total
 console.log(`Total a pagar es de ${totalPagar}`); // Muestra en consola el total a pagar
 console.log(total); // Muestra en consola el total sin impuesto
 ```
+
+#### Añadir funciones en un Objeto
+
+Estos son los _métodos de propiedad_, son funciones con sintaxis similar a las de un método. Una de las ventajas que tiene la creación de _métodos de propiedad_ es que al estar dentro de un objeto, en la consola se puede llamar el objeto y eso entregará el listado con todas las funciones que se encuentren contenidas en aquel objeto.
+
+Para crear los _métodos de propiedad_, hay que hacer lo mismo que se hacía cuando se creaban propiedades, pero está vez el valor que contendrá es una función.
+
+```js
+const reproductor = {
+    reproducir: function(id = 'Desconocido'){
+        console.log(`Reproduciendo canción con el id ${id}`);
+    },
+    pausar: function(){
+        console.log('Reproducción pausada');
+    },
+    borrar: function(id = 'Desconocido'){
+        console.log(`Borrando canción con el id ${id}`);
+    },
+    crearPlaylist: function(nombrePlaylist){
+        console.log(`Playlist ${nombrePlaylist} creada`);
+    },
+    reproducirPlaylist: function(nombrePlaylist){
+        console.log(`Reproduciendo Playlist ${nombrePlaylist}`);
+    }
+}
+
+reproductor.reproducir(20);
+reproductor.pausar();
+reproductor.borrar(20);
+reproductor.crearPlaylist('Random');
+reproductor.reproducirPlaylist('Random');
+```

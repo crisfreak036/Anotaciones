@@ -1646,3 +1646,48 @@ const nuevoArreglo2 = carrito.forEach(function(producto){
 
 console.log(nuevoArreglo2); // Muestra un undefined
 ```
+
+### Funciones en JS
+
+#### Crear funciones en JS
+
+Existen dos formas de crear una función, una es de forma _Declarativa_ y la otra de forma _Expresiva_, amabas se mandan a llamar de la misma forma, pero la diferencia es que la segunda se "guarda" en una variable. Cabe mencionar que en cuento a performance, no se observan diferencias entre ambas.
+
+- **Declaración de función (Function Declaration)**
+
+```js
+/*
+function nombreFuncion(parametro1, parametro2, parametroN){
+    // Cuerpo de la función, codigo que se ejecuta
+}
+
+nombreFuncion(valor1, valor2, valorn); // Llamado función
+*/
+
+function sumar(){
+    console.log(2+2);
+}
+
+// Llamado de la función
+sumar();
+```
+
+- **Expresión de función (function Expression)**
+
+```js
+/*
+Estructura
+const nombreFuncion = function(parametro1, parametro2, parametroN){
+    // Cuerpo de la función, codigo que se ejecuta
+}
+
+Llmado
+nombreFuncion(valor1,valor2,valorN);
+*/
+
+const sumar2 = function(){
+    console.log(3+3);
+}
+
+sumar2(); // Llamado función
+```

@@ -1728,3 +1728,17 @@ function saludar(nombre, apellido){
 
 saludar('Juan','Pérez');
 ```
+
+#### Parametros por default
+
+Se utilizan para evitar que cuando se llame la función y no se le entreguen argumentos, no queden los parametros como _undefined_ en la función. Para esto, en la declaración de la función hay que darle el valor por default a los parametros.
+
+```js
+function saludar(nombre = 'Desconocido', apellido = ''){
+    console.log(`Hola ${nombre} ${apellido}`);
+}
+
+saludar(); // En este caso se muestra un Hola Desconocido
+saludar('Juan'); // En este caso se muestra un Hola Juan
+saludar('Juan','Pérez'); // En este caso se muestra Hola Juan Pérez
+```

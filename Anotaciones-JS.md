@@ -1695,3 +1695,17 @@ sumar2(); // Llamado función
 #### Diferencias entre function expression y declaration
 
 Las funciones creadas de forma _Declarativa_ **pueden llamarse antes de crear la función**, o sea, no importa el orden donde se escriba lo que hace la función, puede invocarse antes. Lo anterior es algo que las _Expresiones de Funciones_ no pueden, esto ha de deberse a que tal como las variables, estas no pueden utilizarse antes de declararse.
+
+#### Algunas funciones nativas en JS
+
+JS cuenta con más de 4000 funciones las cuales forman la "librería estandar" (en realidad JS no tiene una librería estandar como otros lenguajes) del lenguaje.
+
+```js
+/*Funciones nativas de JS*/
+
+alert('hubo un erro...'); // Despliega una ventana de error
+
+prompt('¿Cual es tu edad?'); // Depsliega una ventana para ingresar datos
+
+console.log( parseInt('20')); // parseInt() es una función que tranfroma un string con formato de entero a entero
+```

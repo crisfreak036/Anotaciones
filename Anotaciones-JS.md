@@ -1403,3 +1403,145 @@ resultado = [producto3, ...resultado]; // Añade producto3 antes que la copia de
 console.table(resultado);
 console.log(carrito); // El contenido de carrito sigue siendo el mismo que al inicio
 ```
+
+#### Elimianr elementos con Splice
+
+Es la forma _Imperativa_ de eliminar elementos de un arreglo. Se hace utlizando el método _.pop()_ en el arreglo al cual se le quiere eliminar un elemento. El método _.pop()_ elimina el úlitmo elemeto del arreglo.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+console.log(carrito);
+
+// Definir producto
+const producto = {
+    nombre: "Monitor 32 pulgadas",
+    precio: 400
+}
+
+// Se agrega un producto al final del arreglo carrito
+carrito.push(producto);
+console.table(carrito);
+
+const producto2 = {
+    nombre: "Celular",
+    precio: 800
+}
+
+carrito.push(producto2);
+console.table(carrito);
+
+const producto3 = {
+    nombre:"Teclado",
+    precio: 50
+}
+
+carrito.push(producto3);
+console.table(carrito);
+
+const producto4 = {
+    nombre: "Celular2",
+    precio: 800
+}
+
+carrito.push(producto4);
+console.table(carrito);
+
+// Eliminar ultimo elemento de un arreglo
+
+carrito.pop(); // Elimina el último elemento
+console.table(carrito);
+```
+
+Para eliminar el primer elemento del arreglo, se debe utilizar el método _.shift()_.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+console.log(carrito);
+
+// Definir producto
+const producto = {
+    nombre: "Monitor 32 pulgadas",
+    precio: 400
+}
+
+// Se agrega un producto al final del arreglo carrito
+carrito.push(producto);
+console.table(carrito);
+
+const producto2 = {
+    nombre: "Celular",
+    precio: 800
+}
+
+carrito.push(producto2);
+console.table(carrito);
+
+const producto3 = {
+    nombre:"Teclado",
+    precio: 50
+}
+
+carrito.push(producto3);
+console.table(carrito);
+
+const producto4 = {
+    nombre: "Celular2",
+    precio: 800
+}
+
+carrito.push(producto4);
+console.table(carrito);
+
+// Eliminar del inicio del arreglo
+
+carrito.shift();
+console.table(carrito);
+```
+
+Para eliminar un elemento sin importar el lugar del arreglo, se puede utilizar el método _.splice(inicio,cant.eliminar)_, el cual recibe la posición del elemento a eliminar y la cantidad de elementos desde esa posición que se quieren eliminar, por ejemplo, `arreglo.splice(2,1)` elimina un elemento desde el indice 2, o sea, elimina el elemento que se encuentra en el indice 2, en cambio, `arreglo.splice(2,3)`, elimina 3 elementos desde el indice 2, o sea, elimina los elementos de los indices 2,3 y 4.
+
+```js
+const carrito = []; // Se inicializa vacío debido a que aún no se realizan compras
+console.log(carrito);
+
+// Definir producto
+const producto = {
+    nombre: "Monitor 32 pulgadas",
+    precio: 400
+}
+
+// Se agrega un producto al final del arreglo carrito
+carrito.push(producto);
+console.table(carrito);
+
+const producto2 = {
+    nombre: "Celular",
+    precio: 800
+}
+
+carrito.push(producto2);
+console.table(carrito);
+
+const producto3 = {
+    nombre:"Teclado",
+    precio: 50
+}
+
+carrito.push(producto3);
+console.table(carrito);
+
+const producto4 = {
+    nombre: "Celular2",
+    precio: 800
+}
+
+carrito.push(producto4);
+console.table(carrito);
+
+// Eliminar un elemento en cualquier posición del arreglo
+carrito.splice(1,1); // Elimina el elemento que se encuentra en el indice 1
+console.table(carrito);
+
+carrito.splice(1,2); // Elimina los elementos que se encuentran en al posición 1 y 2
+console.table(carrito);
+```

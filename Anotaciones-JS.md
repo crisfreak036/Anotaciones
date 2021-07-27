@@ -1709,3 +1709,22 @@ prompt('¿Cual es tu edad?'); // Depsliega una ventana para ingresar datos
 
 console.log( parseInt('20')); // parseInt() es una función que tranfroma un string con formato de entero a entero
 ```
+
+#### Parametros y Argumentos en Funciones
+
+Los _parametros_, son como variables generales que se utilizan dentro de las funciones y reciben el valor que se pasa como _argumentos_ al momento de ser llamada la función.
+
+```js
+function sumar(a, b){
+    /*a y b son parametros*/    
+    console.log(a+b);
+}
+
+sumar(2, 3); // 2 y 3 son argumentos
+
+function saludar(nombre, apellido){
+    console.log(`Hola ${nombre} ${apellido}`);
+}
+
+saludar('Juan','Pérez');
+```

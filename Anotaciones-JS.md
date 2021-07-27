@@ -1742,3 +1742,26 @@ saludar(); // En este caso se muestra un Hola Desconocido
 saludar('Juan'); // En este caso se muestra un Hola Juan
 saludar('Juan','Pérez'); // En este caso se muestra Hola Juan Pérez
 ```
+
+#### Como se comunican las funciones entre si
+
+Las funciones se pueden ir llamando dentro de otras funciones como se muestra en el siguiente ejemplo.
+
+```js
+iniciarApp(); // Función que inicia todo, siempre debe estar
+
+function iniciarApp(){
+    console.log('Iniciando App...') // Finalizando esto
+    segundaFuncion(); // Se llama a la segunda función
+}
+
+function segundaFuncion(){
+    console.log('Hola desde la segunda función'); // Cuando se ejecute esto
+    usuarioAutenticado('Pablo'); // Se llama la función
+}
+
+function usuarioAutenticado(usuario){
+    console.log('Autenticando usuario... espere...');
+    console.log(`Usuario autenticado exitosamente: ${usuario}`);
+}
+```

@@ -1545,3 +1545,55 @@ console.table(carrito);
 carrito.splice(1,2); // Elimina los elementos que se encuentran en al posición 1 y 2
 console.table(carrito);
 ```
+
+#### Destructuring de Arrays
+
+Sirve para extraer el valor y la variable en un mismo paso. Se puede ocupar de varias formas, alguna de ellas son las siguientes:
+
+- Extraer el primer valor del arreglo.
+
+```js
+const numeros = [10,20,30,40,50];
+
+const [indiceCero] = numeros; // Crea una variable con el primer valor del arreglo
+console.log(indiceCero);
+```
+
+- Extraer el último valor del arreglo
+
+```js
+const numeros = [10,20,30,40,50];
+
+const [ , , , ,ultimo] = numeros; // Crea una variable con el úlitmo valor del arreglo
+console.log(ultimo);
+```
+
+- Extraer más de un valor del arreglo en variables diferentes.
+
+```js
+const numeros = [10,20,30,40,50];
+
+const [indiceCero2, indiceUno] = numeros; // Crea 2 variables con el primer y segundo valor respectivamente
+console.log(indiceCero2);
+console.log(indiceUno);
+```
+
+- Extraer un elemento de cualquier posición, en el ejemplo se extrae el valor del indice 2, o sea, el tercer valor del arreglo.
+
+```js
+const numeros = [10,20,30,40,50];
+
+const [,,indiceTres] = numeros; // Crea una variable con el tercer valor del arreglo
+console.log(indiceTres);
+```
+
+- Extraer los valores que uno necesite y guardar el resto en un nuevo arreglo (usando el _Spread Operator_)
+
+```js
+const numeros = [10,20,30,40,50];
+
+const [primero, segundo, ...tercero] = numeros; // Crea 2 variables con el primer y segundo valor y un arreglo con el resto de los valores
+console.log(primero);
+console.log(segundo);
+console.table(tercero);
+```

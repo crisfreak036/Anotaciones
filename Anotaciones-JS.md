@@ -1854,7 +1854,7 @@ const aprendiendo2 = () => 'Aprendiendo JavaScript';
 console.log(aprendiendo2());
 ```
 
-#### Ventajas de Arrow Function
+#### Parametros en Arrow Function
 
 Al igual que en las funciones delcaradas de forma normal, en los parentesis es donde se declaran los parametros de la función pero en _Arrow Functions_ si se utilizará un sólo parametro, los parentesis pasan a ser opcionales.
 
@@ -1880,4 +1880,46 @@ console.log(aprendiendo3('JavaScript','Node.js'));
 
 const aprendiendo4 = (tecnologia, tecnologia2) => `Aprendiendo ${tecnologia} y ${tecnologia2}`;
 console.log(aprendiendo4('Javascript','Node.js'));
+```
+
+#### Arrow Function en .forEach y .map
+
+Las _Arrow Function_ son muy bien utilizadas en los métodos `Arreglo.forEach()` y `Arreglo.map()`. Los siguiente bloques de código muestran la sintaxis sin y con _Arrow Function_.
+
+```js
+/*Ejemplo sin Arrow Function*/
+const carrito = [
+    { nombre: 'Monitor 27 pulgadas', precio: 500},
+    { nombre: 'Televisión', precio: 100},
+    { nombre: 'Tablet', precio: 200},
+    { nombre: 'Audifonos', precio: 300},
+    { nombre: 'Teclado', precio: 400},
+    { nombre: 'Celular', precio: 700},
+]
+
+const nuevoArreglo = carrito.map(function(producto){
+    return `${producto.nombre} - Precio: ${producto.precio}`;
+})
+console.log(nuevoArreglo); // Muestra un nuevo arreglo con todos los elementos
+
+carrito.forEach(function(producto){
+    console.log(`${producto.nombre} - Precio: ${producto.precio}`);
+})
+```
+
+```js
+/*Eemplo con Arrow Function*/
+const carrito = [
+    { nombre: 'Monitor 27 pulgadas', precio: 500},
+    { nombre: 'Televisión', precio: 100},
+    { nombre: 'Tablet', precio: 200},
+    { nombre: 'Audifonos', precio: 300},
+    { nombre: 'Teclado', precio: 400},
+    { nombre: 'Celular', precio: 700},
+]
+
+const nuevoArreglo = carrito.map((producto) => `${producto.nombre} - Precio: ${producto.precio}`);
+console.log(nuevoArreglo); // Muestra un nuevo arreglo con todos los elementos
+
+carrito.forEach((producto) => console.log(`${producto.nombre} - Precio: ${producto.precio}`));
 ```

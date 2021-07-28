@@ -2128,3 +2128,20 @@ if(usuario && puedePagar){
     console.log('Saldo insuficiente');
 }
 ```
+
+#### Operador ||
+
+Este operador se utiliza para saber si una de dos o más condiciones en un mismo if se cumplen. A diferencia del operador &&, el operador || sólo necesita que una condición se cumpla para ejecutar el código asociado.
+
+```js
+const efectivo = 300;
+const credito = 400;
+const disponible = efectivo + credito;
+const totalPagar = 600;
+
+if(efectivo>=totalPagar || credito>=totalPagar || disponible>=totalPagar){
+    console.log('Se puede pagar')
+} else{
+    console.log('Fondos insuficientes');
+}
+```

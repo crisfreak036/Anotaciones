@@ -2168,3 +2168,24 @@ function revisarPuntaje(puntaje = 300){
 
 revisarPuntaje(puntaje); // Llamado de la función
 ```
+
+#### Operador ternario
+
+Al igual que las _Arrow Functions_, el _operador ternario_ reduce la cantidad de código, este caso, la cantidad de código de una estructura if else. La reducción se produce porque se eliminan las palabras reservadas _if_ y _else_, al igual que las llaves.
+
+```js
+const autenticado = true;
+
+// Sin operador ternario
+if(autenticado){
+    console.log('Si está autenticado');
+} else{
+    console.log('No está autenticado');
+}
+
+// Con operador ternario
+/*Si se cumple la condición antes del ? se ejecuta lo primero antes del : de lo contrario se ejecuta lo otro*/
+console.log(autenticado ? 'Si está autenticado':'No está autenticado');
+```
+
+Al igual que con la estructura normal, aquí se pueden comprar más de una condición añadiendo los operadores && y ||, además se pueden anidad operadores ternarios como si se estuvieran anidando if pero eso es poco común y no se suele utilizar.

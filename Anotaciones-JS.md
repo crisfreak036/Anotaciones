@@ -2070,6 +2070,7 @@ const tarjeta = true;
 
 if(dinero>=totalPagar){
     console.log('Se puede pagar');
+/*No se hace una comparación de tarjeta === true porque tarjeta es booleano y el if sólo necesita un true o un false*/
 } else if(tarjeta){
     console.log('Se puede pagar con la tarjeta')
 } else{
@@ -2078,3 +2079,33 @@ if(dinero>=totalPagar){
 ```
 
 Cabe mencionar que se pueden utilizar cuantos else-if uno quiera, teniendo siempre en cuenta no perder la trazabilidad del código.
+
+#### Switch para evaluar multiples condiciones
+
+Es una estructura similar a lo que sería muchos if,else-if y else juntos pero de una manera más sencilla de leer y entender. Basciamente, dependiendo del valor que tenga una variable, se ejecuta cierto código.
+
+```js
+// Switch case
+// Dependiendo de el valor de metodoPago, se ejecuta algo
+const metodoPago = 'efectivo';
+
+/*En el parentesis va lo que se quiere comparar*/
+switch(metodoPago){
+    /*case son como los if*/
+    case 'efectivo':
+        console.log(`Pagaste con ${metodoPago}`);
+        break;
+    case 'cheque':
+        console.log(`Pagaste con ${metodoPago}`);
+        break;
+    case 'tarjeta':
+        console.log(`Pagaste con ${metodoPago}`);
+        break;
+    /*default es similar a un else*/
+    default:
+        console.log('Aún no has seleccionado un método de pago o método de pago no soportado');
+        break;
+}
+```
+
+Que no se olvide que no es necesario mostras algo por consola, se puede reemplazar por la cantidad de código que uno necesite y por otras cosas como funciones por ejemplo.

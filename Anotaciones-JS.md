@@ -2026,3 +2026,31 @@ if(puntaje === 1000){
     console.log('si es igual...')
 }
 ```
+
+#### Comparador estricto
+
+El comparador estricto es utilizar tres iguales seguidos `===`, a diferencia del comprador normal `==`, el estricto compara el contenido y el tipo de los elementos a comparar. Por ejemplo, el comparador normal dice que el número 1000 y el string '1000' son iguales, esto se debe a que ambos parecen ser iguales pero su tipo es distinto. Por otro lado, el comparador estricto al compararlos entrega un false, porque efectivamente no son iguales.
+
+```js
+/*Ejemplo comparador normal*/
+const puntaje = 1000;
+
+if(puntaje == '1000'){
+    console.log('si es igual...') // Muestra esto por consola
+} else {
+    console.log('no es igual...');
+}
+```
+
+```js
+/*Ejemplo comparador estricto*/
+const puntaje = 1000;
+
+if(puntaje === '1000'){
+    console.log('si es igual...') 
+    } else {
+    console.log('no es igual...'); // Muestra esto por consola
+}
+```
+
+En el caso de la diferencia, también existe un operador estricto para esto, el normal es `!=` y el estricto es `!==`, ambos se comportan de la misma manera que los de igualdad.

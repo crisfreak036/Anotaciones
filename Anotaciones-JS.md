@@ -2145,3 +2145,26 @@ if(efectivo>=totalPagar || credito>=totalPagar || disponible>=totalPagar){
     console.log('Fondos insuficientes');
 }
 ```
+
+#### Detener la ejecución de un if con una función
+
+Se puede crear una función que compruebe algo y que en ella sólo hayan if, para evitar que se comprueben más de uno luego de que se haya encontrado una coincidencia, hay que colocar un return luego del código a ejecutar dentro del if.
+
+```js
+const puntaje = 500;
+
+// Función que según el puntaje entrega un mensaje
+function revisarPuntaje(puntaje = 300){
+    if(puntaje = 500){
+        console.log('Excelente puntaje, felicitaciones');
+        return;
+    }
+
+    if(puntaje = 300){
+        console.log('Buen puntaje');
+        return;
+    }
+}
+
+revisarPuntaje(puntaje); // Llamado de la función
+```

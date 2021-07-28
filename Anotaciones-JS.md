@@ -2012,3 +2012,17 @@ reproductor.borrar(20);
 reproductor.crearPlaylist('Random');
 reproductor.reproducirPlaylist('Random');
 ```
+
+### Estructuras de control
+
+#### Creando un if
+
+Permite comprobar condiciones y en base a eso ejecutar cierto código. Especificamente el condicional _if_ hace referencia a que **si se cumple una condición** se haga algo.
+
+```js
+const puntaje = 1000;
+
+if(puntaje === 1000){
+    console.log('si es igual...')
+}
+```

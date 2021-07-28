@@ -2058,3 +2058,23 @@ En el caso de la diferencia, también existe un operador estricto para esto, el 
 #### Comparador Mayor que y Menor que
 
 Para saber si algo es mayor o menor que algo se deben utilizar los siguiente comparadores `>` y `<` respectivamente. De igual forma si la condición implica ver si algo es mayor o igual, o menos o igual, se deben utilizar los siguientes operadores `<=` y `<=`.
+
+#### else-if
+
+Sirve para evaluar una condición intermedia entre el if y else. Para utilizarlo, sólo hay que agregar un if luego del else separado por un espacio.
+
+```js
+const dinero = 500;
+const totalPagar = 300;
+const tarjeta = true;
+
+if(dinero>=totalPagar){
+    console.log('Se puede pagar');
+} else if(tarjeta){
+    console.log('Se puede pagar con la tarjeta')
+} else{
+    console.log('Fondos Insuficientes');
+}
+```
+
+Cabe mencionar que se pueden utilizar cuantos else-if uno quiera, teniendo siempre en cuenta no perder la trazabilidad del código.

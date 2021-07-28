@@ -2109,3 +2109,22 @@ switch(metodoPago){
 ```
 
 Que no se olvide que no es necesario mostras algo por consola, se puede reemplazar por la cantidad de código que uno necesite y por otras cosas como funciones por ejemplo.
+
+#### Operador &&
+
+Este operador se utiliza para comprobar más de una condición en el mismo if. Amabas condiciones deben cumplirse para que se ejecute el código asociado a la condición.
+
+```js
+const usuario = false;
+const puedePagar = true;
+
+if(usuario && puedePagar){
+    console.log('Si puedes comprar');
+} else if(!usuario && !puedePagar){
+    console.log('No puedes comprar');
+} else if(!usuario){
+    console.log('Debes registrarte');
+} else{
+    console.log('Saldo insuficiente');
+}
+```

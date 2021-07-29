@@ -2253,3 +2253,16 @@ while(i<10){
     i++; // Incremento
 }
 ```
+
+#### Do While Loop
+
+Es una variación del While en la cual el código se ejecuta al menos una vez antes de verificar la condición.
+
+```js
+let i = 0;
+
+do {
+    console.log(`Numero ${i}`); // Bloque de código a ejecutar
+    i++; // Incremento
+} while (i<10); // Condición
+```

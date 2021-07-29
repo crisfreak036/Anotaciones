@@ -2189,3 +2189,25 @@ console.log(autenticado ? 'Si está autenticado':'No está autenticado');
 ```
 
 Al igual que con la estructura normal, aquí se pueden comprar más de una condición añadiendo los operadores && y ||, además se pueden anidad operadores ternarios como si se estuvieran anidando if pero eso es poco común y no se suele utilizar.
+
+### Iteradores en JS
+
+El código se ejecuta hasta que una condición se cumpla o se deje de cumplir.
+
+#### For Loop
+
+Se ejecuta hasta que una condición se deja de cumplir. Se compone de la palabra reservada _for_, un parentesis que contiene al iterador, la condición de finalización y el incremento, separados por punto y coma, y las llaves en donde irá el bloque de código que se quiere repetir.
+
+```js
+/*Ejemplo for loop*/
+for(let i=0; i<=10; i++){
+    console.log(`Número ${i}`)
+}
+```
+
+```js
+/*Ejemplo de prueba téecnica*/
+for(let i=1; i<=20; i++){
+    console.log( i%2 ? `El numero ${i} es PAR` : `El numero ${i} es IMPAR`);
+}
+```

@@ -2239,3 +2239,17 @@ for(let i = 0; i<= 10; i++){
     console.log(`Numero: ${i}`);
 }
 ```
+
+#### While loop
+
+Se ejecuta mientras una condición sea verdadera. Lo que se puede hacer con un for, también se puede hacer con un while. La estructura del while se puede observar en el siguiente ejemplo.
+
+```js
+let i = 0; // Inicializador
+
+// Entre parentesis se encuentra la condición de iteración
+while(i<10){
+    console.log(`Numero ${i}`); // Bloque de código
+    i++; // Incremento
+}
+```

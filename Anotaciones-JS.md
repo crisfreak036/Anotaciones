@@ -2211,3 +2211,31 @@ for(let i=1; i<=20; i++){
     console.log( i%2 ? `El numero ${i} es PAR` : `El numero ${i} es IMPAR`);
 }
 ```
+
+#### break y continue en un for loop
+
+_break_ rompe la ejecución del loop, mientras que _continue_ permite interceptar un elemento, identificarlo y continuar con la ejecución.
+
+```js
+/*Ejemplo break*/
+
+for(let i = 0; i<= 10; i++){
+    if(i===5){
+        console.log('Este es el 5');
+        break; // Al encontrar la coincidencia, deja de ejecutarse el loop
+    }
+    console.log(`Numero: ${i}`);
+}
+```
+
+```js
+/*Ejemplo continue*/
+
+for(let i = 0; i<= 10; i++){
+    if(i===5){
+        console.log('Este es el 5');
+        continue; // Luego de encontrar la coincidencia, continua con la siguiente iteración
+    }
+    console.log(`Numero: ${i}`);
+}
+```

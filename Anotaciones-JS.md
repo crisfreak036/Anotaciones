@@ -2266,3 +2266,34 @@ do {
     i++; // Incremento
 } while (i<10); // Condición
 ```
+
+#### .forEach y .map
+
+##### .forEach
+
+Es ideal para rcorrer arregles, se ejcuta al menos una vez por cada vez que hayan elementos en el arreglo, o sea, se ejecuta tanta veces como elementos hayan en el arreglo.
+Itera sobre los elementos del arreglo, por lo cual el iterador obtiene el elemeto del arreglo, a diferencia del for normal que itera en base al indice.
+
+```js
+const pendientes = ['Tarea','Comer','Proyecto','Estudiar JS'];
+
+pendientes.forEach(
+    /*forEach itera sobre los elementos, por eso es que iterador equivale al elemento del arreglo.
+    De todas formas permite obtener el indice en el arreglo, agregando otro elemento separado por
+    una coma al lado derecho del iterador*/
+    (iterador, indice) => {
+        console.log(`Elemento ${iterador} en el indice ${indice}`);
+    }
+)
+```
+
+##### .map
+
+Su estructura es igual a la del _.forEach()_ y hace lo mismo pero a diferencia del _.forEach()_, _.map()_ crea un nuevo elemento con el resultado de haber recorrido el arreglo.
+
+```js
+// map
+
+const baratos = carrito.map(producto => producto)
+console.log(baratos);
+```

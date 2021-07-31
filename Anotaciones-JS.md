@@ -2297,3 +2297,22 @@ Su estructura es igual a la del _.forEach()_ y hace lo mismo pero a diferencia d
 const baratos = carrito.map(producto => producto)
 console.log(baratos);
 ```
+
+#### for ...of
+
+Itera sobre el arreglo original y el iterador toma el valor de cada elemento del arreglo. Su estructura se basa en la del _for_ pero la condición y el incremento se reemplazan por un `of nombre.arreglo` quedando la declaración de la siguiente manera `for (iterador of nombreArreglo){}`.
+
+```js
+const carrito = [
+    { nombre: 'Monitor 27 pulgadas', precio: 500},
+    { nombre: 'Televisión', precio: 100},
+    { nombre: 'Tablet', precio: 200},
+    { nombre: 'Audifonos', precio: 300},
+    { nombre: 'Teclado', precio: 400},
+    { nombre: 'Celular', precio: 700},
+]
+
+for( pendientes of carrito){
+    console.log(pendientes);
+}
+```

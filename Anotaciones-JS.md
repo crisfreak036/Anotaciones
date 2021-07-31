@@ -2316,3 +2316,44 @@ for( pendientes of carrito){
     console.log(pendientes);
 }
 ```
+
+Cabe mencionar que desde ECMAScript 7, se puede iterar sobre un objeto utilizando _for of_ y `Object.entries(objetoAIterar)`. Para hacerlo, hay que definir dos iteradores, el primero que entregará el nombre de la propiedad y el segundo que entregará los valores `let[llave,valor]`.
+
+```js
+const automovil = {
+    modelo: 'Camaro',
+    year: 1969,
+    motor: '6.0'
+}
+
+//ECMAScript 7 introdujeron el siguiente iterador para objetos
+for( let [llave,valor] of Object.entries(automovil)){
+    console.log(llave); // Muestra la propiedad
+    console.log(valor); // Muestra el valor de la propiedad
+}
+```
+
+#### for ...in
+
+Esta variación del _for_ está hecha para iterar sobre **objetos**, itera sobre arreglos pero entrega el indice, en cambio, en los objetos entrega las propiedades de este. Su estructura es como la de _for...of_ pero se cambia el _of_ por un _in_ quedando de la siguiente forma `for (iterador in Objeto){}`. El iterador definido mostrará el nombre de las propiedades, para mostrar el valor de las propiedades hay que escribir el nombre del objeto seguido de una par de corechetes y dentro escribie el nombre del iterador `Objeto[iterador]`.
+
+```js
+const pendientes = ['Tarea', 'Comer', 'Proyecto', 'Estudiar JS']; // Arreglo
+
+for( let pendiente in pendientes){
+    console.log(pendiente); //Muestra los indices de cada elemento 
+}
+
+// Objeto
+const automovil = {
+    modelo: 'Camaro',
+    year: 1969,
+    motor: '6.0'
+}
+
+//for in para objeto
+for( let propiedad in automovil){
+    console.log(propiedad); // Muestra la llave del objeto
+    console.log(automovil[propiedad]); // Muestra el valor de la propiedad
+}
+```

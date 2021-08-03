@@ -2414,3 +2414,37 @@ console.log(existe);
 const existe2 = meses.some( mes => mes === 'Marzo');
 console.log(existe2);
 ```
+
+#### .findInde para encontrar la posición en un array
+
+Este método sirve para encontrar el índice de un elemento. Entrega el índice de la primera coincidencia que encuentra. Sirve tanto para arreglos con indices como  con objetos, añadiendo la sintaxis de punto al momento de hacer la compración. Cabe mencionar que si no se encuentra el elemento indicado, este método retorna un _-1_.
+
+```js
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio']; // Arreglo con indices
+
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// Encontrar indice de un elemento de forma manual
+
+meses.forEach( (mes, indice) => {
+    if(mes === 'Marzo'){
+        console.log(`El indice del mes ${mes} es ${indice}`);
+    }
+})
+
+// Encontrar indice de un elemento con .findIndex
+
+const indiceAbril = meses.findIndex( mes => mes === 'Abril');
+console.log(indiceAbril); // Si no encuentra el elemento, da retorna un -1
+
+const indiceTablet = carrito.findIndex( producto => producto.nombre === 'Tablet');
+console.log(indiceTablet);
+```

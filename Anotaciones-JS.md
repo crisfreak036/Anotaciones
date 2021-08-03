@@ -2357,3 +2357,60 @@ for( let propiedad in automovil){
     console.log(automovil[propiedad]); // Muestra el valor de la propiedad
 }
 ```
+
+### Array Methods
+
+#### .includes y .some
+
+ambos métodos sirven para encontrar una valor en un arreglo. Sin embargo, _.includes()_ sirve sólo para arreglos de indices, en cambio, _.some()_ es tanto para arreglos de indices como para arreglos de objetos. Por otro lado, ambos métodos se diferencian con respecto al parámetro que reciben, por un lado _.includes()_ recibe el valor que se está buscando en el arreglo, mientras que _.some()_ recibe una _Arrow Function_ la cual se encarga de recorrer el arreglo (de indice u objetos) y buscar un valor, la estructura de la _Arrow Function_ es similar a la de un _.forEach_ o un _.map_, en donde el cuerpo de la función se compone de un _return_ seguido por lo que se está buscando.
+
+```js
+// Ejemplo .includes()
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio']; // Arreglo con indices
+
+// Comprobar si un valor existe de forma manual en un arreglo
+
+meses.forEach( (mes) => {
+    if(mes === 'Enero'){
+        console.log('Enero existe');
+    }
+});
+
+// Comprobar si un valor existe en un arreglo de indices con .includes
+
+/*.includes entrega un true en la primera coincidencia que 
+encuentra en el arreglo. Es sólo para arreglos con indices*/
+const resultado = meses.includes('Enero');
+console.log(resultado);
+```
+Cabe mencionar que tanto _.includes()_ como _.some()_ hay que utilizarlos de forma _Expresiva_, o sea, hay que utilzarlas dentro de una variable la cual contendrá el resultado booleano de si se encontró coincidencia o no.
+
+```js
+// Ejemplo .some()
+
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio']; // Arreglo con indices
+
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// Comprobar si un valor existe en un arreglo de objetos con .some
+/*.some similar a un forEach ocupa un arrow function compuesto por 
+el iterador*/
+
+const existe = carrito.some( producto => {
+    return producto.nombre === 'Teclado' // Se encarga de encontrar la coincidencia y retornar el booleano correspondiente
+});
+console.log(existe);
+
+// Comprobación en un arreglo tradicional con .some y arrow function full
+
+const existe2 = meses.some( mes => mes === 'Marzo');
+console.log(existe2);
+```

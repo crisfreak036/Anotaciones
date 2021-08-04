@@ -2627,3 +2627,32 @@ console.table(arreglo2);
 const arreglo3 = [...mesesUpper1, ...mesesUpper2, numero, ...palabra]; // Los números no pueden separarse con el spread operator, a diferencia de las palabras que se separan en caracteres
 console.table(arreglo3);
 ```
+
+#### Spread Operator
+
+Entre uno de los beneficios que tiene el uso del _spread operator_, se encuentra el no modificar la variable original, ya que crea una copia la cual se termina alamcenando en una nueva variable.
+
+```js
+// Rest o Spread Operator
+
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio']; // Arreglo con indices
+
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// Agregar un elemento al final de un arreglo con indices
+meses2 = [...meses, 'Agosto'];
+console.log(meses2);
+
+// Agregar un elemento al final de un arreglo de objetos
+const producto = {nombre: 'Disco Duro', precio: 300};
+const carrito2 = [...carrito, producto];
+console.table(carrito2);
+```

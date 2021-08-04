@@ -2549,3 +2549,28 @@ console.log(resultado);
 const resultado2 = carrito.find( producto => producto.nombre === 'Tablet');
 console.log(resultado2);
 ```
+
+#### .every
+
+Es un método que sirve para comprobar que todos los elementos de una arreglo cumplen con una misma condición, retorna un booleano y sólo retorna un true si todos los elementos del arreglo cumplen con cierta condición. Si se quiere comprobar que al menos un elemento del arreglo cumpla con la condición, existe el método _.some()_ que se vió anteriormente.
+
+```js
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+const resultado = carrito.every( producto => producto.precio < 1000);
+console.log(resultado); //true, todos los elementos cumplen con la condición
+
+const resultado2 = carrito.every( producto => producto.precio < 500);
+console.log(resultado2); //false, no todos los elementos cumplen con la condición
+
+const resultado3 = carrito.some( producto => producto.precio < 500);
+console.log(resultado3); //true, al menos un elemento cumple con la condición
+```

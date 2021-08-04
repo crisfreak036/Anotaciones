@@ -2481,3 +2481,42 @@ console.log(resultado);
 ```
 
 Cabe mencionar que al utilizar .reduce no es necesario crear una variable fuera de la arrow function, ya que dentro de ella es donde se define e inicializa.
+
+#### .filter
+
+Crea un nuevo arreglo basado en el parametro que es evaluado, osea, crea un nuevo arreglo en base a una condición que uno entregue. Al igual que los otros métodos, _.filter_ utiliza un _arrow function_ que itera sobre el arreglo, y en su return, se pone la condición.
+
+Se puede utilizar para filtrar elementos.
+
+```js
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+let resultado = carrito.filter( producto => producto.precio >= 400); // Crea un arreglo con los productos con precios mayores o iguales a 400
+console.table(resultado);
+```
+
+Al igual que se puede utilizar para quitar elementos
+
+```js
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// filter se puede utilizar para quitar un elemento de un arreglo
+let resultado3 = carrito.filter( producto => producto.nombre != 'Tablet'); // Trae todos los productos menos la Tablet
+console.table(resultado3);
+```

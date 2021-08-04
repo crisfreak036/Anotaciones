@@ -2656,3 +2656,11 @@ const producto = {nombre: 'Disco Duro', precio: 300};
 const carrito2 = [...carrito, producto];
 console.table(carrito2);
 ```
+
+## JavaScript para la web
+
+### ¿Qué es el DOM?
+
+Document Object Model, es el objeto modelo del documento HTML con el cual JS puede interactuar. El siguiente es un diagrama de lo que sería el DOM.
+
+![Diagrama-DOM](archivos\images\Diagrama-DOM.png)

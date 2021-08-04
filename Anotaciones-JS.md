@@ -2574,3 +2574,56 @@ console.log(resultado2); //false, no todos los elementos cumplen con la condici�
 const resultado3 = carrito.some( producto => producto.precio < 500);
 console.log(resultado3); //true, al menos un elemento cumple con la condición
 ```
+
+#### Unir arrglos con .concat o Spread Operator
+
+##### .concat
+
+Es un método que sirve para unir dos o más arreglos. Se utiliza en el arreglo al que se le quiere unir elementos. A diferencia de los otros métodos, _.concat()_ no utiliza _aroow function_. Además de arreglos, puede recibir otro tipo de variables, como lo serían enteros y strings. Hay que tener en cuenta que dependiendo de el orden con el que se pasen los elementos al método, es el orden con el que se encontrarán en el nuevo arreglo.
+
+```js
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio']; // Arreglo con indices
+const meses2 = ['Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const mesesUpper1 = ['ENERO', 'FEBRERO'];
+const mesesUpper2 = ['MARZO', 'ABRIL'];
+const numero = 10;
+const palabra = 'String';
+
+// con .concat()
+const anio = meses.concat(meses2); // Es recomendable guardar en una nueva variable el resultado de .concat()
+console.table(anio);
+console.table(meses); // .concat no afecta a ninguno de los arreglos
+console.table(meses2); // .concat no afecta a ninguno de los arreglos
+
+const anio2 = anio.concat(mesesUpper1, mesesUpper2); // .concat() puede recibir más de un arreglo
+console.table(anio2);
+
+// Se pueden concatenar otros tipos de variables, como lo serían números y palabras
+const arreglo1 = mesesUpper1.concat(mesesUpper2, numero, palabra);
+console.table(arreglo1);
+```
+
+##### Con Spread Operator
+
+Además de arreglos, puede unir otro tipo de variables, como lo serían enteros y strings. Hay que tener en cuenta que dependiendo de el orden con el que se pasen los elementos al método, es el orden con el que se encontrarán en el nuevo arreglo, además en el caso de los _Strings_ hay que tener cuidado con no anteponer _..._ antes del nombre de la variable, ya que el _spread operator_ lo que hará será añadir cada uno de los caracteres de la palabra por separado al arreglo.
+
+```js
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio']; // Arreglo con indices
+const meses2 = ['Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const mesesUpper1 = ['ENERO', 'FEBRERO'];
+const mesesUpper2 = ['MARZO', 'ABRIL'];
+const numero = 10;
+const palabra = 'String';
+
+// con Spread operator
+const nuevoAnio = [...meses,...meses2]; // Se toma una copia de cada arreglo indicado y se crea un nuevo arreglo que los tenga a ambos concatenados
+console.table(nuevoAnio);
+
+/* Al igual que con .concat(), se pueden concatenar otros elementos no arreglos con el spread operator pero hay que tener cuidado con no anteponer los ...
+de lo contrario, en el caso de un string, añadirá cada carácter que componga a la palabra*/
+const arreglo2 = [...mesesUpper1, ...mesesUpper2, numero, palabra];
+console.table(arreglo2);
+
+const arreglo3 = [...mesesUpper1, ...mesesUpper2, numero, ...palabra]; // Los números no pueden separarse con el spread operator, a diferencia de las palabras que se separan en caracteres
+console.table(arreglo3);
+```

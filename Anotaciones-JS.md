@@ -2659,8 +2659,41 @@ console.table(carrito2);
 
 ## JavaScript para la web
 
-### ¿Qué es el DOM?
+### JavaScript DOM (Document Object Model)
+
+#### ¿Qué es el DOM?
 
 Document Object Model, es el objeto modelo del documento HTML con el cual JS puede interactuar. El siguiente es un diagrama de lo que sería el DOM.
 
 ![Diagrama-DOM](archivos\images\Diagrama-DOM.png)
+
+#### Acceder a elementos HTML con document
+
+document es el objeto que hace referencia a todo el HTML.
+
+```js
+let elemento;
+
+elemento = document;
+elemento = document.all; // Selecciona todos los elementos que conforman el HTML
+elemento = document.head; // Selecciona la cabecera del HTML
+elemento = document.body; // Selecciona el cuerpo del HTML
+elemento = document.domain; // Muestra el dominio donde se carga la página
+
+elemento = document.forms; // Muestra los forms que se encuentren en la página. Los entrega como un HTMLCollection
+elemento = document.forms[0]; // Muestra el primer elemento del HTMLCollection
+elemento = document.forms[0].id; // Muestra el id del primer elemento del HTMLCollection
+elemento = document.forms[0].method; // Muestra el método del primer elemento del HTMLCollection
+elemento = document.forms[0].classList; // Muestra las clases del primer elemento del HTMLCollection
+elemento = document.forms[0].action; // Muestra la ruta del primer elemento del HTMLCollection
+
+elemento = document.links; // Muestra todos los enlaces que contienen el HTML
+elemento = document.links[4]; // Muestra información del cuarto elemento (quinto enlace) del HTMLCollection creado por document.links
+elemento = document.links[4].classList; // Muestra las clases del cuarto elemento (quinto enlace) del HTMLCollection creado por document.links
+elemento = document.links[4].className; // // Muestra las clases del cuarto elemento (quinto enlace) del HTMLCollection creado por document.links como un string
+
+elemento = document.images; // Muestra todas las imágenes que se encuentran en la página
+elemento = document.scripts; // Muestra todas los Scripts que se encuentran en la página
+
+console.log(elemento);
+```

@@ -7,6 +7,7 @@ Actualmente las anotaciones incompletas son:
 - Anotaciones-Git del Curso de Git y GitHub
 - Anotaciones-JS del curso de JavaScript Moderno Guía Definitiva Construye +15 Proyectos
 - Anotaciones-full-stack-linkedin del curso de Conviértete en desarrollador web full-stack LinkedIn
+- Anotaciones-Vuejs del Curso de Vue.js: De cero a experto
 
 Anotaciones completas: 
 

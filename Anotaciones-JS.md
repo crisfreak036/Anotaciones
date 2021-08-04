@@ -2448,3 +2448,36 @@ console.log(indiceAbril); // Si no encuentra el elemento, da retorna un -1
 const indiceTablet = carrito.findIndex( producto => producto.nombre === 'Tablet');
 console.log(indiceTablet);
 ```
+
+#### .reduce
+
+Es una función reducer, o sea, una función reductora la cual toma una gran cantidad de datos, los cuales une y entrega una gran cantdiad de resultados.
+
+El método .reduce() utiliza una arrow function el cual recibe dos valores, el valor previo y el actual, en el ejemplo, el valor previo sería
+el total al cual se le sumará el valor actual, o sea, producto.precio, durante la iteración .reduce() hará como si se hiciera un +=
+por lo cual en el cuerpo de la función hay que poner sólo un +.
+
+
+```js
+// Arreglo con Objetos
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// Con un forEach
+
+let total = 0;
+carrito.forEach( producto => total += producto.precio); // Suma todos los precios de los productos dentro del carrito
+console.log(total);
+
+// Con un  .reduce
+let resultado = carrito.reduce( (total2, producto) => total2 + producto.precio, 0 ); // El 0 es el valor con el que inicia total2
+console.log(resultado);
+```
+
+Cabe mencionar que al utilizar .reduce no es necesario crear una variable fuera de la arrow function, ya que dentro de ella es donde se define e inicializa.

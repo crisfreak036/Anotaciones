@@ -2721,3 +2721,17 @@ console.log(contenedor);
 const noExiste = document.getElementsByClassName('no-existe');
 console.log(noExiste); // Entrega un HTMLCollection vacío
 ```
+
+#### getElementsById
+
+Sirve para seleccionar elementos por su id, los cuales son únicos, o sea, no puede asiganrse el mismo a id a más de un elemento. Si por algún motivo **existierán 2 id iguales**, _getElementById_ seleccionará el primero. Si no encuentra el _id_, retorna un _null_.
+
+```js
+// Seleccionar por id
+const formulario = document.getElementById('formulario');
+console.log(formulario);
+
+// Seleccionar algo que no existe
+const noExiste = document.getElementById('no-existe');
+console.log(noExiste); // noExiste guarda un null como valor
+```

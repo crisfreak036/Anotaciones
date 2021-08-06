@@ -2697,3 +2697,27 @@ elemento = document.scripts; // Muestra todas los Scripts que se encuentran en l
 
 console.log(elemento);
 ```
+
+#### getElementsByClassName
+
+Cada vez es menos popular, sin embargo, es necesario conocerla. Sirve para seleccionar elementos por su clase, los cuales son retornados como un _HTMLCollection_ los cuales son similares a los arreglos.
+
+```js
+// Seleccionar elementos por su clase
+
+// Las clases se pueden repetir a lo largo del código
+
+// Esto permite almacenar el header en la variable header lo cual permitirá que se puede interactuar con su código
+const header = document.getElementsByClassName('header');
+console.log(header);
+
+const hero = document.getElementsByClassName('hero');
+console.log(hero);
+
+const contenedor = document.getElementsByClassName('contenedor');
+console.log(contenedor);
+
+// Si una clase no existe
+const noExiste = document.getElementsByClassName('no-existe');
+console.log(noExiste); // Entrega un HTMLCollection vacío
+```

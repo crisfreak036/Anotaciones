@@ -2667,6 +2667,254 @@ Document Object Model, es el objeto modelo del documento HTML con el cual JS pue
 
 ![Diagrama-DOM](archivos\images\Diagrama-DOM.png)
 
+#### Código HTML a utilizar
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MiViaje.com</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="hero">
+        <header class="header contenedor">
+            <div class="logo">
+                <img src="img/logo.png">
+            </div>
+            <nav class="navegacion">
+                <a href="#">Vender</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Registro</a>
+                <a href="#">Iniciar Sesión</a>
+            </nav>
+        </header>
+
+        <div class="contenido-hero contenedor">
+            <h1>Encuentra <span> hospedaje  </span>para tus próximas vacaciones</h1>
+
+            <form action="/buscador" method="POST" class="formulario formulario-buscar" id="formulario" >
+                <input type="text" name="busqueda" class="busqueda" placeholder="New York, Londres, Roma, Guadalajara">
+                <input type="submit" value="Buscar" id="btn-submit">
+            </form>
+        </div>
+    </div> <!--.hero-->
+
+    <main class="contenido contenedor">
+        <section class="hacer">
+            <h2>Que Hacer</h2>
+            <div class="contenedor-cards">
+                    <div class="card">
+                        <img src="img/hacer1.jpg">
+                        <div class="info">
+                            <p class="categoria concierto">concierto</p>
+                            <p class="titulo">Música electrónica 2021</p>
+                            <p class="precio">$1,200 por persona</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/hacer2.jpg">
+                        <div class="info">
+                            <p class="categoria concierto">concierto</p>
+                            <p class="titulo">Rock en Los Ángeles</p>
+                            <p class="precio">$300 por persona</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/hacer3.jpg">
+                        <div class="info">
+                            <p class="categoria clase">Clase Cocina</p>
+                            <p class="titulo">Comida Española para Principiantes</p>
+                            <p class="precio">$400 por persona</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/hacer4.jpg">
+                        <div class="info">
+                            <p class="categoria paseo">Paseo en Bici</p>
+                            <p class="titulo">Paseo en las Montañas</p>
+                            <p class="precio">$200 por persona</p>
+                        </div>
+                    </div> <!--.card-->
+            </div> <!--.columnas4 cuadros-->
+        </section>
+
+
+        <section class="hacer">
+            <h2 class="mi-viaje-plus">Presentamos Miviaje.com Plus</h2>
+            <div class="contenedor-cards premium">
+                <div class="info">
+                    <h3>Una nueva sección de alojamientos de lujo</h3>
+                    <a href="#" class="boton btn-mi-viaje">Explorar alojamientos </a>
+                </div>
+            </div> <!--.columnas4 cuadros-->
+        </section>
+
+        <section class="hospedaje">
+            <h2>Hospedaje</h2>
+            <div class="contenedor-cards">
+                    <div class="card">
+                        <img src="img/hospedaje1.jpg">
+                        <div class="info">
+                            <p class="categoria hospedaje">Casa completa - 2 camas</p>
+                            <p class="titulo">Casa completa con todos los servicios y 2 recamaras</p>
+                            <p class="precio">$3,200 por noche</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/hospedaje2.jpg">
+                        <div class="info">
+                            <p class="categoria hospedaje">1 Cuarto con 2 camas</p>
+                            <p class="titulo">1 Cuarto con 2 camas y alberca </p>
+                            <p class="precio">$2,200 por noche</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/hospedaje3.jpg">
+                        <div class="info">
+                            <p class="categoria hospedaje">Cabaña completa - 4 Camas</p>
+                            <p class="titulo">Cabaña en Bosque para 6 personas</p>
+                            <p class="precio">$2,500 por noche</p>
+                        </div>
+                    </div> <!--.card-->
+            </div> <!--.columnas4 cuadros-->
+        </section>
+
+        <section class="destinos">
+            <h2>Destinos Populares</h2>
+            <div class="contenedor-cards">
+                    <div class="card">
+                        <img src="img/populares1.jpg">
+                        <div class="info">
+                            <p class="titulo">Austria</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/populares2.jpg">
+                        <div class="info">
+                            <p class="titulo">Francia</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/populares3.jpg">
+                        <div class="info">
+                            <p class="titulo">Grecia</p>
+                        </div>
+                    </div> <!--.card-->
+                    <div class="card">
+                        <img src="img/populares4.jpg">
+                        <div class="info">
+                            <p class="titulo">Inglaterra</p>
+                        </div>
+                    </div> <!--.card-->
+            </div> <!--.columnas4 cuadros-->
+        </section>
+
+        <section class="hacer">
+                <h2>Que Hacer en New York</h2>
+                <div class="contenedor-cards">
+                        <div class="card">
+                            <img src="img/newyork1.jpg">
+                            <div class="info">
+                                <p class="categoria clase">Clase</p>
+                                <p class="titulo">Comida Japonesa para Principiantes</p>
+                                <p class="precio">$300 por persona</p>
+                            </div>
+                        </div> <!--.card-->
+                        <div class="card">
+                            <img src="img/newyork2.jpg">
+                            <div class="info">
+                                <p class="categoria concierto">concierto</p>
+                                <p class="titulo">Festival EDM 2021</p>
+                                <p class="precio">$1,200 por persona</p>
+                            </div>
+                        </div> <!--.card-->
+                        <div class="card">
+                            <img src="img/newyork3.jpg">
+                            <div class="info">
+                                <p class="categoria clase">Clase de Cocina</p>
+                                <p class="titulo">Paella Dominicana</p>
+                                <p class="precio">$200 por persona</p>
+                            </div>
+                        </div> <!--.card-->
+                        <div class="card">
+                            <img src="img/newyork4.jpg">
+                            <div class="info">
+                                <p class="categoria paseo">Paseos</p>
+                                <p class="titulo">Paseo a Caballo</p>
+                                <p class="precio">$100 por persona</p>
+                            </div>
+                        </div> <!--.card-->
+                </div> <!--.columnas4 cuadros-->
+            </section>
+
+    </main>
+    
+   
+
+    <footer id="footer" class="footer">
+        <div class="contenedor">
+                <div class="nav-footer">
+                    <h3 class="titulo-footer">MiViaje.com</h3>
+                    <nav class="menu">
+                        <a href="#">Empleo</a>
+                        <a href="#">Prensa</a>
+                        <a href="#">Politicas</a>
+                        <a href="#">Ayuda</a>
+                    </nav>
+                </div>
+
+                <div class="nav-footer">
+                    <h3 class="titulo-footer">Descubre MiViaje.com</h3>
+                    <nav class="menu">
+                        <a href="#">Confianza y Seguridad</a>
+                        <a href="#">Crédito de Viajero</a>
+                        <a href="#">AirBNB Citizen</a>
+                        <a href="#">Viaje de negocios</a>
+                    </nav>
+                </div>
+
+                <div class="nav-footer">
+                    <h3 class="titulo-footer">Hospedaje</h3>
+                    <nav class="menu">
+                        <a href="#">Razones para Hospedar</a>
+                        <a href="#">Hospitalidad</a>
+                        <a href="#">Ser un anfitrión responsable</a>
+                        <a href="#">Centro de la Comunidad</a>
+                    </nav>
+                </div>
+
+                <div class="nav-footer">
+                    <nav class="sociales">
+                        <ul>
+                            <li><a href="http://facebook.com" target="_blank"><span>Facebook</span></a></li>
+                            <li><a href="http://twitter.com" target="_blank"><span>Twitter</span></a></li>
+                            <li><a href="http://instagram.com" target="_blank"><span>Instagram</span></a></li>
+                        </ul>
+                    </nav>
+                    <nav class="menu">
+                        <a href="#">Razones para Hospedar</a>
+                        <a href="#">Hospitalidad</a>
+                        <a href="#">Ser un anfitrión responsable</a>
+                        <a href="#">Centro de la Comunidad</a>
+                    </nav>
+                </div>
+        </div>
+    </footer>
+    <a href="#footer" class="btn-flotante">Idioma y Moneda</a>
+    <!--En la etiqueta script se debe colocar la ruta del archivo .js con el que hacer pruebas en la página-->
+    <!--<script src=""></script>-->
+</body>
+</html>
+```
+
 #### Acceder a elementos HTML con document
 
 document es el objeto que hace referencia a todo el HTML.
@@ -2734,4 +2982,30 @@ console.log(formulario);
 // Seleccionar algo que no existe
 const noExiste = document.getElementById('no-existe');
 console.log(noExiste); // noExiste guarda un null como valor
+```
+
+#### querySelector
+
+Retorna como máximo un elemento, pero tiene la caracteristica que permite seleccionar hasta clases, se asimila a cuando se escriben selectores en una hoja de estilos CSS. Permite seleccionar un elemento (el primero que coincida) meidante el uso de selectores de CSS (en el caso de las clases), id o etiqueta html.
+
+```js
+// Seleccionar un elemento por su clase (con la sintaxis de CSS)
+const card = document.querySelector('.card');
+console.log(card); // Retorna el primer elemento que ocupe la clase mencionada
+
+// Se pueden utilizar selectores específicos como los de CSS
+const info = document.querySelector('.premium .info');
+console.log(info);
+
+// Seleccionar un elemento que comparte clase con otro que está primero (con la sintaxis de CSS)
+const segundoCard = document.querySelector('section.hospedaje .card:nth-child(2)');
+console.log(segundoCard);
+
+// Seleccionar elemento por el id (con la sintaxis de CSS)
+const formulario = document.querySelector('#formulario');
+console.log(formulario);
+
+// Seleccionar elementos por su etiqueta HTML
+const navegacion = document.querySelector('nav');
+console.log(navegacion);
 ```

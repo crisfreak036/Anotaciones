@@ -3009,3 +3009,17 @@ console.log(formulario);
 const navegacion = document.querySelector('nav');
 console.log(navegacion);
 ```
+
+#### querySelectorAll
+
+A diferencia de _querySelector_, **_querySelectorAll_** retorna todos los elementos que coincidan con el selector que se le entrega, como por ejemplo, todos los elementos que compartan una misma clase. Tanto _querySelector_ como _ querySelectorAll_ comparten sintáxis. Retorna un NodeList, similar a un arreglo, el cual contienen todo los nodos (etiquetas del HTML, <div>, <a>, <p>, etc).
+
+```js
+// Seleccionar todos los elementos de una misma clase
+const card = document.querySelectorAll('.card');
+console.log(card); // Retorna un NodeList, similar a un arreglo
+
+// Si no se encuentra coincidencia con el selector
+const noExiste = document.querySelectorAll('.no-existe');
+console.log(noExiste); // NodeList vacía
+```

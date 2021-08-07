@@ -3012,7 +3012,7 @@ console.log(navegacion);
 
 #### querySelectorAll
 
-A diferencia de _querySelector_, **_querySelectorAll_** retorna todos los elementos que coincidan con el selector que se le entrega, como por ejemplo, todos los elementos que compartan una misma clase. Tanto _querySelector_ como _ querySelectorAll_ comparten sintáxis. Retorna un NodeList, similar a un arreglo, el cual contienen todo los nodos (etiquetas del HTML, <div>, <a>, <p>, etc).
+A diferencia de _querySelector_, **_querySelectorAll_** retorna todos los elementos que coincidan con el selector que se le entrega, como por ejemplo, todos los elementos que compartan una misma clase. Tanto _querySelector_ como _ querySelectorAll_ comparten sintáxis. Retorna un NodeList, similar a un arreglo, el cual contienen todo los nodos (etiquetas del HTML, <div\>, <a\>, <p\>, etc).
 
 ```js
 // Seleccionar todos los elementos de una misma clase
@@ -3022,4 +3022,72 @@ console.log(card); // Retorna un NodeList, similar a un arreglo
 // Si no se encuentra coincidencia con el selector
 const noExiste = document.querySelectorAll('.no-existe');
 console.log(noExiste); // NodeList vacía
+```
+
+#### Modificar Textos o Imagenes con JS
+
+##### Modificar Textos
+
+Hasta ahora sólo se ha visto como seleccionar elementos de la página pero no se ha visto de que sirve hacerlo. La idea es seleccionar elementos y modificarlos para hacerlos más dinámicos meidante el uso de JS.
+
+En el ejemplo de la sección, se debe seleccionar el _<h1\>_ el cual será útil para practicar con el texto que contiene.
+
+```js
+const encabezado = document.querySelector('.contenido-hero h1');
+console.log(encabezado);
+```
+
+1. **Mostrar texto con JS:** Para seleccionar texto con JS exiten 3 formas:
+
+- Utilizar _elemento.innerText_ para traer el texto, hay que tener en consideración que si en el CSS se encuentra la propiedad **_visibility: hidden;_**, no retornará nada.
+
+```js
+console.log(encabezado.innerText);
+```
+
+- Utilizar _elemento.textContent_ para traer el texto, sin importar las propiedades en el CSS.
+
+```js
+console.log(encabezado.textContent); // Lo retorna tal cual está en el HTML
+```
+
+- Utilizar _elemento.innerHTML_ para traer el HTML, o sea, si hay código HTML dentro del texto, aparecerá igual.
+
+```js
+console.log(encabezado.innerHTML); // Retorna tanto el texto como el código HTML que haya entre medio
+```
+
+2. **Seleccionar el texto con JS:** Se puede aplicar encadenamiento para seleccionar directamente el texto, sin la necesidad de seleccionar primero la etiqueta HTML por ejemplo.
+
+```js
+// Encadenamiento para seleccionar un elemento directamente
+const encabezado = document.querySelector('.contenido-hero h1').textContent;
+console.log(encabezado);
+```
+
+3. **Modificar el texto con JS:** Con el texto seleccionado, como si de una variable se tratase, se puede cambiar su valor.
+
+```js
+// Cambiar el texto con JS
+document.querySelector('.contenido-hero h1').textContent = 'Nuevo Encabezado';
+```
+
+##### Modificar imágenes
+
+Para la modificación de imágnes, lo que se puede hacer es modificar su fuente, o sea, su _src_.
+
+En este caso de ejemplo, se seleccionará la prmera imagen que se encuentra en el div con la clase _contenedor-cards_.
+
+```js
+// Seleccionar imágen
+const imagen = document.querySelector('.contenedor-cards .card img');
+// Se comprueba que está seleccionado
+console.log(imagen);
+```
+
+Exisistirá un gran número de propiedades que se pueden modificar de esa imagen, las cuales en navegadores como _Firefox Developer Edition_ se pueden ver todas,sin embargo, en este caso lo que importa es modificar el _src_ de la imágen por el de otra imágen.
+
+```js
+// Se cambiar el src de esa imagen por el de otra
+imagen.src = 'https://n9.cl/1nznq'
 ```

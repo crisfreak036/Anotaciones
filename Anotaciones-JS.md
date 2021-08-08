@@ -3091,3 +3091,39 @@ Exisistirá un gran número de propiedades que se pueden modificar de esa imagen
 // Se cambiar el src de esa imagen por el de otra
 imagen.src = 'https://n9.cl/1nznq'
 ```
+
+#### Cambiando el CSS con JS
+
+Con JS se pueden cambiar las propiedades CSS asociadas a un elemento, utilizando la propiedad _.style_ seguida por la propiedad de CSS las cuales siguen la escritura de variables en JS, ejemplo _backgroud-color_ se escribe _.backgroundColor_. La otra forma es añadiendo o eliminando clases a un elemento con los métodos _elemento.classList.add('nombre-clase')_ o _elemento.classList.remove('nombre-clase')_ respectivamente.
+
+```js
+const encabezado = document.querySelector('.contenido-hero h1');
+console.log(encabezado);
+
+// Acceder a la propiedad Style del h1
+console.log(encabezado.style); // Permite ver todas las propiedades que tiene el elemento
+
+// FORMA SENCILLA DE CAMBIAR PROPIEDADES UNA A UNA
+// Cambiar el color del fondo del h1
+encabezado.style.backgroundColor = 'red';
+// Las mismas propiedades de CSS se pueden encontrar en JS con una sintaxis similar pero no igual en el nombre de las propiedades
+
+// Cambiar la fuente del h1
+encabezado.style.fontFamily = 'Arial';
+
+// Transformarlo a mayúsculas
+encabezado.style.textTransform = 'uppercase';
+
+// AGREGANDO O ELIMINANDO CLASS-NAMES
+/*Es más recomendable establecer un estilo para una clase, la se puede añadir o eliminar
+con código JS*/
+
+// Seleccionar el primer elemento de la clase card
+const card = document.querySelector('.contenedor-cards .card');
+card.classList.add('nueva-clase','segunda-clase'); // Añade 2 nuevas clases 
+console.log(card.classList); // Muestra el arreglo con todas las clases del contenedor card
+console.log(card);
+card.classList.remove('segunda-clase'); // Elimina la clase segunda-clase
+console.log(card.classList); // Muestra el arreglo con todas las clases del contenedor card
+console.log(card);
+```

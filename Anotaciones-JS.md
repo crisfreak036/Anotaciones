@@ -3181,3 +3181,24 @@ console.log(ulitmoCard);
 /*Seleccionar los elementos hermanos anteriores a los de un elemento*/
 console.log(ulitmoCard.previousElementSibling);
 ```
+
+#### Eliminar elementos del DOM
+
+Existen 2 formas de hacerlo, eliminando un elemento por si mismo y la otra es eliinarlo desde el padre.
+
+```js
+const primerEnlace = document.querySelector('a'); // Selecciona el primer enlace en el HTML
+console.log(primerEnlace);
+
+// Eliminar un elemento directamente con el método .remove()
+primerEnlace.remove(); // Ya no se encuentra en el DOM
+
+// Eliminar desde el padre
+// Lo primero es seleccionar el element padre
+const navegacion = document.querySelector('.navegacion');
+console.log(navegacion);
+
+// Lo segundo es identificar el elemento a eliminar
+console.log(navegacion.children); // Aparte de mostrar los elemento, da la posición de los mismos
+navegacion.removeChild(navegacion.children[1]); // Recibe la posición del elemento hijo a eliminar
+```

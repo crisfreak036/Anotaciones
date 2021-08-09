@@ -3127,3 +3127,57 @@ card.classList.remove('segunda-clase'); // Elimina la clase segunda-clase
 console.log(card.classList); // Muestra el arreglo con todas las clases del contenedor card
 console.log(card);
 ```
+
+#### Traversing the DOM
+
+Traversing the DOM hace referencia a recorrer el DOM como si de una mapa se tratase.
+
+```js
+/*Recorrer desde el elemento padre hacía los hijos*/
+// Seleccionar el elemento <nav>
+const navegacion = document.querySelector('.navegacion');
+console.log(navegacion);
+console.log(navegacion.childNodes); // Cuenta como elemento los espacios en blanco (saltos de línea)
+console.log(navegacion.children); // Cuanta sólo elementos reales del HTML. Retorna un HTMLCollection
+console.log(navegacion.children[2]); // Muestra el tercer elemento
+
+/*Acceder al primer y ultimo elemento*/
+console.log(navegacion.firstElementChild); // Primer elemento hijo de la navegación
+console.log(navegacion.lastElementChild); // Último elemento hijo de la navegación
+```
+```js
+// Seleccionar un elemento del contendedor clase .card
+const card = document.querySelector('.card');
+console.log(card);
+console.log(card.children);
+
+// Acceder al título
+console.log(card.children[1].children[1].textContent);
+/*el primer acceso es al contendedor de la información y
+el segundo es para acceder al párrafo <P>, finalmente .textContent
+es para acceder al texto del párrafo*/
+
+// Cambiar imagen del elemento del contendedor clase .card con traversing
+const imagen = card.children[0];
+console.log(imagen);
+//imagen.src = 'https://n9.cl/1nznq';
+
+/*Recorrer desde los elementos hijos hacía el padre*/
+// Acceder al nodo padre del elemento seleccionado
+console.log(card.parentNode); // Las propiedades que se refieran a los Node incluyen saltos de línea
+console.log(card.parentElement); // PErmite ver el elemento padre sin contar los saltos de línea
+console.log(card.parentElement.parentElement); // Accede al elemento padre del elemento padre
+/*Se pueden utilizar tanto parentElement como sea necesario*/
+
+/*Acceder a los elementos hermanos (los que comparten un mismo elemento padre) de un elemento*/
+console.log(card.nextElementSibling); // Segundo elemento card
+console.log(card.nextElementSibling.nextElementSibling); // Tercer elemento card
+console.log(card.nextElementSibling.nextElementSibling.nextElementSibling); // Cuarto elemento card
+//console.log(card.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling); // No hay un quinto elemento, muestra un null
+
+/*Seleccionar un elemento que comparte clase con otros*/
+const ulitmoCard = document.querySelector('.card:nth-child(4)');
+console.log(ulitmoCard);
+/*Seleccionar los elementos hermanos anteriores a los de un elemento*/
+console.log(ulitmoCard.previousElementSibling);
+```

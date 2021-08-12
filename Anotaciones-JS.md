@@ -3202,3 +3202,122 @@ console.log(navegacion);
 console.log(navegacion.children); // Aparte de mostrar los elemento, da la posición de los mismos
 navegacion.removeChild(navegacion.children[1]); // Recibe la posición del elemento hijo a eliminar
 ```
+
+#### Creación de HTML con JS
+
+A grandes rasgos, son 3 los pasos a seguir para crear HTML con JS, **crear elemento, seleccionar donde añadirlo, elegir la forma de añadirlo**.
+
+1. **Crear el elemento:** Para crear el elemento de puede utilizar el método _.createElement()_ perteneciente el DOM `document.createElement()`, el cual recibe la etiqueta HTML con la que se quiere crear elemento, tanto en miniscula como en mayuscula (a, img, h1, div, etc).
+
+```js
+// .createElement() recibe la etiqueta del elemento a crear div, h1, img, a, etc
+const enlace = document.createElement('a'); // Crea un enlace
+```
+
+Luego hay que dotar con atributos al elemento, se pueden añadir cuantas uno quiera.
+
+```js
+/*Ejemplos de atributos que se pueden agregar*/
+// Se pueden agregar cuantos atributos sean necesarios
+// Agregando texto al enlace
+enlace.textContent = 'Nuevo Enlace';
+// Agregando href
+enlace.href = '/nuevo-enlace';
+console.log(enlace);
+// Agregando una clase
+enlace.classList.add('nueva-clase');
+// Agregar atributo personalizado
+enlace.setAttribute('data-enlace','nuevo-enlace');
+```
+
+2. **Elegir donde irá el elemento:** Con elemento creado como uno quiere, es necesario seleccionar el lugar donde irá, o sea, el elemento padre que lo contendrá.
+
+En el siguiente ejemplo se seleccionará la navegación como el elemento padre que contendrá el elemento enlace anteriormente creado.
+
+```js
+// Seleccionar donde insertar el nuevo elemento
+const navegacion = document.querySelector('.navegacion'); // Se selecciona la etiqueta nav con su clase nevgacion
+console.log(navegacion); // Se muestra por consola que la selección se haya realizado correctamente
+```
+
+3. **Elegir la forma de añadirlo:** Existen dos formas para añadir un nuevo elemento, puede ser directamente como último elemento hijo (_.appendChild()_) o antes de otro elemento (_.insertBefore()_).
+
+- **Agregar elemento al final:** Esto se hace utilizando el método _.appendChild()_ en el elemento padre. Este método recibe como parámetro el elemento que se agregará como hijo.
+
+```js
+navegacion.appendChild(enlace); // Añade como último elemento el elemento que se le entrega
+console.log(navegacion);
+```
+
+- **Agregar elemento antes de otro elemento:** Esto se hace utilizando el método _.insertBefore()_ en el elemento padre. Este método recibe como parámetros el elemento que se quiere agregar y el elemento que servirá como referencia para saber antes de que elemento se agregará el nuevo hijo. Para dar esa referencia, se puede utilizar el método _.childre()_ en el padre para saber la posición de el elemnto de referencia y luego utilizarlo de nuevo como parametro, indicando su indice correspondiente.
+
+```js
+console.log(navegacion.children); // Muestra un HTMLCollection con la posición de todos los elementos hijos desde el 0 en adelante similar a un arreglo
+navegacion.insertBefore(enlace, navegacion.children[1]); // Recibe el elemento a agregar y el elemento de referencia para insertar antes de ese elemento
+```
+
+El siguiente es un ejemplo en el cual se crear una nueva tarjeta para el primer contendor-cards, en el cual se utiliza todo lo anterior, junto a el método _.append()_ el cual a diferencia de _.appendChild()_, permite añadir más de un elemento a la vez, siempre teniendo en consideración que el orden en el que se pasen como parametros lo elementos será el orden con el que se añadirán al padre.
+
+```js
+/* Crear un card */
+
+// Crear el elemento contenedor de clase card
+const newCard = document.createElement('div');
+newCard.classList.add('card');
+//console.log(newCard);
+
+// Crear el elemento img
+const imagen = document.createElement('img');
+imagen.src = 'img/hacer1.jpg'
+//console.log(imagen);
+
+// Crear contenedor de clase info
+const info = document.createElement('div');
+info.classList.add('info');
+//console.log(info);
+
+// Crear elementos p
+// Elemento Categoria
+const parrafoCategoria = document.createElement('p');
+parrafoCategoria.classList.add('categoria','clase');
+parrafoCategoria.textContent = 'Clase DJ';
+//console.log(parrafoCategoria);
+
+// Elemento Título
+const parrafoTitulo = document.createElement('p');
+parrafoTitulo.classList.add('titulo');
+parrafoTitulo.textContent = 'Fundamentos de la mezcla musical para fiestas';
+//console.log(parrafoTitulo);
+
+// Elemento Precio
+const parrafoPrecio = document.createElement('p');
+parrafoPrecio.classList.add('precio');
+parrafoPrecio.textContent = '$350 por persona';
+//console.log(parrafoPrecio);
+
+// Añadir parrafos al contenedor info usando .append() que permite añadir más de un elemento a la vez
+info.append(parrafoCategoria,parrafoTitulo,parrafoPrecio);
+//console.log(info);
+
+// Añadir imagen e info a newCard
+newCard.append(imagen,info);
+//console.log(newCard);
+
+// Seleccionar el elemento padre donde se añadirá la nueva card. Tener cuidado con los selectores a utilizar
+const contenedorCards = document.querySelector('.hacer .contenedor-cards');
+//console.log(contenedorCards);
+
+// Añadir al final el elemento completo al elemento padre
+contenedorCards.appendChild(newCard);
+console.log(contenedorCards);
+
+// Si se quiere añadir el elemento en otra posición se puede hacer lo siguiente
+// Antes de descomentar el siguiente código, se recomienda comentar el anterior en donde se añade al final
+/*
+console.log(contenedorCards.children);
+contenedorCards.insertBefore(newCard, contenedorCards.children[2]); // Se añade en la tercera posición
+console.log(contenedorCards);
+*/
+```
+
+En el ejemplo anterior, se fueron creando elementos desde el más general que los contiene a todos (newCard) hasta el más especificos (los parrafos) y luego se fueron agregando desde los más especificos al más general.

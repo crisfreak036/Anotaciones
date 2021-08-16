@@ -3321,3 +3321,56 @@ console.log(contenedorCards);
 ```
 
 En el ejemplo anterior, se fueron creando elementos desde el más general que los contiene a todos (newCard) hasta el más especificos (los parrafos) y luego se fueron agregando desde los más especificos al más general.
+
+#### Ejemplo Avanzado de manipulación del HTML con JS (botón interactivo)
+
+El siguiente es un ejemplo de como se puede hacer que un botón sea interactivo mediante la manipulación de las clases CSS asociadas a elementos del HTML. En este caso se modifican las clases del footer y de un botón el cual mediante la utilización de un _.addEventListener()_ mostrará el footer cuando se haga click en él.
+
+Para hacer lo anterior,  _.addEventListener()_ recibe el tipo de evento que lo activará y una función que tendrá el código a ejecutar cuando se haga click sobre el botón. Cabe mencionar que la función que recibe el método puede ser tanto una definida con anterioridad o una función anonima.
+
+```js
+// Selección de los elementos con los que se trabajará
+const btnFlotante = document.querySelector('.btn-flotante');
+console.log(btnFlotante);
+const footer = document.querySelector('.footer');
+console.log(footer);
+```
+
+```js
+// Con función anónima
+btnFlotante.addEventListener('click', () => {
+    /*.classList.contains() permite saber si el elemento tiene
+    la clase que se entrega como parámetro al método*/
+
+    // Si el footer contiene la clase activo, se remueve
+    if(footer.classList.contains('activo')){
+        footer.classList.remove('activo');
+        btnFlotante.classList.remove('activo');
+        btnFlotante.textContent = 'Idioma y Moneda';
+    } else{
+        // De lo contrario, se añade
+        footer.classList.add('activo');
+        btnFlotante.classList.add('activo');
+        btnFlotante.textContent = 'Cerrar';
+    }
+})
+```
+
+```js
+// Con función normal
+// Función para mostrar y ocultar el footer con un botón
+function mostrarOcultarFooter(){
+    if(this.classList.contains('activo')){
+        footer.classList.remove('activo');
+        this.classList.remove('activo'); // Los this hacen referencia btnFlotante al que se le agregó el EventLitstener
+        this.textContent = 'Idioma y Moneda';
+    } else{
+        footer.classList.add('activo');
+        this.classList.add('activo');
+        this.textContent = 'Cerrar';
+    }
+}
+
+// Se le añade un EventListener que reacciona los clicks
+btnFlotante.addEventListener('click', mostrarOcultarFooter);
+```

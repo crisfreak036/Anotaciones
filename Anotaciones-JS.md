@@ -3392,3 +3392,86 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Documento Listo');
 });
 ```
+
+#### Eventos con el mouse
+
+Existe una gran variedad de eventos que suceden con el mouse, en los siguiente bloques de código se pondrán algunos.
+
+Se selecciona la navegación como el elemento en el cual se probarán los eventos con el mouse.
+
+```js
+const navegacion = document.querySelector('nav');
+console.log(navegacion);
+```
+
+##### Click
+
+Se activa cuando se realiza cualquier tipo de click sobre el elemento.
+
+```js
+// Evento click
+// click con el mouse
+navegacion.addEventListener('click', () => {
+    console.log('click en nav');
+});
+```
+
+##### Mouseenter
+
+Se activa cuando el cursor entra a la zona del elemento.
+
+```js
+// Evento mouseenter
+// Pasar el cursor sobre el elemento, entrar a la zona del elemento
+navegacion.addEventListener('mouseenter', () => {
+    console.log('cursor sobre la nevegacion');
+});
+```
+
+##### Mouseout
+
+Se activa cuando el cursor sale de la zona del elemento.
+
+```js
+// Evento mouseout
+// Sacar el cursor de la zona del elemento
+navegacion.addEventListener('mouseout', () => {
+    console.log('cursor sale de la nevegacion');
+});
+```
+
+##### Mousedown
+
+Se activa cuando se hace click en el elemento.
+
+```js
+// Evento mousedown
+// Similar al click
+navegacion.addEventListener('mousedown', () => {
+    console.log('click con el mouse');
+});
+```
+
+##### Mousedown
+
+Se activa cuando se hace click y se suelta el click.
+
+```js
+// Evento mouseup
+// Hace click y luego suelta
+navegacion.addEventListener('mouseup', () => {
+    console.log('se dejo de presionar');
+});
+```
+
+##### Dbclick
+
+Se activa cuando se hace doble click en el elemento.
+
+```js
+// Evento dblclick
+// Detecta el doble click
+navegacion.addEventListener('dblclick', () => {
+    console.log('doble click detectado');
+});
+```

@@ -3595,3 +3595,23 @@ busqueda.addEventListener('input', (e) => {
     }
 });
 ```
+
+#### Evento Submit a un formulario
+
+El evento _submit_ es aquel que se acciona cuando el usuario envia un fomrulario, esto puede ser es un buscados, cuando se presiona enter o el botón de buscar.
+
+Entre lo que el evento registra, se encuentra el método _.preventDefault()_ el cuál permite evitar cualquier acción por default que tenga el elemento seleccionado.
+
+```js
+const formulario = document.querySelector('#formulario'); // Seleccionar formulario por su id
+//console.log(formulario);
+
+// Evento submit
+// Es aquel evento que se acciona cuando el usuario presiona el botón submit (enter, ingresar, buscar, etc)
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault(); // Evita que se ejecute la acción predeterminada al presionar el botón de submit
+    console.log(e); // Se muestra por consola todo lo que trae el evento
+    console.log(e.target.method); // Tipo de método por default   
+    console.log(e.target.action); // Enlace de destino del formulario cuando se mande
+});
+```

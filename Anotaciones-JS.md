@@ -2669,6 +2669,8 @@ Document Object Model, es el objeto modelo del documento HTML con el cual JS pue
 
 #### Código HTML a utilizar
 
+Este código se utilizará tanto en esta sección como en la sección de [eventos](#eventos).
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -3373,4 +3375,20 @@ function mostrarOcultarFooter(){
 
 // Se le añade un EventListener que reacciona los clicks
 btnFlotante.addEventListener('click', mostrarOcultarFooter);
+```
+
+### Eventos
+
+**Nota: Se seguirá utilizando el mismo código HTML de la sección anterior [DOM](#código-html-a-utilizar).**
+
+Para el  _.addEventListener()_, existe una gran cantidad de eventos, los cuales algunos se irán viendo a lo largo de esta sección.
+
+#### Detectar cuando el HTML ha cargado por completo
+
+Entre los tipos de eventos que recibe _.addEventListener()_ se encuentra _DOMContentLoaded_ el cual sirve para saber cuando cargó por completo el HTML de la página.
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Documento Listo');
+});
 ```

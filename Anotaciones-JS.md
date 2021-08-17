@@ -3615,3 +3615,40 @@ formulario.addEventListener('submit', (e) => {
     console.log(e.target.action); // Enlace de destino del formulario cuando se mande
 });
 ```
+
+#### Eventos al dar scroll con el mouse
+
+A diferencia de los otros eventos, estos eventos ocurren en la ventana global, poe lo cual se utiliza el objeto _window_
+
+##### Scroll
+
+Detecta el Scroll, ya sea hacía arriba o hacía abajo.
+
+```js
+window.addEventListener('scroll', () => {
+    console.log('Se hace scroll');
+});
+```
+
+Se puede utilizar la propiedad _window.scrollY_ para saber la cantidad de pixeles a los que equivale el scroll, cuando se hace scroll hacía abajo suma los pixeles mientras que cuando se hace scroll hacía arriba va restando los pixeles.
+
+```js
+window.addEventListener('scroll', () => {
+    const scrollPx = window.scrollY; // Cantidad de pixeles que se hace scroll
+    console.log(scrollPx);
+});
+```
+
+Saber la posición de de algún elemento, puede servir para ejecutar alguna acción cuando se alcane el mismo. En el siguiente ejemplo se ejecuta algo al quedar visible un elmento especifico.
+
+```js
+window.addEventListener('scroll', () => {
+    const premium = document.querySelector('.contenedor-cards.premium');
+    const ubicacion = premium.getBoundingClientRect(); // Entre lo que contiene, se encuentra la distancia que hay entre el elemento y donde uno se encuentra en la página
+    if(ubicacion.top < 100){
+        console.log('El elemento ya es visible');
+    } else{
+        console.log('Aún no, da más scroll');        
+    }
+});
+```

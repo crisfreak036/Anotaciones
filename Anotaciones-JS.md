@@ -3452,7 +3452,7 @@ navegacion.addEventListener('mousedown', () => {
 });
 ```
 
-##### Mousedown
+##### Mouseup
 
 Se activa cuando se hace click y se suelta el click.
 
@@ -3473,5 +3473,125 @@ Se activa cuando se hace doble click en el elemento.
 // Detecta el doble click
 navegacion.addEventListener('dblclick', () => {
     console.log('doble click detectado');
+});
+```
+
+#### Eventos sobre los inputs
+
+Son los eventos que suceden en el teclado.
+Para los siguientes eventos, hay que ubicarse en la barra de búsqueda.
+
+```js
+const busqueda = document.querySelector('.busqueda');
+console.log(busqueda);
+```
+
+##### Keydown
+
+Es un evento que registra cuando se escribe algo, reacciona a cualquier tipo de tecla, no necesariamente a las letras.
+
+```js
+// Se activa cuando se presiona cualquier tecla. Mantener presionado es como presionar muchas veces 
+busqueda.addEventListener('keydown', () => {
+    console.log('Se presionó una tecla');
+});
+```
+
+##### Keyup
+
+Es un evento que registra cuando se deja de presionar una tecla.
+
+```js
+// Evento keyup
+// Se activa cuando se deja de presionar una tecla 
+busqueda.addEventListener('keyup', () => {
+    console.log('Se soltó una tecla');
+});
+```
+##### Blur
+
+Es un evento que se activa al presionar fuera del input.
+
+```js
+// Evento blur
+// Se activa cuando se presiona el input (entra) y luego se presiona fuera de él 
+busqueda.addEventListener('blur', () => {
+    console.log('salió del input');
+});
+```
+
+##### Copy
+
+Es un evento que se activa cuando se copia algo en el input, ya sea utilizando el comando o la opción después de presionar el botón derecho.
+
+```js
+// Evento copy
+// Se activa cuando se copia (de cualquier forma) algo escrito en el input 
+busqueda.addEventListener('copy', () => {
+    console.log('Copiado');
+});
+```
+
+##### Paste
+
+Es un evento que se activa cuando se pega algo en el input, ya sea utilizando el comando o la opción después de presionar el botón derecho.
+
+```js
+// Evento paste
+// Se activa cuando se pega (de cualquier forma) algo en el input 
+busqueda.addEventListener('paste', () => {
+    console.log('Pegado');
+});
+```
+
+##### Cut
+
+Es un evento que se activa cuando se corta algo en el input, ya sea utilizando el comando o la opción después de presionar el botón derecho.
+
+```js
+// Evento cut
+// Se activa cuando se corta (de cualquier forma) algo en el input 
+busqueda.addEventListener('cut', () => {
+    console.log('cortado');
+});
+```
+
+##### Input
+
+Es un evento que se activa con cualquiera de los eventos antes vistos, exceptuando el evento _blur_.
+
+```js
+// Evento input
+// Se activa con cualquiera de las acciones anteriores (excepto blur), 
+// ya que hace referencia al input de algo 
+busqueda.addEventListener('input', () => {
+    console.log('Ingresando...');
+});
+```
+
+##### Información de un evento
+
+Para saber que ocurre durante el evento, se puede agregar un parámetro a la función anónima con el nombre de evento, e o evt.
+
+Lo siguiente es el tipo de información que se tiene del evento, en este caso, del evento input.
+
+```js
+busqueda.addEventListener('input', (e) => {
+    console.log(e);
+});
+```
+
+![Tipo-de-informacion](\archivos\images\info-evento.png)
+
+Un ejemplo de lo que se puede hacer con la información del evento, es la validación de si existe texto o no, utilizando la propiedad _e.target.value_ la cual entrega lo que se está escribiendo en el input.
+
+```js
+busqueda.addEventListener('input', (e) => {
+    // e.target.value permite saber lo que se escribió en el input
+    if(e.target.value == ''){
+        console.log('No hay texto');
+    } else{
+        console.log('Hay texto');
+    }
 });
 ```

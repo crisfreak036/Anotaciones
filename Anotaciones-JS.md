@@ -3702,3 +3702,37 @@ titulo.addEventListener('click', (e) => {
     console.log('click en titulo');
 });
 ```
+
+##### Delegation
+
+Es cuando se tiene un selector principal (el padre de ciertos elementos) que se utiliza para realizar acciones con un evento en otroa elementos contenidos por este mismo.
+
+En el siguiente ejemplo se selecciona una tajeta y se la añade un _Event Listener_ y dependiendo de la clase que contenga el elemento que uno clickea, muestra por consola algo distinto.
+
+```js
+const card = document.querySelector('.contenedor-cards .card:nth-child(1)');
+console.log(card);
+
+
+card.addEventListener('click', (e) => {
+
+    // Sirve para saber el tipo de etiqueta
+    if(e.target.localName == 'img'){
+        console.log('Diste click en la imagen');
+    }
+
+    // Dependiendo de la clase que contenga se hace algo
+    if(e.target.classList.contains('titulo')){
+        console.log('Diste click en el título');
+    }
+
+    if(e.target.classList.contains('categoria')){
+        console.log('Diste click en la categoría');
+    }
+
+
+    if(e.target.classList.contains('precio')){
+        console.log('Diste click en el precio');
+    }
+});
+```

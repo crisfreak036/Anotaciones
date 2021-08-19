@@ -3652,3 +3652,53 @@ window.addEventListener('scroll', () => {
     }
 });
 ```
+
+#### Event Bubbling y como evitarlo
+
+El _Event Bubbling_ es cuando los eventos se esparcen como una burbuja, esto ocurre cuando hay eventos asigandos tanto a hijos como a padres, lo que provoca que el evento del hijo active el evento del padre.
+
+```js
+const card = document.querySelector('.contenedor-cards .card:nth-child(1)');
+const informacion = document.querySelector('.contenedor-cards .card:nth-child(1) .info');
+const titulo = document.querySelector('.contenedor-cards .card:nth-child(1) .info .titulo');
+// console.log(card);
+// console.log(informacion);
+// console.log(titulo);
+
+card.addEventListener('click', () => {
+    console.log('click en tarjeta');
+});
+
+informacion.addEventListener('click', () => {
+    console.log('click en informacion');
+});
+
+titulo.addEventListener('click', () => {
+    console.log('click en titulo');
+});
+```
+
+En el ejemplo anterior, presionar sobre la primera card, sólo muestra el "click en tarjeta", en cambio, dar click en la info muestra tanto "click en tarjeta" como "click en informacion" y presionar en el título, provocará que se muestren los 3 clicks en consola.
+
+Para evitar el _Event Bubbling_ existen 3 formas, utilizar el método _e.stopPrpagation()_, prevenir con _Delegation_ y prevenir utilizando un método.
+
+##### e.stopPropagation()
+
+_.stopPropagation()_ evita la propagación de eventos. El método se asocia a la variable evento que se le asigne a la función anonima.
+
+```js
+card.addEventListener('click', (e) => {
+    e.stopPropagation();
+    console.log('click en tarjeta');
+});
+
+informacion.addEventListener('click', (e) => {
+    e.stopPropagation();
+    console.log('click en informacion');
+});
+
+titulo.addEventListener('click', (e) => {
+    e.stopPropagation(); // Detiene la propagación de eventos
+    console.log('click en titulo');
+});
+```

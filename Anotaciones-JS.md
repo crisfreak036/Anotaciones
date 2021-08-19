@@ -3736,3 +3736,71 @@ card.addEventListener('click', (e) => {
     }
 });
 ```
+
+#### .onclick
+
+Sirve para mandar a llamar una función al momento de presionar sobre un elemento. Se suele utilizar cuando se crea contenido HTML. Se implementa como una propiedad, la que tendrá como valor una función anonima que en su cuerpo tendrá el código a ejecutar o se mandará a llamar la función que se  quiere ejecutar. Es practicamente como añadir un _.addEventListener()_ al momento de generar un elemento de HTML con JS.
+
+```js
+// Evitar la propagación con contenido creado...
+const parrafo1 = document.createElement('P');
+parrafo1.textContent = 'Concierto';
+parrafo1.classList.add('categoria');
+parrafo1.classList.add('concierto');
+// .onclick
+parrafo1.onclick = function(){
+    console.log('Este es el primer parrafo desde la función anónima más común');
+};
+
+// Segundo parrafo
+const parrafo2 = document.createElement('P');
+parrafo2.textContent = 'Concierto de Rock';
+parrafo2.classList.add('titulo');
+// .onclick
+parrafo2.onclick = () => {
+    console.log('Este es el segundo parrafo desde función anónima tipo arrow function');
+};
+
+// 3er parrafo...
+const parrafo3 = document.createElement('p');
+parrafo3.textContent = '$800 por persona';
+parrafo3.classList.add('precio');
+// .onclick
+parrafo3.onclick = function(){
+    nombreFuncion('nombreFuncion'); // Llamado de la función definida fuera de esta función
+};
+
+// Función que da el nombre de una función
+function nombreFuncion(nombreF){
+    console.log(`Este es el tercer parrafo desde la función ${nombreF}`);
+}
+
+// crear el div...
+const info = document.createElement('div');
+info.classList.add('info');
+info.appendChild(parrafo1)
+info.appendChild(parrafo2)
+info.appendChild(parrafo3);
+
+// Vamos a crear la imagen
+const imagen = document.createElement('img');
+imagen.src = 'img/hacer2.jpg';
+// .onclick
+imagen.onclick = function(){
+    console.log('Esto es una imagen');
+}
+
+// Crear el Card..
+const contenedorCard = document.createElement('div');
+contenedorCard.classList.add('contenedorCard');
+
+// Vamos a asignar la imagen al card...
+contenedorCard.appendChild(imagen);
+
+// y el info
+contenedorCard.appendChild(info);
+
+// Insertarlo en el HTML...
+const contenedor = document.querySelector('.hacer .contenedor-cards');
+contenedor.appendChild(contenedorCard); // al inicio info
+```

@@ -2415,7 +2415,7 @@ const existe2 = meses.some( mes => mes === 'Marzo');
 console.log(existe2);
 ```
 
-#### .findInde para encontrar la posición en un array
+#### .findIndex para encontrar la posición en un array
 
 Este método sirve para encontrar el índice de un elemento. Entrega el índice de la primera coincidencia que encuentra. Sirve tanto para arreglos con indices como  con objetos, añadiendo la sintaxis de punto al momento de hacer la compración. Cabe mencionar que si no se encuentra el elemento indicado, este método retorna un _-1_.
 
@@ -3803,4 +3803,41 @@ contenedorCard.appendChild(info);
 // Insertarlo en el HTML...
 const contenedor = document.querySelector('.hacer .contenedor-cards');
 contenedor.appendChild(contenedorCard); // al inicio info
+```
+
+### LocalStorage
+
+Pertenece a la API de Js, o sea, utiliza el objeto _window_. El cual no es necesario color cada vez que se utiliza alguna de sus propiedades o métodos.
+
+#### Primeros pasos con Local Storage
+
+Local Storage permite almacenar cierta información en el navegador sin perderla cuando la computadora se apaga.
+
+También existe algo llamado Session Storage que sirve para almacenar información durante la sesión, o sea, mientras uno se encuentre en la página web.
+
+##### Agregar elementos a localStorage
+
+Para agregar elementos hay que utilizar el método `localStorage.setItem(llave, valor)`, el cual recibe una llave, o nombre de lo que se guardará, que además sirve para luego buscarlo y su valor el cual puede ir variando. 
+
+```js
+localStorage.setItem('curso', 'JavaScript');
+```
+
+**Es importante aclarar que Local Storage sólo puede guardar Strings**, no puede guardar enteros, arreglos, objetos, sin embargo se pueden guardar los objetos y los arreglos utilizando el método `JSON.stringify()`,el cual recibe un arreglo u objeto para ser trandformado en un string que si podrá ser almacenado en Local Storage.
+
+```js
+const producto = {
+    nombre: "Monitor 24 Pulgadas",
+    precio: 300
+}
+
+const productoString = JSON.stringify( producto );
+localStorage.setItem('producto', productoString);
+
+const meses = ['Enero', 'Febrero', 'Marzo'];
+const mesesString = JSON.stringify( meses );
+localStorage.setItem('meses', mesesString);
+
+// Versión alternativa sin crear una variable extra
+// localStorage.setItem('meses', JSON.stringify( meses ));
 ```

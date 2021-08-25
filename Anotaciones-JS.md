@@ -3809,13 +3809,11 @@ contenedor.appendChild(contenedorCard); // al inicio info
 
 Pertenece a la API de Js, o sea, utiliza el objeto _window_. El cual no es necesario color cada vez que se utiliza alguna de sus propiedades o métodos.
 
-#### Primeros pasos con Local Storage
-
 Local Storage permite almacenar cierta información en el navegador sin perderla cuando la computadora se apaga.
 
 También existe algo llamado Session Storage que sirve para almacenar información durante la sesión, o sea, mientras uno se encuentre en la página web.
 
-##### Agregar elementos a localStorage
+#### Agregar elementos a localStorage
 
 Para agregar elementos hay que utilizar el método `localStorage.setItem(llave, valor)`, el cual recibe una llave, o nombre de lo que se guardará, que además sirve para luego buscarlo y su valor el cual puede ir variando. 
 
@@ -3840,4 +3838,21 @@ localStorage.setItem('meses', mesesString);
 
 // Versión alternativa sin crear una variable extra
 // localStorage.setItem('meses', JSON.stringify( meses ));
+```
+
+#### Obtener elementos de Local Storage
+
+Para obtener elementos de Local Storage, se utiliza el método `localStorage.getItem(llave)`, el cuál recibe la llave o nombre que se le dio al ser alamcenado en el Local Storage.
+
+Hay que tener en cuenta que lo que se obtiene desde Local Storage es un string, ya que, eso es lo único que puede almacenar, es por esto que al momento de alamcenar un objeto o un arreglo, se utiliza `JSON.stringify()`, tal como existe el método anterior para transformar objetos y arreglos en string, existe el método `JSON.parse()` el cuál transforma los strings con estructura de objeto o arreglo en objetos y arreglos.
+
+```js
+const curso = localStorage.getItem('curso');
+console.log(curso);
+
+const producto = JSON.parse(localStorage.getItem('producto')); // JSON.parse(), transforma un string en el tipo al que corresponde su estructura
+console.log(producto);
+
+const meses = JSON.parse(localStorage.getItem('meses'));
+console.log(meses);
 ```

@@ -3856,3 +3856,35 @@ console.log(producto);
 const meses = JSON.parse(localStorage.getItem('meses'));
 console.log(meses);
 ```
+
+#### Eliminar y actualizar elementos de Local Storage
+
+##### Quitar elementos de Local Storage
+
+Para quitar un elemento de Local Storage existe el método `localStorage.removeItem(llave)`, el cual recibe la llave o nombre que se le dio al elemento cuando se alamcenó en Local Storage.
+
+Si lo que se quiere es eliminar todo lo que haya en Local Storage, se debe utilizar el método `localStorage.clear()`.
+
+```js
+// Quitar elemento
+localStorage.removeItem('producto'); // Elimina el elemento producto
+
+// Quitar todo lo que haya en Local Storage
+//localStorage.clear();
+```
+
+##### Actualizar elementos en Local Storage
+
+No existe como tal un método para la actualización, pero se pueden sobreescribir los elementos mediante la utilización del método `localStorage.setItem(llave, nuevoValor)`, el cual recibe la llave del elemento que se quiere actualizar y el nuevo valor que se le quiere dar.
+
+```js
+// En el caso de Local Storage no existe un método para actualizar
+// La actualización de un elemento se basa en sobreescribirlo (obtención -> modificación -> volver a almacenar con la misma llave)
+
+// Actualizar arreglo de meses
+const mesesArreglo = JSON.parse(localStorage.getItem('meses')); // Se obtiene el arreglo almacenado en Local Storage
+console.log(mesesArreglo); // Se muestra el arreglo obtenido
+const mesesArregloActualizado = [...mesesArreglo, 'Abril', 'Mayo', 'Junio']; // Se crea un nuevo arreglo (se puede utilizar .push() para evitar crear otro arreglo) con los meses antiguos y nuevos
+console.log(mesesArregloActualizado); // Se muestra el nuevo arreglo
+localStorage.setItem('meses', JSON.stringify(mesesArregloActualizado)); // Se almacena el nuevo arreglo en formato de String con la misma llave
+```

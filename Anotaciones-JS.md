@@ -2704,6 +2704,32 @@ console.log(valor); // Muestra lo que tiene diaHoy
 
 - Sin instanciar, se puede utilizar el objeto `Date()` directamente, el cual entregará información del día y momento en el que se instanción y también se puede utilizar `Date.now()` el cuál entragará los milisegundos que han pasado desde el 1 de enero de 1970 hasta la fecha en la cual se utiliza el método.
 
+### MomentJS tu aliado para formatear Fechas
+
+Permite dar el formato que uno estime conveniente a la fecha. Hay que importar momentJS.
+De igual forma existe locale, el cual debe importarse y también sirve para cambiar el formato de la fecha dependiendo de la locación que indique la computadora.
+
+```js
+const diaHoy = new Date();
+
+moment.locale('es'); // Trata las fechas como se tratan en español
+
+console.log(moment().format('MMMM')); // Trae el nombre del mes actual
+console.log(moment().format('MMMM D')); // Trae el nombre del mes actual y el día
+console.log(moment().format('MMMM D')); // Trae el nombre del mes actual y el día
+console.log(moment().format('MMMM D YYYY')); // Trae el nombre del mes actual, el día y el año
+console.log(moment().format('MMMM D YYYY h:mm:ss')); // Trae el nombre del mes actual, el día, el año y la hora
+console.log(moment().format('MMMM D YYYY h:mm:ss a')); // Trae el nombre del mes actual, el día, el año, la hora y si es am o pm 
+
+console.log(moment().format('LLLL', diaHoy)); // Formato amigable especial
+```
+
+Se pueden hacer _"operaciones"_ con las fechas.
+
+```js
+console.log(moment().add(3, 'days').calendar()); // Añade 3 días a la fecha actual,ideal para cupones con fecha de expiración
+```
+
 ## JavaScript para la web
 
 ### JavaScript DOM (Document Object Model)

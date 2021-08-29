@@ -2657,6 +2657,53 @@ const carrito2 = [...carrito, producto];
 console.table(carrito2);
 ```
 
+### El Objeto Date()
+
+Es el objeto en el cual residen las fechas, las cuales al pertenecer a Date(), su tipo es de objeto. **Se recomienda que si se necesita validar una fecha, se haga con la hora del servidor en donde se encuentré el sitio y no con JavaScript.**
+
+- **Inicializar una variable de tipo Date():** Para hacar que una variable sea una fecha, hay que crear un nuevo obejto Date(), el cual si se crea sin valor alguno, alamacena la fecha y la hora en la cual se instanció la variable.
+
+```js
+const diaHoy = new Date(); // Inicializar una variable de tipo Date()
+console.log(diaHoy); // Muestra lo que tiene diaHoy
+```
+
+En el caso de que se le quiera dar un valor, se puede incluir alguna fecha dentro de los parentesis del constructor del objeto, como muestra el siguiente ejemplo.
+
+```js
+const algunDia = new Date('1-5-2000'); // otra opción de valor es ¿January 5 2000'
+console.log(algunDia); // Muestra información acorde a la fecha indicada
+```
+
+- **Obtener una parte de la fecha:** Desde una fecha, se pueden obtener distintos valores, como lo serían el año, día, mes u hora de la fecha en cuestión.
+
+```js
+const diaHoy = new Date(); // Inicializar una variable de tipo Date()
+let valor; // Variable auxiliar
+
+// Hay que ir comentando y descomentando las líneas de código para ejecutarlas
+// valor = diaHoy.getFullYear(); // Se obtiene el año de la fecha
+// valor = diaHoy.getMonth(); // Se obtiene el mes de la fecha (Enero es 0, Febrero es 1, Marzo es 2, etc)
+// valor = diaHoy.getMinutes(); // Se obtiene los minutos de la fecha
+// valor = diaHoy.getHours(); // Se obtiene la hora de la fecha
+valor = diaHoy.getTime(); // Se obtiene el tiempo que ha transcurrido desde el primero de enero de 1970 hasta la fecha en milisegundos
+
+console.log(valor); // Muestra lo que tiene diaHoy
+```
+- **Cambiar una fecha:** Para cambiar algún valor de una fecha, existen los métodos _.set...()_, los cuales permiten establecer valor especificos para el año, mes, día, etc.
+
+```js
+const diaHoy = new Date(); // Inicializar una variable de tipo Date()
+let valor; // Variable auxiliar
+
+valor = diaHoy.setFullYear('2010'); // Se establece que el año de diaHoy será 2010
+valor = diaHoy.getFullYear(); // Se obtiene el año de la fecha
+
+console.log(valor); // Muestra lo que tiene diaHoy
+```
+
+- Sin instanciar, se puede utilizar el objeto `Date()` directamente, el cual entregará información del día y momento en el que se instanción y también se puede utilizar `Date.now()` el cuál entragará los milisegundos que han pasado desde el 1 de enero de 1970 hasta la fecha en la cual se utiliza el método.
+
 ## JavaScript para la web
 
 ### JavaScript DOM (Document Object Model)

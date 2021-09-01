@@ -4042,3 +4042,53 @@ function formatearEmpresa(empresa){
 
 formatearEmpresa(pepsi);
 ```
+
+#### Creación de un prototype
+
+Los prototypes mantienen la referencia al objeto y se vuelven único para ese objeto.
+
+Los prototypes también se pueden llamar desde dentro de otros prototypes, utilizando this. en vez del nombre del objeto.
+
+Se utilizan funciones anónimas con la sintaxis de function() y no de Arrow Function para crearlos. Lo anterior se debe a que las Arrow Function buscan en la ventana global las variables que utilizan el this., en cambio, function() busca en el objeto al que hace referencia su declaración.
+
+```js
+// Declaración del constructor 
+function Cliente(nombre, saldo){
+    this.nombre = nombre;
+    this.saldo = saldo;
+}
+
+// Instanciar nuevo cliente
+const pedro = new Cliente('Pedro', 6000);
+console.log(pedro);
+
+// Funciones exclusivas para un nuevo cliente
+Cliente.prototype.tipoCliente = function(){
+    let tipo;
+    if(this.saldo > 10000){
+        tipo = 'GOLD';
+    } else if( this.saldo > 5000){
+        tipo = 'PLATINUM';
+    } else{
+        tipo = 'Normal';
+    }
+
+    return tipo;
+}
+
+Cliente.prototype.nombreClienteSaldo = function(){
+    return `Nombre: ${this.nombre} \nSaldo: ${this.saldo} \nTipo Cliente: ${this.tipoCliente()}`
+}
+
+Cliente.prototype.retiraSaldo = function(retira){
+    if(this.saldo >= retira){
+        this.saldo -= retira;
+    }
+}
+
+// Llamado funciones (métodos) de un objeto
+console.log(pedro.tipoCliente()); // Obtiene el tipo de cliente
+console.log(pedro.nombreClienteSaldo()); // Muestra los datos del cliente 
+pedro.retiraSaldo(5000); // El cliente retira 5000
+console.log(pedro.nombreClienteSaldo()); // Muestra los nuevos datos del cliente
+```

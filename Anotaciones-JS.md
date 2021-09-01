@@ -3997,3 +3997,48 @@ const pedro = new Cliente('Pedro', 500);
 console.log(pedro);
 console.log(typeof(pedro));
 ```
+
+#### El problema de no usar prototypes
+
+Lo malo de programar sin prototypes es que si muchas personas trabajan sobre el mismo código, no saben que funciones ocupar o que hace cada función.
+
+En el siguiente ejemplo, es un poco más complicado entender cual función pertenece a cada objeto, es ahí donde prototype ayuda a la comprensión y estructura.
+
+```js
+function Cliente(nombre, saldo){
+    this.nombre = nombre;
+    this.saldo = saldo;
+}
+
+const pedro = new Cliente('Pedro', 500);
+console.log(pedro);
+console.log(typeof(pedro));
+
+// Muestra por consola el nombre y saldo de un cliente
+function formatearCliente(cliente){
+    const { nombre, saldo } = cliente;
+    console.log(`El Cliente ${nombre} tiene un saldo de ${saldo}`);
+}
+
+formatearCliente(pedro);
+
+
+function Empresa(nombre, saldo, categoria){
+    this.nombre = nombre;
+    this.saldo = saldo;
+    this.categoria = categoria;
+}
+
+const pepsi = new Empresa('Pepsi', 500000000, 'alimentos');
+console.log(pepsi)
+
+formatearCliente(pepsi); // Muestra el nombre y el saldo pero no la categoría
+
+// Para mostrar toda la información es necesario crear otra función
+function formatearEmpresa(empresa){
+    const { nombre, saldo, categoria } = empresa;
+    console.log(`La Empresa ${nombre} tiene un saldo de ${saldo} y su categoría es ${categoria}`);
+}
+
+formatearEmpresa(pepsi);
+```

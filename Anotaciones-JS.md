@@ -2704,7 +2704,7 @@ console.log(valor); // Muestra lo que tiene diaHoy
 
 - Sin instanciar, se puede utilizar el objeto `Date()` directamente, el cual entregará información del día y momento en el que se instanción y también se puede utilizar `Date.now()` el cuál entragará los milisegundos que han pasado desde el 1 de enero de 1970 hasta la fecha en la cual se utiliza el método.
 
-### MomentJS tu aliado para formatear Fechas
+#### MomentJS tu aliado para formatear Fechas
 
 Permite dar el formato que uno estime conveniente a la fecha. Hay que importar momentJS.
 De igual forma existe locale, el cual debe importarse y también sirve para cambiar el formato de la fecha dependiendo de la locación que indique la computadora.
@@ -3960,4 +3960,40 @@ console.log(mesesArreglo); // Se muestra el arreglo obtenido
 const mesesArregloActualizado = [...mesesArreglo, 'Abril', 'Mayo', 'Junio']; // Se crea un nuevo arreglo (se puede utilizar .push() para evitar crear otro arreglo) con los meses antiguos y nuevos
 console.log(mesesArregloActualizado); // Se muestra el nuevo arreglo
 localStorage.setItem('meses', JSON.stringify(mesesArregloActualizado)); // Se almacena el nuevo arreglo en formato de String con la misma llave
+```
+
+## JavaScript Intermedio/Avanzado
+
+### Prototypes en JavaScript
+
+#### ¿Qué es el Proto? y crear un tipo de objeto nuevo
+
+Hasta ahora se conocía la sitaxis de _Object Literal_, la cual es la que más se utiliza pero a es menos dinámica.
+
+```js
+// Object Literal
+// Menos dinámico
+const cliente = {
+    nombre: 'Juan',
+    saldo: 500
+}
+
+console.log(cliente);
+console.log(typeof(cliente)); // object
+```
+
+Es aquí donde la _Programación orientada a objetos_ o _POO_ entra en acción. La idea de este tipo de programación es la de poder hacer más dinámica la creación de objetos. Existen los constructores de objetos, los cuales mediante la entrega de argumentos, instancias valores para un nuevo obejto.
+
+```js
+// Object Constructor
+// Permite crear multiples instancias del mismo objeto
+
+function Cliente(nombre, saldo){
+    this.nombre = nombre;
+    this.saldo = saldo;
+}
+
+const pedro = new Cliente('Pedro', 500);
+console.log(pedro);
+console.log(typeof(pedro));
 ```

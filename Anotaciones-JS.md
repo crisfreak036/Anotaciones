@@ -4092,3 +4092,79 @@ console.log(pedro.nombreClienteSaldo()); // Muestra los datos del cliente
 pedro.retiraSaldo(5000); // El cliente retira 5000
 console.log(pedro.nombreClienteSaldo()); // Muestra los nuevos datos del cliente
 ```
+
+#### Heredar un Prototype
+
+Existe algo llamado _God Object_ el cual es el objeto principal desde el cual otros objetos van heredando propiedades y funciones. Lo anterior es posible gracias a la existencia de la herencia entre los objetos. Para heredar propiedades se debe utilizar el método `ObjetoPadre.call(this, propiedad1, propiedad2,..., propiedadn)` en el constructor del objeto al cual se le quiere heredad propiedades y para heredar las funciones, se debe asignar el prototype del objeto hijo el prototype del objeto padre con el método `Object.create( ObjetoPadre.prototype )`. Lo anterior hará que el constructor no se encuentre si se expande el objeto en la consola, por lo cual se debe asignar el objeto padre al constructor del objeto hijo `ObjetoHijo.prototype.constructor = ObjetoPadre;`
+
+```js
+// Heredar un Prototype
+
+function Cliente(nombre, saldo){
+    this.nombre = nombre;
+    this.saldo = saldo;
+}
+
+// Instanciar nuevo cliente
+const pedro = new Cliente('Pedro', 6000);
+console.log(pedro);
+
+// Funciones exclusivas para un nuevo cliente
+Cliente.prototype.tipoCliente = function(){
+    let tipo;
+    if(this.saldo > 10000){
+        tipo = 'GOLD';
+    } else if( this.saldo > 5000){
+        tipo = 'PLATINUM';
+    } else{
+        tipo = 'Normal';
+    }
+
+    return tipo;
+}
+
+
+Cliente.prototype.nombreClienteSaldo = function(){
+    return `Nombre: ${this.nombre} \nSaldo: ${this.saldo} \nTipo Cliente: ${this.tipoCliente()}`
+}
+
+Cliente.prototype.retiraSaldo = function(retira){
+    if(this.saldo >= retira){
+        this.saldo -= retira;
+    }
+}
+
+// Constructor objeto persona
+
+function Persona(nombre, saldo, telefono){
+    /* Forma normal sin herencia de almacenar la información */
+    // this.nombre = nombre;
+    // this.saldo = saldo;
+
+    /* Forma con Herencia de almacenar las propiedades que comparten ambos objetos */
+    Cliente.call(this, nombre, saldo); // Se heredan this.nombre y this.saldo provenientes de Cliente (Heredando constructor cliente básicamente)
+    
+
+    this.telefono = telefono; // Propiedad única del objeto Persona    
+}
+
+/* Si se quiere heredar las funciones asociadas al objeto Cliente, se debe escribir el siguiente código antes de instanciar un una variable asociada al objeto persona */
+
+// Funciones exclusivas heredadas de Cliente a Persona
+Persona.prototype = Object.create( Cliente.prototype ); // Object.create() copia el prototype de un objeto a otro
+Persona.prototype.constructor = Cliente; // Se vuelve a definir el constructor porque se pierde al copiar el prototype del otro objeto
+
+Persona.prototype.mostrarTelefono = function(){
+    return `El telefono de ${this.nombre} es ${this.telefono}`
+}
+
+// Instanciar personas
+
+const pedrito = new Persona('Pedro Augusto', 5000, 9986532);
+console.log(pedrito);
+
+// Llamado de las funciones
+console.log(pedrito.nombreClienteSaldo());
+console.log(pedrito.mostrarTelefono());
+// console.log(pedro.mostrarTelefono()); // Las funciones de Persona no se heredan a Cliente
+```

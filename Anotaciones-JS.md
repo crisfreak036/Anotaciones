@@ -4212,3 +4212,55 @@ Con lo anteior, al momento de instanciar, se entregan los valores requeridos por
 const pedro = new Cliente('Pedro', 500);
 console.log(pedro);
 ```
+
+#### Métodos y Métodos estaticos en las clases
+
+Al igual que antes se utilizaban los _protoypes_ para asiganr funciones exclusivas a un objeto, en las clases también se puede hacer lo mismo definiendo funciones dentro de la clase, las cuales toman el nombre de _métodos_.
+
+```js
+class Cliente{
+    constructor( nombre, saldo ){
+        this.nombre = nombre;
+        this.saldo = saldo;
+    }
+
+    // Definición de un método
+    mostrarInformacion(){
+        return `El cliente ${this.nombre} tiene un saldo de ${this.saldo}`;
+    }
+}
+```
+
+Los métodos se utilizan luego de instanciar la clase, como se muestra en el siguiente ejemplo.
+
+```js
+// Instanciar la clase 
+const pedro = new Cliente('Pedro', 500);
+
+// Llamado de un método de la clase Cliente
+console.log(pedro.mostrarInformacion());
+```
+
+Cabe mencionar que existen los métodos estaticos, los cuales no necesitan de instanciar la clase para ser utilizado.
+
+```js
+class Cliente{
+    constructor( nombre, saldo ){
+        this.nombre = nombre;
+        this.saldo = saldo;
+    }
+
+    // Propiedad estatica (no requiere una instancia para utilizarla)
+    // Es una propiedad que pertenece más a la clase que a un objeto
+    static bienvenida(){
+        return `No necesita instancia para ser utilizada`;
+    }
+}
+```
+
+Este tipo de métodos no pueden ser utilizados con un objeto instanciado.
+
+```js
+// console.log(pedro.bienvenida()); // Da un error
+console.log(Cliente.bienvenida());
+```

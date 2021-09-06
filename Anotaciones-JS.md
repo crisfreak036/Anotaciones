@@ -4168,3 +4168,47 @@ console.log(pedrito.nombreClienteSaldo());
 console.log(pedrito.mostrarTelefono());
 // console.log(pedro.mostrarTelefono()); // Las funciones de Persona no se heredan a Cliente
 ```
+
+### Programación Orientada a Objetos en JS
+
+#### Definiendo e Instanciando una clase
+
+Para definir una clase, se puede hacer mediante declaración o expresión, siendo la primera la más popular.
+
+```js
+// Class Declaration
+class Cliente{
+    // cuerpo de la clase...
+}
+
+// Class Expression
+const Cliente2 = class{
+    // cuerpo de la clase...
+}
+```
+
+Para instanciar una clase, hay que definir una variable y asiganarle la nueva clase de la siguiente manera.
+
+```js
+// Instanciar la clase 
+const pedro = new Cliente(  ); // Objeto vacío
+console.log(pedro);
+```
+
+Para que el objeto deje de ser vacío, hay que definir el constructor en la clase utilizando la palabra reservada `constructor` y definiendo los valores que se utilizarán para instanciar la clase.
+
+```js
+class Cliente{
+    constructor( nombre, saldo ){
+        this.nombre = nombre;
+        this.saldo = saldo;
+    }
+}
+```
+
+Con lo anteior, al momento de instanciar, se entregan los valores requeridos por el constructor.
+
+```js
+const pedro = new Cliente('Pedro', 500);
+console.log(pedro);
+```

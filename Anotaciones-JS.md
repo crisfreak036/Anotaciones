@@ -4264,3 +4264,40 @@ Este tipo de métodos no pueden ser utilizados con un objeto instanciado.
 // console.log(pedro.bienvenida()); // Da un error
 console.log(Cliente.bienvenida());
 ```
+
+#### Heredar una clase
+
+Para que un objeto **herede** los atributos y métodos de otro objeto, en su declaración, luego del nombre, hay que agregar la palabra _extends_ seguida de la clase desde la cual se heredarán los atributos y los métodos.
+
+```js
+class Empresa extends Cliente{} // Hereda todas las propiedades y métodos de la clase padre Cliente
+```
+
+Si en la clase hijo (clase Empresa en el ejemplo anteiror) se quieren asignar nuevos atributos, hay que reescribir el constructor de la clase, teniendo en cuenta que los atributos de la clase padre no se definirán con el clásico `this.atributo = nombreAtributo`, sino que se utilizará la función `super()`, la cual recibirá como parámetros los atributos heredados desde el padre.
+
+```js
+class Empresa extends Cliente{
+    constructor(nombre, saldo, telefono, categoria){
+        super( nombre, saldo ); // Equivale al this.nombre y this.saldo definidos en la clase Padre
+        this.telefono = telefono;
+        this.categoria = categoria;
+    }
+}
+```
+
+Por último, si se quiere reescribir un método en la clase hijo, hay que vovler a utilizar el mismo nombre que tiene en la clase padre.
+
+```js
+class Empresa extends Cliente{
+    constructor(nombre, saldo, telefono, categoria){
+        super( nombre, saldo ); // Equivale al this.nombre y this.saldo definidos en la clase Padre
+        this.telefono = telefono;
+        this.categoria = categoria;
+    }
+
+    // Si se define un método con el mismo nombre que uno en la clase padre, este se reescribe en el hijo
+    static bienvenida(){
+        return `No necesita instancia de la clase Empresa para ser utilizada`;
+    }
+}
+```

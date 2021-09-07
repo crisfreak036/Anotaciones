@@ -163,7 +163,7 @@ var nombre; //La variable nombre de tipo VAR no tiene valor previamente definido
 Además se pueden inicializar más de un mismo tipo de variable en una misma línea, sólo se tienen que separar por una coma.
 
 ```js
-var variable = 0, variable2 = 1, variable3 = 2; //Se definieron tres variables en una sóla línea.
+var variable = 0, variable2 = 1, variable3 = 2; //Se definieron tres variables en una sola línea.
 ```
 
 #### Let
@@ -280,7 +280,7 @@ console.log(producto.includes('Tablet')); //Entrega False por consola debido a q
 
 ##### Length
 
-Sirve para conocer la cantidad de carácteres que componen a un string. 
+Sirve para conocer la cantidad de caracteres que componen a un string. 
 
 ```js
 /*variable.length()*/
@@ -432,11 +432,11 @@ console.table(hobbies.split(","));
 
 ##### Convertir en Mayúsculas
 
-El método *toUpperCase()* sirve para transformar en mayúscula todos los carácteres de una cadena de texto contenida en una variable.
+El método *toUpperCase()* sirve para transformar en mayúscula todos los caracteres de una cadena de texto contenida en una variable.
 
 ##### Convertir en minúsculas
 
-El método *toLowerCase()* sirve para transformar en minúscula todos los carácteres de una cadena de texto contenida en una variable.
+El método *toLowerCase()* sirve para transformar en minúscula todos los caracteres de una cadena de texto contenida en una variable.
 
 Lo anterior es muy util cuando existen datos que da igual si están en mayúsculas o minúsculas por lo cual se transforman todos a minúsculas y se trabajan de esa manera. Un ejemplo de lo anterior son los e-mails.
 
@@ -4300,4 +4300,49 @@ class Empresa extends Cliente{
         return `No necesita instancia de la clase Empresa para ser utilizada`;
     }
 }
+```
+
+#### Propiedades Privadas en JS
+
+Es una característica muy reciente, que no es soportada en todos los navegadores para la fecha de estas anotaciones (2020-2021).
+Las propiedades privadas son aquellas que sólo pueden ser manejadas dentro de la clase, ya sea utilizando un _set_ o un _get_, desde un constructor o desde algún otro método que se encuentre dentro de la clase. Para definir un atributo privado, se debe utilizar un numeral seguido del nombre de la variable `#atributoPrivado`, lo anterior se posiciona antes del constructor y para utilizarlo en la clase, hay que poner el signo de gato junto con el nombre de la propiedad `this.#atributoPrivado`.
+
+```js
+class Cliente{
+    #nombre;
+
+    constructor( nombre, saldo ){
+        this.#nombre = nombre;
+        this.saldo = saldo;
+    }
+
+    // Cambiar el nombre de la persona
+    set nuevoNombre(nombre){
+        this.#nombre = nombre;
+    }
+
+    // Retorna el nombre de la persona
+    get obtenerNombre(){
+        return this.#nombre;
+    }
+
+    // Definición de un método
+    mostrarInformacion(){
+        return `El cliente ${this.#nombre} tiene un saldo de ${this.saldo}`;
+    }
+
+    // Propiedad estatica (no requiere una instancia para utilizarla)
+    // Es una propiedad que pertenece más a la clase que a un objeto
+    static bienvenida(){
+        return `No necesita instancia para ser utilizada`;
+    }
+}
+
+// Instanciar la clase 
+const pedro = new Cliente('Pedro', 500);
+console.log(pedro);
+// console.log(pedro.#nombre); // No se puede acceder a la propiedad desde fuera de la clase
+console.log(pedro.mostrarInformacion()); // El método si puede utilizar el atributo
+pedro.nuevoNombre = "Pedrito"; // Cambia el valor del nombre
+console.log(pedro.obtenerNombre); // Muestra el valor del nombre
 ```

@@ -54,6 +54,20 @@ Luego de los comandos utilizados anteriormente, queda responder a la pregunta pr
 
 **Si se quiere revertir los cambios de un archivo para dejarlo como estaba en cierto commit** se debe utilizar el comando `git checkout hash-del-commit nombre-del-archivo-con-extensión-incluida`, el cual hará que el archivo vuelva al estado que se encontraba en el commit que se indicó mediante su hash abreviado en el comando. Luego de haber hecho lo anterior sólo queda añadir el cambió al stage para luego hacer el commit pertinente que hable de lo que se hizo con el archivo.
 
+### Cambiar nombre de la rama Master a Main Main
+
+Para cambiar el nombre de la rama master a main se debe utilizar el siguiente comando.
+
+```
+git branch -m -m master main
+```
+
+Lo anterior se aplica de manera local, para hacerlo de manera global hay que configurarlo con el siguiente comando.
+
+```
+git config --global init.defaultBranch main
+```
+
 ### Diferentes formas de agregar archivos al escenario (stage)
 
 Anteriormente se mencionó que con el comando `git add .` se pueden añadir a un commit todos los archivos modificados pero existen otras formas de añadir archivos a los commits las cuales veremos a continuación.

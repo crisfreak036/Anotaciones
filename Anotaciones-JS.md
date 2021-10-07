@@ -4423,3 +4423,37 @@ console.log(numeros);
 const numerosNoDuplicados = new Set(numeros);
 console.log(numerosNoDuplicados);
 ```
+
+### Qué es un WeakSet y en que se diferencia de una Set
+
+A diferencia del _Set_ el cual permite almacenar todo tipo de variables, los _WeakSet_ **sólo permiten el almacenamiento de objetos**.
+
+A diferencia de los _Set_, un _WeakSet_ no tiene la propiedad _.size_, por lo cual no se puede conocer la extensión del _WeakSet_.
+
+La última diferencia es que los _WeakSet_ no son iterables como si lo son los _Set_.
+
+```js
+// WeakSet
+
+const weakSet = new WeakSet();
+
+const cliente = {
+    nombre: 'Pedro',
+    saldo: 100
+};
+
+// Agrega objeto al weakSet con el método .add()
+weakSet.add(cliente); 
+
+// const nombre = 'Juan';
+// weakSet.add(nombre); // Marca un error al no ser un objeto lo que se quiere agregar
+
+console.log(weakSet);
+
+// Saber si contiene un objeto con el método .has()
+console.log(weakSet.has(cliente)); // Retorna un true
+
+// Eliminar un objeto con el método .delete()
+console.log(weakSet.delete(cliente)); // Retorna true
+console.log(weakSet);
+```

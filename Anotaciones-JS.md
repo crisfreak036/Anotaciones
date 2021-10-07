@@ -4346,3 +4346,80 @@ console.log(pedro.mostrarInformacion()); // El método si puede utilizar el atri
 pedro.nuevoNombre = "Pedrito"; // Cambia el valor del nombre
 console.log(pedro.obtenerNombre); // Muestra el valor del nombre
 ```
+
+### Sets, Maps y Symbols
+
+#### Sets y sus Caracteristicas
+
+Permite la creación de una lista sin duplicados, además que cuando manejan un gran numero de datos, tienede a ser manejado más rápido que un arreglo.
+
+Algunos métodos pertenecientes a los arreglos también se pueden utilizar en los _sets_ pero no todos.
+
+Los sets son sólo valores, no llave-valores como los objetos.
+
+Diferencian entre mayusuculas y minusculas.
+
+- Forma de inicializar un _Set_ y agregar elementos.
+```js
+// Declarar un Set
+const carrito = new Set();
+
+// Agregar elementos al Set con el set method .add()
+carrito.add('Camisa');
+carrito.add('Disco #1');
+carrito.add('Disco #2');
+carrito.add('Disco #3');
+
+// Intentar agregar un elemento que ya existe
+// carrito.add('Camisa'); // No lo agrega
+
+// camisa es distinto de Camisa
+carrito.add('camisa'); // Lo agrega
+console.log(carrito);
+//console.log(carrito.add('camisa')); // No retorna nada
+```
+
+- Eliminar un elemento del _Set_ o todos los elementos.
+
+```js
+// Eliminar un elemento con .delete()
+//carrito.delete('camisa');
+console.log(carrito);
+console.log(carrito.delete('camisa')); // retorna true
+console.log(carrito.delete('camisa')); // retorna false porque ya fue eliminado
+
+// Eliminar todos los elementos del Set
+// carrito.clear();
+// console.log(carrito);
+```
+
+- Forma de saber el largo de un _Set_ y si contiene un elemento en especifico.
+
+```js
+// Largo de un set utilizando el set method .size
+console.log(carrito.size);
+
+// Saber si un elemento se encuentra dentro del Set con .has()
+console.log(carrito.has('Camisa')); // true
+```
+
+- Iteración de un _Set_ con el método `.forEach()`. Los
+
+```js
+// Iteración en los Sets
+carrito.forEach( (producto, index, pertenece) => {
+    console.log(producto);
+    console.log(index); // Mismo elemento que producto ya que los sets sólo almacenan valores sin llave
+    console.log(pertenece); // Muestra el set completo al que el elemento pertenece
+});
+```
+
+- Ejemplo de uso de un _Set_
+
+```js
+// Del siguiente arreglo, eliminar los duplicados
+const numeros = [10,20,30,40,50,10,20];
+console.log(numeros);
+const numerosNoDuplicados = new Set(numeros);
+console.log(numerosNoDuplicados);
+```

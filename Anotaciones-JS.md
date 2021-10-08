@@ -4424,7 +4424,7 @@ const numerosNoDuplicados = new Set(numeros);
 console.log(numerosNoDuplicados);
 ```
 
-### Qué es un WeakSet y en que se diferencia de una Set
+#### Qué es un WeakSet y en que se diferencia de una Set
 
 A diferencia del _Set_ el cual permite almacenar todo tipo de variables, los _WeakSet_ **sólo permiten el almacenamiento de objetos**.
 
@@ -4456,4 +4456,57 @@ console.log(weakSet.has(cliente)); // Retorna un true
 // Eliminar un objeto con el método .delete()
 console.log(weakSet.delete(cliente)); // Retorna true
 console.log(weakSet);
+```
+
+#### Maps y sus caracteristicas
+
+Son listas ordenadas en llave y valor, los cuales pueden ser cualquier tipo de dato.
+Tienen mejor perfomance que un obejto (en especial cuando son más grandes) y son especialmente diseñados para agregar o quitar elementos, o también para recorrelos.
+
+En el siguiente bloque de código se puede observar todo lo que se peude hacer con los _Maps_
+
+```js
+// Inicializar Map vacío
+const cliente = new Map();
+
+// Inicializar Map con elementos
+// Se puede seguir utilizando el método set para agregar valores
+const paciente = new Map([['nombre','Paciente'],['cuarto','no definido']]);
+console.log(paciente);
+
+// Agregar un elemento utilizando el método .set(llave, valor)
+
+cliente.set('nombre','Karen');
+cliente.set('tipo','Premium');
+cliente.set('saldo', 3000);
+cliente.set(true, true);
+cliente.set([0], false);
+
+console.log(cliente);
+
+// Reescribir un valor utilzando su llave y el método set(llave,nuevoValor)
+cliente.set('tipo','Gold');
+
+// Obtener el tamaño del Map con la propiedad .size
+console.log(cliente.size);
+
+// Saber si una llave se encuentra en el Map
+console.log(cliente.has('tipo'));
+
+// Obtener un valor mediante su llave con el método .get(llave)
+console.log(cliente.get('tipo'));
+
+// Eliminar elementos usando su llave con el método .delete(llave)
+console.log(cliente.delete('tipo')); // Retorna true
+console.log(cliente.has('tipo')); // false
+console.log(cliente); // Ya no se encuentra el elemento
+
+// Limpiar el Map con el método clear()
+cliente.clear();
+console.log(cliente);
+
+// Iteración en los Maps
+paciente.forEach(( dato, index ) => {
+    console.log(`La llave es: ${index} y el valor es ${dato}`);
+});
 ```

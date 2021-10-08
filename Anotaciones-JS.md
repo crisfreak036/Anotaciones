@@ -4543,3 +4543,69 @@ console.log(weakMap.get(producto));
 // Eliminar un elemento utilizando el método .delete()
 // console.log(weakMap.delete(producto));
 ```
+
+#### Symbols y sus Caracteristicas
+
+- Permite la creación de propiedades únicas e irrepetibles. A diferencia de _Set_ o _Map_, los _Symbols_ no requieren la palabra reservada `new` para ser creados.
+
+```js
+// Inicializar un Symbol
+const sym = Symbol('1');
+const sym2 = Symbol('1');
+```
+
+- **Ningún Symbol es igual a otro Symbol**
+
+```js
+// En teoría deberían ser iguales, ya que su valor y tipo de dato son "iguales"
+if(sym === sym2) {
+    console.log(`Son iguales`);
+} else {
+    console.log(`No son iguales`); // Retorna esto
+}
+```
+
+- Pueden ser utilizados como propiedades de un objeto mediante la sitaxis de corchetes.
+
+```js
+const nombre = Symbol();
+const apellido = Symbol();
+
+const persona = {};
+
+// Agregar nombre y apellido como llaves del objeto
+// Las propiedad que utilizan Symbol no son iterables
+persona[nombre] = 'Pedro';
+persona[apellido] = 'Piedra';
+persona.tipoCliente = 'Premium';
+persona.saldo = 500;
+
+/* En la consola saldrá que tanto el valor asignado al nombre y el valor asignado
+al apellido son Symbol() */
+console.log(persona);
+
+// Para acceder al nombre y al apellido del objeto hay que ocupar la sintaxis de corchete, no la de puntos.
+console.log(`La persona se llama ${persona[nombre]} ${persona[apellido]} y su saldo es de ${persona.saldo}`);
+```
+
+- **Los Symbol no son iterables**
+
+```js
+// Al iterar el objeto, las propiedades del tipo Symbol quedan privadas y no accesibles
+for( propiedad in persona){
+    console.log(propiedad); // tipoCliente, saldo
+}
+```
+
+- Al crear un _Symbol_, se puede agregar una descripción de él, la cual se entrega como _String_ sus parentesis del constructor.
+
+```js
+// Definir una descripción del Symbol
+const cliente = {};
+const nombreCliente = Symbol('Nombre del Cliente');
+
+cliente[nombreCliente] = 'Paquito';
+console.log(cliente); // En la consola se podrá observar una descripción perteneciente a la propiedad Symbol del objeto
+console.log(cliente[nombreCliente]); // Acceder al valor de la propiedad
+console.log(nombreCliente); // Muestra solamente la descripción del Symbol
+```

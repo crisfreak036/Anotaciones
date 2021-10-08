@@ -4510,3 +4510,36 @@ paciente.forEach(( dato, index ) => {
     console.log(`La llave es: ${index} y el valor es ${dato}`);
 });
 ```
+
+#### ¿Qué son los WeakMaps?
+
+Sirve para ocultar cierta información no tan sensible.
+No son iterables.
+No tienen la porpiedad _.size_, por lo cual no se puede saber su extensión.
+Sólo aceptan obejetos como llave.
+
+En el siguiente bloque de código se puede observar todo lo que se peude hacer con los _WeakMaps_
+
+```js
+// WeakMaps
+
+const producto = {
+    idPRoducto : 10
+}
+
+// Inicializar un WeakMap
+const weakMap = new WeakMap();
+
+// Agregar elemento a un WeakMap utilizando el método .set()
+weakMap.set(producto, 'Monitor');
+// weakMap.set('Producto', 'Televisión'); // Sólo acepta objetos en su llave, de lo contrario retorna un error en consola
+console.log(weakMap); // El objeto producto queda como la llave de Monitor, y las propiedades del objeto quedan inaccesibles mediante el uso del método .get()
+
+// .has() para saber si contiene un elemento
+console.log(weakMap.has(producto));
+// Obtener un elemento utilizando el método .get()
+console.log(weakMap.get(producto));
+
+// Eliminar un elemento utilizando el método .delete()
+// console.log(weakMap.delete(producto));
+```

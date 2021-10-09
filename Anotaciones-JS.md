@@ -4609,3 +4609,34 @@ console.log(cliente); // En la consola se podrá observar una descripción perte
 console.log(cliente[nombreCliente]); // Acceder al valor de la propiedad
 console.log(nombreCliente); // Muestra solamente la descripción del Symbol
 ```
+
+#### Crear un iterador porpio
+
+```js
+function crearIterador(arreglo){
+    let i = 0 // Contador
+
+    return {
+        siguiente: () => {
+            const fin = (i >= arreglo.length); // Establece el fin del arreglo
+            const valor = !fin ? arreglo[i++] : undefined ; // Almacena el valor iterado si se cumple una condición
+
+            return {
+                fin,
+                valor
+            }
+        }
+    }
+}
+
+const carrito = ['Producto1','Producto2','Producto3'];
+
+// Utilizar el iterador
+const recorrerArreglo = crearIterador(carrito);
+
+// Descomentar uno a uno para ir viendo la iteración
+// console.log(recorrerArreglo.siguiente()); // Muestra un elemento iterado [0] 
+// console.log(recorrerArreglo.siguiente()); // Muestra un elemento iterado [1] 
+// console.log(recorrerArreglo.siguiente()); // Muestra un elemento iterado [2]
+// console.log(recorrerArreglo.siguiente()); // Muestra undefined
+```

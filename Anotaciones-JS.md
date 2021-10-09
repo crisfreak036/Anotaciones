@@ -4829,3 +4829,34 @@ import {nombreCliente} from './cliente.js'
 
 console.log(nombreCliente);
 ```
+
+#### Exportar e Importar funciones
+
+Al igual que con las variables, se pueden exportar e importar funciones creadas en otro archivo para ser utilizadas en otros archivos.
+
+```js
+// En cliente.js
+export const nombreCliente = 'Juan';
+export const ahorro = 200;
+
+export function mostrarInformacionCliente(nombreCliente, ahorro) {
+    return `El nombre del cliente es ${nombreCliente} y su ahorro es de ${ahorro}`;
+}
+
+export function tieneSaldo(ahorro){
+    if(ahorro > 0){
+        return `Tiene saldo y es de ${ahorro}`
+    }
+
+    return `No tiene saldo`
+}
+```
+
+```js
+// En app.js
+import { nombreCliente, ahorro, mostrarInformacionCliente, tieneSaldo } from './cliente.js' 
+
+console.log(mostrarInformacionCliente(nombreCliente, ahorro));
+
+console.log(tieneSaldo(ahorro));
+```

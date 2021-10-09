@@ -4860,3 +4860,32 @@ console.log(mostrarInformacionCliente(nombreCliente, ahorro));
 
 console.log(tieneSaldo(ahorro));
 ```
+
+#### Exportar e Importar clases
+
+Similar a las funciones, las clases se exportan de la misma forma. Se definen en un archivo y antes de su definición se utiliza la palabra reservada `export`, luego en el archivo que se quiera utilizar se utiliza `import`, seguido de unas llaves que contendrán los nombres de las clases a importar, seguido de un from con la ruta del arhcivo desde donde se están importando las clases.
+
+```js
+// En cliente.js
+
+export class Cliente{
+    constructor(nombreCliente, ahorro){
+        this.nombreCliente = nombreCliente;
+        this.ahorro = ahorro;
+    }
+
+    mostrarInformacion(){
+        console.log(`El nombre del cliente es ${this.nombreCliente} y su ahorro es de ${this.ahorro}`);
+    }
+}
+```
+
+```js
+// En app.js
+import { nombreCliente, ahorro, Cliente } from './cliente.js' 
+
+const cliente = new Cliente(nombreCliente, ahorro);
+console.log(cliente);
+
+cliente.mostrarInformacion();
+```

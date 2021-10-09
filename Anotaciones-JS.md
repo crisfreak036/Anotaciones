@@ -4932,3 +4932,36 @@ const empresa = new Empresa('Pepsi', 5000, 'Alimentos');
 console.log(empresa);
 empresa.mostrarInformacion();
 ```
+
+#### Export Default y alias a los imports
+
+Hasta ahora todos los imports que se han hecho, han sido delimitados por un par de _llaves_, lo anterior se debe a que ninguno de los exports realizados llevaba la palabra reservada `default` entre la palabra `export` y el nombre de la función, clase o variable. Los elementos exportados con la palabra `default`, **deben ser importados fuera de las llaves**. Además es muy importante recalcar que **no se pueden tener más de un export default por archivo**
+
+```js
+// En cliente.js
+export default function nuevaFuncion(){
+    console.log('Este es el export default');
+}
+```
+
+```js
+// En app.js
+import nuevaFuncion, { nombreCliente, ahorro, mostrarInformacionCliente, tieneSaldo, Cliente } from './cliente.js'
+
+nuevaFuncion();
+```
+
+También, se pueden importar los códigos con un alias. En el caso de los `export default` al existir sólo uno, se puede importar con cualquier nombre que uno quiera (no es recomendable), para los demás import, luego de su nombre se pone la palabra reservada `as` y seguido se pone el alias con el que se quiere llamar a ese import, de esta forma a lo largo del código escrito en aquel archivo, se utilizará el alias cada vez que se quiera utilizar el import.
+
+```js
+// En cliente.js
+export const nombreCliente = 'Juan';
+export const ahorro = 200;
+```
+
+```js
+// En app.js
+import { nombreCliente as nombre, ahorro as saldo } from './cliente.js'
+console.log(nombre);
+console.log(saldo);
+```

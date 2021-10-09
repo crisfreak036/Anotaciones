@@ -4683,3 +4683,100 @@ const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
 const iterador = generarCarrito(carrito);
 console.log(iterador.next()); // Primer elemento
 ```
+
+#### Otros Iteradores en JS
+
+```js
+// Variables iterables
+const ciudades = ['Londres', 'New York', 'Madrid', 'Paris'];
+const ordenes = new Set([123, 231, 131, 102]);
+const datos = new Map();
+
+datos.set('nombre', 'Pedro');
+datos.set('profesion', 'Desarrollador Web');
+```
+
+##### Values Iterator
+
+Entrega sólo los valores al momento de iterar.
+
+```js
+// Obtener el valor iterando sobre .values() 
+
+for( let value of ciudades.values()){
+    console.log(value); 
+}
+
+
+for( let value of ordenes.values()){
+    console.log(value); 
+}
+
+for( let value of datos.values()){
+    console.log(value); 
+}
+
+```
+
+#### Keys Iterator
+
+Entrega sólo las llaves de los elementos, o sea, indices en arreglos, la llave en los _Map_ y el mismo valor en un _Set_.
+
+```js
+// Obtener la llave iterando sobre .keys() 
+
+for( let key of ciudades.keys()){
+    console.log(key); // indices
+}
+
+
+for( let key of ordenes.keys()){
+    console.log(key); // el mismo valor
+}
+
+for( let key of datos.keys()){
+    console.log(key); // las llaves
+}
+```
+
+
+##### Entries Iterator
+
+Entrega tanto como llave y valor al momento de iterar.
+
+```js
+// Obtener llave y valor iterando sobre .entries() 
+
+for( let entry of ciudades.entries()){
+    console.log(entry); // Muestra su posición y valor
+}
+
+
+for( let entry of ordenes.entries()){
+    console.log(entry); // Llave y valor son el mismo resultado
+}
+
+for( let entry of datos.entries()){
+    console.log(entry); // Muestra llave y valor
+}
+```
+
+##### Default
+
+Cada uno de los elementos iterables (arreglo, set, map) tiene un iterador por default y dependiendo del tipo de dato, el resultado será distinto.
+
+```js
+// Default
+
+for( let ciudad of ciudades ){
+    console.log(ciudad); // los valores
+}
+
+for(let orden of ordenes){
+    console.log(orden); // los valores
+}
+
+for(let dato of datos){
+    console.log(dato); // arreglo de llave valor
+}
+```

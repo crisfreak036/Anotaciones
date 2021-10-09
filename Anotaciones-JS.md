@@ -4640,3 +4640,46 @@ const recorrerArreglo = crearIterador(carrito);
 // console.log(recorrerArreglo.siguiente()); // Muestra un elemento iterado [2]
 // console.log(recorrerArreglo.siguiente()); // Muestra undefined
 ```
+
+#### Generadores en JS
+
+Un generador es una función que retorna un iterador. Como peculiaridad tiene que antes del nombre de la función hay que agregar un asterisco para que JS lo reconozca como un _Generador_, a lo anterior se le suma el uso de la palabra reservada `yield` que hace alusión a los valores a iterar. 
+
+```js
+function *crearGenerador(){
+    // Valores a iterar
+    yield 1;
+    yield 'Pedro';
+    yield 3+3;
+    yield true;
+}
+
+// Acceder a los valores yield
+const iterador = crearGenerador();
+
+// El iterador se encuentra suspended hasta que se utiliza el método next() y luego vuelve a suspended
+console.log(iterador); // crearGenerador {<suspended>}
+console.log(iterador.next()); // 1 (Primer valor)
+console.log(iterador); // Vuelve a crearGenerador {<suspended>}
+console.log(iterador.next()); // Pedro (Segundo valor)
+console.log(iterador.next().value); // Valor de la suma de 3+3 (Tercer valor)
+console.log(iterador.next().done); // false debido a que aún no alcanza no llega al final (Cuarto valor)
+console.log(iterador.next()); // { value: undefined, done: true }
+console.log(iterador); // crearGenerador {<closed>} Termino de iterar
+```
+
+El siguiente bloque de código muestra un ejemplo un poco más complejo del uso de _Generador_
+
+```js
+// Generador para un carrito de compras (Elementos dinamicos)
+
+function *generarCarrito( carrito ){
+    for(let i = 0; i < carrito.length; i++){
+        yield carrito[i];
+    }
+}
+
+const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
+const iterador = generarCarrito(carrito);
+console.log(iterador.next()); // Primer elemento
+```

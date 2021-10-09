@@ -4889,3 +4889,46 @@ console.log(cliente);
 
 cliente.mostrarInformacion();
 ```
+
+#### Heredar una clase que está siendo importada
+
+Al igual que con la herencia que se ha visto con anterioridad, se pueden importar clases a un archivo y en ese archivo se pueden heredar las propiedades y métodos de la clase importada a una nueva clase que se está escribiendo en aquel archivo y a su vez, se puede exportar esa nueva clase heredada para ser utilizada en otro archivo.
+
+```js
+// En cliente.js
+export class Cliente{
+    constructor(nombreCliente, ahorro){
+        this.nombreCliente = nombreCliente;
+        this.ahorro = ahorro;
+    }
+
+    mostrarInformacion(){
+        console.log(`El nombre del cliente es ${this.nombreCliente} y su ahorro es de ${this.ahorro}`);
+    }
+}
+```
+
+```js
+// En empresa.js
+import { Cliente } from './cliente.js'
+
+export class Empresa extends Cliente {
+    constructor(nombre, ahorro, categoria){
+        super(nombre, ahorro);
+        this.categoria = categoria;
+    }
+
+    mostrarInformacion(){
+        console.log(`El nombre del cliente es ${this.nombreCliente} tiene un ahorro de ${this.ahorro} y su categoría es de ${this.categoria}`);
+    }
+}
+```
+
+```js
+// En app.js
+import { Empresa } from './empresa.js' // Se recomienda siempre dejar los imports en la parte superior
+
+const empresa = new Empresa('Pepsi', 5000, 'Alimentos');
+console.log(empresa);
+empresa.mostrarInformacion();
+```

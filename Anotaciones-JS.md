@@ -4780,3 +4780,52 @@ for(let dato of datos){
     console.log(dato); // arreglo de llave valor
 }
 ```
+
+### Módulos en Javascript
+
+#### Básicos de los módulos en ES6
+
+Una primera opción para modularizar un código, es utilizar los _IIFE_, los cuales nos permiterá evitar que otros archivos de js utilicen por accidente elementos definidos en los otros archivos, dando prioridad a la función _IIFE_ definida en un archivo.
+
+```js
+( function(){
+    console.log('Desde un IIFE');
+    const nombreCliente = 'Pedro'; // No puede ser accedida fuera de la función 
+})();
+```
+
+Lo anterior puede ser una solución inicial a la modularización dle código, sin embargo existe una mejor opción que es la _Importación y Exportación_ de código entre archivos.
+
+##### Export
+
+`export` es una palabra reservada que sirve para indicar código que se quiere exportar desde el archivo en donde está escirto para ser utilizado en otros archivos.
+
+```js
+// En cliente.js
+export const nombreCliente = 'Juan';
+```
+
+A veces, se puede requerir la utilización del tipo _module_ en la etiqueta script del HTML en donde se invoca al archivo .js con el código a exportar.
+
+```html
+<script src="js/cliente.js" type="module"></script>
+```
+
+Sin embargo, si existen muchos archivos, no es necesario llamarlos al HTML, sólo hay que identificar con el `type="module"` al archivo donde se importarán los códigos de otros archivos.
+
+##### Import
+
+`import` es una palabra reservada que se utiliza para indicar la importación de código desde otro archivo.
+
+Es necesario indicar en el HTML que el archivo al cual se le importará código es un modulo utilizando la etiqueta `type="module"`.
+
+```html
+<script src="js/app.js" type='module'></script>
+```
+
+```js
+// En app.js
+import {nombreCliente} from './cliente.js' 
+
+console.log(nombreCliente);
+```

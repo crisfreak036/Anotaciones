@@ -4965,3 +4965,12 @@ import { nombreCliente as nombre, ahorro as saldo } from './cliente.js'
 console.log(nombre);
 console.log(saldo);
 ```
+
+### IndexedDB - Una base de datos real en JavaScript
+
+- Es una API de JS que se utiliza para almacenar grandes cantidades de datos estructurados. 
+- Puede almacenar strings, booleans, algunso archivos y cualquier tipo de dato soportado por Javascript. 
+- No tiene "limites" conocidos, sin embargo, cuando se quiere almacenar algo de más de 50 mb, preguntará por permisos.
+- Es soportada por todas las últimas versiones de los navegadores.
+
+_IndexedDB_ es diferente a _LocalStorage_, esta última es una buena solución para almacenar poca informcación (como un carrito de compras abandonado o un JSON Wen Token). En cambio, _IndexedDB_ es una base de datos completa, sin embargo, hay que tener en cuenta que **estos datos siguen siendo visibles para cualquiera** (ya que se ejecuta en el navegador) por lo que no es recomendable almacenar passwords o tarjetas de crédito.

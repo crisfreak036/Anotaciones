@@ -5007,3 +5007,54 @@ function crmDB() {
     }
 }
 ```
+
+#### Creando tablas
+
+Antes que nada, la creación de las columnas y tablas, hay que dejar en claro que todo el código a utilizar debe colocarse en el método `.onupgradeneeded`, en la función anonima que se le asigna, como paramatro se le asigna un evento (`e`), del cual la propiedad `e.target.result` será la base de datos.
+
+```js
+crmDB.onupgradeneeded = function (e) {
+        const db = e.target.result;
+    }
+```
+
+Con lo anterior realizado, hay que definir el `objectStore`, que será igual al método `db.createObjectStore('nombre-bdd', { objeto de configuración });`.
+
+```js
+crmDB.onupgradeneeded = function (e) {
+
+        // Configuración inicial
+        const db = e.target.result;
+
+        const objectStore = db.createObjectStore('crm', {
+            keyPath: 'crm', // Referencia con la cual consultar el elemento
+            autoIncrement: true // Incrementa automaticamente el id de los registros
+        });
+
+    }
+```
+
+Finalmente, con lo anterior definido, ya se puede comenzar con la creación de columnas para la base de datos utilizando el método `objectStore.createIndex( 'nombre-columna', 'keypath', { objeto de configuración } )`
+
+```js
+    // Configuración de la bdd
+    crmDB.onupgradeneeded = function (e) {
+        
+        // Configuración inicial
+        const db = e.target.result;
+
+        const objectStore = db.createObjectStore('crm', {
+            keyPath: 'crm',
+            autoIncrement: true // Incrementa automaticamente el id de los registros
+        });
+
+        // Definir las columnas
+        objectStore.createIndex('nombre', 'nombre', {unique: false}); // Columna de nombres que pueden repetirse
+        objectStore.createIndex('email', 'email', {unique: true}); // Columna de emails que no pueden repetirse
+        objectStore.createIndex('telefono', 'telefono', {unique: false}); // Columna de telefonos que pueden repetirse
+
+        console.log('Columnas creadas correctamente');
+    }
+```
+
+Hay que recordar que si con anterioridad creaste la base de datos sin la configuración inicial, puede eliminarla y volver a correr el código para que el método con las funciones se ejecute correspondiente.

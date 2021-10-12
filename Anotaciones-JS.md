@@ -4968,9 +4968,42 @@ console.log(saldo);
 
 ### IndexedDB - Una base de datos real en JavaScript
 
+#### Introducción a IndexedDB
+
 - Es una API de JS que se utiliza para almacenar grandes cantidades de datos estructurados. 
 - Puede almacenar strings, booleans, algunso archivos y cualquier tipo de dato soportado por Javascript. 
 - No tiene "limites" conocidos, sin embargo, cuando se quiere almacenar algo de más de 50 mb, preguntará por permisos.
 - Es soportada por todas las últimas versiones de los navegadores.
 
 _IndexedDB_ es diferente a _LocalStorage_, esta última es una buena solución para almacenar poca informcación (como un carrito de compras abandonado o un JSON Wen Token). En cambio, _IndexedDB_ es una base de datos completa, sin embargo, hay que tener en cuenta que **estos datos siguen siendo visibles para cualquiera** (ya que se ejecuta en el navegador) por lo que no es recomendable almacenar passwords o tarjetas de crédito.
+
+#### Creando la base de datos
+
+- Para crear la base de datos, se utiliza el método `window.indexedDB.open('nombre', version)`.
+
+- Sumado a la creación existen algunos métodos que permiten saber si hubo un error al crearla, si se creo correctamente y otro que sirve al momento de generar las columnas de la base de datos. Todo lo anterior, sumado a la creación de la base de datos se puede observar en el siguiente bloque de código.
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+    crmDB();
+});
+
+function crmDB() {
+    // Crear base de datos v1.0
+    let crmDB = window.indexedDB.open('crm', 1);
+
+    // Si hay un error
+    crmDB.onerror = function () {
+        console.log('Hubo un error a la hora de crear la BDD')
+    }
+
+    // Si se creo bien
+    crmDB.onsuccess = function () {
+        console.log('Bases de datos creada exitosamente');
+    }
+    // Configuración de la bdd
+    crmDB.onupgradeneeded = function () {
+        console.log('Este método se ejecuta una sola vez'); // Al ser creada la base de datos
+    }
+}
+```

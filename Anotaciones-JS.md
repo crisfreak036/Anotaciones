@@ -5058,3 +5058,82 @@ Finalmente, con lo anterior definido, ya se puede comenzar con la creación de c
 ```
 
 Hay que recordar que si con anterioridad creaste la base de datos sin la configuración inicial, puede eliminarla y volver a correr el código para que el método con las funciones se ejecute correspondiente.
+
+#### Insertando registros a las BDD
+
+El manejo de la información en la base de datos, se maneja en base a transacciones, como las que se hacen en un cajero en el cual antes de poder sacar cieta cantidad de dinero, se debe comprobar si el cliente tiene un saldo igual o superior al monto que quiere retirar.
+
+El código final que incluye el setup inicial más el insertado de registros es el siguiente:
+
+```js
+let DB; // Es equivalente a e.target.result pero de forma global
+
+document.addEventListener('DOMContentLoaded', () => {
+    crmDB();
+
+    // Luego de 5 segundos llama a la función crearCliente()
+    setTimeout(() => {
+        crearCliente(); // Inserta un registro en la base de datos
+    }, 5000);
+});
+
+function crmDB() {
+    // Crear base de datos v1.0
+    let crmDB = window.indexedDB.open('crm', 1);
+
+    // Si hay un error
+    crmDB.onerror = function () {
+        console.log('Hubo un error a la hora de crear la BDD')
+    }
+
+    // Si se creo bien
+    crmDB.onsuccess = function () {
+        console.log('Bases de datos creada exitosamente');
+
+        DB = crmDB.result; // Asigna la base de datos creada a DB
+    }
+    // Configuración de la bdd
+    crmDB.onupgradeneeded = function (e) {
+        
+        // Configuración inicial
+        const db = e.target.result;
+
+        const objectStore = db.createObjectStore('crm', {
+            keyPath: 'crm',
+            autoIncrement: true // Incrementa automaticamente el id de los registros
+        });
+
+        // Definir las columnas
+        objectStore.createIndex('nombre', 'nombre', {unique: false}); // Columna de nombres que pueden repetirse
+        objectStore.createIndex('email', 'email', {unique: true}); // Columna de emails que no pueden repetirse
+        objectStore.createIndex('telefono', 'telefono', {unique: false}); // Columna de telefonos que pueden repetirse
+
+        console.log('Columnas creadas correctamente');
+    }
+}
+
+function crearCliente(){
+    let transaction = DB.transaction(['crm'], 'readwrite'); // Donde se hará la transacción y de que tipo será (en este caso es lectura/escritura)
+
+    // Muestra un mensaje si la transacción fue realizada existosamente
+    transaction.oncomplete = function(){
+        console.log('Transacción completada');
+    }
+    // Muestra un mensaje si la transacción no fue realizada    
+    transaction.onerror = function(){
+        console.log('Transacción erronea')
+    }
+
+    const objectStore = transaction.objectStore('crm'); // El objeto a almacenar 
+
+    // El registro que se almacenará
+    const nuevoCliente = {
+        telefono: 789654321,
+        nombre: 'Pedro',
+        email: 'correo@correo.com'
+    };
+
+    const peticion = objectStore.add(nuevoCliente);  // Petición de almacenamiento en el objectStore
+    console.log(peticion); // Se comprueba en consola lo realizado
+}
+```

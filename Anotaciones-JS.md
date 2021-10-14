@@ -5137,3 +5137,32 @@ function crearCliente(){
     console.log(peticion); // Se comprueba en consola lo realizado
 }
 ```
+
+### Promises, Callbacks y Programación Asincrona en JS
+
+#### Ejemplo de Callbacks
+
+_Callbacks_ hace referencia a la ejecución de una función luego de que se mande a llamar otra función.
+
+```js
+const paises = ['Francia', 'España', 'Portugal', 'Australia', 'Inglaterra'];
+
+function nuevoPais(pais, callback) {
+    setTimeout(() => {
+        paises.push(pais);
+        callback(); // Hace referencia a una función que se entrega como argumento
+    }, 2000);
+}
+
+function mostrarPaises(){
+    setTimeout(() => {
+        paises.forEach( pais => {
+            console.log(pais);
+        });
+    }, 2000);
+}
+
+nuevoPais('Alemania', mostrarPaises); // Añade el país y luego llama a mostrarPaises
+```
+
+El uso de muchos _callback_ puede provocar lo que se conoce como _Callback Hell_.

@@ -5166,3 +5166,39 @@ nuevoPais('Alemania', mostrarPaises); // Añade el país y luego llama a mostrar
 ```
 
 El uso de muchos _callback_ puede provocar lo que se conoce como _Callback Hell_.
+
+#### El muy exagerado Callback Hell
+
+Se conoce como _Callback Hell_ al constante llamado de callbacks dentro de una función, lo que hace que esta sea más dificil de leer, de mantener y de mejorar.
+
+```js
+const paises = [];
+
+function nuevoPais(pais, callback){
+    paises.push(pais);
+    console.log(`Pais ${pais} agregado correctamente`);
+    callback();
+}
+
+function mostrarPaises(){
+    console.log(paises);
+}
+
+function iniciarCallbackHell(){
+    setTimeout(() => {
+        nuevoPais('Alemania', mostrarPaises);
+
+        setTimeout(() => {
+            nuevoPais('Francia', mostrarPaises);
+            
+            setTimeout(() => {
+                nuevoPais('Inglaterra', mostrarPaises);
+            }, 3000);
+
+        }, 3000);
+
+    }, 3000);
+}
+
+iniciarCallbackHell();
+```

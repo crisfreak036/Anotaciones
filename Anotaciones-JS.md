@@ -5202,3 +5202,37 @@ function iniciarCallbackHell(){
 
 iniciarCallbackHell();
 ```
+
+#### Creando un Promise y .then y .catch
+
+```js
+/* resolve es cuando se ejecuta el promise de manera correcta, mientras que reject es
+cuando existe un problema */
+const aplicarDescuento = new Promise( (resolve, reject) => {
+    const descuento = false;
+
+    if(descuento) {
+        resolve('Descuento aplicado');
+    } else{
+        reject('No se pudo aplicar el descuento');
+    }
+} );
+
+// Utilización del Promise
+
+/* Tienen 3 posibles valores los Promises 
+fulfilled - El promise se cumplió 
+rejected - El promise no se cumplió
+pending - No se ha cumplido y tampoco ha sido rechazado
+*/
+
+/* Se lee como "Vamos a utilizar aplicar descuento entonces (.then) se ejecuta algo,
+si falla, se atrapa (.catch) el error" */
+aplicarDescuento
+    .then( resultado => {
+        console.log(resultado);
+    })
+    .catch( error => {
+        console.log(error);
+    })
+```

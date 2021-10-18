@@ -5626,3 +5626,22 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(document.querySelector('.premium'));
 });
 ```
+
+#### Detectar si existe conexión a internet
+
+Se puede detectar si existe conexión mediante la utilización de objeto _window_ que tiene los Listeners de online y offline que indican si hay o no internet.
+
+```js
+// Detectar conexión de internet
+
+window.addEventListener('online', actualizarEstado);
+window.addEventListener('offline', actualizarEstado);
+
+function actualizarEstado() {
+    if(navigator.onLine){
+        console.log('Estas conectado');
+    } else{
+        console.log('No estas conectado');
+    }
+}
+```

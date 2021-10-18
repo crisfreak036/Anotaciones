@@ -5236,3 +5236,32 @@ aplicarDescuento
         console.log(error);
     })
 ```
+
+#### De Callback Hell a Promises
+
+```js
+const paises = [];
+
+const nuevoPais = pais =>  new Promise((resolve) => {
+    setTimeout(() => {
+        paises.push(pais);
+        resolve(`Pais ${pais} agregado correctamente`);
+    }, 3000);
+})
+
+// El "resultado" que se imprime hace referencia lo que entrega en resolve de la promesa
+nuevoPais('Alemania').then( resultado => {
+        console.log(resultado);
+        console.log(paises);
+        return nuevoPais('Francia') // Al terminar la función llama de nuevo a la función
+    })
+    .then( resultado => {
+        console.log(resultado);
+        console.log(paises);
+        return nuevoPais('Inglaterra')
+    })
+    .then( resultado => {
+        console.log(resultado);
+        console.log(paises);
+    })
+```

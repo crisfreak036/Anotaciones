@@ -5602,3 +5602,27 @@ btnVerNotificacion.addEventListener('click', () => {
     }
 })
 ```
+
+#### Intersectation Observer
+
+Se utiliza para identificar cuando un elemento esta visible.
+Se suele utilizar para dar el efecto de scroll infinito o de _lazy loading_ en alguna imagenes.
+El Intersection Observer hay que utilizarlo como una clase, en la cual su constructor recibe una _Arrow Function_ que como parametro se le define un _entries_.
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Habilita IntersectionObserver
+    const observer = new IntersectionObserver( (entries) => {
+        // console.log(entries[0]); // El primer elemento es el más importante. Comenzará a tener valores cuando se defina que elemento se observará
+        // Notifica siempre que se intersecte el elemento y se encuentre visible (lo importante es isIntersecting)
+
+        if(entries[0].isIntersecting){
+            console.log('El elemento se encuentra visible');
+        }
+    });
+
+    // Se le indica que elemento va a observar
+    observer.observe(document.querySelector('.premium'));
+});
+```

@@ -5736,3 +5736,141 @@ function ejecutarSpeechAPI(){
     }
 }
 ```
+
+### Fetch API - Para obtener datos de otros servidores o APIs
+
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <div class="contenido">
+        <h1>JavaScript Moderno</h1>
+        <a href="http://www.codigoconjuan.com" target="_blank">codigoconjuan.com</a>
+        <p>Fetch API</p>
+        <p class="hashtag">#JSModernoConJuan</p>
+
+        <div id="contenido"></div>
+
+        <button type="button" id="cargarTxt">
+            Obtener desde TXT
+        </button>
+        <button type="button" id="cargarJSON">
+           Cargar JSON - Objeto
+        </button>
+        <button type="button" id="cargarJSONArray">
+            Cargar JSON - Array
+        </button>
+        <button type="button" id="cargarAPI">
+            Cargar API
+        </button>
+    </div>
+
+    <script src="js/01-app.js"></script> 
+    <script src="js/02-app.js"></script> 
+    <script src="js/03-app.js"></script> 
+    <script src="js/04-app.js"></script> 
+    
+</body>
+</html>
+```
+- Información para un archivo txt
+
+```
+Informacion desde un archivo .txt
+```
+
+- Información de empleado.json
+
+```json
+{
+     "id" : 1,
+     "nombre" : "Juan",
+     "empresa" : "Código Con Juan",
+     "trabajo" : "Desarrollador Web"
+}
+```
+
+- Información de empleados.json
+
+```json
+[
+     {
+          "id" : 1,
+          "nombre" : "Juan",
+          "empresa" : "Código con Juan",
+          "trabajo" : "Desarrollador Web"
+     },
+     {
+          "id" : 2,
+          "nombre" : "Alejandra",
+          "empresa" : "Código con Juan",
+          "trabajo" : "Diseñadora"
+     },
+     {
+          "id" : 3,
+          "nombre" : "Pedro",
+          "empresa" : "Código con Juan",
+          "trabajo" : "Aplicaciones Móviles"
+     }
+]
+```
+
+#### Como utilizar FECTH API
+
+- Fetch API sólo puede leer textos planos, no soporta _XML_.
+- Fetch API es nativo de JavaScript, antes se utilizaba AJAX pero ahora es más recomendable utilizar Fetch. Al ser nativo, tanto el _resolve_ como el _rejected_ de la promesa, ya estan definidos.
+- Al igual que otras API actuales, FETCH API utiliza _Promises_.
+- **FETCH API sirve tanto como para obtener datos como para enviar datos**
+
+Hay diferentes forma de utilizar Fetch API:
+
+1. Utilizando `fetch()` y entregando como parametro la URL desde donde vendrán los datos que se quieren obtener o hacía donde se quieren enviar.
+
+```js
+fetch('url/datos.txt')
+```
+
+2. Otra forma es haciendo lo mismo que en la forma anterior pero guardando la URL en una variable la cual será entegada como parametro a `fetch()`.
+
+```js
+const url = 'url/datos.tx';
+fetch(url)
+```
+
+Sin importar cual se utilice, al funcionar con _Promises_, se utiliza `.then( response => {})`, la respuesta que entrega tiene vairada información como el `status` que permite saber si la petición fue correcta. La repsuesta de la promesa de FETCH API, suele ser acompañada por los métodos `.txt()` o `.json()` que entregan en formato de texto o json la información de la respuesta. Finalmente esa respuesta con su corresondiente método transformados, se retorna para que otra promesa (`.then( datos => {...})`) maneje los datos ya en el formato deseado.
+
+```js
+const btnObtenerDesdeTXT = document.querySelector('#cargarTxt');
+btnObtenerDesdeTXT.addEventListener('click', obtenerDatos);
+
+function obtenerDatos() {
+    // Una forma
+    // fetch('data/datos.txt')
+    
+    // Segunda forma
+    const url =  'data/datos.txt';
+    fetch(url)
+        .then( respuesta => {
+            // console.log(respuesta);
+            // console.log(respuesta.status); // Entrega el HTTP Response
+            // console.log(respuesta.url); // Entrega la URL de respuesta
+            // console.log(respuesta.type); // Entrega el tipo de consulta que se está realizando
+
+            return respuesta.text(); // Junto a .text(), .json() son los más utilizados
+        })
+        .then( datos => {
+            // Obtenida la información, entonces se muestran los datos
+            console.log(datos);
+        })
+        .catch( error => console.log(error))
+}
+```

@@ -5849,6 +5849,8 @@ fetch(url)
 Sin importar cual se utilice, al funcionar con _Promises_, se utiliza `.then( response => {})`, la respuesta que entrega tiene vairada información como el `status` que permite saber si la petición fue correcta. La repsuesta de la promesa de FETCH API, suele ser acompañada por los métodos `.txt()` o `.json()` que entregan en formato de texto o json la información de la respuesta. Finalmente esa respuesta con su corresondiente método transformados, se retorna para que otra promesa (`.then( datos => {...})`) maneje los datos ya en el formato deseado.
 
 ```js
+// 01-app.js
+
 const btnObtenerDesdeTXT = document.querySelector('#cargarTxt');
 btnObtenerDesdeTXT.addEventListener('click', obtenerDatos);
 
@@ -5881,6 +5883,8 @@ JSON es conocido como una tecnologia de transporte, la cual tiene alta compatibi
 Al consultar JSON y ser recibido en JS, es transformado a un objeto para su manejo en JS.
 
 ```js
+// 02-app.js
+
 // Dar click en Cargar JSON - Objeto debe descargar el contenido
 // Almacenado en el archivo JSON
 
@@ -5913,5 +5917,42 @@ function mostrarDatos({ empresa, id, nombre, trabajo }) {
     <p> Trabajo: ${trabajo}</p>
     `
     contenido.appendChild(empleado);
+}
+```
+
+#### Consultar e imprimir los resultados de un Fecth (Arreglo de JSON)
+
+Cuando se trata de un arreglo que contiene muchos objetos, se obtienen de la misma forma como si fuera uno sólo pero la respuesta ahora viene en forma de arreglo y el método `.json()` entrega un arreglo de objetos que debe ser iterado para acceder a cada uno de los elementos que trae.
+
+```js
+// 03-app.js
+const btnCargarJsonArr = document.querySelector('#cargarJSONArray');
+btnCargarJsonArr.addEventListener('click', obtenerDatos);
+
+function obtenerDatos() {
+
+    const url =  'data/empleados.json';
+    fetch(url)
+        .then( respuesta => respuesta.json())
+        .then( datos => {
+            mostrarDatos(datos);
+        })
+        .catch( error => console.log(error))
+}
+
+// Scripting que muestra en el HTML la información obtenida del JSON
+function mostrarDatos(datos) {
+    const contenido = document.querySelector('.contenido');
+    datos.forEach( empleado => {
+        const { id, nombre, empresa, trabajo } = empleado;
+        const contenedorEmpleado = document.createElement('div');
+        contenedorEmpleado.innerHTML = `
+        <p> ID: ${id}</p>
+        <p> Empleado: ${nombre}</p>
+        <p> Empresa: ${empresa}</p>
+        <p> Trabajo: ${trabajo}</p>
+        `
+        contenido.appendChild(contenedorEmpleado);
+    });
 }
 ```

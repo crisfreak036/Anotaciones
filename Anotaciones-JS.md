@@ -5678,6 +5678,7 @@ function salirPantallaCompleta(){
 El listener que sirve para saber si el usuario está viendo la página o no es `'visibilitychange'`.
 
 ```js
+// 05-app.js
 document.addEventListener('visibilitychange', () => {
     // console.log(document.visibilityState); // hidden - visible
     if(document.visibilityState === 'visible'){
@@ -5686,4 +5687,52 @@ document.addEventListener('visibilitychange', () => {
         console.log('Ejecutar código para pausar el vídeo');
     }
 });
+```
+
+#### Speech API
+
+Es una API que permite la utilización de la voz dentro de la página para transcribirlo a texto, requiere de que el usuario ceda permisos de uso del microfono.
+Es una API muy nueva por lo cual a la fecha de hoy no muchos navegadores la soportan (Navegadores de Android, Chrome y Edge).
+
+```js
+// 06-app.js
+const salida = document.querySelector('#salida');
+const btnSpeechRecognition = document.querySelector('#microfono');
+
+btnSpeechRecognition.addEventListener('click', ejecutarSpeechAPI);
+
+function ejecutarSpeechAPI(){
+    const SpeechRecognition = webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    // Inicia el reconocimiento
+    recognition.start();
+
+    // Cuando se ejecute recognition se ejecuta la siguiente función
+    recognition.onstart = function(){
+        salida.classList.remove('ocultar');
+        salida.classList.add('mostrar');
+        salida.textContent = 'Escuchando...';
+    };
+
+    // Cuando el usuario haya terminado de hablar
+    recognition.onspeechend = function(){
+        salida.textContent = 'Se detuvo la escucha...';
+        recognition.stop(); // Se detiene el reconocimiento
+    }
+
+    // Lo hablado se traduce a texto
+    recognition.onresult = function(e){
+        // console.log(e.results[0][0]); // Confidence es que tan seguro esta la API de lo que se dijo y transcript es lo que se tradujo a texto
+        const { confidence, transcript } = e.results[0][0];
+
+        const speech = document.createElement('p');
+        speech.innerHTML = `Grabado: ${transcript}`;
+
+        const seguridad = document.createElement('p');
+        seguridad.innerHTML = `Seguridad ${ parseInt( confidence * 100 )}%`
+        
+        salida.append(speech, seguridad);
+    }
+}
 ```

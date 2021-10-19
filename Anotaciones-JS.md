@@ -5874,3 +5874,44 @@ function obtenerDatos() {
         .catch( error => console.log(error))
 }
 ```
+
+#### Consultar un JSON
+
+JSON es conocido como una tecnologia de transporte, la cual tiene alta compatibilidad con JS.
+Al consultar JSON y ser recibido en JS, es transformado a un objeto para su manejo en JS.
+
+```js
+// Dar click en Cargar JSON - Objeto debe descargar el contenido
+// Almacenado en el archivo JSON
+
+const btnCargarJsonObj = document.querySelector('#cargarJSON');
+btnCargarJsonObj.addEventListener('click', obtenerDatos);
+
+function obtenerDatos() {
+
+    const url =  'data/empleado.json';
+    fetch(url)
+        .then( respuesta => {
+
+            return respuesta.json();
+        })
+        .then( dato => {
+            mostrarDatos(dato); // El console.log puede ser reemplazado por una función que muestre de otra forma la información entregada
+        })
+        .catch( error => console.log(error))
+}
+
+// Scripting que muestra en el HTML la información obtenida del JSON
+function mostrarDatos({ empresa, id, nombre, trabajo }) {
+    const contenido = document.querySelector('.contenido');
+    
+    const empleado = document.createElement('div');
+    empleado.innerHTML = `
+    <p> ID: ${id}</p>
+    <p> Empleado: ${nombre}</p>
+    <p> Empresa: ${empresa}</p>
+    <p> Trabajo: ${trabajo}</p>
+    `
+    contenido.appendChild(empleado);
+}
+```

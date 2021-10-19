@@ -5956,3 +5956,39 @@ function mostrarDatos(datos) {
     });
 }
 ```
+
+#### Consultar e imprimir los rsultados de una API (consumir una API)
+
+Consultar una API es igual a consultar un archivo JSON almacenado de manera local pero puede tomar un poco más de tiempo debido a que ahora lo que se consulta no se encuentra almacenado de manera local.
+
+```js
+// 04-app.js
+
+const btnCargarAPI = document.querySelector('#cargarAPI');
+btnCargarAPI.addEventListener('click', obtenerDatos);
+
+function obtenerDatos() {
+
+    const url = 'https://picsum.photos/list';
+    fetch(url)
+        .then( respuesta => respuesta.json())
+        .then( datos => {
+            mostrarContenido(datos);
+        })
+        .catch( error => console.log(error))
+}
+
+function mostrarContenido(datos) {
+    const contenido = document.querySelector('.contenido');
+    datos.forEach( perfil => {
+        const { author, post_url } = perfil;
+
+        const contenedorPerfil = document.createElement('div');
+        contenedorPerfil.innerHTML = `
+        <p> Autor: ${author}</p>
+        <a href=${post_url}> Ver Imagen </a>
+        `
+        contenido.appendChild(contenedorPerfil);
+    })
+}
+```

@@ -5610,6 +5610,7 @@ Se suele utilizar para dar el efecto de scroll infinito o de _lazy loading_ en a
 El Intersection Observer hay que utilizarlo como una clase, en la cual su constructor recibe una _Arrow Function_ que como parametro se le define un _entries_.
 
 ```js
+// 02-app.js
 document.addEventListener('DOMContentLoaded', () => {
 
     // Habilita IntersectionObserver
@@ -5632,6 +5633,7 @@ document.addEventListener('DOMContentLoaded', () => {
 Se puede detectar si existe conexión mediante la utilización de objeto _window_ que tiene los Listeners de online y offline que indican si hay o no internet.
 
 ```js
+// 03-app.js
 // Detectar conexión de internet
 
 window.addEventListener('online', actualizarEstado);
@@ -5643,5 +5645,30 @@ function actualizarEstado() {
     } else{
         console.log('No estas conectado');
     }
+}
+```
+
+#### Ejecutar pantalla completa con JS
+
+Con Javascript se puede entrar o salir del modo pantalla completa, utilizando los métodos de `.requestFullScreen()` y `.exitFullscreen()` en el elemento que se quiere dejar en pantalla completa (el sitio, el vídeo o una imagen).
+
+```js
+// 04-app.js
+// Selectores de botones
+const btnFullScreen = document.querySelector('#abrir-pantalla-completa');
+const btnSalirFullScreen = document.querySelector('#salir-pantalla-completa');
+
+btnFullScreen.addEventListener('click', pantallaCompleta);
+btnSalirFullScreen.addEventListener('click', salirPantallaCompleta);
+
+function pantallaCompleta(){
+    // Se quiere que todo el sitio esté en pantalla completa
+    document.documentElement.requestFullscreen(); // Solicita el modo pantalla completa
+    // Lo anterior sirve para otros elementos como una imagen o vídeo
+}
+
+function salirPantallaCompleta(){
+    // Se selecciona el elemento que está en pantalla completa
+    document.exitFullscreen(); // El elemento se saca del modo pantalla completa
 }
 ```

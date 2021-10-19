@@ -5672,3 +5672,18 @@ function salirPantallaCompleta(){
     document.exitFullscreen(); // El elemento se saca del modo pantalla completa
 }
 ```
+
+#### Detectar si el usuario se encuentra viendo la página
+
+El listener que sirve para saber si el usuario está viendo la página o no es `'visibilitychange'`.
+
+```js
+document.addEventListener('visibilitychange', () => {
+    // console.log(document.visibilityState); // hidden - visible
+    if(document.visibilityState === 'visible'){
+        console.log('Ejecutar código para reproducir el vídeo');
+    }else{
+        console.log('Ejecutar código para pausar el vídeo');
+    }
+});
+```

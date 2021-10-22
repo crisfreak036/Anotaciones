@@ -5992,3 +5992,70 @@ function mostrarContenido(datos) {
     })
 }
 ```
+
+#### Extra: Crear paginación desde 0
+
+Para crear una paginación con la información entregada desde una API, antes que nada es necesario saber:
+
+- La **cantidad de resultados totales** que vienen en la respuesta de la API.
+- Definir los elementos que se van a mostrar por cada página.
+
+Con la información anterior ya se puede calcular la cantdiad de páginas de manera dinamica.
+
+```js
+// Ejemplo de función de soporte que calcula la cantidad de páginas de forma dinamica
+function calcularPaginas( total, registrosPorPagina ){
+    return parseInt( Math.ceil( total / registrosPorPagina ))
+}
+```
+
+**Nota: La paginación es posible sólo si la API desde donde se consulta la información presenta la opción de paginación.**
+
+Sabiendo los datos anterior, hay que crear el _Generador_ que será el encargado de generar los números de páginas en base los datos anteriores.
+
+```js
+// Generador que va a registrar la cantidad de elementos de acuerdo a las páginas
+export function *crearPaginador(totalPaginas){
+    for(let i = 1; i <= totalPaginas; i++){
+        yield i;
+    }
+}
+```
+
+El generador anterior será el iterador que ayudará a generar tanto los números como el scripting para los botones que servirán para moverse entre páginas.
+
+```js
+function mostrarPaginador(totalPaginas) {
+    
+    // Limpiar la paginacion anterior
+    limpiarResultadosPrevios(paginacion);
+
+    iterador = func.crearPaginador(totalPaginas); // Uso del Generador
+
+    // Loop infinito que se termina cuando la propiedad done es true
+    while(true){
+        // Destructuring del iterador.next()
+        const { value, done } = iterador.next(); // Uso de los valores que entrega el iterador
+        if(done) return;
+
+
+        // Genera un botón por cada elemento en el generador
+        const boton = document.createElement('a');
+        boton.href = '#';
+        boton.dataset.pagina = value;
+        boton.textContent = value;
+        boton.classList.add('siguiente', 'bg-yellow-400', 'px-4', 'py-1', 'mr-2', 'font-bold', 'mb-4', 'rounded');
+
+        // Al hacer click vuelve a pedir a la API que entrega la nueva pagina con imagenes
+        boton.onclick = function(){
+            paginaActual = value;
+            func.buscaImagenes();
+        }
+        
+        // Añade el boton al DOM
+        paginacion.appendChild(boton);
+    }
+}
+```
+
+Para más infomración sobre el código de la páginación, se puede visitar el siguiente repositorio de GitHub [Buscador de Imagenes con Pixebay API](https://github.com/crisfreak036/buscador-imagenes).

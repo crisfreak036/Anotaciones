@@ -2298,6 +2298,42 @@ const baratos = carrito.map(producto => producto)
 console.log(baratos);
 ```
 
+**Nota:** Recordar siempre retornar los elementos de vuelta para que no sean reemplazados por un _undefined_.
+
+```js
+let arreglo = [{id: 0, cantidad: 1}, {id: 1, cantidad: 1}, {id: 2, cantidad: 1}, {id: 3, cantidad: 1}];
+console.log(arreglo);
+
+// El siguiente código devuelve un arreglo donde todos los elementos son undefined
+// const arregloNuevo = arreglo.map( elemento => {
+//     if(elemento.id === 2){
+//         elemento.cantidad +=1; // Esta asginacion afecta al valor del antiguo arreglo
+//     }
+//     //El return elemento, debería estar aquí
+// });
+
+// El siguiente código devuelve un arreglo donde todos los elementos menos uno son udefined
+// const arregloNuevo = arreglo.map( elemento => {
+//     if(elemento.id === 2){
+//         elemento.cantidad +=1; // Esta asginacion afecta al valor del antiguo arreglo
+//         return elemento;
+//     }
+//     //El return elemento, debería estar aquí
+// });
+
+// Busca el elemento con el id igual a 2 y retorna un arreglo nuevo
+const arregloNuevo = arreglo.map( elemento => {
+    if(elemento.id === 2){
+        elemento.cantidad +=1; // Esta asginacion afecta al valor del antiguo arreglo
+    }
+    return elemento;
+});
+
+// El contenido del nuevo arreglo es asignado al antiguo arreglo
+arreglo = [...arreloNuevo];
+console.log(arreglo);
+```
+
 #### for ...of
 
 Itera sobre el arreglo original y el iterador toma el valor de cada elemento del arreglo. Su estructura se basa en la del _for_ pero la condición y el incremento se reemplazan por un `of nombre.arreglo` quedando la declaración de la siguiente manera `for (iterador of nombreArreglo){}`.
@@ -2362,7 +2398,7 @@ for( let propiedad in automovil){
 
 #### .includes y .some
 
-ambos métodos sirven para encontrar una valor en un arreglo. Sin embargo, _.includes()_ sirve sólo para arreglos de indices, en cambio, _.some()_ es tanto para arreglos de indices como para arreglos de objetos. Por otro lado, ambos métodos se diferencian con respecto al parámetro que reciben, por un lado _.includes()_ recibe el valor que se está buscando en el arreglo, mientras que _.some()_ recibe una _Arrow Function_ la cual se encarga de recorrer el arreglo (de indice u objetos) y buscar un valor, la estructura de la _Arrow Function_ es similar a la de un _.forEach_ o un _.map_, en donde el cuerpo de la función se compone de un _return_ seguido por lo que se está buscando.
+Ambos métodos sirven para encontrar una valor en un arreglo. Sin embargo, _.includes()_ sirve sólo para arreglos de indices, en cambio, _.some()_ es tanto para arreglos de indices como para arreglos de objetos. Por otro lado, ambos métodos se diferencian con respecto al parámetro que reciben, por un lado _.includes()_ recibe el valor que se está buscando en el arreglo, mientras que _.some()_ recibe una _Arrow Function_ la cual se encarga de recorrer el arreglo (de indice u objetos) y buscar un valor, la estructura de la _Arrow Function_ es similar a la de un _.forEach_ o un _.map_, en donde el cuerpo de la función se compone de un _return_ seguido por lo que se está buscando.
 
 ```js
 // Ejemplo .includes()

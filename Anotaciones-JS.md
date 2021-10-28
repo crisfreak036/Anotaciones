@@ -6128,3 +6128,44 @@ console.log('Después del bloque try-catch'); // Se ejecuta
 Se le puede denominar _Administración del error_ a la sección catch del bloque, ya que permite observar de mejor manera que sucede en la linea de código conflictiva de la aplicación.
 
 Esta demás decir que no se debe encerrar todo el código en un bloque  _Try-Catch_, sólo se debe utilizar en partes criticas del código como lo serían la conexión a una base de datos, consultar una API, autenticar un usuario o acciones que nos permitan que en caso de que falle, nuestra aplicación continue funcionando.
+
+Algo que cabe mencionar es que si en el _try_ se encuentra un error, se detiene la ejecución del código que prosiga después del error y _catch_ captura ese error y ejecuta el bloque de código asignado al caso de que existiera un error.
+
+#### Async-Await: ¿Qué es lo que hace? y primer ejemplo
+
+Son una alternativa a los _Promises_ pero funcionan sobre ellos.
+
+La palabra reservada _async_ va en la función padre que llama a las otras funciones, mientras que _await_ se utiliza en la parte del código que va a esperar a que se ejecute el _promise_. En palabras simples, lo que hace _await_ es darle entender a JS que debe esperar (detiene la ejecución del código hasta que se resuelva el _promise_) a que el fragmento con _await_ entregue una respuesta antes de seguir ejecutando el código.
+
+El siguiente es un ejemplo de _async-await_ con _function delcaration_.
+
+```js
+function descargarClientes(){
+
+    return new Promise( (resolve, reject) => {
+        const error = true; // Si el valor es false...
+
+        setTimeout( () => {
+            if(!error){
+                resolve('Listado de clientes descargado exitosamente');
+            } else{
+                reject('Error en la conexión');
+            }
+        }, 3000);
+    })
+}
+
+// Async-Await
+async function ejecutar(){
+    try {
+        console.log('Antes del await');
+        const respuesta = await descargarClientes();
+        console.log('Después del await'); // ... esta línea y la siguiente no se ejecutaría...
+        console.log(respuesta);
+    } catch (error) {
+        console.log(error); // ... pasaría directamente al catch
+    }
+}
+
+ejecutar();
+```

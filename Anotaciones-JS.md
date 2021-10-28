@@ -6264,3 +6264,32 @@ const app = async () => {
 
 app(); // Tiempo de ejecución 5 segundos
 ```
+
+#### Async-Await hacia una API con Fetch
+
+Con la combinación de la estructura _try-catch_ y las palabras _async-await_, se pueden consumir APIs de la misma forma que se hacía con _fetch-then-catch_ pero de una manera en la cual el código queda más legible. Esta nueva forma de consumo a APIs suele ser utilizada con los frameworks de JS y con Node.js
+
+```js
+const url = 'https://picsum.photos/list';
+
+document.addEventListener('DOMContentLoaded', obtenerDatos);
+
+// Consumo de API con fetch-then-catch
+// function obtenerDatos() {
+//     fetch(url)
+//         .then( respuesta => respuesta.json())
+//         .then( datos => console.log(datos))
+//         .catch( error => console.log(error));
+// }
+
+// Consumo de API con async-await
+async function obtenerDatos() {
+    try {
+        const respuesta = await fetch(url); // Es línea bloquea a la siguiente línea hasta que termine de ejecutarse
+        const datos = await respuesta.json(); // Se hacen por separado debido a que esta depende de la respuesta de la llamada anterior
+        console.log(datos);
+    } catch (error) {
+        console.log(error);
+    }
+}
+```

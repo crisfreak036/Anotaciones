@@ -6095,3 +6095,36 @@ function mostrarPaginador(totalPaginas) {
 ```
 
 Para más infomración sobre el código de la páginación, se puede visitar el siguiente repositorio de GitHub [Buscador de Imagenes con Pixebay API](https://github.com/crisfreak036/buscador-imagenes).
+
+### Async Await en JavaScript
+
+#### ¿Qué es Try Catch?
+
+En los lenguajes de programación, cuando existe un error en el código, se muestra por consola y se detiene la ejecución de lo que sigue después de la línea de código que presenta el error. Usando el bloque _Try-Catch_, se puede mostrar el error por consola y se puede ejecutar el código que sigue después del error.
+
+```js
+// Sin Try-Catch
+console.log('Antes del error'); // Se ejecuta
+
+hola(); // Arroja un error
+
+console.log('Después del error'); // No se ejecuta
+```
+
+```js
+// Con Try-Catch
+console.log('Antes del bloque try-catch'); // Se ejecuta
+
+try {
+    hola(); // Da un error
+} catch (error) {
+    // Se puede demoniar esta parte como "Administración del error"
+    console.log(error); // Se muestra el error en la consola
+}
+
+console.log('Después del bloque try-catch'); // Se ejecuta
+```
+
+Se le puede denominar _Administración del error_ a la sección catch del bloque, ya que permite observar de mejor manera que sucede en la linea de código conflictiva de la aplicación.
+
+Esta demás decir que no se debe encerrar todo el código en un bloque  _Try-Catch_, sólo se debe utilizar en partes criticas del código como lo serían la conexión a una base de datos, consultar una API, autenticar un usuario o acciones que nos permitan que en caso de que falle, nuestra aplicación continue funcionando.

@@ -6204,3 +6204,63 @@ const ejecutar = async () => {
 
 ejecutar();
 ```
+
+#### ¿Cómo manejar multiples _await_?
+
+El uso de multiples _await_ es util en casos como el consumo de más de una API de manera muy eficiente.
+
+```js
+// Promesas que se utilizaran de ejemplo
+function descargarNuevosClientes(){
+    return new Promise( resolve => {
+        console.log('Descargando Clientes...');
+
+        setTimeout(() => {
+            resolve('Los clientes han sido descargados')
+        }, 5000);
+    } )
+}
+
+function descargarNuevosPedidos(){
+    return new Promise( resolve => {
+        console.log('Descargando Pedidos...');
+
+        setTimeout(() => {
+            resolve('Los pedidos han sido descargados')
+        }, 3000);
+    } )
+}
+```
+
+El siguiente bloque de código contiene lo que sería el llamado de 2 promesas utilizando _async-await_. Primero se resolvera una promesa y luego la otra, lo cual en algunos casos está bien, sin embargo, esto puede llegar a afectar la performance de la aplicación.
+
+```js
+const app = async () => {
+    try {
+        const clientes = await descargarNuevosClientes();
+        console.log(clientes);
+        
+        const pedidos = await descargarNuevosPedidos();
+        console.log(pedidos);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+app(); // Tiempo de ejecución 8 segundos
+```
+
+Si nos encontramos en el caso de que ambas promesas que queremos ejecutar no tienen implicancia una sobre la otra, se puede utilizar el método de las promesas `Promise.all([arreglo-de-promesas])` que recibe un arreglo con las promesas que se quieren utilizar y retorna una arreglo con sus respectivas respuestas. Lo que hace el método anterior es que ejecuta ambas promesas al mismo tiempo, lo cual dismimiye el tiempo de espera entre el request y la respuesta.
+
+```js
+const app = async () => {
+    try {
+        const respuesta = await Promise.all([ descargarNuevosClientes(), descargarNuevosPedidos() ]);
+        console.log(respuesta);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+app(); // Tiempo de ejecución 5 segundos
+```

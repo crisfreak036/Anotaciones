@@ -6143,7 +6143,7 @@ El siguiente es un ejemplo de _async-await_ con _function delcaration_.
 function descargarClientes(){
 
     return new Promise( (resolve, reject) => {
-        const error = true; // Si el valor es false...
+        const error = false; // Si el valor es true...
 
         setTimeout( () => {
             if(!error){
@@ -6164,6 +6164,41 @@ async function ejecutar(){
         console.log(respuesta);
     } catch (error) {
         console.log(error); // ... pasaría directamente al catch
+    }
+}
+
+ejecutar();
+```
+
+#### Async-Await en _function expresion_
+
+En el caso de utilizar _function expresion_, la palabra reservada _async_ se posiciona antes de la función anonima. Esa es la diferencia entre _function expresion_ y _function declaration_.
+
+```js
+function descargarClientes(){
+
+    return new Promise( (resolve, reject) => {
+        const error = false;
+
+        setTimeout( () => {
+            if(!error){
+                resolve('Listado de clientes descargado exitosamente');
+            } else{
+                reject('Error en la conexión');
+            }
+        }, 3000);
+    })
+}
+
+// Async-Await
+const ejecutar = async () => {
+    try {
+        console.log('Antes del await');
+        const respuesta = await descargarClientes();
+        console.log('Después del await');
+        console.log(respuesta);
+    } catch (error) {
+        console.log(error);
     }
 }
 

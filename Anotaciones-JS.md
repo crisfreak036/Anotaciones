@@ -6400,3 +6400,32 @@ const sumarOMultiplicar = fn => fn( 10,20 ); // fn será la suma o la multiplica
 console.log( sumarOMultiplicar( suma ) ); // Suma 10 y 20
 console.log( sumarOMultiplicar( multiplicar ) ); // Multiplica 10 y 20
 ```
+
+#### Separar los Datos de las funciones (Higher order functions)
+
+Son funciones que toman o retornan una función como argumento, básicamente la mayoría de los _Array Methods_ son _Higher order functions_.
+
+```js
+const carrito = [
+    { nombre: 'Monitor 20 Pulgadas', precio: 500},
+    { nombre: 'Televisión 50 Pulgadas', precio: 700},
+    { nombre: 'Tablet', precio: 300},
+    { nombre: 'Audifonos', precio: 200},
+    { nombre: 'Teclado', precio: 50},
+    { nombre: 'Celular', precio: 500},
+    { nombre: 'Bocinas', precio: 300},
+    { nombre: 'Laptop', precio: 800},
+];
+
+// Modo normal
+const resultado = carrito.filter( producto => producto.precio > 400 );
+console.log( resultado );
+
+// Modo Higher order function
+const mayor400 = producto => {
+    return producto.precio > 400
+}
+
+const resultado2 = carrito.filter( mayor400 );
+console.log( resultado2 );
+```

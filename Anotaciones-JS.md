@@ -6357,3 +6357,18 @@ async function obtenerDatos() {
     }
 }
 ```
+
+### Functional JavaScript
+
+#### ¿Qué es Functional JS?
+
+- En palabras simples es crear tu código utilizando funciones.
+- Existe reglas para la programación funcional, como las que serían que las **funciones deben tomar una entrada y tener una salida de datos**.
+- **NO SE PERMITE LA MODIFICACIÓN DE LOS DATOS**.
+- Se podría decir que tiene una sintaxix más orientadas a las matemáticas.
+
+Los conceptos claves de la programación funcional son los siguientes:
+
+- **Inmutabilidad** - Los datos no deben modificarse (se suele utilizar casi siempre _const_)
+- Se separan las Funciones de datos - Se utilizan mucho funciones que retornan un nuevo dato o _Array Methods_, de esa forma tendremos funciones que entregan un resultado nuevo pero nunca modifica los datos de entrada.
+- First-class functions - Es poder crear funciones que parezcan cualquier variable como lo es _function expression_

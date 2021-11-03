@@ -6096,6 +6096,70 @@ function mostrarPaginador(totalPaginas) {
 
 Para más infomración sobre el código de la páginación, se puede visitar el siguiente repositorio de GitHub [Buscador de Imagenes con Pixebay API](https://github.com/crisfreak036/buscador-imagenes).
 
+### Fetch API - Con otros HTTP Methods
+
+Por default, `.fetch()` viene configurado con el método _GET_, debido a eso es se puede obtener información desde la APIs, sin embargo, `.fetch()` permite utilizar otro métodos de HTTP como lo serían _POST, PUT, PATCH, DELETE, etc_. Para realizar lo anterior, además del _endpoint_ hay que entregarle un objeto con la configuración de que es lo que se quiere hacer con `.fetch()`.
+
+```js
+// Ejemplo de Post
+const url = 'endpoint de json-server por ejemplo';
+
+const cliente = {
+    nombre = 'Juan Carlos',
+    email = 'correo@correo.cl',
+    telefono = '985623589',
+    empresa = 'Miksa'
+};
+
+fetch(  url, {
+            method: 'POST', // Método a utilizar
+            body: JSON.stringify( cliente ), // Lo que se quiere alamcenar en la API
+            // El tipo de contenido que se manda a la API
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        } );
+```
+
+```js
+// Ejemplo de delete
+const url = 'endpoint de json-server por ejemplo';
+
+export const eliminarClienteAPI = ( id ) => {
+    try {
+        fetch( `${url}/${id}`, {
+            method: 'DELETE'
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+
+```js
+// Ejemplo de put
+const url = 'endpoint de json-server por ejemplo';
+export const editarClienteAPI = async ( cliente, id ) => {
+    try {
+        await fetch(  `${url}/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify( cliente ),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        } );
+
+        window.location.href = 'index.html' // Redirige al index.html
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+/*
+Cabe mencionar que se puede utilizar PATCH para modificar de forma parcial el objeto. PUT es el más popular y se encarga de modificar todo el objeto.
+*/
+```
+
 ### Async Await en JavaScript
 
 #### ¿Qué es Try Catch?

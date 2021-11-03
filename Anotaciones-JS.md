@@ -6372,3 +6372,17 @@ Los conceptos claves de la programación funcional son los siguientes:
 - **Inmutabilidad** - Los datos no deben modificarse (se suele utilizar casi siempre _const_)
 - Se separan las Funciones de datos - Se utilizan mucho funciones que retornan un nuevo dato o _Array Methods_, de esa forma tendremos funciones que entregan un resultado nuevo pero nunca modifica los datos de entrada.
 - First-class functions - Es poder crear funciones que parezcan cualquier variable como lo es _function expression_
+
+#### First Class Functions
+
+Se trata de poder asignar una función a una variable como si fuera un valor (string, boleano, etc), haciendo que se pueda utilizar la variable como un _"alias"_ de la función.
+
+```js
+const suma = function( a,b ) {
+    return a + b;
+}
+
+const resultado = suma;
+
+console.log(resultado( 10,20 ));
+```

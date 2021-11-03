@@ -6386,3 +6386,17 @@ const resultado = suma;
 
 console.log(resultado( 10,20 ));
 ```
+
+#### Funciones como argumento
+
+Es cuando se establece lo que se podría llamar una _plantilla de función_, la cual tiene ciertos paramatros que dependiendo de la función que se le entregue como parametro a la plantilla, hará cierta cosa.
+
+```js
+const suma = ( a,b ) => a + b; // Función que suma 2 números
+const multiplicar = ( a,b ) => a * b; // Función que multiplica 2 números
+
+const sumarOMultiplicar = fn => fn( 10,20 ); // fn será la suma o la multiplicación dependiendo de la función que se le entregue como argumento
+
+console.log( sumarOMultiplicar( suma ) ); // Suma 10 y 20
+console.log( sumarOMultiplicar( multiplicar ) ); // Multiplica 10 y 20
+```

@@ -6429,3 +6429,25 @@ const mayor400 = producto => {
 const resultado2 = carrito.filter( mayor400 );
 console.log( resultado2 );
 ```
+
+#### .map es muy utilizado en Functional JS
+
+A diferencia de _.forEach()_, `.map()` itera sobre un arreglo y a su vez crea un nuevo arreglo con el resultado de la iteración. Lo anterior permite que cualquier operación que se aplique a un arreglo existente, no modifique ese arreglo.
+
+```js
+const carrito = [
+    { nombre: 'Monitor 20 Pulgadas', precio: 500},
+    { nombre: 'Televisión 50 Pulgadas', precio: 700},
+    { nombre: 'Tablet', precio: 300},
+    { nombre: 'Audifonos', precio: 200},
+    { nombre: 'Teclado', precio: 50},
+    { nombre: 'Celular', precio: 500},
+    { nombre: 'Bocinas', precio: 300},
+    { nombre: 'Laptop', precio: 800},
+];
+
+const obtenerNombresProductos = producto => producto.nombre;
+
+const nombresProductos = carrito.map( obtenerNombresProductos );
+console.log( nombresProductos );
+```

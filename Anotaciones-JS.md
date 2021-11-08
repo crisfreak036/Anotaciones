@@ -6473,8 +6473,23 @@ const obtenerNombresProductos = p => p.nombre;
 const nombresProductos = carrito.map( obtenerNombresProductos );
 console.log( nombresProductos );
 
-// Modo Higher order function
 const mayor400 = p => p.precio > 400
 const resultado2 = carrito.filter( mayor400 );
 console.log( resultado2 );
+```
+
+#### Pure Functions
+
+Mayomente utilizadas en _react.js_, son funciones que retornan un dato sin modificar los valores de las variables globales, o sea, retornan un nuevo dato. Además de lo anterior, las _funciones puras_ tienen la caracteristica de reotrnar tanto datos como reciben.
+
+```js
+// Funciones puras o Pure Functions
+
+const duplicar = numero => numero * 2; // Recibe un parametro y retorna un nuevo parametro
+
+const numero1 = 20; // Variable global
+
+const numero2 = duplicar(20); // El uso de la variable global en la función no modifica a la variable global
+
+console.log(`La variable global es ${numero1} y la nueva variable es ${numero2}`);
 ```

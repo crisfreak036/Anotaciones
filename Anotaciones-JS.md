@@ -6526,3 +6526,46 @@ const cliente = obtenerCliente(); // obtenerCliente retorna la función muestraN
 
 cliente(); // Debido a lo anterior es que al invocar cliente, se muestra el nombre definido dentro de la función
 ```
+
+#### Partials y Currying
+
+_Currying_ es dividir una función que toma más de un parametro en argumentos de forma parcial. Lo anterior se hace utilizando _arrow functions_ y similar a _First Class Functions_, lo que hace es que por cada división de parametros se crea una función parcial que recibirá el o los siguiente parametros.
+
+```js
+// Ejemplo al divir en dos partials
+const suma = ( a, b, c ) => a + b + c;
+
+// Hacer uso de Currying y partials
+const parcial = (a) => (b, c) => suma( a,b,c );
+
+const primerNumero = parcial(5); // primerNumero es una función que ya tiene el valor de a pero que si se invoca, debe recibir dos parametros más
+console.log(primerNumero);
+
+const resultadoSUma = primerNumero(5,5);
+console.log(resultadoSUma); // 15
+```
+
+```js
+// Ejemplo al dividir en 3 partials
+const partial = a => b => c => suma( a, b, c );
+
+const primerArgumento = partial( 5 ); // Se entrega a
+console.log(primerArgumento);
+
+const segundoArgumento = primerArgumento( 5 ); // Se entrega b
+console.log(segundoArgumento);
+
+const tercerArgumento = segundoArgumento( 5 ); // Se entrega c
+console.log(tercerArgumento);
+```
+
+Lo anterior puede parecer mucho trabajo y mucho código, lo cual es cierto, es por esto que existe una sitaxis mucho más sencilla para utilizar los parciales y es la siguiente:
+
+```js
+const suma = ( a, b, c ) => a + b + c;
+
+const partial = a => b => c => suma( a, b, c );
+
+const resultado = partial(5)(5)(5);
+console.log(resultado);
+```

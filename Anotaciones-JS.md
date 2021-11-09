@@ -6506,3 +6506,23 @@ console.log( fn ); // Muestra la función anonima
 
 fn(); // La variable se puede utilizar como función
 ```
+
+#### Closures
+
+Los closures van de la mano con los scope (alcances) que existe entre las variables de los distintos bloques de código. Los closures se crean cada vez que se crea una función, son la forma de accder a una función o valor desde el exterior de la función.
+
+```js
+const obtenerCliente = () => {
+    const nombre = 'Pedro';
+
+    function muestraNombre() {
+        console.log(nombre);
+    }
+
+    return muestraNombre;
+}
+
+const cliente = obtenerCliente(); // obtenerCliente retorna la función muestraNombre
+
+cliente(); // Debido a lo anterior es que al invocar cliente, se muestra el nombre definido dentro de la función
+```

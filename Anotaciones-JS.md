@@ -6493,3 +6493,16 @@ const numero2 = duplicar(20); // El uso de la variable global en la función no 
 
 console.log(`La variable global es ${numero1} y la nueva variable es ${numero2}`);
 ```
+
+#### Funciones que retornan una función
+
+Son funciones que se estructuran como una _arrow function_ pero que dentor de la _arrow function_ hay otra _arrow function_ .
+
+```js
+const obtenerCliente = () => () => console.log('Retornando una función');
+
+const fn = obtenerCliente();
+console.log( fn ); // Muestra la función anonima
+
+fn(); // La variable se puede utilizar como función
+```

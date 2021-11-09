@@ -6569,3 +6569,112 @@ const partial = a => b => c => suma( a, b, c );
 const resultado = partial(5)(5)(5);
 console.log(resultado);
 ```
+
+#### Composition
+
+Se podría decir que viene a ser como una alternativa a las clases. Se utiliza cuando existen funciones que se pueden compartir entre objetos, o sea, se escribe una función que puede ser utilizada en diferentes objetos y se las vas asignando para que puedas utilizarla en vez de utilizar la herencia entre clases.
+
+Hay que tener en consideración, que con _Composition_, el constructor del objeto es distinto, se utiliza la forma antigua de construir clases y se establece un objeto que almacenará sus atributos. Teniendo claro lo anterior, se asignarán los métodos meidante composition, en la cual se definirá una función que recibirá el objeto con los atributos y reotrnará el método que se utilizará en los objetos pertenecientes a la clase que hayamos definidos. Por último, para asignar estas funciones, se debe utilizar un return dentro de la clase, seguido de `Object.assign()`, el cuál recibirá como parámetro el objeto de los atributos y el nombre de la función que contiene el método que se quiere asignar.
+
+El acceso a los atributos y métodos en estas clases, es mediante la sintaxis de punto pero en el caso de los métodos, hay que llamar el nombre del método que reotrnaba la función que se le entrego a `Object.assign()`.
+
+```js
+// Composition function
+// La función obtenerNombre sirve para asignar mostrarNombre a los objetos al usar Object.assign()
+const obtenerNombre = info => ({
+    // Toma el objeto que almacena los parametros que se entregan al constructor del objeto
+    mostrarNombre() {
+        console.log(`Nombre: ${info.nombre}`);
+    }
+})
+
+
+function Cliente( nombre, email, empresa ) {
+    let info = {
+        nombre,
+        email,
+        empresa
+    };
+
+    return Object.assign(
+        info,
+        obtenerNombre(info)
+    )
+}
+
+function Empleado( nombre, email, puesto ) {
+    let info = {
+        nombre,
+        email,
+        puesto
+    };
+
+    return Object.assign(
+        info,
+        obtenerNombre(info)
+    )
+    
+}
+
+const cliente = Cliente( 'Pedrito', 'pedrito@pedro.com', 'P.E.D.R.O dot COM' );
+cliente.mostrarNombre();
+
+const empleado = Empleado( 'Pedrote', 'pedrote@pedrote.com', 'Programador' );
+empleado.mostrarNombre();
+```
+
+El siguiente es un ejemplo en el cual se creará una función para entregar datos a un atibuto del objeto.
+
+```js
+
+const guardarEmail = info => ({
+    agregarEmail( email ) {
+        info.email = email;
+        console.log( `${email} guardado para el cliente ${ info.cliente }` );
+    }
+})
+
+function Cliente( nombre, email, empresa ) {
+    let info = {
+        nombre,
+        email,
+        empresa
+    };
+
+    return Object.assign(
+        info,
+        guardarEmail(info)
+    )
+}
+
+function Empleado( nombre, email, puesto ) {
+    let info = {
+        nombre,
+        email,
+        puesto
+    };
+
+    return Object.assign(
+        info,
+        guardarEmail(info)
+    )
+    
+}
+
+const cliente = Cliente( 'Pedrito', null, 'P.E.D.R.O dot COM' );
+console.log('--------------------------------');
+console.log(cliente);
+console.log('--------------------------------');
+cliente.agregarEmail('pedrito@pedro.com');
+console.log('--------------------------------');
+console.log(cliente);
+
+
+const empleado = Empleado( 'Pedrote', null, 'Programador' );
+console.log('--------------------------------');
+console.log(empleado);
+console.log('--------------------------------');
+empleado.agregarEmail('pedrote@pedrote.com');
+console.log('--------------------------------');
+console.log(empleado);
+```

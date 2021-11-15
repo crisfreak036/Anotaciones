@@ -6678,3 +6678,37 @@ empleado.agregarEmail('pedrote@pedrote.com');
 console.log('--------------------------------');
 console.log(empleado);
 ```
+
+### Dominando JS
+
+#### Scope
+
+Es el alcance que tiene una variable dentro de un bloque de código.
+Existen 2 tipo de _scope_, uno es el _scope global_ y el otro es el _scope de una función o un bloque de código_.
+
+```js
+// Ejemplo 1
+const cliente = 'Juan';
+
+function mostrarCliente() {
+    console.log(cliente);
+}
+
+mostrarCliente();
+```
+
+En el ejemplo anterior (Ejemplo 1), la función _mostrarCliente()_ muestra el valor de la variable cliente. Al no haber ninguna variable con ese nombre dentro de la función, busca en el scope global una variable con ese nombre, es debido a lo anterior que la función muestra el contenido de la variable global cliente.
+
+```js
+// Ejemplo 2
+function mostrarCliente() {
+    const cliente = 'Juan';
+}
+console.log(cliente);
+
+mostrarCliente();
+```
+
+En el ejemplo 2, se define dentro de la función una variable cliente, su scope es sólo el de la función, debido al scope es que al momento de intentar mostrar por consola la variable cliente, muestra un error `Uncaught ReferenceError: cliente is not defined` debido a que en el scope global no hay ninguna variable llamada cliente definida.
+
+En JS el scrope lo delimitan las llaves, por lo cual si hay código entre llaves, hay un nuevo scope.

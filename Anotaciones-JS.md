@@ -6753,3 +6753,36 @@ const pedido = [1,2,3,4];
 console.log(pedido.toString());
 console.log(JSON.stringify(pedido));
 ```
+
+#### Implicit Binding
+
+Se da por implicito donde encontrar el valor mediante el uso de `this.`. 
+
+```js
+// Implicit Binding
+
+const usuario = {
+    nombre: 'Pedro',
+    edad: 20,
+
+    informacion() {
+        /* .this hace referencia a que las variables se encuentran
+        en "este" objeto, dentro de su scope */
+        console.log(`${this.nombre} tiene ${this.edad} años`);
+    },
+
+    mascota: {
+        nombre: 'Puerco-Araña',
+        edad: '5',
+
+        informacion() {
+            /* .this hace referencia a los atributos que se encuentran
+            en el scope más cercano al método */
+            console.log(`${this.nombre} tiene ${this.edad} años`);
+        }
+    }
+}
+
+usuario.informacion();
+usuario.mascota.informacion();
+```

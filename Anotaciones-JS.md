@@ -6732,3 +6732,24 @@ const obtenerCliente2 = ( nombre ) => {
 }
 obtenerCliente2('Pedro'); // Funciona
 ```
+
+#### Coercion
+
+Hace referencia a la conversión automatica (implicita) o explicita de valores de un tipo dado a otro.
+
+```js
+// Coerción implicita
+const numero1 = 20;
+const numero2 = "40";
+
+// Se fuerza a JS maneje la diferencia de los tipos de datos (transforma el 20 de numero a string) 
+console.log( numero1 + numero2 );
+
+// Coerción explicita
+console.log(Number(numero2)); // Explicitamente se cambia el tipo del valor de la variable
+console.log(numero1.toString());
+
+const pedido = [1,2,3,4];
+console.log(pedido.toString());
+console.log(JSON.stringify(pedido));
+```

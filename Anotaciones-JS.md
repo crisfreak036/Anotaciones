@@ -6786,3 +6786,68 @@ const usuario = {
 usuario.informacion();
 usuario.mascota.informacion();
 ```
+
+#### Explicit Binding
+
+Es similar al _Implicit Binding_ pero en este caso se ocupa una de estas 3 funciones :
+
+- **.call()**: Es una función que existe en todas las funciones de JS, inclusive en las que uno crea. Recibe cualquier tipo de variable y sirve para especificarle a una función que elementos debe utilizar.
+
+```js
+// Explicit Binding
+
+function persona( elemento1, elemento2 ) {
+    console.log(`Mi nombre es ${this.nombre} y escucho ${elemento1} y ${elemento2}`);
+}
+
+const informacion = {
+    nombre: 'Juan'
+}
+
+const musicaFavorita = ['Heavy Metal', 'Rock'];
+
+/* .call() requiere que en el caso de los arreglos, se entreguen
+los elementos uno a uno */
+persona.call( informacion, musicaFavorita[0], musicaFavorita[1] );
+```
+
+- **.apply():** Es una función que existe en todas las funciones de JS, inclusive en las que uno crea. Recibe cualquier tipo de variable y a diferencia de `.call()`, puede recibir un arreglo, no es necesario especificar cada uno de los elementos de este.
+
+```js
+// Explicit Binding
+
+function persona( elemento1, elemento2 ) {
+    console.log(`Mi nombre es ${this.nombre} y escucho ${elemento1} y ${elemento2}`);
+}
+
+const informacion = {
+    nombre: 'Juan'
+}
+
+const musicaFavorita = ['Heavy Metal', 'Rock'];
+
+/* Funciona igual que .call() pero no es necesario especificar
+uno a uno los elementos del arreglo */
+persona.apply( informacion, musicaFavorita );
+```
+
+- **.bind():** Funciona igual que `.call()` pero crea una nueva función.
+
+```js
+// Explicit Binding
+
+function persona( elemento1, elemento2 ) {
+    console.log(`Mi nombre es ${this.nombre} y escucho ${elemento1} y ${elemento2}`);
+}
+
+const informacion = {
+    nombre: 'Juan'
+}
+
+const musicaFavorita = ['Heavy Metal', 'Rock'];
+
+/* Funciona igual que .call(), también se debe especificar cada uno
+de los elementos del arreglo, la diferencia es que crea una nueva función */
+const nuevaFuncion = persona.bind(informacion, musicaFavorita[0], musicaFavorita[1]);
+nuevaFuncion();
+```

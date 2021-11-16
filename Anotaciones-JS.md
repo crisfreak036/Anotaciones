@@ -6879,3 +6879,36 @@ function obtenerColor() {
 }
 obtenerColor();
 ```
+
+#### Event Loop o Loop de Eventos
+
+Es como se va ejecutando el código en JS, es decir, que tiene mayor prioridad de ejecución.
+
+**Nota:** En la pagina de [MDN Web Docs](https://developer.mozilla.org/es/docs/Web/JavaScript/EventLoop) y en el vídeo de la presentación de [Philip Roberts en la JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=119s), se explica muy bien lo que es el _Event Loop_.
+
+```js
+console.log('Primero');
+
+setTimeout( () => {
+    console.log('Segundo');
+}, 0);
+
+console.log('Tercero');
+
+setTimeout( () => {
+    console.log('Cuarto');
+}, 0);
+
+new Promise(function(resolve){
+    resolve('Desconocido...');
+}).then(console.log)
+
+console.log('Ultimo');
+
+function hola() {
+    console.log('Hola');
+}
+hola();
+```
+
+En el ejemplo anterior, se puede observar que los console.log tienen mayor prioridad que lo demás, seguidos por la función, luego la promesa y finalmente los setTimeout que se puede decir que realmente no empiezan en 0 como se le indica en el código.

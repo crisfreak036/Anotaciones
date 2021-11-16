@@ -6912,3 +6912,43 @@ hola();
 ```
 
 En el ejemplo anterior, se puede observar que los console.log tienen mayor prioridad que lo demás, seguidos por la función, luego la promesa y finalmente los setTimeout que se puede decir que realmente no empiezan en 0 como se le indica en el código.
+
+#### ¿Qué es self?
+
+Básicamente, self hace referencia a la ventana global (windows) y es utilizada en _Service Workers_ (donde no se encuentra disponible la palabra window) y _Progressive web apps_.
+
+```js
+// window == self
+
+// window.onload = () => {
+//     console.log('Ventana lista');
+// }
+
+// self.onload = () => {
+//     console.log('Ventana lista utilizando self');
+// }
+
+window.nombre = 'Pedro';
+
+const persona = {
+    trabajo: 'Programador',
+    mostrarInfo() {
+        console.log(`${self.nombre} es un ${this.trabajo}`);
+        // self hace referencia a la ventana global mientras que this hace referencia al objeto
+    }
+}
+
+persona.mostrarInfo()
+
+const producto = {
+    nombre: 'Monitor 20 Pulgadas',
+    precio: 30,
+    disponible: true,
+    mostrarInfo: function() {
+        const self = this; // Se puede dar como "seudonimo" a this la palabra self
+        return `El producto: ${self.nombre} tiene un precio de ${self.precio}`
+    }
+}
+
+console.log(producto.mostrarInfo());
+```

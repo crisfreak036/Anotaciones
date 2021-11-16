@@ -6712,3 +6712,23 @@ mostrarCliente();
 En el ejemplo 2, se define dentro de la función una variable cliente, su scope es sólo el de la función, debido al scope es que al momento de intentar mostrar por consola la variable cliente, muestra un error `Uncaught ReferenceError: cliente is not defined` debido a que en el scope global no hay ninguna variable llamada cliente definida.
 
 En JS el scrope lo delimitan las llaves, por lo cual si hay código entre llaves, hay un nuevo scope.
+
+#### Hoisting
+
+Es un termino que se utiliza para referirse a como funcionan los contextos de ejecución en el lenguaje. JavaScript se ejecuta en dos partes, primero se recorre el código creando (registrandolas) las variables y en la segunda parte se ejecutan. Debido a lo anterior, existen diferencias entre _function expression_ y _function declaration_, sin importar donde se mande a llamar una función del tipo _function declaration_, no existirán errores al momento de ejecutar el código, en cambio, no se puede llamar una función del tipo _function expression_ antes de ser declarada porque arroja error al ejecutarse. Lo anterior se debe a que en la primera parte de la ejecución, las funciones del tipo _function expression_ son registradas como variables con valor _undefined_, lo cual provoca que en la segunda parte de la ejecución exista un error al llamar la función antes de declararla (en la declaración es donde se cambia el undefined por la función que registrará a la variable como una función).
+
+```js
+// Function declaration
+obtenerCliente('Pedro'); // Da igual si se encuentra el llamado antes o después de la función
+function obtenerCliente( nombre ) {
+    console.log(`El nombre del cliente es ${nombre}`);
+}
+
+
+// Function expression
+// obtenerCliente2('Pedro'); // No funciona estando acá
+const obtenerCliente2 = ( nombre ) => {
+    console.log(`El nombre del cliente es ${nombre}`);
+}
+obtenerCliente2('Pedro'); // Funciona
+```

@@ -6851,3 +6851,31 @@ de los elementos del arreglo, la diferencia es que crea una nueva función */
 const nuevaFuncion = persona.bind(informacion, musicaFavorita[0], musicaFavorita[1]);
 nuevaFuncion();
 ```
+
+#### new Binding
+
+Cada vez que se crea un nuevo objeto con la palabra reservada `new`, se crea un _new binding_, que hace referencia al uso de _.this_ para el nuvo objeto creado.
+
+```js
+function Auto( modelo, color ) {
+    this.modelo = modelo;
+    this.color = color;
+}
+
+const auto = new Auto( 'Camaro', 'Negro' );
+console.log(auto);
+```
+
+#### Window Binding
+
+Es cuando se almacenan valores en al ventana global. Cuando JS no encuetra la definición de una variable, la busca en la ventana global (`window`), si no la encuentra ahí muestra un error de que la variable no está definida.
+
+```js
+// Window Binding
+
+window.color = 'negro';
+function obtenerColor() {
+    console.log(color);
+}
+obtenerColor();
+```

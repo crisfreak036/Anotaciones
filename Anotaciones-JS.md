@@ -6952,3 +6952,34 @@ const producto = {
 
 console.log(producto.mostrarInfo());
 ```
+
+### Service Workers y PRogressive web apps (PWA)
+
+#### Caracteristicas de una PWA
+
+- **Rapida** - Cargan toda la información en menos de 5 segundos.
+
+- **Instalable** - Se pueden navegar o instalar en tu navegador o teléfono móvil como una aplicación nátiva.
+
+- **Soporte Offline** - Pueden funcionar si una conexión a internet.
+
+
+#### Service Workers
+
+- **Es la base de una PWA**. Son scripts que están corriendo todo el tiempo detrás de escenas.
+
+- Funcionan Offline.
+
+- **No tienen acceso al DOM**.
+
+- Cargan de forma instantanea.
+
+- Pueden sincronizar datos detrás de escena o sin interferir en la navegación.
+
+#### Funciones No Disponibles en Service Workers
+
+- No utiliza la ventana global (window), utiliza _self_.
+
+- No utiliza document, utiliza caches.
+
+- No utiliza localStorage, utiliza fetch.

@@ -6976,10 +6976,24 @@ console.log(producto.mostrarInfo());
 
 - Pueden sincronizar datos detrás de escena o sin interferir en la navegación.
 
-#### Funciones No Disponibles en Service Workers
+##### Funciones No Disponibles en Service Workers
 
 - No utiliza la ventana global (window), utiliza _self_.
 
 - No utiliza document, utiliza caches.
 
 - No utiliza localStorage, utiliza fetch.
+
+#### Generar reporte de Lighthouse
+
+Lighthouse es una herramienta que permite generar reportes con información sobre una pagina web referente a Performance, Accesibilidad, SEO, Mejores Practicas, y PWA. Lo anterior para mobile y desktop.
+
+Con esta herramienta se puede saber que es requerido para poder transformar una página web en una PWA, además de conocer las desvalencias que presenta en cada uno de los ambitos antes mencionados.
+
+Uno de los elementos que harán falta al momento de realizar la transición hacía una PWA es el _manifest.json_, el cual es un archivo obligatorio al momento de crear una PWA.
+
+Para agregar el _manifest.json_ al HTML hay que agregar como si fuera una hoja de estilo. 
+
+```html
+<link rel="manifest" href="manifest.json">
+```

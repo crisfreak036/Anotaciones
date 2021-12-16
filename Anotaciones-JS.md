@@ -6997,3 +6997,21 @@ Para agregar el _manifest.json_ al HTML hay que agregar como si fuera una hoja d
 ```html
 <link rel="manifest" href="manifest.json">
 ```
+
+#### Detectar el soporte de Service Workers
+
+Para detectar el sporte de Service Worker con el navegador utilizando JS, se debe hacer lo siguiente:
+
+```js
+if( 'serviceWorker' in navigator ) {
+    // Se registra el service worker de la app
+    navigator.serviceWorker.register('./sw.js')
+    .then( registrado => console.log('Service worker fue registrado exitosamente...', registrado) )
+    .catch( error => console.log('Fallo la instalación...', error) )
+
+}else {
+    console.log("Service Worker no soportado");
+}
+```
+
+Dependiendo del contenido del service worker, existirá un tiempo de carga, por lo cual `navigator.serviceWorker.register('./sw.js')` retorna una promesa.

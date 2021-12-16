@@ -7015,3 +7015,31 @@ if( 'serviceWorker' in navigator ) {
 ```
 
 Dependiendo del contenido del service worker, existirá un tiempo de carga, por lo cual `navigator.serviceWorker.register('./sw.js')` retorna una promesa.
+
+#### Instalar y Activar un Service Worker
+
+La instalación del SW se hace una sola vez, por lo cual el evento que se le agregue a esa instalación se ejecutara una sola vez, por lo cual da igual cuantas veces se recargue la página, la instalación no se volverá a realizar.
+
+```js
+// sw.js
+// Evento que sucede al instalarse el SW
+self.addEventListener('install', e => {
+    console.log('Instalado el Service Worker...');
+
+    console.log(e)
+});
+```
+
+Por otro lado existe el evento de activación, el cual se ejecuta cuando llamamos a activar el SW, por ende, no se activa automaticamente.
+
+```js
+// sw.js
+// Evento para activar el SW
+self.addEventListener('activate', e => {
+    console.log('Service Worker Activado...');
+
+    console.log(e)
+});
+```
+
+La instalación del SW es un buen momento para añadir al caché ciertos archivos, mientras que la activación es un buen lugar para nuevas versiones de la PWA.

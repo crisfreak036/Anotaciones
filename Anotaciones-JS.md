@@ -6998,6 +6998,60 @@ Para agregar el _manifest.json_ al HTML hay que agregar como si fuera una hoja d
 <link rel="manifest" href="manifest.json">
 ```
 
+```json
+{
+    "name": "APV",
+    "short_name": "APV",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#D41872",
+    "theme_color": "#D41872",
+    "orientation": "portrait",
+    "icons": [
+        {
+          "src": "img/icons/Icon-72",
+          "type": "image/png",
+          "sizes": "72x72"
+        },
+        {
+          "src": "img/icons/Icon-120.png",
+          "type": "image/png",
+          "sizes": "120x120"
+        },
+        {
+          "src": "img/icons/Icon-128.png",
+          "type": "image/png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "img/icons/Icon-144.png",
+          "type": "image/png",
+          "sizes": "144x144"
+        },
+        {
+          "src": "img/icons/Icon-152.png",
+          "type": "image/png",
+          "sizes": "152x152"
+        },
+        {
+          "src": "img/icons/Icon-196.png",
+          "type": "image/png",
+          "sizes": "196x196"
+        },
+        {
+          "src": "img/icons/Icon-256.png",
+          "type": "image/png",
+          "sizes": "256x256"
+        },
+        {
+          "src": "img/icons/Icon-512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+}
+```
+
 #### Detectar el soporte de Service Workers
 
 Para detectar el sporte de Service Worker con el navegador utilizando JS, se debe hacer lo siguiente:
@@ -7043,3 +7097,127 @@ self.addEventListener('activate', e => {
 ```
 
 La instalación del SW es un buen momento para añadir al caché ciertos archivos, mientras que la activación es un buen lugar para nuevas versiones de la PWA.
+
+#### Hacer una PWA Instalable
+
+Las PWA sepeuden instalar tanto en un navegado de escritorio como en dispositivos mobiles. Para poder hacerlo se requieren 3 cosas:
+
+- Un manifest.json valido
+- Tener un dominio https o un localhost
+- Se debe tener registrado el eventlistener de fetch
+
+En las secciones anteriores se han visto 2 de los 3 requisitos, quedando sólo el registro del evento fetch. El evento fetch se agrega al archivo sw.js d ela siguiente manera:
+
+```js
+// sw.js
+// Evento fetch para descargar archivos estaticos
+self.addEventListener('fetch', e => {
+    console.log('Registrando fetch...', e)
+})
+```
+
+#### Cachear Archivos
+
+Se recomienda guardar caché al momento de la instalación del Service Worker.
+El cachear archivos ayuda a que se pueda ver información de manera offline. Lo recomendable es que se descargué el caché de las páginas que el usuario visita, no de toda la app, de lo contrario la carga se haría muy lenta y la idea es que una PWA sea rápida.
+
+Antes de poder cachear elemetos, es necesario darle un nombre.
+
+```js
+const nombreCache = 'apv-v1';
+```
+
+Luego hay que indicar los elementos que se quieren cachear, y ya que estos pueden pesar una gran cantidad de mb, el service worker tiene un método llamado `.waitUntil()` que se utiliza con el evento proveniente de, en este caso, install. Dentro del método anterior se agrega un `caches.open(nombre-cache)` el cual retorna una promesa en la cual se puede indicar que se está alamcenando archivos en el cache y hay que agregar el método `.addAll(archivos-cache)` al elemento cache de la función anonima de la promesa.
+
+```js
+//sw.js
+// Nombre 
+const nombreCache = 'apv-v1';
+
+// Archivos para almacenar en el caché para utilizarlos de forma offline
+const archivos = [
+    "/",
+    "index.html",
+    "./css/bootstrap.css",
+    "./css/styles.css",
+    "./js/app.js",
+    "./js/apv.js",
+  ];
+
+// Evento que sucede al instalarse el SW
+self.addEventListener('install', e => {
+    console.log('Instalado el Service Worker...',e)
+    // El SW espera a que se guarden todos los archivos en el Cache
+    e.waitUntil(
+        caches.open(nombreCache)
+            .then( cache => {
+                console.log('Almacenando archivos en el cache...');
+                cache.addAll(archivos) // .add() sería si fuera un sólo archivo
+            } )
+    )
+});
+```
+
+#### Agregar soperte offline
+
+Para mostrar los archivos almacenados en el caché, existe un método del evento fetch llamado `.respondWith( caches.match(e.request) )` el cual indentifica el request que se está haciendo y retorna una promesa, por lo cual se utiliza `.then()` para recibir la respuesta que sería lo almacenado en el cache.
+
+#### Agregar un página de error cuando no hay conexión
+
+Al momento de obtener lo almacenado en el caché, en el `.catch()` se pasa una arrow function que retorne `caches.match('/error.html')`, es necesario haber cacheado con anterioridad la página de error.
+
+```js
+// En sw.js en fetch
+// Evento fetch para descargar archivos estaticos
+self.addEventListener('fetch', e => {
+    console.log('Registrando fetch...', e)
+
+    e.respondWith(
+        caches.match(e.request)
+            .then( respuestaCache => {
+                return respuestaCache
+            })
+            .catch( () => caches.match('/error.html'))
+    )
+})
+```
+
+```js
+// opción alternativa
+self.addEventListener('fetch', e => {
+  console.log('Fetch', e)
+ 
+  e.respondWith(
+    caches
+      .match(e.request)
+      .then(cacheResponse => (cacheResponse ? cacheResponse : caches.match('error.html')))
+    
+  )
+})
+```
+
+#### Como Realizar nuevas secciones del PWA
+
+Al lanzar nuevas versiones de la app, es necesario eliminar el cache anterior e instalar el nuevo. Un buen lugar para hacerlo es el evento _activate_.
+
+```js
+// En sw.js
+const nombreCache = 'apv-v3'; // new version of the cache for the new version of the app
+
+// Evento para activar el SW
+self.addEventListener('activate', e => {
+    console.log('Service Worker Activado...')
+
+    e.waitUntil(
+        caches.keys()
+            .then( keys => {
+                // console.log(keys);
+
+                return Promise.all(
+                    keys.filter( key => key !== nombreCache )
+                        .map( key => caches.delete(key) ) // Borra los caches no actuales
+                )
+            })
+    )
+});
+```

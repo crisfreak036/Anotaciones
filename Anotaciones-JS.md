@@ -7221,3 +7221,21 @@ self.addEventListener('activate', e => {
     )
 });
 ```
+
+### Design Patterns o Patrones de diseño en JavaScript
+
+Los patrones de diseño son soluciones típicas a problemas comunes en Desarrollo de software, cada patrón es como unplano que e puede personalizar para resolver un problema de diseño en el código.
+
+Entres los **beneficios** que presentan los patrones de diseño, se encuentran los siguientes:
+
+- Son soluciones a problemas de diseño de código.
+- Son soluciones probadas.
+- Son soluciones posiblemente conocidad por todos por lo cual ayuda a mantener un patrón en el desarrollo de software.
+
+Existen diferentes **categorías** de patrones de diseño entre las cuales se encuentran:
+
+- **De Creación:** Permiten crear objetos y permiten la reutilización del código.
+
+- **De Estructura:** Explican como deben comunicarse los objetos y clases en grndes proyectos.
+
+- **De Comportamiento:** Se encargan de como se comportan y comunican los objetos.

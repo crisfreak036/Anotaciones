@@ -7239,3 +7239,21 @@ Existen diferentes **categorías** de patrones de diseño entre las cuales se en
 - **De Estructura:** Explican como deben comunicarse los objetos y clases en grndes proyectos.
 
 - **De Comportamiento:** Se encargan de como se comportan y comunican los objetos.
+
+#### Class Pattern
+
+Básicamente es la utilización de clases para la creación de los objetos. Define el como deben crearse los objetos y los patrones que estos deben tener.
+
+```js
+// Class Pattern ejemplo
+
+class Persona {
+    constructor(nombre, email){
+        this.nombre = nombre;
+        this.email = email;
+    }
+}
+
+const persona = new Persona("Pedro", "pedro@pedro.pe");
+console.log(persona);
+```

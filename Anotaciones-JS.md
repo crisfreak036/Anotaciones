@@ -7257,3 +7257,29 @@ class Persona {
 const persona = new Persona("Pedro", "pedro@pedro.pe");
 console.log(persona);
 ```
+
+#### Constructor Pattern
+
+En este patrón de diseño se utiliza una clase base como plano para que las demás clases hereden sobre esta, o sea, es como tener una clase principal que hereda sus caracteristicas a las demás. Lo anterior en otros lenguajes de programación se conocen como **_Clases Abstractas_** (JavaScript no acepta clases abstractas, pero otros lenguajes si las aceptan y esas clases no son intansiables).
+
+```js
+// Constructor Pattern
+
+class Persona {
+    constructor(nombre, email){
+        this.nombre = nombre;
+        this.email = email;
+    }
+}
+
+class Cliente extends Persona {
+    constructor(nombre, email, empresa, telefono) {
+        super(nombre, email);
+        this.empresa = empresa; // Nueva propiedad
+        this.telefono = telefono; // Nueva propiedad
+    }
+}
+
+const cliente = new Cliente("Pedro", "pedro@pedro.pe","Pedro Co.", "123456789");
+console.log(cliente);
+```

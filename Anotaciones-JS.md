@@ -7283,3 +7283,32 @@ class Cliente extends Persona {
 const cliente = new Cliente("Pedro", "pedro@pedro.pe","Pedro Co.", "123456789");
 console.log(cliente);
 ```
+
+#### Singleton
+
+Secaracteriza por no permitir la creación de multiples instacias de una misma clase, en cambio, siempre retorna el objeto instanciado. Este patrón de diseño requiere el uso de una variable que represente a la instaciación de la clase la cual se inicializa vacía (_null_) y para modificarla, es necesaria agregarla en el constructor de la clase y su valor será el objeto, o sea, _this_. PAra prevenir que se instancia nuevamente el objeto, en el constructor se añade un condicional el cual permite instanciar el objeto solamene cuando la variable instancia se encuentre vacía. Usualmente se utiliza cuando se almacena toda la información general en un sólo objeto.
+
+```js
+// Singleton
+
+let instancia = null; // Variable de instancia
+
+class Persona {
+    constructor(nombre, email) {
+        // El objeto se instancia solamente si la variable instancia está vacía
+        if(!instancia) {
+            this.nombre = nombre;
+            this.email = email;
+            instancia = this;
+        } else {
+            return instancia;
+        }
+    }
+}
+
+const persona = new Persona("Pedro", "pedro@pedro.pe");
+console.log(persona);
+
+const persona2 = new Persona("Karen", "karen@pedro.pe");
+console.log(persona2); // Muestra los valores de la primera instancia
+```

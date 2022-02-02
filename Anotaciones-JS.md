@@ -7312,3 +7312,50 @@ console.log(persona);
 const persona2 = new Persona("Karen", "karen@pedro.pe");
 console.log(persona2); // Muestra los valores de la primera instancia
 ```
+
+#### Factory
+
+Es una forma de crear objetos en base a una cierta condición que provoca que algunos atributos sean comunes y otros diferentes. Este tipo de patrón de diseño es utilizable ne ciertos casos.
+
+```js
+// Factory - Crea objetos basados en ciertas condiciones
+
+// Clase que crea inputs en base a un type y un name
+class InputHTML {
+    constructor(type, name) {
+        this.type = type;
+        this.name = name;
+    }
+
+    crearInput() {
+        return `<input type="${this.type}" name="${this.name}" id="${this.name}">`
+    }
+}
+
+// Clase que sirve para crear inputs dependiendo del tipo de elemento
+class HTMLFactory {
+    crearElemento(type, name) {
+        switch(type) {
+            case 'text':
+                return new InputHTML('text', name);
+            case 'tel':
+                return new InputHTML('tel', name);
+            case 'email':
+                return new InputHTML('email', name);
+            default:
+                return;
+        }
+    }
+}
+
+const elemento = new HTMLFactory(); // Instancia de la clase condicional
+
+const inputText = elemento.crearElemento("text", "nombre-cliente");
+console.log(inputText.crearInput());
+
+const inputTel = elemento.crearElemento("tel", "telefono-cliente");
+console.log(inputTel.crearInput());
+
+const inputEmail = elemento.crearElemento("email", "email-cliente");
+console.log(inputEmail.crearInput());
+```

@@ -7240,7 +7240,7 @@ Existen diferentes **categorías** de patrones de diseño entre las cuales se en
 
 - **De Comportamiento:** Se encargan de como se comportan y comunican los objetos.
 
-#### Class Pattern
+#### Class Pattern (Creación)
 
 Básicamente es la utilización de clases para la creación de los objetos. Define el como deben crearse los objetos y los patrones que estos deben tener.
 
@@ -7258,7 +7258,7 @@ const persona = new Persona("Pedro", "pedro@pedro.pe");
 console.log(persona);
 ```
 
-#### Constructor Pattern
+#### Constructor Pattern (Creación)
 
 En este patrón de diseño se utiliza una clase base como plano para que las demás clases hereden sobre esta, o sea, es como tener una clase principal que hereda sus caracteristicas a las demás. Lo anterior en otros lenguajes de programación se conocen como **_Clases Abstractas_** (JavaScript no acepta clases abstractas, pero otros lenguajes si las aceptan y esas clases no son intansiables).
 
@@ -7284,7 +7284,7 @@ const cliente = new Cliente("Pedro", "pedro@pedro.pe","Pedro Co.", "123456789");
 console.log(cliente);
 ```
 
-#### Singleton
+#### Singleton (Creación)
 
 Secaracteriza por no permitir la creación de multiples instacias de una misma clase, en cambio, siempre retorna el objeto instanciado. Este patrón de diseño requiere el uso de una variable que represente a la instaciación de la clase la cual se inicializa vacía (_null_) y para modificarla, es necesaria agregarla en el constructor de la clase y su valor será el objeto, o sea, _this_. PAra prevenir que se instancia nuevamente el objeto, en el constructor se añade un condicional el cual permite instanciar el objeto solamene cuando la variable instancia se encuentre vacía. Usualmente se utiliza cuando se almacena toda la información general en un sólo objeto.
 
@@ -7313,7 +7313,7 @@ const persona2 = new Persona("Karen", "karen@pedro.pe");
 console.log(persona2); // Muestra los valores de la primera instancia
 ```
 
-#### Factory
+#### Factory (Creación)
 
 Es una forma de crear objetos en base a una cierta condición que provoca que algunos atributos sean comunes y otros diferentes. Este tipo de patrón de diseño es utilizable ne ciertos casos.
 
@@ -7358,4 +7358,59 @@ console.log(inputTel.crearInput());
 
 const inputEmail = elemento.crearElemento("email", "email-cliente");
 console.log(inputEmail.crearInput());
+```
+
+#### Module (Estructura)
+
+Es cuando un proyecto se estructura en diferentes archivos (modulos) los cuales exportan variables, clases y/o funciones a otros.
+
+#### Mixin Pattern
+
+Es uan forma de agregar funciones a una clase una vez que hayan sido creadas. En este patrón de diseño, las funciones se añaden utilizando `Object.assign( objeto.prototype, nuevasFunciones)`. Entre los benificiones que se encuentran al utilizar esta patrón de diseño es que las mismas funciones se pueden asignar a distintos objetos.
+
+```js
+// Mixin Pattern
+
+class Persona {
+    constructor(nombre, email){
+        this.nombre = nombre;
+        this.email = email;
+    }
+
+    get nombreCliente() {
+        return this.nombre;
+    }
+}
+
+class Cliente {
+    constructor(nombre, email){
+        this.nombre = nombre;
+        this.email = email;
+    }
+}
+
+const funcionesPersona = {
+    mostrarInformacion() {
+        console.log(`Nombre: ${this.nombre} - Email: ${this.email}`);
+    },
+    mostrarNombreCliente() {
+        console.log(`El nombre del Cliente es ${this.nombre}`);
+    }
+}
+
+// Añadir funcionesPersona a Persona
+Object.assign(Persona.prototype, funcionesPersona);
+
+// Añadir funcionesPersona a Cliente
+Object.assign(Cliente.prototype, funcionesPersona);
+
+const persona = new Persona("Pedro", "pedro@pedro.pe");
+console.log(persona);
+persona.mostrarInformacion();
+console.log(persona.nombreCliente);
+persona.mostrarNombreCliente();
+
+const cliente = new Cliente("Pedroneitor", "pedro@pedro.pe");
+console.log(cliente);
+cliente.mostrarNombreCliente();
 ```

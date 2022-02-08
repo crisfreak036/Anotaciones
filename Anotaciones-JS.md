@@ -7480,3 +7480,73 @@ restaurantApp.funciones.agregarPlatillos("Fideos", 15);
 const { platillos } = restaurantApp;
 restaurantApp.funciones.mostrarMenu( platillos ); // Es difícil que choque con otro tipo de funciones
 ```
+
+#### Mediator
+
+Es un patrón de diseño que se comunica con diferentes objetos a la vez, el mediador define objetos ya localizados para objetivos especificos.
+
+```js
+// Mediator Pattern
+// Creación de Clases
+class Vendedor {
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.sala = null;
+    }
+
+    oferta( articulo, precio ) {
+        console.log(`Tenemos un ${articulo} a un precio de ${precio}`);
+    }
+
+    vendido( comprador ) {
+        console.log(`Vendido al ${comprador}`);
+    }
+}
+
+class Comprador {
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.sala = null;
+    }
+
+    ofertar( cantidad ) {
+        console.log(`${this.nombre} : ${cantidad}`)
+    }
+}
+
+// Clase Mediadora
+class Subasta {
+    constructor() {
+        this.compradores = {};
+    }
+
+    registrar( usuario ) {
+        this.compradores[usuario.nombre] = usuario;
+        usuario.sala = this; // Asigna la info de la Subasta al usuario
+    }
+
+    mostrarSala() {
+        console.log(this.compradores);
+    }
+}
+
+// Creación de objetos
+const juan = new Comprador("Juan");
+const pablo = new Comprador("Pablo");
+const vendedor = new Vendedor("Vendedor de Autos");
+const subasta = new Subasta();
+
+
+// Registrar integrantes en la sala
+subasta.registrar(juan);
+subasta.registrar(pablo);
+subasta.mostrarSala();
+
+// Subasta
+vendedor.oferta("Mustang 66", 3000);
+
+juan.ofertar(3500);
+pablo.ofertar(4000);
+
+vendedor.vendido(pablo.nombre);
+```

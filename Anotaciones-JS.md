@@ -7550,3 +7550,40 @@ pablo.ofertar(4000);
 
 vendedor.vendido(pablo.nombre);
 ```
+
+### Debug, Medir Performance y Seguridad
+
+#### performance.now() para conocer cuanto tarda en ejecutarse el código
+
+Se puede aplicar `performance.now()` al inicio y al fin de un bloque de código con el de medir el tiempo que le toma a ese bloque ser ejecutado. Para llevar a cabo lo anterior es necesario hacer la resta entre el tiempo final captado por un `performance.now()` y el tiempo de inicio que también fue capturado por otro `performance.now()`.
+
+```js
+// llena el select 
+function selectCriptomonedas(criptomonedas) {
+
+    // Conocer el tiempo de ejecución
+    const inicioEjecucion = performance.now();
+
+    // criptomonedas.forEach( cripto => {
+    //     const { FullName, Name } = cripto.CoinInfo;
+    //     const option = document.createElement('option');
+    //     option.value = Name;
+    //     option.textContent = FullName;
+    //     // insertar el HTML
+    //     criptomonedasSelect.appendChild(option);
+    // });
+
+    for( let i = 0; i < criptomonedas.length; i++ ) {
+        const { FullName, Name } = criptomonedas[i].CoinInfo;
+        const option = document.createElement('option');
+        option.value = Name;
+        option.textContent = FullName;
+        // insertar el HTML
+        criptomonedasSelect.appendChild(option);
+    }
+
+    const finEjecucion = performance.now()
+
+    console.log( `El tiempo de ejecución fue de ${finEjecucion-inicioEjecucion}` );
+}
+```

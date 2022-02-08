@@ -7414,3 +7414,69 @@ const cliente = new Cliente("Pedroneitor", "pedro@pedro.pe");
 console.log(cliente);
 cliente.mostrarNombreCliente();
 ```
+
+#### Namespace (Estructura)
+
+Ayuda a evitar la colisión de nombres de vareiables o funciones de nuestro código con las del _scope global de JS_. La idea es crear un objeto global al rededor de la aplicación y agregar todas las funciones dentro del objeto en lugar de crear multiples funciones fuera del objeto. Es necesario deifnir un objeto global sobre el cual se irán colocando todos os datos, funciones y operaciones relacionadas a la aplicación. Los proyectos grandes suelen beneficiarse de este patrón de diseño ya que evita que funciones con el mismo nombre choquen entre si.
+
+```js
+// Namespace
+
+const restaurantApp = {};
+
+// Se añaden platillos a el objeto global
+restaurantApp.platillos = [
+    {
+        platillo: 'Pizza',
+        precio: 25
+    },
+    {
+        platillo: 'Hamburguesa',
+        precio: 20
+    },
+    {
+        platillo: 'Hot Dog',
+        precio: 18
+    }
+];
+
+restaurantApp.funciones = {
+    mostrarMenu: (platillos) => {
+        platillos.forEach((platillo, index) => {
+            console.log(`Platillo ${index}: ${platillo.platillo} - Precio: ${platillo.precio}`)
+        });
+    },
+    ordenar: () => {
+        idOrden = window.prompt(
+            "Ingrese el número del platillo que quiere ordenar",
+            -1
+        );
+
+        if(!idOrden || idOrden >= restaurantApp.platillos.length || idOrden < 0) {
+            console.log(`Platillo no encontrado`)
+            return;
+        }
+        const indice = parseInt(idOrden);
+        const platilloOrdenado = restaurantApp.platillos[indice].platillo
+        console.log(`Tu platillo: ${platilloOrdenado}, está en preparación`)
+    },
+    agregarPlatillos: (platillo, precio) => {
+        const nuevoPlatillo = {
+            platillo,
+            precio
+        };
+
+        // restaurantApp.platillos.push(nuevoPlatillo);
+        platillosActualizados = [...restaurantApp.platillos, nuevoPlatillo];
+        restaurantApp.platillos = platillosActualizados;
+        // restaurantApp.funciones.mostrarMenu(restaurantApp.platillos)
+    }
+}
+
+restaurantApp.funciones.ordenar();
+
+restaurantApp.funciones.agregarPlatillos("Fideos", 15);
+
+const { platillos } = restaurantApp;
+restaurantApp.funciones.mostrarMenu( platillos ); // Es difícil que choque con otro tipo de funciones
+```

@@ -7599,3 +7599,25 @@ Existe la palabra reservada `debugger` la cual detiene la ejecución del código
 #### Opciones para ofuscar el código y ocultarlo
 
 La ofuscación de código se reocmienda ser utilizado en los casos que haya poco código. [JavaScript2img](https://javascript2img.com/) es una página que permite ofuscar cualquier códgio de JS que se pegue en ella.
+
+#### Otras medidas de seguridad
+
+- **No** almacenar contraseñas en LocalStorage o IndexedDB. Ninguno de los almacenamientos anteriores tienen como objetivo almecenar contenido sensible.
+
+- El **DOM Scripting ya escapa los datos y evita riesgos de seguridad**, utiliza `texContent` la mayoría de las veces, evitando utilizar `innerHTML`.
+
+- **`innerHTML`** puede ser utilizado solamente en los casos donde la fuente d elos datos sea segura.
+
+Respecto a los **Formularios**:
+
+- Se deben validar tanto en el cliente para entregar retroalimentación en tiempo real como en el servidor.
+
+- Si deseas crear apps con Autenticación de usuarios se puede utilizar JWT (Json Web Token) y Auth0.
+
+Consideraciones a tener en cuenta:
+
+- Cuando trabajes con dependencias, utiliza una herramienta para verificar vulnerabilidades como [Snyk](https://snyk.io/).
+
+- Ofuscar el código si lo consideras necesario.
+
+- Siempre Hashear información sensible, lo anterior se puede hacer utilizando la librería **bcrypt**.

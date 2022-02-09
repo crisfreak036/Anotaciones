@@ -7621,3 +7621,37 @@ Consideraciones a tener en cuenta:
 - Ofuscar el código si lo consideras necesario.
 
 - Siempre Hashear información sensible, lo anterior se puede hacer utilizando la librería **bcrypt**.
+
+### Testing - Creando un Mini Framework
+
+#### Introducción al Testing
+
+##### Ventajas
+
+- Mejorará la calidad detu Software evitando Bugs.
+
+- Existen herramientas que automatizan las pruebas de los proyectos, por lo cual se hace menos complicado o tardado el probar todos los diferentes escenarios en nuestra aplicación.
+
+##### Consideraciones
+
+- ¿Cuántas veces has agregado nuevas funciones a un proyecto existente pero desconoces si funciona bien con lo existente?.
+
+- Tener pruebas hará que una persona que no ha mantenido un proyecto conozca que es loque hace cada parte.
+
+- No harás pruebas de todo, más bien de como seintegran diferentes partes de la aplicación.
+
+##### Tipos de Testing
+
+- **End to End**: Más interactivo, simula algunos clicks, llenar formularios y asegurarse de que se muestra en pantalla lo que se desea. La herramienta Cypress suele ser muy util para la realización de estas pruebas.
+
+- **Integración**: Revisan que múltiples partes de nuestro proyecto funcionen bien.
+
+- **Unit (Unitarias)**: Revisan que cada parte funcione de manera correcta por si sola.
+
+- **Static (Estaticas)**: Revisan por errores en el código mientras vas escribiendo.
+
+##### Herramientas para Testing
+
+- Cada tecnología tiene sus herramientas para Testing, pero una muy popular es Jest, hay versiones para VueJS, Angular, TypeScript, Node, React, etc. Es necesario tener instalado Node.js.
+
+- Otra opción es Cypress que es una herramienta para hacer testings End to End.

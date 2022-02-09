@@ -7587,3 +7587,7 @@ function selectCriptomonedas(criptomonedas) {
     console.log( `El tiempo de ejecución fue de ${finEjecucion-inicioEjecucion}` );
 }
 ```
+
+#### async o defer? cual utilizar
+
+async o defer son etiquetas de HTML que pueden ayudar a la carga de los scripts. En el caso de **async**, el script carga inmediatamente el código junto al HTML por lo cual no es recomendable cuando se tienen scripts que modifiquen el HTML. Por otro lado **defer**, no ejecuta el script hasta que el HTML esté completamente cargado pero si lo descarga inmediatamente.

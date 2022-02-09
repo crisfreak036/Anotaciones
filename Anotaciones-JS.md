@@ -7591,3 +7591,7 @@ function selectCriptomonedas(criptomonedas) {
 #### async o defer? cual utilizar
 
 async o defer son etiquetas de HTML que pueden ayudar a la carga de los scripts. En el caso de **async**, el script carga inmediatamente el código junto al HTML por lo cual no es recomendable cuando se tienen scripts que modifiquen el HTML. Por otro lado **defer**, no ejecuta el script hasta que el HTML esté completamente cargado pero si lo descarga inmediatamente.
+
+#### Como utilizar Debugger (Chrome) (No parece funcionar en Brave)
+
+Existe la palabra reservada `debugger` la cual detiene la ejecución del código y muestra en el navegador todas las variables que hay hasta el momento en que se pausó la ejecución. Para continuar con la ejecución se debe presionar en un botón de play que se encuentra sobre la página web.

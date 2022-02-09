@@ -7595,3 +7595,7 @@ async o defer son etiquetas de HTML que pueden ayudar a la carga de los scripts.
 #### Como utilizar Debugger (Chrome) (No parece funcionar en Brave)
 
 Existe la palabra reservada `debugger` la cual detiene la ejecución del código y muestra en el navegador todas las variables que hay hasta el momento en que se pausó la ejecución. Para continuar con la ejecución se debe presionar en un botón de play que se encuentra sobre la página web.
+
+#### Opciones para ofuscar el código y ocultarlo
+
+La ofuscación de código se reocmienda ser utilizado en los casos que haya poco código. [JavaScript2img](https://javascript2img.com/) es una página que permite ofuscar cualquier códgio de JS que se pegue en ella.

@@ -7655,3 +7655,140 @@ Consideraciones a tener en cuenta:
 - Cada tecnología tiene sus herramientas para Testing, pero una muy popular es Jest, hay versiones para VueJS, Angular, TypeScript, Node, React, etc. Es necesario tener instalado Node.js.
 
 - Otra opción es Cypress que es una herramienta para hacer testings End to End.
+
+#### Creación de un Mini Framework para Testing
+
+El testeo sin herramientas se basa en la creación de pruebas especificas que se pasan si se obtiene el valor esperado.
+
+```js
+// Probar 2 valores
+
+function suma(a,b) {
+    return a + b;
+}
+
+function restar(a,b) {
+    return a - b;
+}
+
+// Función que compara el resultado con el valor esperado
+function expected( esperado ) {
+    return {
+        toBe( resultado ) {
+            if( resultado !== esperado ) {
+                console.error(`El resultado de la prueba fue - ${resultado} - , el cual es distinto al valor esperado ${esperado}, por lo cual la prueba no fue superada ❌`);
+            } else {
+                console.log('Prueba superada correctamente ✔');
+            }
+        },
+        toEqual( resultado ) {
+            if( resultado !== esperado ) {
+                console.error(`El resultado de la prueba fue - ${resultado} - , el cual no es igual al valor esperado ${esperado}, por lo cual la prueba no fue superada ❌`);
+            } else {
+                console.log('Prueba superada correctamente ✔');
+            }
+        }
+    }
+}
+
+let resultadoPruebaSuma = suma(1,2);
+let valorEsperadoSuma = 3;
+
+expected(valorEsperadoSuma).toBe(resultadoPruebaSuma);
+
+// if( valorEsperadoSuma !== resultadoPruebaSuma ) {
+//     console.error(`El resultado de la prueba fue - ${resultadoPruebaSuma} - , el cual es distinto al valor esperado ${valorEsperadoSuma}, por lo cual la prueba no fue superada ❌`);
+// } else {
+//     console.log('Prueba superada correctamente ✔');
+// }
+
+let resultadoPruebaResta = restar(8,3);
+let valorEsperadoResta = 5;
+
+expected(valorEsperadoResta).toBe(resultadoPruebaResta);
+
+// if( valorEsperadoResta !== resultadoPruebaResta ) {
+//     console.error(`El resultado de la prueba fue - ${resultadoPruebaResta} - , el cual es distinto al valor esperado ${valorEsperadoResta}, por lo cual la prueba no fue superada ❌`);
+// } else {
+//     console.log('Prueba superada correctamente ✔');
+// }
+```
+
+#### Probando código asincrono
+
+Finalmente se puede probar el código de manera asincrona lo cual permite probar la correcta ejecución de una prueba como el resultado de la prueba.
+
+```js
+// Probar 2 valores
+
+function suma(a,b) {
+    // return a + b + 1;
+    return a + b;
+}
+
+function restar(a,b) {
+    return a - b;
+}
+
+const sumaAsync = async ( a, b ) => {
+    return Promise.resolve( suma( a,b ) );
+}
+
+// Función que compara el resultado con el valor esperado
+function expected( esperado ) {
+    return {
+        toBe( resultado ) {
+            if( resultado !== esperado ) {
+                console.error(`El resultado de la prueba fue - ${resultado} - , el cual es distinto al valor esperado ${esperado}, por lo cual la prueba no fue superada ✖`);
+            } else {
+                console.log('Prueba superada correctamente ✔');
+            }
+        },
+        toEqual( resultado ) {
+            if( resultado !== esperado ) {
+                console.error(`El resultado de la prueba fue - ${resultado} - , el cual no es igual al valor esperado ${esperado}, por lo cual la prueba no fue superada ✖`);
+            } else {
+                console.log('Prueba superada correctamente ✔');
+            }
+        }
+    }
+}
+
+const test = async ( mensaje, callback ) => {
+    try {
+        await callback();
+        console.log(`La prueba: ${mensaje} se ejecutó correctamente ✔`);
+    } catch (error) {
+        console.error('Error! Prueba no ejecutada correctamente ✖');
+        console.error(error);
+    }
+}
+
+let resultadoPruebaSuma = suma(1,2);
+let valorEsperadoSuma = 3;
+
+expected(valorEsperadoSuma).toBe(resultadoPruebaSuma);
+
+// if( valorEsperadoSuma !== resultadoPruebaSuma ) {
+//     console.error(`El resultado de la prueba fue - ${resultadoPruebaSuma} - , el cual es distinto al valor esperado ${valorEsperadoSuma}, por lo cual la prueba no fue superada ❌`);
+// } else {
+//     console.log('Prueba superada correctamente ✔');
+// }
+
+let resultadoPruebaResta = restar(8,3);
+let valorEsperadoResta = 5;
+
+expected(valorEsperadoResta).toBe(resultadoPruebaResta);
+
+// if( valorEsperadoResta !== resultadoPruebaResta ) {
+//     console.error(`El resultado de la prueba fue - ${resultadoPruebaResta} - , el cual es distinto al valor esperado ${valorEsperadoResta}, por lo cual la prueba no fue superada ❌`);
+// } else {
+//     console.log('Prueba superada correctamente ✔');
+// }
+
+test('Suma 10 + 20 y el resultado debe ser 30', async () => {
+    const resultado = await sumaAsync(10, 20);
+    const esperado = 30;
+    expected(esperado).toBe(resultado);
+})
+```

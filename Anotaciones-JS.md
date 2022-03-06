@@ -7792,3 +7792,39 @@ test('Suma 10 + 20 y el resultado debe ser 30', async () => {
     expected(esperado).toBe(resultado);
 })
 ```
+
+### Testing - JEST (Introducción al Testing en JS con JEST)
+
+#### Primeros pasos con Jest
+
+Lo primero es ingresar el comando `npm init` a la consola de comando, ingresar la información que creamos necesaria, lo anterior con el fin de generar un **_package-lock.json_** el cual permitará la instalación de diferentes paquetes ya sea como dependencia de desarrollo (desarrollo) o del proyecto (producción/app final).
+
+Luego se instala JEST como una dependencia de desarrollo con el comando `npm i --save-dev jest`.
+
+Una vez instalado, en el archivo _package.json_, en la propiedad _scripts_. en la propiedad _test_ se coloca `"jest"`. Lo anterior sirve para que cuando se ejecute el comando `npm run test`, `npm test` o `npm t` se ejecuten las pruebas programadas con jest.
+
+**Para que se ejecuten las pruebas, hay que tener los script en una carpeta llama _\_\_test\_\__**, lo anterior se debe a que Jest entiende que esa carpeta es la que contiene los script de pruebas de la aplicación. También se recomienda que los scripts de test lleven como extensión `.test.js` para que sea reconocidos como archivos que contienen pruebas.
+
+Dentro del script de pruebas, se utiliza la función `test()` o la función `it()`, las cuales son la misma y reciben un mensaje como primer argumento y un callback el cual es la prueba que se quiere realizar. También, no es necesario crear un archivo para cada prueba que se quiera realizar, Jest permite agrupar las pruebas de un mismo archivo utilizando la función `describe()`, la cual recibe una decripción de las pruebas a realizar y las pruebas que se quieren agrupar ahí, **agrupar pruebas del mismo tipo en un solo archivo se considera buena practica**.
+
+```js
+// Ejemplo de pruebas con jest
+// archivo holamundo.test.js en la carpeta __test__
+
+test('Hola testing desde Jest utilizando test', () => {
+    // Cuerpo de la prueba
+});
+
+it('Hola testing desde Jest utilizando it', () => {
+    // Cuerpo de la prueba
+});
+
+describe('Grupo de pruebas 1', () => {
+    test('Prueba 1', () => {
+        // Cuerpo de la prueba
+    });
+    it('Prueba 2', () => {
+        // Cuerpo de la prueba
+    });
+});
+```

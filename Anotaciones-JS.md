@@ -7828,3 +7828,31 @@ describe('Grupo de pruebas 1', () => {
     });
 });
 ```
+
+### REACT: Aprende React Creando un Proyecto
+
+#### ¿Qué es React?
+
+- Es una librería JS para crear interfaces de usuario para aplicaicones Web.
+- Desarollada por Facebook
+- Se ejecuta en el cliente (no necesita una respuesta de un servidor).
+- Permite ordenar un proyecto de mejor manera por medio de la creación de Componentes.
+- Una gran ventaja es que cuenta con una gran cantidad de Herramientas y Librerías así como Soporte.
+
+#### Herramientas para trabajar con React
+
+1. Es necesario tener instalado node y npm. Para saber si ya están instalados, se pueden utilizar los siguientes comandos `node -v ` y `npm -v`.
+
+2. En el directorio que contendrá el proyecto, se utiilza el comando `npx create react app nombre-proyecto` para crear un proyecto en React.js con todo lo necesario para desarrollar.
+
+3. En el navegador (basado en chromium), se recomienda la instalación de [_React Developer Tools_](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es). En el caso de mozilla existe igualmente un [_React Developer Tools_](https://addons.mozilla.org/es/firefox/addon/react-devtools/).
+
+4. Dentro del directorio creado con los archivos del proyecto, se ejecuta el comando `npm start` para ejecutar la app en react.
+
+5. Se recomienda instalar los complementos _Code ES7+ React/Redux/React-Native/JS snippets_ y _Simple React Snippets_ desde las extensiones de Visual Studio Code.
+
+6. En la carpeta _public_ del proyecto, se encuentra los archivos básicos de una página, en el HTMl se pueden importar hojas de estilo o librerías que se quieran ocupar. En el caso de querer importar librerías, se puede buscar en [cdnjs](https://cdnjs.com/). Ejemplo de librerías que se pueden importar desde [cdnjs](https://cdnjs.com/) son _normalize_ y _skeleton_ (siempre en ese orden, ya que skeleton no funciona sin antes haber importado normalize), las cuales permite el uso de una versión más ligera de bootstrap.
+
+7. Dentro del directorio _src_ se encuentran los archivos a modificar para crear desarrollar la aplicación que queramos. Entre los archivos se pueden encontrar:
+    - **_index.js_:** Archivo que se encarga de llamar _App.js_.
+    - **_App.js_:** Es el componente principal de la aplicaicón a desarrollar.

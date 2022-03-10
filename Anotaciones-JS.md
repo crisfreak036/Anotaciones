@@ -7856,3 +7856,95 @@ describe('Grupo de pruebas 1', () => {
 7. Dentro del directorio _src_ se encuentran los archivos a modificar para crear desarrollar la aplicación que queramos. Entre los archivos se pueden encontrar:
     - **_index.js_:** Archivo que se encarga de llamar _App.js_.
     - **_App.js_:** Es el componente principal de la aplicaicón a desarrollar.
+
+#### Comenzando primer proyecto
+
+- Los componentes en React pueden contener unas pocas líneas o cientos de línea.
+
+- Se recomienda la creación de un directorio llamado _componments_ para contener los componentes que se desarrollen. Esta carpeta se debe crear dentro del directorio _src_.
+
+- La nomenclatura de nombre de componentes dice que deben comenzar con mayúsuclas y no deben contener espacios.
+
+- Teniendo instalada la extención _Simple React Snippets_, se puede utilizar el shortcut `imr` el cual escribe un `import React from 'react';` al script.
+
+El siguiente es un componente de React que sirve para ver la estructura de los elementos.
+
+```js
+// import de React
+import React from 'react';
+
+// Función componente a exportar
+function Header() {
+
+    // Return de React que retorna un elemnto de HTML
+    return(
+        <h1>Hola Mundo</h1>
+    )
+}
+
+// export que indica que se exporta el componente
+export default Header;
+```
+
+Es importante destacar que estos componentes pueden ser utilizados multiples veces a lo largo de la aplicación y el return de los componentes siempre debe contener un contenedor el cual dentro de él contendrá los demás elmentos.
+
+```js
+// Ejemplo App.js que da error
+import React from "react";
+import Header from "./components/Header"
+
+function App() {
+  return (
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+  );
+}
+
+export default App;
+```
+
+```js
+// Ejemplo App.js sin errores
+import React from "react";
+import Header from "./components/Header"
+
+function App() {
+  return (
+    <div className="App">
+      {/* Cada componente <Header /> es un elemento que se muestra en el HTML */}
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Si no se quiere escribir elemenmtos de HTML que contengan los demás elementos, se recomienda el uso de _Fragment_, el se importa desde React y se usa como un div pero no crea un elemento HTML nuevo.
+
+```js
+import React, { Fragment } from "react";
+import Header from "./components/Header"
+
+function App() {
+  return (
+    <Fragment>
+      {/* Cada componente <Header /> es un elemento que se muestra en el HTML */}
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+      <Header />
+    </Fragment>
+  );
+}
+
+export default App;
+```

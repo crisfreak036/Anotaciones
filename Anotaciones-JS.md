@@ -7857,7 +7857,7 @@ describe('Grupo de pruebas 1', () => {
     - **_index.js_:** Archivo que se encarga de llamar _App.js_.
     - **_App.js_:** Es el componente principal de la aplicaicón a desarrollar.
 
-#### Comenzando primer proyecto
+#### Estructura básica de un componente
 
 - Los componentes en React pueden contener unas pocas líneas o cientos de línea.
 
@@ -7947,4 +7947,56 @@ function App() {
 }
 
 export default App;
+```
+
+#### Pasar datos entre componentes
+
+En _React_, los datos fluyen desde el componente principal hacía los componentes hijos, lo anterior es posible gracias al uso de **_props_**. Los _props_ son similares a un atributo del HTML que se le asigna al componente. La extensión _React Developer Tools_ permite ver el árbol de componentes del proyecto, además de los props que se entregan de padre a hijo. React utiliza una sintaxis llamada JSX, lo cual es como una combinación de HTML y JS, donde todo lo que se encuentra entre `{}` es JavaScript mientras que lo demás es HTML. Cabe mencionar que es posible el destructuring de props en los argumentos de las funciones de los componentes, lo cual sirve para codificar de manera más semantica los componentes de la aplicación.
+
+```js
+// App.js
+import React, { Fragment } from "react";
+import Header from "./components/Header"
+
+function App() {
+  return (
+    <Fragment>
+      {/* Los props se pasan como atributosd de HTML al componente */}
+      <Header
+        titulo="Cotizador de Prestamos"
+        descripcion="Utiliza el formulario y obtén una cotización"
+      />
+    </Fragment>
+  );
+}
+
+export default App;
+
+/*-------------------------------------------------------------------------*/
+
+// Header.js
+import React, { Fragment } from 'react';
+
+function Header(props) {
+// function Header({titulo, descripcion}) {
+
+    /* Entre la declaración de la función y el return
+     se puede colocar código standard de JS */
+
+    console.log(props)
+
+    return(
+        <Fragment>
+            {/* Dentro de las llaves, lo que hay
+            es código JS */}
+
+            {/*<h1>{ titulo }</h1>*/ }
+            {/*<p>{ descripcion }</p>*/}
+            <h1>{ props.titulo }</h1>
+            <p>{ props.descripcion }</p>
+        </Fragment>
+    )
+}
+
+export default Header;
 ```

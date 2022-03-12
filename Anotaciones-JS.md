@@ -8000,3 +8000,18 @@ function Header(props) {
 
 export default Header;
 ```
+
+#### Segunda forma de escribir componentes funcionales
+
+La primera opción de creación de componentes es mediante _Function Delcaration_, muientras que la segunda es con _Function Expresion_, lo cual permite crear componentes con menos líenas de código, sin embargo, al quitar el return, se pierde el espacio para escribir código JS dentro del componente.
+
+```js
+const Header = ({ titulo, descripcion }) => ( 
+        <Fragment>
+            <h1>{ titulo }</h1>
+            <p>{ descripcion }</p>
+        </Fragment>
+     );
+
+export default Header;
+```

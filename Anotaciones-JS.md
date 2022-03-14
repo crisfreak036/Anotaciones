@@ -8015,3 +8015,56 @@ const Header = ({ titulo, descripcion }) => (
 
 export default Header;
 ```
+
+#### Class vs ClassName 
+
+Es importante saber que en React, la asignación de clases se hace utilzando el atributo `className`, no `class` como se hace en HTML.
+
+#### useState
+
+Las aplicaciones de React suelen ser rápidas gracias al manejo del _state_, el cual se importa desde la librería de React utilizando añadiendo lo siguiente a la importación de React `{useState}`.
+
+Usualmente, cada pieza interactiva de la aplicación tiene un state asociado.
+
+Para usarlo, se debe definir un array destructurting de los valores que entrega useState, esos valores serían una variable que contiene el valor y una función que será utilzada para estar interactuando y guardando lo que es el state que se está creando.
+
+Hay que mensionar que `useState()` permite el ingreso de un valor por default el cual se le asigna al estado inicial de la variable.
+
+Es importante tener claro donde se definiran los estados, ya que si se quieren pasar los valores entre componentes, siempre hay que tener en cuenta que los props pasan de un padre a un hjio pero no pueden pasar de un hijo a un padre. Al parecer lo ideal es definir los estados en el padre (se podría decir que el mejor lugar es el componente principal o el componente que contenga todos los demás) con el fin de poder utilizarlos en sus distintos hijos.
+
+#### Eventos en React
+
+A diferenmcia de JS donde era necesario seleccionar el elemento antes de añadirle un evento, en React por defecto viene una gran cantdiad de eventos que se integran a los elementos como si de una atributo de HTML se tratase. Se recomienda no utilizar la función que entrega `useSatet()` dentro de otra función la cual sería llamada (sin sus parentesis) por el evento definido en el componente, de todas formas se puede ingresar la función directamente en el evento siempre y cuando la función sea corta, de una línea por ejemplo.
+
+#### Carga condicional de componentes
+
+La carga condicional de componentes hace referencia a que mediante el uso de condicionales en el área de código JS de los componentes, se puede utilizar una variable que almacenará cierto componente dependiendo de ciertas condiciones previamente establecidas, como por ejemplo, la carga condicional de componentes que dependa del tipo de usuario que ingresa a la página.
+
+```js
+// Carga condicional de componentes
+    let variableComponent;
+
+    if(totalPay === 0) {
+        variableComponent = <Message/>;
+    } else {
+        variableComponent = <LoanInfo 
+                                loan={loan}
+                                deadLineValue={deadLineValue}
+                                monthlyPay={monthlyPay}
+                                totalPay={totalPay}
+                            />
+    }
+```
+
+Los componentes condicionales puede ir de la mano con los estados boleanos que se pueden crear utilizando `useState()`.
+
+##### Ideas y Anotaciones
+
+- Se puede agregar elementos condicionales al HTML utilizando estados booleanos, además se puede reducir código utilizando el operador ternario.
+
+    ```js
+    // Si errorState es true, se muestra un mensaje de error
+    { (errorState) ? <p className="error">Todos los campos son obligatorios</p>: null }
+    ```
+
+- Hay que tener en consideración de que si un componente en React tiene más de 100 líneas, se puede considerar necesaria la división del mismo o ver que código puede ser refactorizado.

@@ -8068,3 +8068,25 @@ Los componentes condicionales puede ir de la mano con los estados boleanos que s
     ```
 
 - Hay que tener en consideración de que si un componente en React tiene más de 100 líneas, se puede considerar necesaria la división del mismo o ver que código puede ser refactorizado.
+
+### VueJS: Aprende Creando un Proyecto
+
+#### Introducción
+
+Se recomienda instalar la extensión oficial de vue desarrollada por el Vue team.[Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+Junto a la anterior se recomienda instalar [Vue de Rahul Kadyan](https://marketplace.visualstudio.com/items?itemName=znck.vue)
+
+Para crear un proyecto, se recomienda utilizar vite con el comando `npm init vite@latest`, se eligen las configuraciones y después de instalan las dependencias con el comando `npm install`
+
+Mayoritariamente el código se escribirá en la carpeta src (como en react). También tiene un archivo principal llamado `App.vue`, además de un archivo `main.js` que monta el componente app al DOMm de la aplicación.
+
+#### Single File Components en Vue.js
+
+Utiliza la convención SFC (Single File Components) en la cual cada componente tiene 3 partes: `<script>` `<style>` y `<template>`.
+
+* **`<script>`:** Se coloca toda la lógica de JS del componente. 
+* **`<style>`:** Se coloca todo el código CSS del componente. Estos estilos al llevar la palabra **scoped**, aplican solo al componente, si se quitá, aplica a otros componente.
+* **`<template>`:** Se coloca todo el código HTML del componente.
+
+No es obligatorio tener los 3 pero en generAL SFC es la convención para escribir componentes en Vue.

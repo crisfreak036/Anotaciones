@@ -8090,3 +8090,43 @@ Utiliza la convención SFC (Single File Components) en la cual cada componente t
 * **`<template>`:** Se coloca todo el código HTML del componente.
 
 No es obligatorio tener los 3 pero en generAL SFC es la convención para escribir componentes en Vue.
+
+#### Instalación Tailwindcss
+
+Para integrar tailwindcss con proyectos de Vue o React, se recomienda utilizar el siguiente comando `npm install -D tailwindcss postcss autoprefixer`.
+
+Una vez instalados los paquetes anteriores, se deben realizar las siguientes pasos para configurar tailwind en el proyecto:
+
+1. Ejecutar el comando `npx tailwindcss init -p` para generar 2 archivos de configuración **postcss.config.cjs** y **tailwind.config.cjs**
+
+2. Dentro del archivo **tailwind.config.cjs** se debe realizar las siguientes configuraciones:
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+3. En el archivo css principal (**style.css**) se deben colocar las directivas de tailwind con el obejtivo de indicarle al proyecto que queremos utilizar tailwindcss:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+#### Componentes en Vue.js
+
+* Al igual que en React, los componentes permiten dividir el código en partes reutilizables.
+
+* Los componentes utilizan la extensión **.vue** y se importan con un import de JavaScript dentro de la etiqueta **`<script>`**.
+
+* Con la etiqueta **`<script setup>`** cualquier componente que es importado se hace disponible en el template.
+
+* Se puede pasar información de un componente a otro mediante el uso de Props.

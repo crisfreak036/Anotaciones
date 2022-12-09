@@ -8130,3 +8130,27 @@ module.exports = {
 * Con la etiqueta **`<script setup>`** cualquier componente que es importado se hace disponible en el template.
 
 * Se puede pasar información de un componente a otro mediante el uso de Props.
+
+#### API Styles en Vue - Options API y Composition API
+En el caso de **Options API** se utiliza una sintaxis de tipo objeto, mientras que en **Composition API** se definen los componentes utilizando imports y escribiendo las funciones directamente en el componente (el utilizar la palabra setup en la etiqueta script, indica que se utiliza esta API).
+
+El siguiente es un ejemplo de **Options API**:
+
+```js
+<script>
+    import Component from './components/Component.vue'
+
+    export default {
+        components: {
+            Component
+        },
+        data: {
+
+        }
+    }
+</script>
+```
+
+Se recomienda utlizar **Options API** cuando se está comenzando a aprendar Vue, además es la opción recomendada para personas con más experiencia en lenguajes orientados a objetos. El mejor escenario para utilizar esta API es cuando el proyecto a realizar utilizará pequeñas piezas de Vue o escenarios no tan complejos.
+
+En el caso de **Composition API**, es recomenddo su uso si todo el proyecto será hecho con Vue.js

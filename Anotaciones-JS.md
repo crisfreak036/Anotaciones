@@ -8154,3 +8154,44 @@ El siguiente es un ejemplo de **Options API**:
 Se recomienda utlizar **Options API** cuando se está comenzando a aprendar Vue, además es la opción recomendada para personas con más experiencia en lenguajes orientados a objetos. El mejor escenario para utilizar esta API es cuando el proyecto a realizar utilizará pequeñas piezas de Vue o escenarios no tan complejos.
 
 En el caso de **Composition API**, es recomenddo su uso si todo el proyecto será hecho con Vue.js
+
+#### Eventos en Vue
+
+Los eventos en Vue.js se agregan con la directiva `v-on:evento` aunque usualemnte se recomienda la sintaxis corta de `@evento`.
+
+Un ejemplo con la sitaxis completa sería el siguiente:
+```js
+<div class="my-5">
+      <input 
+        type="range" 
+        name="" 
+        id="" 
+        className='w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600 mt-5'
+        v-on:input="handleChange"
+      />
+</div>
+```
+
+En el ejemplo anterior, cada ingreso de data que recibe el input range es manejado por la función `handleChange` que por ahora hace lo siguiente:
+
+```js
+const handleChange = (e) => {
+    console.log(e.target.value);
+  }
+```
+
+Con la versión corta, el evento quedaría de la siguiente manera:
+
+```js
+<div class="my-5">
+      <input 
+        type="range" 
+        name="" 
+        id="" 
+        className='w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600 mt-5'
+        @input="handleChange"
+      />
+</div>
+```
+
+El resultado es el mismo en ambos casos, sin embargo, para los eventos, la sintaxis corta es la más recomendada.

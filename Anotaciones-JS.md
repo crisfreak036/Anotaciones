@@ -8275,3 +8275,39 @@ Para indicar que un atirbuto es dinámico, se colocan dos puntos antes del atrib
 ```
 
 Es importante destacar que en el caso del valor, con el sólo hecho de colocar el state que se definió es suficiente para que se haga la conexión entre el valor el valor del input y el valor del state, por lo cual **NO** se debe poner **cantidad.value**, ya que, eso causa errores en la rendericación del componente.
+
+#### La directiva v-model
+
+Permite realizar la actualización de un estado desde un input y la asginación del state al value del input.
+
+```js
+<div class="my-5">
+      <input 
+        type="range" 
+        name="" 
+        id=""
+        class='w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600 mt-5'
+        :min="MIN"
+        :max="MAX"
+        :step="STEP"
+        v-model="cantidad"
+      />
+</div>
+```
+
+El código anterior lo que hará será modificar el state cantidad cuando el input cambié, sin embargo, los valores que se asignarán serán en string,, debido a lo anterior es que existen los modificadores los cuales permitirán cambiar el tipo del valor que se le asignará al estado.
+
+```js
+<div class="my-5">
+    <input 
+    type="range" 
+    name="" 
+    id=""
+    class='w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600 mt-5'
+    :min="MIN"
+    :max="MAX"
+    :step="STEP"
+    v-model.number="cantidad"
+    />
+</div>
+```

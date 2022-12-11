@@ -8231,3 +8231,25 @@ const handleChange = (e) => {
     console.log(state.cantidad)
 }
 ```
+
+#### Mostrar el state en pantalla
+
+La forma más sencilla es la de utilizar la sintaxis de doble llave **{{variable}}**, sin embargo también se pueden utilizar las directivas de vue **v-text** o **v-html**. Nuestra atención se centra en **v-text** que se utiliza de la siguiente manera:
+
+```js
+<p
+      class='text-center my-10 text-5xl font-extrabold text-indigo-600'
+      v-text="cantidad"
+    >
+</p>
+```
+
+Hay que tener en consideración que si se quiere agregar otro tipo de texto como lo sería un signo de pesos, habría que hacer lo siguiente:
+
+```js
+<p
+      class='text-center my-10 text-5xl font-extrabold text-indigo-600'
+      v-text="`$ ${cantidad}`"
+    >
+</p>
+```

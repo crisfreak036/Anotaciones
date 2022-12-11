@@ -8253,3 +8253,25 @@ Hay que tener en consideración que si se quiere agregar otro tipo de texto como
     >
 </p>
 ```
+
+#### Atributos dinámicos en Vue.js
+
+Para indicar que un atirbuto es dinámico, se colocan dos puntos antes del atributo, lo cual indicará que se debe ir a buscar una variable o una función con el nombre que se dará como valor al atributo.
+
+```js
+<div class="my-5">
+      <input 
+        type="range" 
+        name="" 
+        id=""
+        class='w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-600 mt-5'
+        :min="MIN"
+        :max="MAX"
+        :step="STEP"
+        :value="cantidad"
+        @input="handleChange"
+      />
+</div>
+```
+
+Es importante destacar que en el caso del valor, con el sólo hecho de colocar el state que se definió es suficiente para que se haga la conexión entre el valor el valor del input y el valor del state, por lo cual **NO** se debe poner **cantidad.value**, ya que, eso causa errores en la rendericación del componente.

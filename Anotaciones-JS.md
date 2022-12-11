@@ -8195,3 +8195,39 @@ Con la versión corta, el evento quedaría de la siguiente manera:
 ```
 
 El resultado es el mismo en ambos casos, sin embargo, para los eventos, la sintaxis corta es la más recomendada.
+
+#### Reactive y Ref
+
+El state es la fuente de la verdad (source of truth) de la aplicación. Un ejemplo de state sería un carrito de compras, la autenticación de un usuario o un listado de clientes.
+
+Vue.js maneja y actualiza el state en base a ciertas funciones o condiciones en el código.
+
+En Vue existen dos formas sencillas de manejar un state, esto se hace con la función **`ref`** y **`reactive`**, ambos se importan desde vue. La diferencia entre ambas radica en que **`ref`** toma valores primitivos mientras que **`reactive`** toma objetos.
+
+En un equipo de trabajo o un proyecto grande se recomienda administrar el state con una herramienta llamada Pinia (sutituto de VueX)
+
+####  Modificación del state
+
+##### Ref
+
+Tal como los objetos en JS, en el caso de ref se reasigna el valor del **.value** con el valor de interés como se muestra en el siguiente código:
+
+```js
+const handleChange = (e) => {
+    cantidad.value = +e.target.value;
+    console.log(cantidad.value)
+}
+```
+
+**Nota:** Para utilizar una variable dentro del template, se debe colocar dentro de dobles llaves **{{variable}}**
+
+##### Reactive
+
+Similar a ref, aquí se le asgina el valor directamente al atirbuto de interés.
+
+```js
+const handleChange = (e) => {
+    state.cantidad = Number(e.target.value);
+    console.log(state.cantidad)
+}
+```

@@ -8311,3 +8311,26 @@ El código anterior lo que hará será modificar el state cantidad cuando el inp
     />
 </div>
 ```
+
+#### Computed Properties en Vue.js
+
+Es una función que está pendiente de los cambios de tu state y realiza los cambios necesarios cuando este cambia. La idea es utilizarlas con el fin de que el código sea ordenada y se sigan teniendo actualizaciones de código. Se considera buena práctica agregar la función al código de Vue.js con esta función.
+
+Para hacer uso de estas propiedades, se debe importar desde vue la función **computed**.
+
+```js
+<script setup>
+  import { computed } from 'vue';
+
+  // Definición de state con ref
+  const cantidad = ref(10000);
+
+  const formatearDinero = computed( () => {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+    return formatter.format(cantidad.value);
+});
+</script>
+```

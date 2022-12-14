@@ -8334,3 +8334,53 @@ Para hacer uso de estas propiedades, se debe importar desde vue la función **co
 });
 </script>
 ```
+
+Esta opción es recomendada cuando se trata de funciones que muestran algo, en cambio, no se recomienda para las funciones encargadas del manejo de lógica como lo sería el manejo de un evento.
+
+#### Pasando props a un componente
+
+Para pasar props a un componente en Vue se utiliza la misma sintaxis que utilizan los atributos dinámicos y entre las comillas dobles se le proporciona JavaScript, esto último hay que tenerlo en consideración, ya que, en casos donde se quiera enviar elementos reservados en JavaScript como lo serían un signo más por ejemplo, hay que mandarselo en formato string **'+'**.
+
+```js
+<Button
+    :tipoBoton="'button'"
+    :contenidoTexto="'-'"
+    :handle="handleDecremento"
+/>
+```
+
+Desde el componente en la zona del script se importan las props de dos maneras, ambas utilizando `const props = defineProps()` pero se diferencian en lo que reciben:
+
+1. **Arreglo con los nombres de los props:** Tal como lo dice el nombre, en estos casos `defineProps()` recibe un arreglo con los nombres de los props que recibe el componente, generando un objeto que como atributos tiene los props definidos.
+
+```js
+<script setup>
+    const props = defineProps(['tipoBoton', 'contenidoTexto', 'handle'])
+</script>
+```
+
+2. **Objeto con los nombres de los props:** En este caso se le pasa un objeto que como llaves tendrá los props que se le quieren pasar al componente y como valores los tipos que tendrán cada llave. En el caso de no entregar un elemento con el tipo definido, se muestra una advertencia en la consola de comandos.
+
+```js
+<script setup>
+    const props = defineProps({
+        tipoBoton: String, 
+        contenidoTexto: String, 
+        handle: Function
+    })
+</script>
+```
+
+Para hacer uso de los props dentro del componente, sólo se llaman por el nombre, como si ya se hubiera hecho el destructuring del objeto props.
+
+```js
+<template>
+    <button
+        :type="tipoBoton"
+        className='h-10 w-10 flex items-center justify-center font-bold text-white text-2xl bg-lime-500 rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-lime-500'
+        @click="handle"
+    >
+    {{contenidoTexto}}
+    </button>
+</template>
+```

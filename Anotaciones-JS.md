@@ -8384,3 +8384,51 @@ Para hacer uso de los props dentro del componente, sólo se llaman por el nombre
     </button>
 </template>
 ```
+
+#### Emitir Eventos entre Componentes, pasar parámetros y más
+
+En la sección [Pasando props a un componente](#pasando-props-a-un-componente) se vio que se pueden pasar variables y funciones a un componente, sin embargo cuando se trata de pasar funciones a un componenete es recomendable utilizar un evento personalizado.
+
+Para crear un evento personalizado, se debe colocar un `@` como prefijo al nombre del prop que se le entrega al componente, mientras que desde el componenete, en el evento asociado al input, se le debe dar como valor lo siguiente `"$emit('nombre-prop')"`
+
+```js
+<script setup>
+    // const { tipoBoton, contenidoTexto, handle } = defineProps(['tipoBoton', 'contenidoTexto', 'handle'])
+    const props = defineProps({
+        tipoBoton: String, 
+        contenidoTexto: String, 
+        handle: Function
+    })
+
+    const texto = 'Desde el componente hijo Button';
+</script>
+
+<template>
+    <button
+        :type="tipoBoton"
+        className='h-10 w-10 flex items-center justify-center font-bold text-white text-2xl bg-lime-500 rounded-full hover:ring-2 hover:ring-offset-2 hover:ring-lime-500'
+        @click="$emit('handle', texto)"
+    >
+    {{contenidoTexto}}
+    </button>
+</template>
+```
+
+```js
+<Button
+        :tipoBoton="'button'"
+        :contenidoTexto="'-'"
+        @handle="handleDecremento"
+/>
+```
+
+Entre los benfecios que tiene el uso de eventos personalizados, se encuentra el poder entregar props desde el elemento hijo al elemento padre. Lo anterior se realiza añadiendo el prop para el elemento padre como un parametro perteneciente al **emit** del elemento padre `"$emit('nombre-prop-evento', 'prop-para-padre')"`. Lo anterior hace posible que las funciones asociadas al evento personalizado **puedan recibir parámetros provenientes desde el elemento hijo**
+
+```js
+const handleDecremento = (texto) => {
+    console.log(texto) // Imprime el texto proveniente desde el componente hijo
+    const valor = cantidad.value - STEP;
+    if (valor < MIN) return alert('Cantidad no valida')
+    cantidad.value = valor;
+};
+```

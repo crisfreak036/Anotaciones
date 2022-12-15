@@ -8432,3 +8432,54 @@ const handleDecremento = (texto) => {
     cantidad.value = valor;
 };
 ```
+
+#### Watchers en Vue.js
+
+Con los ComputedProperties podemos revisar los valores derivados de una función; pero algunas veces queremos modificar algo extra cuando algún state cambia, con composition API se puede utilizar la función watch para lograglo.
+
+Un Watch tomará una o múltiples dependencias; y cuando estas cambien entonces se podrá llamar otra función o realizar una validación.
+
+Similar a lo que era useEffect en React, **watch** recibé 3 parámetros importantes los cuales son **dependencias**, **callback** y **settings**
+
+Las **dependencias** son los estados que condicionan el llamado del **callback**, mientras que las **settings** es un objeto con configuraciones entras las que se encuentra *immediate* la cual si es `true`, permite que a penas se cargue la vista, se llame al **callback**.
+
+```js
+watch([cantidad, plazoPagar], () => {
+    total.value = calcularTotalAPagar(cantidad.value, plazoPagar.value)
+    totalMensual.value = total.value/plazoPagar.value
+}, { immediate: true });
+```
+
+**Nota:** Al igual que compute, watch se importa desde la librería vue.
+
+**Nota:** Vue tiene la directiva v-if la cual permite agregar condicionales al template. pudiendo así realizar la carga condicional de secciones del template en base a estados de la aplicación.
+
+```js
+// Sólo se mostrará si el estado total es mayor a 0
+ <div
+        v-if="total > 0" 
+        class="my-5 space-y-3 bg-gray-50 p-5 shadow"
+      >
+        <h2 class='text-2xl font-extrabold text-gray-500 text-center'>
+          Resumen <span class='text-indigo-600'>de Pagos</span>
+        </h2>
+
+        <p 
+          class="text-xl text-gray-500 text-center font-bold"
+        >
+          {{plazoPagar}} Meses
+        </p>
+        <p 
+          class="text-xl text-gray-500 text-center font-bold"
+        >
+          Total a Pagar: {{formatearDinero(total)}}
+        </p>
+        <p 
+          class="text-xl text-gray-500 text-center font-bold"
+        >
+          Pagos Mensuales: {{formatearDinero(totalMensual)}}
+        </p>
+</div>
+
+<p v-else class="text-center pt-5 text-black font-bold"> Añade una cantidad y un plazo a pagar </p>
+```

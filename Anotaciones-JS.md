@@ -7829,6 +7829,236 @@ describe('Grupo de pruebas 1', () => {
 });
 ```
 
+####  Probando Strings
+
+Para conocer el largo de un string, se utiliza el método `.toHaveLength()` perteneciente al `expect()`.
+```js
+const password = "123456";
+
+describe('Valida que el password tenga un largo de 6 caracteresy que no se encuentre vacío', () => {
+    
+    test('Valida que el password tenga un largo de 6', () => {
+        expect(password).toHaveLength(6);
+    });
+
+    test('Valida que el password no se encuentre vacio', () => {
+        expect(password).toHaveLength(0);
+    });
+
+});
+```
+
+####  Probando Arreglos
+
+Para conocer el largo de un arreglo, se utiliza el método `.toHaveLength()` perteneciente al `expect()`.
+También se puede decir que se espera que el elemento a probar no sea algo utilizando la propiedad `.not` perteneciente a `expect()` 
+
+```js
+const carrito = ['Producto1', 'Producto2', 'Producto3'];
+
+describe('Pruebas al carrito de compras', () => {
+    
+    test('Valida que arreglo contenga 3 elementos', () => {
+        expect(carrito).toHaveLength(3);
+    });
+
+    test('Valida que el carrito no se encuentre vacio', () => {
+        expect(carrito).not.toHaveLength(0);
+    });
+
+});
+```
+
+#### Probando Objetos
+
+Jest permite utilizar el método `.toBeGreaterThan()` perteneciente a expect, el cual permite verificar que lo que se encuentre dentro de expect sea mayor a cierto valor.
+
+```js
+const cliente = {
+    nombre: 'Juanin',
+    balance: 500
+}
+
+describe('Testing al Cliente', () => {
+    
+    test('El Cliente es Premium', () => {
+        expect(cliente.balance).toBeGreaterThan(400);
+    });
+
+    test('El Juan Pablo', () => {
+        expect(cliente.nombre).toBe('Juanin');
+    });
+
+    test('No es otro cliente', () => {
+        expect(cliente.nombre).not.toBe('Pedrin');
+    });
+
+    test('No tiene 400', () => {
+        expect(cliente.balance).not.toBe(400);
+    });
+});
+```
+
+**Nota:** Las pruebas en las que se espera que el resultado no sea algo son para evitar los falsos positivos, lo cual permite encontrar casos de uso no considerados.
+
+#### Testing a una función
+
+```js
+// Funciones de prueba
+
+function suma(a,b) {
+    return a + b;
+}
+
+function restar(a,b) {
+    return a - b;
+}
+
+describe('Testing a las funciones suma y restar', () => {
+    
+    test('Suma de 20 y 30', () => {
+        expect( suma(20,30) ).toBe(50);
+    });
+
+    test('Resta de 30 y 20', () => {
+        expect( restar(30, 20) ).toBe(10);
+    });
+
+    test('Suma de 10 y 10 no sea 10', () => {
+        expect( suma(10, 10) ).not.toBe(10);
+    });
+});
+```
+
+#### Introducción a Snapshots
+
+Es una manera más sencilla con la cual se puede comprobar un objeto. A diferencia de las pruebas anteriores, en este caso se utiliza el método `.toMatchSnapshot()` el cual al ser ejecutado crea un nuevo archivo en una carpeta el cual contiene una serialización del objeto lo cual permite a Jest darse cuenta de cualquier modificación que exista sobre el objeto durante una prueba. Este tipo de archivos usualmente son modificados y manejados sólo por Jest.
+
+En el caso de que se quiera actualizar el snapshot del objeto, se utiliza el comando de consola `npm t -- -u`.
+
+```js
+// Objeto de Pruebas
+const cliente = {
+    nombre: 'Juanin',
+    balance: 500,
+    tipo: 'Premium'
+}
+
+describe('Testing al Cliente', () => {
+    
+    test('Snapshot al cliente', () => {
+        expect(cliente).toMatchSnapshot();
+    });
+});
+```
+
+#### Agregar Babel para realizar pruebas de funciones en otros archivos
+
+Jest funciona sobre node, por lo cual requiere que se utilice commonjs en la importación y exportación con el fin de poder hacer pruebas de modulos externos. Debido a lo anterior es que una opción escalable es utilizar babel en el proyecto para poder seguir escribiendo esmodules con la posibilidad de probar el código utilizando Jest. Lo anterior mencionado es posible debido a que babel realiza una **transpilación** del código a versiones anteriores soportadas por ejemplo en navegadores antiguos.
+
+Para utilizar babel en elproyecto, se debe crear un archivo llamdo `.babelrc` y tambien instalar una dependencia llamada `@babel/preset-env` como dependencia de desarrollo con el comando `npm i --save-dev @babel/preset-env`.
+
+En el archivo `.babelrc` se debe colocar lo siguiente:
+
+```
+{
+    "presets": [
+        [
+            "@babel/preset-env", {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ]
+    ]
+}
+```
+
+Una vez hecho lo anterior, hay que asegurarse de tener las siguientes dependencias instaladas con la mismas versiones que aparecen en el siguiente bloque correspondiente a las dependencias de desarrollo del package.json:
+
+```json
+{
+  "name": "51-testing-jest",
+  "version": "1.0.0",
+  "description": "Aprendiendo JEST",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Cristopher Soto/Juan De la Torre",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "babel-jest": "26.3.0",
+    "jest": "^26.3.0"
+  }
+}
+```
+
+Con todos lo anterior corroborado, se puede realizar la prueba sobre el modulo exportado en formato ES modulo.
+
+```js
+import { suma } from "../js/funciones.js"
+
+describe('Suma de 2 números', () => {
+    test('Sumar 10 y 20, debe dar como resultado 30', () => {
+        expect( suma(10,20) ).toBe(30)
+    })
+})
+```
+
+#### Testing al proyecto a citas
+
+```js
+// citas.test.js
+import Citas from '../js/classes/Citas.js';
+
+describe('Probar la clase de Citas', () => {
+
+    const citas = new Citas();
+    const id = Date.now();
+
+    test('Agregar una nueva Cita', () => {
+        const citaObj = {
+            mascota: 'Hook',
+            propietario: 'Juan',
+            telefono: '19030913',
+            fecha: '10-12-2020',
+            hora:'10:30',
+            sintomas: 'Sólo Duerme'
+        }
+
+        citaObj.id = id;
+        citas.agregarCita(citaObj);
+
+        expect(citas).toMatchSnapshot();
+    });
+
+    test('Actualizar Cita', () => {
+        const citaActualizada = {
+            id,
+            mascota: 'Hook - Jr',
+            propietario: 'Juan',
+            telefono: '19030913',
+            fecha: '10-12-2020',
+            hora:'10:30',
+            sintomas: 'Sólo Duerme'
+        }
+
+        citas.editarCita(citaActualizada);
+
+        expect(citas).toMatchSnapshot();
+    });
+
+    test('Eliminar Cita', () => {
+
+        citas.eliminarCita(id);
+
+        expect(citas).toMatchSnapshot();
+    });
+});
+```
+
 ### REACT: Aprende React Creando un Proyecto
 
 #### ¿Qué es React?

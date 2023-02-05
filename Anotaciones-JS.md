@@ -8059,6 +8059,261 @@ describe('Probar la clase de Citas', () => {
 });
 ```
 
+### Cypress - Introducción al Testing con Cypress
+
+#### ¿Qué es Cypress?
+
+* Permite saber lo que el usuario está viendo en pantalla.
+
+* Es considerdo end-to-end pero también ofrece pruebas unitarias y de integración
+
+* Funcioan en el navegadir, por lo tanto puedes probar con Cypress proyectos hechos en Java, C#, Python, PHP, Node, React o VueJS.
+
+#### Instalndo y Primeros pasos
+
+Para instalar cypress, se requiere primero haber inicializado npm con `npm init`. Una vez realizado lo anterior, se debe instalar Cypress como dependencia de desarrollo con el comando `npm install -D cypress`.
+
+En Cypress existen dos maneras de realizar las pruebas, una es mediante la aplicación de escritorio y la otra es ejecutando las pruebas escritas en código.
+
+##### Aplicación de Escritorio
+
+Para utilizar la aplicación de escritorio se utiliza el comando `npx cypress open`.
+Se debe dar a E2E, esperar a la configuración y crear una nueva prueba con `new specs`.
+Dentro de la prueba que se crea en la carpeta E2E dentro del directorio `/cypress` se crea la prueba con una sintaxis similar a la que de Jest.
+El siguiente es un ejemplo de prueba:
+
+```js
+//cypress/e2e/spec.cry.js
+describe('Carga la página principal', () => {
+  it('Carga la página principal', () => {
+    cy.visit('http://127.0.0.1:5500/index.html');
+    cy.contains('h1', 'Administrador de Pacientes de Veterinaria');
+    cy.get('h1').should('exist');
+  })
+})
+```
+
+#### Los Atributos en Cypress
+
+Una buena práctica al momento de seleccionar elementos es darle un atributo especial con un enfoque exclusico en el testing, la nomenclatura para ese tipo de atributos sería `data-cy=identificador`.
+
+```js
+describe('Carga la página principal', () => {
+  it('Carga la página principal', () => {
+    cy.visit('http://127.0.0.1:5500/index.html');
+    // cy.contains('h1', 'Administrador de Pacientes de Veterinaria');
+    // cy.get('h1').should('exist');
+
+    // Verifica que un elemento contenga un texto
+    cy.contains('[data-cy="titulo-proyecto"]', 'Administrador de Pacientes de Veterinaria');
+
+    // Verifica que un elemento exista
+    cy.get('[data-cy="titulo-proyecto"]').should('exist');
+
+    // Verifica que un elemento exista y contenga un elemento
+    cy.get('[data-cy="titulo-proyecto"]')
+      .invoke('text')
+      .should('equal', 'Administrador de Pacientes de Veterinaria')
+  })
+})
+```
+
+#### Validación de Formularios
+
+En el caso de que sea necesario hacer testing de un elemento que se crea dinámicamente con JS, se recomienda agregarle el data atributte cy con js de la siguiente manera:
+
+```js
+divMensaje.dataset.cy = 'alerta';
+```
+
+```js
+//cypress/e2e/validar_formulario.cry.js
+describe('Valida el formulario', () => {
+    it('Submit al formulario y mostrar la alerta de error', () => {
+        cy.visit('http://127.0.0.1:5500/index.html'); // Visita la página indicada
+        cy.get('[data-cy=formulario]')
+            .submit(); // Presiona en el botón seleccionado
+        
+        // Seleccionar alerta y comprueba que contenga un textto especifico
+        cy.get('[data-cy="alerta"]')
+            .invoke('text')
+            .should('equal', 'Todos los campos son Obligatorios')
+
+        // Seleccionar alerta y comprueba que contenga la clase alert-danger
+        cy.get('[data-cy="alerta"]')
+            .should('have.class', 'alert-danger')
+    });
+});
+```
+
+#### Escribir en un formulario y crear nueva cita
+
+En el archivo cypress.config.js se puede configurar una url base, la cual permitirá que en los `cy.visit()` se coloque sólo el path que se utilizará para la prueba.
+
+```js
+// cypress.config.js 
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
+    baseUrl: 'http://127.0.0.1:5500'
+  },
+});
+```
+Para emular la escritura en un input, se utiliza `.type()`, el cual recibe lo que se escribirá en el input.
+
+```js
+//cypress/e2e/crear_cita.cry.js
+describe('Crea una nueva cita', () => {
+    it('Llena los campos para una nueva cita y los muestra', () => {
+        cy.visit('/index.html'); // Visita la página indicada
+
+        // Rellena el formulario
+        cy.get('[data-cy="mascota-input"]')
+            .type('Hook');
+        cy.get('[data-cy="propietario-input"]')
+            .type('Juan');
+        cy.get('[data-cy="telefono-input"]')
+            .type('123456789');
+        cy.get('[data-cy="fecha-input"]')
+            .type('2023-02-05');
+        cy.get('[data-cy="hora-input"]')
+            .type('02:28');
+        cy.get('[data-cy="sintomas-input"]')
+            .type('No come');
+        
+        cy.get('[data-cy=submit-cita]')
+            .click(); // Ejecuta el formulario
+        
+        // Comprueba que el título de las citas haya cambiado
+        cy.get('[data-cy="citas-heading"]')
+            .invoke('text')
+            .should('equal', 'Administra tus Citas')
+        
+        cy.get('[data-cy="alerta"]')
+            .should('have.class', 'alert-success')
+    });
+});
+```
+
+#### Editar Citas
+
+```js
+describe('Editar una Cita', () => {
+    it('Crea una cita y la edita', () => {
+        cy.visit('/index.html'); // Visita la página indicada
+
+        /*
+        CREACIÓN DE LA CITA
+        */
+
+        // Rellena el formulario
+        cy.get('[data-cy="mascota-input"]')
+            .type('Hook');
+        cy.get('[data-cy="propietario-input"]')
+            .type('Juan');
+        cy.get('[data-cy="telefono-input"]')
+            .type('123456789');
+        cy.get('[data-cy="fecha-input"]')
+            .type('2023-02-05');
+        cy.get('[data-cy="hora-input"]')
+            .type('02:28');
+        cy.get('[data-cy="sintomas-input"]')
+            .type('No come');
+        
+        cy.get('[data-cy=submit-cita]')
+            .click(); // Ejecuta el formulario
+        
+        // Comprueba que el título de las citas haya cambiado
+        cy.get('[data-cy="citas-heading"]')
+            .invoke('text')
+            .should('equal', 'Administra tus Citas')
+        
+        cy.get('[data-cy="alerta"]')
+            .should('have.class', 'alert-success')
+            
+        /*
+        EDICIÓN DE LA CITA
+        */
+        cy.get('[data-cy="btn-editar"]')
+                .click(); // Inicial la edición
+                
+        // Edita el nombre de la mascota
+        cy.get('[data-cy="mascota-input"]')
+        .clear() // Limpia el input
+        .type('Nuevo Hook');
+
+        cy.get('[data-cy="submit-cita"]')
+            .click(); // Inicial la edición
+        
+        cy.get('[data-cy="alerta"]')
+        .should('have.class', 'alert-success')
+
+        cy.get('[data-cy="alerta"]')
+            .invoke('text')
+            .should('equal', 'Guardado Correctamente')
+    })
+});
+```
+
+#### Eliminar Citas
+
+```js
+describe('Editar una Cita', () => {
+    it('Crea una cita y la edita', () => {
+        cy.visit('/index.html'); // Visita la página indicada
+
+        /*
+        CREACIÓN DE LA CITA
+        */
+
+        // Rellena el formulario
+        cy.get('[data-cy="mascota-input"]')
+            .type('Hook');
+        cy.get('[data-cy="propietario-input"]')
+            .type('Juan');
+        cy.get('[data-cy="telefono-input"]')
+            .type('123456789');
+        cy.get('[data-cy="fecha-input"]')
+            .type('2023-02-05');
+        cy.get('[data-cy="hora-input"]')
+            .type('02:28');
+        cy.get('[data-cy="sintomas-input"]')
+            .type('No come');
+        
+        cy.get('[data-cy=submit-cita]')
+            .click(); // Ejecuta el formulario
+        
+        // Comprueba que el título de las citas haya cambiado
+        cy.get('[data-cy="citas-heading"]')
+            .invoke('text')
+            .should('equal', 'Administra tus Citas')
+        
+        cy.get('[data-cy="alerta"]')
+            .should('have.class', 'alert-success')
+            
+        /*
+        EDICIÓN DE LA CITA
+        */
+        cy.get('[data-cy="btn-eliminar"]')
+            .click(); // Eliminación de la cita
+        
+        cy.get('[data-cy="citas-heading"]')
+            .invoke('text')
+            .should('equal', 'No hay Citas, comienza creando una')
+    })
+});
+```
+
+#### ¿Qué más ofrece Cypress?
+
+Para ejecutar las pruebas con el CLI, se utiliza el comando `npx cyoress run`. La ejecución de las pruebas en este modo crea vídeos de como se realizaron las pruebas.
+Para aumentar la calidad de los vídeos, se puede agregar el atributo `videoCompression` con el valor `0` a `cypress.config.js`.
+Si se quiere realizar un screenshot durante la realización de la prueba, se utiliza `cy.screenshot()` en el lugar de la prueba donde se desea sacar un screenshot.
+
 ### REACT: Aprende React Creando un Proyecto
 
 #### ¿Qué es React?
